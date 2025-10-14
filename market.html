@@ -1222,14 +1222,16 @@
           </div>
           
           <div class="pt-6 border-t border-emerald-200 text-center space-y-3">
-            <p class="text-lg font-serif text-ink">
-              👉 Get Instant Access → <span class="text-emerald-600 font-semibold"><a href="https://rzp.io/rzp/muWZSjqi">Acess Now</a> </span>
-            </p>
-            <p class="text-sm text-inkLighter italic">
-              🧠 Used by rebels. Feared by gatekeepers. Now yours.
-            </p>
-          </div>
-        </div>
+  <p class="text-lg font-serif text-ink">
+    👉 Get Instant Access → 
+    <button onclick="showPaymentPopup()" class="text-emerald-600 font-semibold hover:text-emerald-700 underline cursor-pointer bg-transparent border-none inline">
+      Access Now
+    </button>
+  </p>
+  <p class="text-sm text-inkLighter italic">
+    🧠 Used by rebels. Feared by gatekeepers. Now yours.
+  </p>
+</div>
         
         <!-- Closing note -->
        
@@ -1237,7 +1239,182 @@
     </div>
   </section>
 
- 
+ <!-- Add ye popup HTML body ke end me, </body> se pehle -->
+<div id="paymentPopup" class="payment-popup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePaymentPopup()">&times;</button>
+    
+    <div class="text-center mb-6">
+      <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-xl mx-auto mb-4 flex items-center justify-center text-3xl">
+        🌍
+      </div>
+      <h3 class="text-2xl font-bold text-ink mb-2">Choose Your Location</h3>
+      <p class="text-inkLight">Select your region for secure payment</p>
+    </div>
+    
+    <div class="space-y-3">
+      <!-- India Button -->
+      <button onclick="window.open('https://rzp.io/rzp/muWZSjqi', '_blank')" class="location-btn india-btn">
+        <span class="text-2xl">🇮🇳</span>
+        <span>I'm from India</span>
+      </button>
+      
+      <!-- Foreigner Button with PayPal Form -->
+      <form id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="arunkumarsahajpur@gmail.com">
+        <input type="hidden" name="item_name" value="Tactical49 - Complete Bundle (49 Growth Tactics)">
+        <input type="hidden" name="amount" value="3.00">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="return" value="https://satisfying-arithmetic-e75.notion.site/49-Underground-Growth-Hacks-They-Don-t-Want-You-to-Launch-28a40b7c688680b88e97c156dab4f51e?pvs=74">
+        <input type="hidden" name="cancel_return" value="cancel.html">
+        
+        <button type="submit" class="location-btn foreigner-btn">
+          <span class="text-2xl">🌏</span>
+          <span>I'm a Foreigner</span>
+        </button>
+      </form>
+    </div>
+    
+    <p class="text-xs text-center text-inkLighter mt-6">
+      🔒 Secure payment • Instant digital access
+    </p>
+  </div>
+</div>
+
+<!-- JavaScript - Add ye </body> se pehle -->
+<script>
+  function showPaymentPopup() {
+    document.getElementById('paymentPopup').classList.add('show');
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
+  }
+  
+  function closePaymentPopup() {
+    document.getElementById('paymentPopup').classList.remove('show');
+    document.body.style.overflow = 'auto'; // Restore scroll
+  }
+  
+  // Close popup on outside click
+  document.getElementById('paymentPopup').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closePaymentPopup();
+    }
+  });
+  
+  // Close popup on ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closePaymentPopup();
+    }
+  });
+</script>
+<style>
+  /* ... existing styles ... */
+  
+  /* Payment Popup Styles */
+  .payment-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+  }
+  
+  .payment-popup.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .popup-box {
+    background: linear-gradient(135deg, #ffffff 0%, #ECFDF5 100%);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.4);
+    animation: slideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .popup-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #6B7280;
+    line-height: 1;
+    transition: all 0.2s;
+  }
+  
+  .popup-close:hover {
+    color: #1A1A1A;
+    transform: rotate(90deg);
+  }
+  
+  .location-btn {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: 2px solid transparent;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  
+  .location-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .india-btn {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: white;
+  }
+  
+  .india-btn:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  }
+  
+  .foreigner-btn {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    color: white;
+  }
+  
+  .foreigner-btn:hover {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+</style>
 
 </body>
 </html>
