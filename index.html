@@ -1749,6 +1749,32 @@
                 closeMobileMenuFunc();
             }
         });
+
+
+        function submitForm(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = {
+        name: form.name.value,
+        email: form.email.value,
+        subject: form.subject.value,
+        message: form.message.value,
+        timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+    };
+    
+    // Get existing submissions or create new array
+    let submissions = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+    submissions.push(formData);
+    localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+    
+    form.reset();
+    showPopup();
+    
+    // Optional: Auto open result page
+    // window.open('result.html', '_blank');
+}
+
     </script>
 </body>
 </html>
