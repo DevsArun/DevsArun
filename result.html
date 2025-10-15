@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submissions - Devs Arun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neo-black': '#0A0A0A',
+                        'dark': '#111111',
+                        'neo-green': '#4ADE80',
+                        'neo-gray': '#1A1A1A',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0A0A0A; }
+        .neo-card {
+            background: linear-gradient(145deg, #0f0f0f, #0d0d0d);
+            box-shadow: 8px 8px 16px #070707, -8px -8px 16px #131313;
+        }
+    </style>
+</head>
+<body class="text-white font-mono p-4 sm:p-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold">
+                <span class="text-neo-green">//</span> Form Submissions
+            </h1>
+            <div class="space-x-4">
+                <button onclick="clearData()" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all">
+                    Clear All
+                </button>
+                <button onclick="exportCSV()" class="px-4 py-2 bg-neo-green text-dark font-bold rounded-lg hover:bg-neo-green/90 transition-all">
+                    Export CSV
+                </button>
+            </div>
+        </div>
+
+        <div class="neo-card rounded-xl p-6 overflow-x-auto">
+            <div id="submissionsContainer">
+                <p class="text-white/70 text-center py-8">Loading submissions...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadSubmissions() {
+            const submissions = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+            const container = document.getElementById('submissionsContainer');
+            
+            if (submissions.length === 0) {
+                container.innerHTML = '<p class="text-white/70 text-center py-8">No submissions yet.</p>';
+                return;
+            }
+            
+            let tableHTML = `
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="border-b border-neo-green/20">
+                            <th class="px-4 py-3 text-neo-green">#</th>
+                            <th class="px-4 py-3 text-neo-green">Name</th>
+                            <th class="px-4 py-3 text-neo-green">Email</th>
+                            <th class="px-4 py-3 text-neo-green">Subject</th>
+                            <th class="px-4 py-3 text-neo-green">Message</th>
+                            <th class="px-4 py-3 text-neo-green">Time</th>
+                            <th class="px-4 py-3 text-neo-green">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            submissions.reverse().forEach((sub, index) => {
+                tableHTML += `
+                    <tr class="border-b border-neo-green/10 hover:bg-neo-green/5 transition-colors">
+                        <td class="px-4 py-3 text-white/70">${submissions.length - index}</td>
+                        <td class="px-4 py-3 text-white">${sub.name}</td>
+                        <td class="px-4 py-3 text-white/70">${sub.email}</td>
+                        <td class="px-4 py-3 text-white/70">${sub.subject}</td>
+                        <td class="px-4 py-3 text-white/70 max-w-xs truncate">${sub.message}</td>
+                        <td class="px-4 py-3 text-white/70 text-sm">${sub.timestamp}</td>
+                        <td class="px-4 py-3">
+                            <button onclick="deleteSubmission(${submissions.length - index - 1})" class="text-red-500 hover:text-red-400">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tableHTML += `
+                    </tbody>
+                </table>
+            `;
+            
+            container.innerHTML = tableHTML;
+        }
+        
+        function clearData() {
+            if (confirm('Are you sure you want to delete all submissions?')) {
+                localStorage.removeItem('formSubmissions');
+                loadSubmissions();
+            }
+        }
+        
+        function deleteSubmission(index) {
+            if (confirm('Delete this submission?')) {
+                let submissions = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+                submissions.splice(index, 1);
+                localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+                loadSubmissions();
+            }
+        }
+        
+        function exportCSV() {
+            const submissions = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+            if (submissions.length === 0) {
+                alert('No data to export!');
+                return;
+            }
+            
+            let csv = 'Name,Email,Subject,Message,Timestamp\n';
+            submissions.forEach(sub => {
+                csv += `"${sub.name}","${sub.email}","${sub.subject}","${sub.message}","${sub.timestamp}"\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'form-submissions.csv';
+            a.click();
+        }
+        
+        // Load on page load
+        loadSubmissions();
+        
+        // Refresh every 5 seconds
+        setInterval(loadSubmissions, 5000);
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</body>
+</html>
