@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devs Arun | Developer</title>
+    <title>Devs Arun - Developer & Digital Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
@@ -15,7 +15,7 @@
                         'dark': '#111111',
                         'neo-green': '#4ADE80',
                         'neo-gray': '#1A1A1A',
-                    },
+                    }
                 }
             }
         }
@@ -24,12 +24,10 @@
         body {
             background-color: #0A0A0A;
         }
-        
         .gradient-border {
             position: relative;
             border-radius: 0.75rem;
         }
-        
         .gradient-border::before {
             content: '';
             position: absolute;
@@ -38,31 +36,54 @@
             border-radius: 0.85rem;
             z-index: -1;
         }
-
         .neo-card {
             background: linear-gradient(145deg, #0f0f0f, #0d0d0d);
-            box-shadow: 8px 8px 16px #070707,
-                       -8px -8px 16px #131313;
+            box-shadow: 8px 8px 16px #070707, -8px -8px 16px #131313;
         }
-
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
             100% { transform: translateY(0px); }
         }
-
         .floating {
             animation: float 6s ease-in-out infinite;
         }
-
         .terminal-text::before {
             content: '>';
             color: #4ADE80;
             margin-right: 8px;
         }
-
         .glowing-border {
             box-shadow: 0 0 15px rgba(74, 222, 128, 0.2);
+        }
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(74, 222, 128, 0.1);
+            border-radius: 12px;
+            font-size: 24px;
+            color: #4ADE80;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .timeline-item {
+            animation: slideIn 0.6s ease-out forwards;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(74, 222, 128, 0.3);
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(74, 222, 128, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(74, 222, 128, 0.6); }
+        }
+        .featured-badge {
+            animation: pulse-glow 2s ease-in-out infinite;
         }
     </style>
 </head>
@@ -73,10 +94,11 @@
             <div class="flex items-center justify-between h-16">
                 <a href="#" class="text-neo-green text-2xl font-bold">Devs Arun</a>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-white/70 hover:text-neo-green transition-colors">.home()</a>
-                    <a href="#work" class="text-white/70 hover:text-neo-green transition-colors">.work()</a>
-                    <a href="#skills" class="text-white/70 hover:text-neo-green transition-colors">.skills()</a>
-                    <a href="#contact" class="text-white/70 hover:text-neo-green transition-colors">.contact()</a>
+                    <a href="#home" class="text-white/70 hover:text-neo-green transition-colors">./home</a>
+                    <a href="#services" class="text-white/70 hover:text-neo-green transition-colors">./services</a>
+                    <a href="#work" class="text-white/70 hover:text-neo-green transition-colors">./work</a>
+                    <a href="#skills" class="text-white/70 hover:text-neo-green transition-colors">./skills</a>
+                    <a href="#contact" class="text-white/70 hover:text-neo-green transition-colors">./contact</a>
                 </div>
             </div>
         </div>
@@ -93,27 +115,25 @@
                 <!-- Left Column -->
                 <div class="space-y-8">
                     <div class="terminal-text">
-                        <span class="text-neo-green">Last active:</span> 
-                        <span class="text-white/70">2025-05-19 07:56:21</span>
+                        <span class="text-neo-green">Status:</span>
+                        <span class="text-white/70">Building digital tools</span>
                     </div>
                     <h1 class="text-5xl md:text-6xl font-bold leading-tight">
-                        Building digital
-                        <span class="text-neo-green">experiences</span>
-                        through code
+                        Building digital <span class="text-neo-green">experiences</span> through code
                     </h1>
                     <p class="text-white/70 text-lg">
-                        Full Stack Developer crafting sophisticated solutions with modern technologies.
+                        Full Stack Developer crafting sophisticated solutions with modern technologies. Fast delivery, premium quality.
                     </p>
                     <div class="flex space-x-6">
-                        <a href="#contact" class="px-8 py-3 bg-neo-green text-dark font-bold rounded hover:bg-neo-green/90 transition-all">
-                            Collaborate
+                        <a href="#services" class="px-8 py-3 bg-neo-green text-dark font-bold rounded hover:bg-neo-green/90 transition-all">
+                            Get Started
                         </a>
                         <a href="#work" class="px-8 py-3 border border-neo-green text-neo-green rounded hover:bg-neo-green/10 transition-all">
                             View Projects
                         </a>
                     </div>
                 </div>
-
+                
                 <!-- Right Column - Tech Stack -->
                 <div class="neo-card p-8 rounded-xl floating">
                     <div class="space-y-6">
@@ -124,10 +144,11 @@
                         </div>
                         <div class="font-mono">
                             <p class="text-white/70 mb-4">const <span class="text-neo-green">techStack</span> = {</p>
-                            <p class="ml-4">frontend: [<span class="text-neo-green">'HTML', 'CSS', 'JavaScript'</span>],</p>
-                            <p class="ml-4">backend: [<span class="text-neo-green">'PHP', 'Python', 'Node.js'</span>],</p>
-                            <p class="ml-4">database: <span class="text-neo-green">'MySQL'</span>,</p>
-                            <p class="ml-4">other: [<span class="text-neo-green">'C', 'C++', 'SEO'</span>]</p>
+                            <p class="ml-4">frontend: <span class="text-neo-green">"HTML, CSS, JavaScript"</span>,</p>
+                            <p class="ml-4">backend: <span class="text-neo-green">"PHP, Python, Node.js"</span>,</p>
+                            <p class="ml-4">database: <span class="text-neo-green">"MySQL"</span>,</p>
+                            <p class="ml-4">delivery: <span class="text-neo-green">"5 Hours"</span>,</p>
+                            <p class="ml-4">other: <span class="text-neo-green">"C, C++, SEO"</span></p>
                             <p>}</p>
                         </div>
                     </div>
@@ -136,14 +157,377 @@
         </div>
     </section>
 
-     <!-- Skills Section -->
+    <!-- Services Section -->
+    <section id="services" class="py-32 relative">
+        <div class="absolute inset-0 bg-neo-gray/30"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">
+                    <span class="text-neo-green">//</span> Fast Delivery Services
+                </h2>
+                <p class="text-white/70 text-lg">Premium websites delivered in 5 hours. Choose your package below.</p>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Starter Package -->
+                <div class="pricing-card neo-card rounded-xl p-8 transition-all duration-300">
+                    <div class="text-center space-y-6">
+                        <div class="project-icon mx-auto">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Landing Page</h3>
+                            <p class="text-white/70">Perfect for product launches</p>
+                        </div>
+                        <div class="py-6">
+                            <span class="text-5xl font-bold text-neo-green">$10</span>
+                            <span class="text-white/70">/page</span>
+                        </div>
+                        <ul class="text-left space-y-3 text-white/70">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>Single page responsive design</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>Contact form integration</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>Mobile optimized</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>5 hours delivery</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>Basic SEO setup</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full py-3 border border-neo-green text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Professional Package -->
+                <div class="pricing-card neo-card rounded-xl p-8 transition-all duration-300 featured-badge border-2 border-neo-green">
+                    <div class="absolute top-4 right-4 px-3 py-1 bg-neo-green text-dark text-sm font-bold rounded-full">
+                        POPULAR
+                    </div>
+                    <div class="text-center space-y-6">
+                        <div class="project-icon mx-auto">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Business Website</h3>
+                            <p class="text-white/70">Complete business solution</p>
+                        </div>
+                        <div class="py-6">
+                            <span class="text-5xl font-bold text-neo-green">$50</span>
+                            <span class="text-white/70">/site</span>
+                        </div>
+                        <ul class="text-left space-y-3 text-white/70">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>3-5 pages responsive website</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>Advanced contact forms</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>Admin panel included</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>5 hours delivery</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>Premium SEO optimization</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>Social media integration</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full py-3 bg-neo-green text-dark font-bold rounded-lg hover:bg-neo-green/90 transition-all">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Premium Package -->
+                <div class="pricing-card neo-card rounded-xl p-8 transition-all duration-300">
+                    <div class="text-center space-y-6">
+                        <div class="project-icon mx-auto">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Enterprise Solution</h3>
+                            <p class="text-white/70">Custom web applications</p>
+                        </div>
+                        <div class="py-6">
+                            <span class="text-5xl font-bold text-neo-green">$100</span>
+                            <span class="text-white/70">/project</span>
+                        </div>
+                        <ul class="text-left space-y-3 text-white/70">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>Full-stack web application</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>Database integration</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>User authentication system</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>5 hours delivery</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>Advanced SEO & analytics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>API integrations</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-neo-green mt-1 mr-3"></i>
+                                <span>1 month support included</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full py-3 border border-neo-green text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Client Acquisition Guide -->
+            <div class="neo-card rounded-xl p-8 mt-16">
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-lightbulb text-neo-green mr-3"></i>
+                    <span>Where to Find Clients Fast</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-neo-gray/50 p-6 rounded-lg">
+                        <h4 class="text-lg font-bold text-neo-green mb-3">Reddit Communities</h4>
+                        <ul class="text-white/70 space-y-2 text-sm">
+                            <li>• r/forhire</li>
+                            <li>• r/freelance_forhire</li>
+                            <li>• r/slavelabour</li>
+                            <li>• r/designjobs</li>
+                        </ul>
+                    </div>
+                    <div class="bg-neo-gray/50 p-6 rounded-lg">
+                        <h4 class="text-lg font-bold text-neo-green mb-3">Freelance Platforms</h4>
+                        <ul class="text-white/70 space-y-2 text-sm">
+                            <li>• Fiverr (Quick gigs)</li>
+                            <li>• Upwork (Long-term)</li>
+                            <li>• Freelancer.com</li>
+                            <li>• PeoplePerHour</li>
+                        </ul>
+                    </div>
+                    <div class="bg-neo-gray/50 p-6 rounded-lg">
+                        <h4 class="text-lg font-bold text-neo-green mb-3">Direct Outreach</h4>
+                        <ul class="text-white/70 space-y-2 text-sm">
+                            <li>• Cold emails to businesses</li>
+                            <li>• LinkedIn messaging</li>
+                            <li>• Local business groups</li>
+                            <li>• Facebook marketplace</li>
+                        </ul>
+                    </div>
+                    <div class="bg-neo-gray/50 p-6 rounded-lg">
+                        <h4 class="text-lg font-bold text-neo-green mb-3">Social Media</h4>
+                        <ul class="text-white/70 space-y-2 text-sm">
+                            <li>• Twitter/X threads</li>
+                            <li>• Instagram portfolio</li>
+                            <li>• TikTok tutorials</li>
+                            <li>• YouTube demos</li>
+                        </ul>
+                    </div>
+                    <div class="bg-neo-gray/50 p-6 rounded-lg">
+                        <h4 class="text-lg font-bold text-neo-green mb-3">Job Boards</h4>
+                        <ul class="text-white/70 space-y-2 text-sm">
+                            <li>• Folio.me (High-paying)</li>
+                            <li>• We Work Remotely</li>
+                            <li>• RemoteOK</li>
+                            <li>• Angel.co</li>
+                        </ul>
+                    </div>
+                    <div class="bg-neo-gray/50 p-6 rounded-lg">
+                        <h4 class="text-lg font-bold text-neo-green mb-3">Networking</h4>
+                        <ul class="text-white/70 space-y-2 text-sm">
+                            <li>• Local meetups</li>
+                            <li>• Online Discord servers</li>
+                            <li>• Slack communities</li>
+                            <li>• Referrals from friends</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey of Projects Section -->
+    <section class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-neo-black via-neo-gray/20 to-neo-black"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">
+                    <span class="text-neo-green">//</span> Journey of Projects
+                </h2>
+                <p class="text-white/70 text-lg">From concept to deployment - the evolution of my work</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative">
+                <!-- Vertical Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-neo-green/20"></div>
+
+                <!-- Timeline Items -->
+                <div class="space-y-16">
+                    <!-- Item 1 -->
+                    <div class="timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="text-right pr-8">
+                            <div class="neo-card p-6 rounded-xl inline-block">
+                                <h3 class="text-2xl font-bold text-neo-green mb-2">Phase 1: Learning</h3>
+                                <p class="text-white/70 mb-4">Started with basic HTML/CSS projects and small tools</p>
+                                <div class="flex justify-end space-x-2">
+                                    <span class="px-3 py-1 bg-neo-green/10 text-neo-green rounded-full text-sm">HTML</span>
+                                    <span class="px-3 py-1 bg-neo-green/10 text-neo-green rounded-full text-sm">CSS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pl-8">
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-neo-green rounded-full border-4 border-neo-black"></div>
+                            <div class="neo-card p-4 rounded-xl">
+                                <p class="text-white/70 text-sm">Built simple landing pages and learned responsive design fundamentals</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="order-2 md:order-1 pr-8">
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-neo-green rounded-full border-4 border-neo-black"></div>
+                            <div class="neo-card p-4 rounded-xl">
+                                <p class="text-white/70 text-sm">Developed browser extensions to solve real-world problems</p>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2 text-left pl-8">
+                            <div class="neo-card p-6 rounded-xl inline-block">
+                                <h3 class="text-2xl font-bold text-neo-green mb-2">Phase 2: Extensions</h3>
+                                <p class="text-white/70 mb-4">Created 4 Chrome extensions with 28+ users</p>
+                                <div class="flex space-x-2">
+                                    <span class="px-3 py-1 bg-neo-green/10 text-neo-green rounded-full text-sm">JavaScript</span>
+                                    <span class="px-3 py-1 bg-neo-green/10 text-neo-green rounded-full text-sm">Chrome API</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="text-right pr-8">
+                            <div class="neo-card p-6 rounded-xl inline-block">
+                                <h3 class="text-2xl font-bold text-neo-green mb-2">Phase 3: Web Apps</h3>
+                                <p class="text-white/70 mb-4">Built powerful web applications and downloaders</p>
+                                <div class="flex justify-end space-x-2">
+                                    <span class="px-3 py-1 bg-neo-green/10 text-neo-green rounded-full text-sm">Python</span>
+                                    <span class="px-3 py-1 bg-neo-green/10 text-neo-green rounded-full text-sm">PHP</span>
+                                    <span class="px-3 py-1 bg-neo-green/10 text-neo-green rounded-full text-sm">APIs</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pl-8">
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-neo-green rounded-full border-4 border-neo-black"></div>
+                            <div class="neo-card p-4 rounded-xl">
+                                <p class="text-white/70 text-sm">Created 6 web applications serving thousands of users daily</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="order-2 md:order-1 pr-8">
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-neo-green rounded-full border-4 border-neo-black"></div>
+                            <div class="neo-card p-4 rounded-xl">
+                                <p class="text-white/70 text-sm">Open-source contributions and developer tools for the community</p>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2 text-left pl-8">
+                            <div class="neo-card p-6 rounded-xl inline-block">
+                                <h3 class="text-2xl font-bold text-neo-green mb-2">Phase 4: GitHub Tools</h3>
+                                <p class="text-white/70 mb-4">Developed analytics and automation tools for developers</p>
+                                <div class="flex space-x-2">
+                                    <span class="px-3 py-1 bg-neo-green/10 text-neo-green rounded-full text-sm">GitHub API</span>
+                                    <span class="px-3 py-1 bg-neo-green/10 text-neo-green rounded-full text-sm">Automation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="timeline-item relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="text-right pr-8">
+                            <div class="neo-card p-6 rounded-xl inline-block">
+                                <h3 class="text-2xl font-bold text-neo-green mb-2">Phase 5: Freelancing</h3>
+                                <p class="text-white/70 mb-4">Offering fast delivery web development services</p>
+                                <div class="flex justify-end space-x-2">
+                                    <span class="px-3 py-1 bg-neo-green/10 text-neo-green rounded-full text-sm">Full Stack</span>
+                                    <span class="px-3 py-1 bg-neo-green/10 text-neo-green rounded-full text-sm">5hr Delivery</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pl-8">
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-neo-green rounded-full border-4 border-neo-black animate-pulse"></div>
+                            <div class="neo-card p-4 rounded-xl border border-neo-green">
+                                <p class="text-neo-green text-sm font-bold">Currently accepting new projects! Fast turnaround guaranteed.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+                <div class="neo-card p-6 rounded-xl text-center">
+                    <h4 class="text-3xl font-bold text-neo-green mb-2">13+</h4>
+                    <p class="text-white/70">Total Projects</p>
+                </div>
+                <div class="neo-card p-6 rounded-xl text-center">
+                    <h4 class="text-3xl font-bold text-neo-green mb-2">28+</h4>
+                    <p class="text-white/70">Active Users</p>
+                </div>
+                <div class="neo-card p-6 rounded-xl text-center">
+                    <h4 class="text-3xl font-bold text-neo-green mb-2">5hrs</h4>
+                    <p class="text-white/70">Avg Delivery</p>
+                </div>
+                <div class="neo-card p-6 rounded-xl text-center">
+                    <h4 class="text-3xl font-bold text-neo-green mb-2">100%</h4>
+                    <p class="text-white/70">Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
     <section id="skills" class="py-32 relative">
         <div class="absolute inset-0 bg-neo-gray/30 skew-y-3"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <h2 class="text-4xl font-bold mb-16">
-                <span class="text-neo-green">#</span> Technical Expertise
+                <span class="text-neo-green">//</span> Technical Expertise
             </h2>
-
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <!-- Left Column - Skills -->
                 <div class="space-y-8">
@@ -179,7 +563,7 @@
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="neo-card p-8 rounded-xl">
                         <h3 class="text-xl font-bold mb-6 text-neo-green">Backend Development</h3>
                         <div class="space-y-6">
@@ -215,88 +599,85 @@
                 </div>
 
                 <!-- Right Column - Stats & Info -->
-<div class="space-y-8">
-    <div class="neo-card p-8 rounded-xl bg-neo-black">
-        <div class="grid grid-cols-2 gap-6">
-            <!-- Experience Card -->
-            <div class="relative text-center p-6 overflow-hidden group">
-                <div class="absolute inset-0 bg-neo-gray rounded-xl"></div>
-                <div class="relative z-10">
-                    <h4 class="text-4xl font-bold text-neo-green mb-2">3+</h4>
-                    <p class="text-white/70">Years Experience</p>
-                </div>
-                <div class="absolute inset-0 border border-neo-green/20 rounded-xl group-hover:border-neo-green/50 transition-colors duration-300"></div>
-            </div>
-
-            <!-- Projects Card -->
-            <div class="relative text-center p-6 overflow-hidden group">
-                <div class="absolute inset-0 bg-neo-gray rounded-xl"></div>
-                <div class="relative z-10">
-                    <h4 class="text-4xl font-bold text-neo-green mb-2">50+</h4>
-                    <p class="text-white/70">Projects</p>
-                </div>
-                <div class="absolute inset-0 border border-neo-green/20 rounded-xl group-hover:border-neo-green/50 transition-colors duration-300"></div>
-            </div>
-
-            <!-- Satisfaction Card -->
-            <div class="relative text-center p-6 overflow-hidden group">
-                <div class="absolute inset-0 bg-neo-gray rounded-xl"></div>
-                <div class="relative z-10">
-                    <h4 class="text-4xl font-bold text-neo-green mb-2">100%</h4>
-                    <p class="text-white/70">Client Satisfaction</p>
-                </div>
-                <div class="absolute inset-0 border border-neo-green/20 rounded-xl group-hover:border-neo-green/50 transition-colors duration-300"></div>
-            </div>
-
-            <!-- Support Card -->
-            <div class="relative text-center p-6 overflow-hidden group">
-                <div class="absolute inset-0 bg-neo-gray rounded-xl"></div>
-                <div class="relative z-10">
-                    <h4 class="text-4xl font-bold text-neo-green mb-2">24/7</h4>
-                    <p class="text-white/70">Support</p>
-                </div>
-                <div class="absolute inset-0 border border-neo-green/20 rounded-xl group-hover:border-neo-green/50 transition-colors duration-300"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Currently Learning Section -->
-    <div class="neo-card p-8 rounded-xl bg-neo-black">
-        <h3 class="text-xl font-bold mb-6 text-neo-green">Currently Learning</h3>
-        <div class="space-y-4">
-            <div class="flex items-center space-x-4">
-                <i class="fab fa-node text-3xl text-neo-green"></i>
-                <div class="flex-1">
-                    <div class="flex justify-between mb-2">
-                        <span class="text-white/70">Node.js</span>
-                        <span class="text-neo-green">In Progress</span>
+                <div class="space-y-8">
+                    <div class="neo-card p-8 rounded-xl bg-neo-black">
+                        <div class="grid grid-cols-2 gap-6">
+                            <!-- Experience Card -->
+                            <div class="relative text-center p-6 overflow-hidden group">
+                                <div class="absolute inset-0 bg-neo-gray rounded-xl"></div>
+                                <div class="relative z-10">
+                                    <h4 class="text-4xl font-bold text-neo-green mb-2">3+</h4>
+                                    <p class="text-white/70">Years Experience</p>
+                                </div>
+                                <div class="absolute inset-0 border border-neo-green/20 rounded-xl group-hover:border-neo-green/50 transition-colors duration-300"></div>
+                            </div>
+                            
+                            <!-- Projects Card -->
+                            <div class="relative text-center p-6 overflow-hidden group">
+                                <div class="absolute inset-0 bg-neo-gray rounded-xl"></div>
+                                <div class="relative z-10">
+                                    <h4 class="text-4xl font-bold text-neo-green mb-2">50+</h4>
+                                    <p class="text-white/70">Projects</p>
+                                </div>
+                                <div class="absolute inset-0 border border-neo-green/20 rounded-xl group-hover:border-neo-green/50 transition-colors duration-300"></div>
+                            </div>
+                            
+                            <!-- Satisfaction Card -->
+                            <div class="relative text-center p-6 overflow-hidden group">
+                                <div class="absolute inset-0 bg-neo-gray rounded-xl"></div>
+                                <div class="relative z-10">
+                                    <h4 class="text-4xl font-bold text-neo-green mb-2">100%</h4>
+                                    <p class="text-white/70">Client Satisfaction</p>
+                                </div>
+                                <div class="absolute inset-0 border border-neo-green/20 rounded-xl group-hover:border-neo-green/50 transition-colors duration-300"></div>
+                            </div>
+                            
+                            <!-- Support Card -->
+                            <div class="relative text-center p-6 overflow-hidden group">
+                                <div class="absolute inset-0 bg-neo-gray rounded-xl"></div>
+                                <div class="relative z-10">
+                                    <h4 class="text-4xl font-bold text-neo-green mb-2">5hr</h4>
+                                    <p class="text-white/70">Fast Delivery</p>
+                                </div>
+                                <div class="absolute inset-0 border border-neo-green/20 rounded-xl group-hover:border-neo-green/50 transition-colors duration-300"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="h-2 bg-neo-gray rounded">
-                        <div class="h-full w-[60%] bg-neo-green rounded"></div>
+
+                    <!-- Currently Learning Section -->
+                    <div class="neo-card p-8 rounded-xl bg-neo-black">
+                        <h3 class="text-xl font-bold mb-6 text-neo-green">Currently Learning</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <i class="fab fa-node text-3xl text-neo-green"></i>
+                                <div class="flex-1">
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-white/70">Node.js</span>
+                                        <span class="text-neo-green">In Progress</span>
+                                    </div>
+                                    <div class="h-2 bg-neo-gray rounded">
+                                        <div class="h-full w-[60%] bg-neo-green rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
             </div>
         </div>
     </section>
 
-       <!-- Projects Section -->
+    <!-- Projects Section -->
     <section id="work" class="py-32">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl font-bold mb-16">
-                <span class="text-neo-green">#</span> Project Showcase
+                <span class="text-neo-green">//</span> Project Showcase
             </h2>
 
             <!-- Project Categories -->
             <div class="flex flex-wrap gap-4 mb-12">
                 <button class="px-6 py-2 rounded-lg bg-neo-green text-dark font-bold hover:bg-neo-green/90 transition-all" data-filter="all">
                     All Projects
-                </button>
-                <button class="px-6 py-2 rounded-lg border border-neo-green text-neo-green hover:bg-neo-green/10 transition-all" data-filter="website">
-                    Websites
                 </button>
                 <button class="px-6 py-2 rounded-lg border border-neo-green text-neo-green hover:bg-neo-green/10 transition-all" data-filter="webapp">
                     Web Apps
@@ -309,866 +690,906 @@
                 </button>
             </div>
 
-            <!-- Websites Section -->
-            <div class="mb-16 project-section" data-section="websites">
-                <h3 class="text-2xl font-bold mb-8 flex items-center">
-                    <i class="fas fa-globe text-neo-green mr-3"></i>
-                    <span>Websites</span>
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Website Project Card -->
-                    <div class="neo-card rounded-xl overflow-hidden group relative">
-                        <div class="absolute top-4 right-4 z-20">
-                            <span class="px-3 py-1 bg-neo-green text-dark text-sm rounded-full">Live</span>
-                        </div>
-                        <div class="relative h-56 overflow-hidden">
-                            <img src="project-image.jpg" alt="Project" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-neo-black to-transparent"></div>
-                        </div>
-                        <div class="p-6 relative">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <h4 class="text-xl font-bold mb-2">E-Commerce Platform</h4>
-                                    <p class="text-white/70">Modern e-commerce solution with integrated payment systems</p>
-                                </div>
-                                <div class="flex space-x-2">
-                                    <a href="#" class="text-neo-green hover:text-white transition-colors" title="View Code">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                    <a href="#" class="text-neo-green hover:text-white transition-colors" title="Live Demo">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="space-y-4">
-                                <div>
-                                    <div class="text-sm text-white/70 mb-2">Tech Stack</div>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">React</span>
-                                        <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Node.js</span>
-                                        <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">MongoDB</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="text-sm text-white/70 mb-2">Key Features</div>
-                                    <ul class="text-sm text-white/70 space-y-1">
-                                        <li class="flex items-center">
-                                            <i class="fas fa-check text-neo-green mr-2"></i>
-                                            Responsive Design
-                                        </li>
-                                        <li class="flex items-center">
-                                            <i class="fas fa-check text-neo-green mr-2"></i>
-                                            Payment Integration
-                                        </li>
-                                        <li class="flex items-center">
-                                            <i class="fas fa-check text-neo-green mr-2"></i>
-                                            Real-time Updates
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="mt-6">
-                                <a href="#" class="inline-block w-full text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all duration-300">
-                                    View Project Details
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Add more website project cards -->
-                </div>
-            </div>
-
             <!-- Web Apps Section -->
-            <div class="mb-16 project-section" data-section="webapps">
+            <div class="mb-16 project-section" data-section="webapp">
                 <h3 class="text-2xl font-bold mb-8 flex items-center">
                     <i class="fas fa-laptop-code text-neo-green mr-3"></i>
-                    <span>Web Applications</span>
+                    <span>Web Applications (9 Projects)</span>
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Web App Project Card -->
-                    <div class="neo-card rounded-xl overflow-hidden group">
-                        <div class="p-6 relative">
-                            <div class="absolute top-4 right-4">
-                                <span class="px-3 py-1 bg-neo-green/10 text-neo-green text-sm rounded-full">In Development</span>
-                            </div>
-                            <div class="mb-6">
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-tasks text-neo-green text-2xl mr-3"></i>
-                                        <h4 class="text-xl font-bold">Project Management Tool</h4>
-                                    </div>
-                                </div>
-                                <p class="text-white/70">Advanced task management with real-time collaboration</p>
-                            </div>
-                            <div class="space-y-6">
-                                <div>
-                                    <div class="text-sm text-white/70 mb-2">Technologies Used</div>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Vue.js</span>
-                                        <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Firebase</span>
-                                        <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">WebSockets</span>
-                                    </div>
-                                </div>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="p-4 bg-neo-green/5 rounded-lg">
-                                        <div class="text-sm text-neo-green mb-1">Status</div>
-                                        <div class="text-white/70">Beta Testing</div>
-                                    </div>
-                                    <div class="p-4 bg-neo-green/5 rounded-lg">
-                                        <div class="text-sm text-neo-green mb-1">Version</div>
-                                        <div class="text-white/70">2.1.0</div>
-                                    </div>
+                    <!-- Proxy Checker -->
+                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="project-icon">
+                                    <i class="fas fa-shield-alt"></i>
                                 </div>
                                 <div>
-                                    <div class="text-sm text-white/70 mb-2">Core Features</div>
-                                    <ul class="text-sm text-white/70 space-y-2">
-                                        <li class="flex items-center">
-                                            <i class="fas fa-check text-neo-green mr-2"></i>
-                                            Real-time Collaboration
-                                        </li>
-                                        <li class="flex items-center">
-                                            <i class="fas fa-check text-neo-green mr-2"></i>
-                                            File Sharing
-                                        </li>
-                                        <li class="flex items-center">
-                                            <i class="fas fa-check text-neo-green mr-2"></i>
-                                            Analytics Dashboard
-                                        </li>
-                                    </ul>
+                                    <h4 class="text-xl font-bold">Proxy Checker</h4>
+                                    <span class="text-sm text-white/70">v1.0.0</span>
                                 </div>
                             </div>
-                            <div class="flex space-x-4 mt-6">
-                                <a href="#" class="flex-1 text-center px-4 py-2 bg-neo-green text-dark rounded-lg hover:bg-neo-green/90 transition-all">
-                                    Live Demo
-                                </a>
-                                <a href="#" class="flex-1 text-center px-4 py-2 border border-neo-green text-neo-green rounded-lg hover:bg-neo-green/10 transition-all">
-                                    Source Code
-                                </a>
+                            <a href="#" class="text-neo-green hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-white/70 mb-6">
+                            Validate and test proxy servers with real-time response checking
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-white/70 mb-2">Tech Stack</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">JavaScript</span>
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">API</span>
+                                </div>
                             </div>
                         </div>
+                        <div class="mt-6">
+                            <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
                     </div>
-                    <!-- Add more web app project cards -->
+
+                    <!-- Reddit Downloader -->
+                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="project-icon">
+                                    <i class="fab fa-reddit"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold">Reddit Downloader</h4>
+                                    <span class="text-sm text-white/70">v1.0.0</span>
+                                </div>
+                            </div>
+                            <a href="#" class="text-neo-green hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-white/70 mb-6">
+                            Download videos and images from Reddit posts effortlessly
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-white/70 mb-2">Tech Stack</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Python</span>
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Reddit API</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- TeraBox Downloader -->
+                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="project-icon">
+                                    <i class="fas fa-cloud-download-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold">TeraBox Downloader</h4>
+                                    <span class="text-sm text-white/70">v1.0.0</span>
+                                </div>
+                            </div>
+                            <a href="#" class="text-neo-green hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-white/70 mb-6">
+                            Fast and reliable TeraBox file downloader with premium features
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-white/70 mb-2">Tech Stack</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">JavaScript</span>
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Node.js</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Udemy Downloader -->
+                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="project-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold">Udemy Downloader</h4>
+                                    <span class="text-sm text-white/70">v1.0.0</span>
+                                </div>
+                            </div>
+                            <a href="#" class="text-neo-green hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-white/70 mb-6">
+                            Download Udemy courses for offline learning with subtitles
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-white/70 mb-2">Tech Stack</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Python</span>
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">FFmpeg</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Daily Proxy -->
+                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="project-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold">Get Daily Proxy</h4>
+                                    <span class="text-sm text-white/70">v1.0.0</span>
+                                </div>
+                            </div>
+                            <a href="#" class="text-neo-green hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-white/70 mb-6">
+                            Get fresh proxy lists daily updated from multiple sources
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-white/70 mb-2">Tech Stack</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">PHP</span>
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">MySQL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- GitHub Analytics Tools -->
+                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="project-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold">GitHub Analytics</h4>
+                                    <span class="text-sm text-white/70">v1.0.0</span>
+                                </div>
+                            </div>
+                            <a href="#" class="text-neo-green hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-white/70 mb-6">
+                            Comprehensive analytics tools for GitHub repositories
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-white/70 mb-2">Tech Stack</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Python</span>
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">GitHub API</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- GitHub README Generator -->
+                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="project-icon">
+                                    <i class="fas fa-file-code"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold">README Generator</h4>
+                                    <span class="text-sm text-white/70">v1.0.0</span>
+                                </div>
+                            </div>
+                            <a href="#" class="text-neo-green hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-white/70 mb-6">
+                            Create beautiful README files with templates and customization
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-white/70 mb-2">Tech Stack</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">JavaScript</span>
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Markdown</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- GitHub Stats Generator -->
+                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="project-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold">Stats Generator</h4>
+                                    <span class="text-sm text-white/70">v1.0.0</span>
+                                </div>
+                            </div>
+                            <a href="#" class="text-neo-green hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-white/70 mb-6">
+                            Generate beautiful stats cards for your GitHub profile
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-white/70 mb-2">Tech Stack</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">JavaScript</span>
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">SVG</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Pinterest Downloader -->
+                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="project-icon">
+                                    <i class="fab fa-pinterest"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold">Pinterest Downloader</h4>
+                                    <span class="text-sm text-white/70">v1.0.0</span>
+                                </div>
+                            </div>
+                            <a href="#" class="text-neo-green hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-white/70 mb-6">
+                            Download high-quality images and videos from Pinterest
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-white/70 mb-2">Tech Stack</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">JavaScript</span>
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">API</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Chrome Extensions Section -->
-            <div class="mb-16 project-section" data-section="extensions">
+            <div class="mb-16 project-section" data-section="extension">
                 <h3 class="text-2xl font-bold mb-8 flex items-center">
                     <i class="fab fa-chrome text-neo-green mr-3"></i>
-                    <span>Chrome Extensions</span>
+                    <span>Chrome Extensions (4 Projects)</span>
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Extension Project Card -->
-                    <div class="neo-card rounded-xl overflow-hidden hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="flex items-center space-x-4">
-                                    <div class="w-12 h-12 rounded-xl bg-neo-green/10 flex items-center justify-center">
-                                        <i class="fas fa-puzzle-piece text-neo-green text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-xl font-bold">Code Analyzer</h4>
-                                        <span class="text-sm text-white/70">v1.2.0</span>
-                                    </div>
+                    <!-- Social Focus Mode -->
+                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="project-icon">
+                                    <i class="fas fa-eye-slash"></i>
                                 </div>
-                                <a href="#" class="text-neo-green hover:text-white transition-colors">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                            <p class="text-white/70 mb-6">
-                                Chrome extension for real-time code analysis and optimization suggestions
-                            </p>
-                            <div class="space-y-6">
                                 <div>
-                                    <div class="text-sm text-white/70 mb-2">Built With</div>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">JavaScript</span>
-                                        <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Chrome API</span>
-                                        <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">AI Integration</span>
-                                    </div>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-star text-neo-green mr-1"></i>
-                                        <span class="text-white/70">4.8/5</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-download text-neo-green mr-1"></i>
-                                        <span class="text-white/70">10k+ users</span>
-                                    </div>
+                                    <h4 class="text-xl font-bold">Social Focus Mode</h4>
+                                    <span class="text-sm text-white/70">v1.0.0</span>
                                 </div>
                             </div>
-                            <div class="mt-6">
-                                <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all">
-                                    View on Chrome Web Store
-                                </a>
+                            <a href="#" class="text-neo-green hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-white/70 mb-6">
+                            Block distractions on social media and stay focused on work
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-white/70 mb-2">Built With</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">JavaScript</span>
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Chrome API</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-users text-neo-green mr-1"></i>
+                                    <span class="text-white/70">8 users</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-neo-green mr-1"></i>
+                                    <span class="text-white/70">Published</span>
+                                </div>
                             </div>
                         </div>
+                        <div class="mt-6">
+                            <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all">
+                                View Extension
+                            </a>
+                        </div>
                     </div>
-                    <!-- Add more extension project cards -->
+
+                    <!-- Tab History -->
+                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="project-icon">
+                                    <i class="fas fa-history"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold">Tab History</h4>
+                                    <span class="text-sm text-white/70">v1.0</span>
+                                </div>
+                            </div>
+                            <a href="#" class="text-neo-green hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-white/70 mb-6">
+                            Track and manage your browser tab history efficiently
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-white/70 mb-2">Built With</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">JavaScript</span>
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Chrome API</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-neo-green mr-1"></i>
+                                    <span class="text-white/70">★ 5.0</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-users text-neo-green mr-1"></i>
+                                    <span class="text-white/70">16 users</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all">
+                                View Extension
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- TabLeaf -->
+                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="project-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold">TabLeaf</h4>
+                                    <span class="text-sm text-white/70">v1.0</span>
+                                </div>
+                            </div>
+                            <a href="#" class="text-neo-green hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-white/70 mb-6">
+                            Beautiful tab manager with tree-based organization
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-white/70 mb-2">Built With</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">JavaScript</span>
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Chrome API</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-neo-green mr-1"></i>
+                                    <span class="text-white/70">★ 5.0</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-users text-neo-green mr-1"></i>
+                                    <span class="text-white/70">1 user</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all">
+                                View Extension
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- YTube SmartTabs -->
+                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="project-icon">
+                                    <i class="fab fa-youtube"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold">YTube SmartTabs</h4>
+                                    <span class="text-sm text-white/70">v0.1.0</span>
+                                </div>
+                            </div>
+                            <a href="#" class="text-neo-green hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <p class="text-white/70 mb-6">
+                            Smart YouTube tab management with advanced features
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="text-sm text-white/70 mb-2">Built With</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">JavaScript</span>
+                                    <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">YouTube API</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-neo-green mr-1"></i>
+                                    <span class="text-white/70">★ 5.0</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-users text-neo-green mr-1"></i>
+                                    <span class="text-white/70">3 users</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="block text-center px-6 py-3 bg-neo-green/10 text-neo-green rounded-lg hover:bg-neo-green hover:text-dark transition-all">
+                                View Extension
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- GitHub Projects Section -->
+            <!-- GitHub Projects Section - NO PROXY POSTER -->
             <div class="project-section" data-section="github">
                 <h3 class="text-2xl font-bold mb-8 flex items-center">
                     <i class="fab fa-github text-neo-green mr-3"></i>
-                    <span>Open Source Contributions</span>
+                    <span>GitHub Projects (0 Additional)</span>
                 </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- GitHub Project Card -->
-                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="flex items-center space-x-4">
-                                <i class="fab fa-github text-2xl text-neo-green"></i>
-                                <h4 class="text-xl font-bold">Repository Name</h4>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <span class="flex items-center text-white/70">
-                                    <i class="fas fa-star mr-1"></i>
-                                    123
-                                </span>
-                                <span class="flex items-center text-white/70">
-                                    <i class="fas fa-code-branch mr-1"></i>
-                                    45
-                                </span>
-                            </div>
-                        </div>
-                        <p class="text-white/70 mb-6">
-                            Description of the repository and its purpose goes here
-                        </p>
-                        <div class="space-y-4">
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Python</span>
-                                <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Machine Learning</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <div class="text-white/70">
-                                    <i class="fas fa-clock mr-1"></i>
-                                    Last updated: 3 days ago
-                                </div>
-                                <a href="#" class="text-neo-green hover:text-white transition-colors">
-                                    View Repository →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Add more GitHub project cards -->
-
-
-                     <!-- GitHub Project Card -->
-                    <div class="neo-card rounded-xl p-6 hover:shadow-neo-green/20 hover:shadow-lg transition-all duration-300">
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="flex items-center space-x-4">
-                                <i class="fab fa-github text-2xl text-neo-green"></i>
-                                <h4 class="text-xl font-bold">Repository Name</h4>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <span class="flex items-center text-white/70">
-                                    <i class="fas fa-star mr-1"></i>
-                                    123
-                                </span>
-                                <span class="flex items-center text-white/70">
-                                    <i class="fas fa-code-branch mr-1"></i>
-                                    45
-                                </span>
-                            </div>
-                        </div>
-                        <p class="text-white/70 mb-6">
-                            Description of the repository and its purpose goes here
-                        </p>
-                        <div class="space-y-4">
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Python</span>
-                                <span class="px-3 py-1 text-sm bg-neo-green/10 text-neo-green rounded-full">Machine Learning</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <div class="text-white/70">
-                                    <i class="fas fa-clock mr-1"></i>
-                                    Last updated: 3 days ago
-                                </div>
-                                <a href="#" class="text-neo-green hover:text-white transition-colors">
-                                    View Repository →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="neo-card p-8 rounded-xl text-center">
+                    <i class="fab fa-github text-6xl text-neo-green/20 mb-4"></i>
+                    <p class="text-white/70">All GitHub tools are showcased in Web Apps section above.</p>
                 </div>
             </div>
         </div>
     </section>
 
-
-<!-- Ghibli Art Section -->
-<section class="py-32 relative overflow-hidden">
-    <!-- Parallax Background with Gradient Overlay -->
-    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586867715786-2ea598b38833')] bg-cover bg-center bg-fixed">
-        <div class="absolute inset-0 bg-gradient-to-b from-neo-black via-transparent to-neo-black"></div>
-    </div>
-
-    <!-- Content Container -->
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <!-- Left Column - Art Display -->
-            <div class="relative group" data-aos="fade-right">
-                <!-- Main Image Card -->
-                <div class="neo-card p-4 rounded-xl overflow-hidden transform group-hover:scale-105 transition-transform duration-500">
-                    <img 
-                        src="https://i.ibb.co/HRV2LyV/sss.jpg" 
-                        alt="Ghibli Inspired Art" 
-                        class="rounded-lg w-full h-[400px] object-cover"
-                    >
-                    <!-- Glowing Overlay -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-neo-green/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                </div>
-
-                <!-- Floating Elements -->
-                <div class="absolute -top-4 -left-4 w-20 h-20 bg-neo-green/10 rounded-full blur-xl animate-pulse"></div>
-                <div class="absolute -bottom-4 -right-4 w-20 h-20 bg-neo-green/10 rounded-full blur-xl animate-pulse delay-100"></div>
-            </div>
-
-            <!-- Right Column - Art Description -->
-            <div class="space-y-8" data-aos="fade-left">
-                <div class="space-y-4">
-                    <h2 class="text-4xl font-bold">
-                        <span class="text-neo-green">#</span> Creative Journey
-                    </h2>
-                    <p class="text-white/70 leading-relaxed">
-                        Inspired by the magical worlds of Studio Ghibli, this piece represents the bridge between 
-                        technology and artistry. Just as Ghibli creates wonderful animations, we craft digital 
-                        experiences that captivate and inspire.
-                    </p>
-                </div>
-
-                <!-- Art Stats -->
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="neo-card p-4 rounded-xl bg-neo-gray/50 backdrop-blur-sm">
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-paint-brush text-neo-green text-xl"></i>
-                            <div>
-                                <h4 class="text-white font-bold">Digital Art</h4>
-                                <p class="text-white/70 text-sm">Creative Process</p>
-                            </div>
-                        </div>
+    <!-- Ghibli Art Section -->
+    <section class="py-32 relative overflow-hidden">
+        <!-- Parallax Background with Gradient Overlay -->
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586867715786-2ea598b38833')] bg-cover bg-center bg-fixed">
+            <div class="absolute inset-0 bg-gradient-to-b from-neo-black via-transparent to-neo-black"></div>
+        </div>
+        
+        <!-- Content Container -->
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Column - Art Display -->
+                <div class="relative group">
+                    <!-- Main Image Card -->
+                    <div class="neo-card p-4 rounded-xl overflow-hidden transform group-hover:scale-105 transition-transform duration-500">
+                        <img src="https://i.ibb.co/HRV2LyV/sss.jpg" alt="Ghibli Inspired Art" class="rounded-lg w-full h-[400px] object-cover">
+                        <!-- Glowing Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-neo-green/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
-                    <div class="neo-card p-4 rounded-xl bg-neo-gray/50 backdrop-blur-sm">
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-magic text-neo-green text-xl"></i>
-                            <div>
-                                <h4 class="text-white font-bold">Animation</h4>
-                                <p class="text-white/70 text-sm">Interactive Elements</p>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="absolute -top-4 -left-4 w-20 h-20 bg-neo-green/10 rounded-full blur-xl animate-pulse"></div>
+                    <div class="absolute -bottom-4 -right-4 w-20 h-20 bg-neo-green/10 rounded-full blur-xl animate-pulse delay-100"></div>
                 </div>
-
                 
-
-                <!-- Action Button -->
-                <div class="inline-block">
-                    <a href="#contact" class="group relative inline-flex items-center px-8 py-3 overflow-hidden">
-                        <span class="absolute left-0 top-0 h-full w-0 bg-neo-green transition-all duration-500 group-hover:w-full"></span>
-                        <span class="relative flex items-center space-x-3">
-                            <span class="text-neo-green group-hover:text-dark transition-colors duration-300">Let's Connect</span>
-                            <i class="fas fa-arrow-right text-neo-green group-hover:text-dark transition-colors duration-300"></i>
-                        </span>
-                    </a>
+                <!-- Right Column - Art Description -->
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <h2 class="text-4xl font-bold">
+                            <span class="text-neo-green">//</span> Creative Journey
+                        </h2>
+                        <p class="text-white/70 leading-relaxed">
+                            Inspired by the magical worlds of Studio Ghibli, this piece represents the bridge between technology and artistry. Just as Ghibli creates wonderful animations, we craft digital experiences that captivate and inspire.
+                        </p>
+                    </div>
+                    
+                    <!-- Art Stats -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="neo-card p-4 rounded-xl bg-neo-gray/50 backdrop-blur-sm">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-paint-brush text-neo-green text-xl"></i>
+                                <div>
+                                    <h4 class="text-white font-bold">Digital Art</h4>
+                                    <p class="text-white/70 text-sm">Creative Process</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="neo-card p-4 rounded-xl bg-neo-gray/50 backdrop-blur-sm">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-magic text-neo-green text-xl"></i>
+                                <div>
+                                    <h4 class="text-white font-bold">Animation</h4>
+                                    <p class="text-white/70 text-sm">Interactive Elements</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Button -->
+                    <div class="inline-block">
+                        <a href="#contact" class="group relative inline-flex items-center px-8 py-3 overflow-hidden">
+                            <span class="absolute left-0 top-0 h-full w-0 bg-neo-green transition-all duration-500 group-hover:w-full"></span>
+                            <span class="relative flex items-center space-x-3">
+                                <span class="text-neo-green group-hover:text-dark transition-colors duration-300">Let's Connect</span>
+                                <i class="fas fa-arrow-right text-neo-green group-hover:text-dark transition-colors duration-300"></i>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-
+        
         <!-- Decorative Elements -->
         <div class="absolute top-1/2 left-0 w-64 h-64 bg-neo-green/5 rounded-full blur-3xl"></div>
         <div class="absolute bottom-0 right-0 w-96 h-96 bg-neo-green/5 rounded-full blur-3xl"></div>
-    </div>
-
-    <!-- Animated Particles -->
-    <div class="absolute inset-0 pointer-events-none">
-        <div class="particles-container"></div>
-    </div>
-</section>
-
-<!-- Add this to your existing CSS -->
-<style>
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-}
-
-.particles-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-</style>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const container = document.querySelector('.particles-container');
-    
-    for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'absolute w-1 h-1 bg-neo-green/30 rounded-full';
-        
-        // Random position
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        
-        // Random animation
-        const duration = 3 + Math.random() * 7;
-        particle.style.animation = `float ${duration}s infinite`;
-        
-        container.appendChild(particle);
-    }
-});
-
-// Update timestamp
-function updateTimestamp() {
-    const now = new Date();
-    const formatted = now.toISOString().replace('T', ' ').split('.')[0];
-    document.querySelector('.timestamp').textContent = formatted;
-}
-
-setInterval(updateTimestamp, 1000);
-</script>
-
-
-
-
+    </section>
 
     <!-- Contact Section -->
-<section id="contact" class="py-32 relative">
-    <!-- Background Elements -->
-    <div class="absolute inset-0 bg-neo-gray/30"></div>
-    <div class="absolute top-0 left-0 w-96 h-96 bg-neo-green/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 right-0 w-96 h-96 bg-neo-green/5 rounded-full blur-3xl"></div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <!-- Section Header -->
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl font-bold mb-4">
-                <span class="text-neo-green">#</span> Let's Connect
-            </h2>
-            <p class="text-white/70 text-lg">Have a project in mind? Let's bring it to life.</p>
-        </div>
-
-       
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Contact Form -->
-            <div data-aos="fade-right">
-                <div class="neo-card p-8 rounded-xl">
-                    <form id="contactForm" class="space-y-6" onsubmit="submitForm(event)">
-                        <div class="space-y-2">
-                            <label for="name" class="text-white/70 text-sm">Full Name</label>
-                            <div class="relative">
-                                <input 
-                                    type="text" 
-                                    id="name" 
-                                    name="name" 
-                                    required
-                                    class="w-full px-4 py-3 bg-dark rounded-lg border border-neo-green/20 focus:border-neo-green focus:outline-none text-white pl-10"
-                                    placeholder="John Doe"
-                                >
-                                <i class="fas fa-user absolute left-3 top-1/2 -translate-y-1/2 text-neo-green/50"></i>
-                            </div>
-                        </div>
-
-                        <div class="space-y-2">
-                            <label for="email" class="text-white/70 text-sm">Email Address</label>
-                            <div class="relative">
-                                <input 
-                                    type="email" 
-                                    id="email" 
-                                    name="email" 
-                                    required
-                                    class="w-full px-4 py-3 bg-dark rounded-lg border border-neo-green/20 focus:border-neo-green focus:outline-none text-white pl-10"
-                                    placeholder="john@example.com"
-                                >
-                                <i class="fas fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-neo-green/50"></i>
-                            </div>
-                        </div>
-
-                        <div class="space-y-2">
-                            <label for="subject" class="text-white/70 text-sm">Subject</label>
-                            <div class="relative">
-                                <input 
-                                    type="text" 
-                                    id="subject" 
-                                    name="subject" 
-                                    required
-                                    class="w-full px-4 py-3 bg-dark rounded-lg border border-neo-green/20 focus:border-neo-green focus:outline-none text-white pl-10"
-                                    placeholder="Project Discussion"
-                                >
-                                <i class="fas fa-bookmark absolute left-3 top-1/2 -translate-y-1/2 text-neo-green/50"></i>
-                            </div>
-                        </div>
-
-                        <div class="space-y-2">
-                            <label for="message" class="text-white/70 text-sm">Message</label>
-                            <div class="relative">
-                                <textarea 
-                                    id="message" 
-                                    name="message" 
-                                    rows="5" 
-                                    required
-                                    class="w-full px-4 py-3 bg-dark rounded-lg border border-neo-green/20 focus:border-neo-green focus:outline-none text-white pl-10"
-                                    placeholder="Your message here..."
-                                ></textarea>
-                                <i class="fas fa-comment absolute left-3 top-6 text-neo-green/50"></i>
-                            </div>
-                        </div>
-
-                        <button 
-                            type="submit" 
-                            class="w-full py-3 bg-neo-green text-dark font-bold rounded-lg hover:bg-neo-green/90 transition-all flex items-center justify-center space-x-2"
-                        >
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="space-y-8" data-aos="fade-left">
-                <!-- Quick Info -->
-                <div class="neo-card p-8 rounded-xl">
-                    <h3 class="text-xl font-bold text-neo-green mb-6">Quick Information</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-lg bg-neo-green/10 flex items-center justify-center">
-                                <i class="fas fa-envelope text-neo-green"></i>
-                            </div>
-                            <div>
-                                <p class="text-white/70 text-sm">Email</p>
-                                <a href="mailto:itsdevsarun@gmail.com" class="text-white hover:text-neo-green transition-colors">
-                                    itsdevsarun@gmail.com
-                                </a>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-lg bg-neo-green/10 flex items-center justify-center">
-                                <i class="fas fa-map-marker-alt text-neo-green"></i>
-                            </div>
-                            <div>
-                                <p class="text-white/70 text-sm">Location</p>
-                                <p class="text-white">Bangalore, India</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-lg bg-neo-green/10 flex items-center justify-center">
-                                <i class="fas fa-clock text-neo-green"></i>
-                            </div>
-                            <div>
-                                <p class="text-white/70 text-sm">Response Time</p>
-                                <p class="text-white">Within 24 hours</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Social Links -->
-                <div class="neo-card p-8 rounded-xl">
-                    <h3 class="text-xl font-bold text-neo-green mb-6">Connect With Me</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <a href="#" class="flex items-center space-x-3 p-4 rounded-lg bg-neo-green/10 hover:bg-neo-green/20 transition-colors">
-                            <i class="fab fa-github text-neo-green text-xl"></i>
-                            <span class="text-white">GitHub</span>
-                        </a>
-                        <a href="#" class="flex items-center space-x-3 p-4 rounded-lg bg-neo-green/10 hover:bg-neo-green/20 transition-colors">
-                            <i class="fab fa-linkedin text-neo-green text-xl"></i>
-                            <span class="text-white">LinkedIn</span>
-                        </a>
-                        <a href="#" class="flex items-center space-x-3 p-4 rounded-lg bg-neo-green/10 hover:bg-neo-green/20 transition-colors">
-                            <i class="fab fa-twitter text-neo-green text-xl"></i>
-                            <span class="text-white">Twitter</span>
-                        </a>
-                        <a href="#" class="flex items-center space-x-3 p-4 rounded-lg bg-neo-green/10 hover:bg-neo-green/20 transition-colors">
-                            <i class="fab fa-instagram text-neo-green text-xl"></i>
-                            <span class="text-white">Instagram</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Success Popup -->
-    <div id="messagePopup" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="absolute inset-0 bg-neo-black/80 backdrop-blur-sm"></div>
-        <div class="relative neo-card p-8 rounded-xl max-w-md w-full mx-4 transform translate-y-8 transition-transform duration-300">
-            <div class="text-center space-y-4">
-                <div class="flex justify-center">
-                    <div class="w-16 h-16 rounded-full bg-neo-green/10 flex items-center justify-center">
-                        <i class="fas fa-check text-2xl text-neo-green"></i>
-                    </div>
-                </div>
-                <h3 class="text-2xl font-bold text-white">Message Sent!</h3>
-                <p class="text-white/70">Thank you for reaching out. I'll get back to you soon!</p>
-                <button onclick="closePopup()" class="mt-6 px-6 py-2 bg-neo-green text-dark rounded-lg hover:bg-neo-green/90 transition-all">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Add this JavaScript -->
-<script>
-// Update date and time
-function updateDateTime() {
-    const now = new Date();
-    const formatted = now.toISOString().slice(0, 19).replace('T', ' ');
-    document.getElementById('currentDateTime').textContent = formatted;
-}
-
-setInterval(updateDateTime, 1000);
-
-// Form submission handling
-function submitForm(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const submitButton = form.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton.innerHTML;
-    
-    // Show loading state
-    submitButton.disabled = true;
-    submitButton.innerHTML = `
-        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-dark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-        Sending...
-    `;
-    
-    // Simulate form submission
-    setTimeout(() => {
-        form.reset();
-        submitButton.disabled = false;
-        submitButton.innerHTML = originalButtonText;
-        showPopup();
+    <section id="contact" class="py-32 relative">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-neo-gray/30"></div>
+        <div class="absolute top-0 left-0 w-96 h-96 bg-neo-green/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-neo-green/5 rounded-full blur-3xl"></div>
         
-        // Log submission
-        console.log('Message sent at:', document.getElementById('currentDateTime').textContent);
-        console.log('From user:', document.getElementById('currentUser').textContent);
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">
+                    <span class="text-neo-green">//</span> Let's Connect
+                </h2>
+                <p class="text-white/70 text-lg">Have a project in mind? Let's bring it to life.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div>
+                    <div class="neo-card p-8 rounded-xl">
+                        <form id="contactForm" class="space-y-6" onsubmit="submitForm(event)">
+                            <div class="space-y-2">
+                                <label for="name" class="text-white/70 text-sm">Full Name</label>
+                                <div class="relative">
+                                    <input 
+                                        type="text" 
+                                        id="name" 
+                                        name="name" 
+                                        required 
+                                        class="w-full px-4 py-3 bg-dark rounded-lg border border-neo-green/20 focus:border-neo-green focus:outline-none text-white pl-10" 
+                                        placeholder="John Doe"
+                                    >
+                                    <i class="fas fa-user absolute left-3 top-1/2 -translate-y-1/2 text-neo-green/50"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <label for="email" class="text-white/70 text-sm">Email Address</label>
+                                <div class="relative">
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="email" 
+                                        required 
+                                        class="w-full px-4 py-3 bg-dark rounded-lg border border-neo-green/20 focus:border-neo-green focus:outline-none text-white pl-10" 
+                                        placeholder="john@example.com"
+                                    >
+                                    <i class="fas fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-neo-green/50"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <label for="subject" class="text-white/70 text-sm">Subject</label>
+                                <div class="relative">
+                                    <input 
+                                        type="text" 
+                                        id="subject" 
+                                        name="subject" 
+                                        required 
+                                        class="w-full px-4 py-3 bg-dark rounded-lg border border-neo-green/20 focus:border-neo-green focus:outline-none text-white pl-10" 
+                                        placeholder="Project Discussion"
+                                    >
+                                    <i class="fas fa-bookmark absolute left-3 top-1/2 -translate-y-1/2 text-neo-green/50"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                <label for="message" class="text-white/70 text-sm">Message</label>
+                                <div class="relative">
+                                    <textarea 
+                                        id="message" 
+                                        name="message" 
+                                        rows="5" 
+                                        required 
+                                        class="w-full px-4 py-3 bg-dark rounded-lg border border-neo-green/20 focus:border-neo-green focus:outline-none text-white pl-10" 
+                                        placeholder="Your message here..."
+                                    ></textarea>
+                                    <i class="fas fa-comment absolute left-3 top-6 text-neo-green/50"></i>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="w-full py-3 bg-neo-green text-dark font-bold rounded-lg hover:bg-neo-green/90 transition-all flex items-center justify-center space-x-2">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <!-- Quick Info -->
+                    <div class="neo-card p-8 rounded-xl">
+                        <h3 class="text-xl font-bold text-neo-green mb-6">Quick Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-lg bg-neo-green/10 flex items-center justify-center">
+                                    <i class="fas fa-envelope text-neo-green"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white/70 text-sm">Email</p>
+                                    <a href="mailto:itsdevsarun@gmail.com" class="text-white hover:text-neo-green transition-colors">
+                                        itsdevsarun@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-lg bg-neo-green/10 flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-neo-green"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white/70 text-sm">Location</p>
+                                    <p class="text-white">Bangalore, India</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-lg bg-neo-green/10 flex items-center justify-center">
+                                    <i class="fas fa-clock text-neo-green"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white/70 text-sm">Response Time</p>
+                                    <p class="text-white">Within 24 hours</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="neo-card p-8 rounded-xl">
+                        <h3 class="text-xl font-bold text-neo-green mb-6">Connect With Me</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#" class="flex items-center space-x-3 p-4 rounded-lg bg-neo-green/10 hover:bg-neo-green/20 transition-colors">
+                                <i class="fab fa-github text-neo-green text-xl"></i>
+                                <span class="text-white">GitHub</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-4 rounded-lg bg-neo-green/10 hover:bg-neo-green/20 transition-colors">
+                                <i class="fab fa-linkedin text-neo-green text-xl"></i>
+                                <span class="text-white">LinkedIn</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-4 rounded-lg bg-neo-green/10 hover:bg-neo-green/20 transition-colors">
+                                <i class="fab fa-twitter text-neo-green text-xl"></i>
+                                <span class="text-white">Twitter</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-4 rounded-lg bg-neo-green/10 hover:bg-neo-green/20 transition-colors">
+                                <i class="fab fa-instagram text-neo-green text-xl"></i>
+                                <span class="text-white">Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        setTimeout(closePopup, 5000);
-    }, 1500);
-}
-
-function showPopup() {
-    const popup = document.getElementById('messagePopup');
-    popup.classList.remove('opacity-0', 'pointer-events-none');
-    popup.querySelector('.neo-card').classList.remove('translate-y-8');
-}
-
-function closePopup() {
-    const popup = document.getElementById('messagePopup');
-    popup.classList.add('opacity-0', 'pointer-events-none');
-    popup.querySelector('.neo-card').classList.add('translate-y-8');
-}
-
-// Close popup on outside click
-document.getElementById('messagePopup').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-        closePopup();
-    }
-});
-
-// Close popup on ESC key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closePopup();
-    }
-});
-</script>
+        <!-- Success Popup -->
+        <div id="messagePopup" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="absolute inset-0 bg-neo-black/80 backdrop-blur-sm"></div>
+            <div class="relative neo-card p-8 rounded-xl max-w-md w-full mx-4 transform translate-y-8 transition-transform duration-300">
+                <div class="text-center space-y-4">
+                    <div class="flex justify-center">
+                        <div class="w-16 h-16 rounded-full bg-neo-green/10 flex items-center justify-center">
+                            <i class="fas fa-check text-2xl text-neo-green"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Message Sent!</h3>
+                    <p class="text-white/70">Thank you for reaching out. I'll get back to you soon!</p>
+                    <button onclick="closePopup()" class="mt-6 px-6 py-2 bg-neo-green text-dark rounded-lg hover:bg-neo-green/90 transition-all">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="py-8 border-t border-neo-green/10">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-white/70">
-                © 2025 Devs Arun. 
-            </p>
+            <p class="text-white/70">© 2025 Devs Arun. Available for fast delivery projects.</p>
         </div>
     </footer>
 
     <script>
-        // Add smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        // Project filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('[data-filter]');
+            const projectSections = {
+                'webapp': document.querySelector('[data-section="webapp"]'),
+                'extension': document.querySelector('[data-section="extension"]'),
+                'github': document.querySelector('[data-section="github"]')
+            };
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('bg-neo-green', 'text-dark');
+                        btn.classList.add('border', 'border-neo-green', 'text-neo-green');
+                    });
+                    
+                    this.classList.remove('border', 'border-neo-green', 'text-neo-green');
+                    this.classList.add('bg-neo-green', 'text-dark');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    if (filter === 'all') {
+                        Object.values(projectSections).forEach(section => {
+                            section.style.display = 'block';
+                        });
+                        projectSections['webapp'].scrollIntoView({ behavior: 'smooth' });
+                        return;
+                    }
+                    
+                    Object.values(projectSections).forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    if (projectSections[filter]) {
+                        projectSections[filter].style.display = 'block';
+                        projectSections[filter].scrollIntoView({ behavior: 'smooth' });
+                    }
                 });
             });
-        });
-
-        // Animate skill bars on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.width = entry.target.getAttribute('data-width');
-                }
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
             });
-        });
-
-        document.querySelectorAll('.skill-bar').forEach(bar => {
-            observer.observe(bar);
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                const sections = document.querySelectorAll('section');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - sectionHeight/3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('text-neo-green');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('text-neo-green');
+                    }
+                });
+            });
         });
         
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+            
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-dark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Sending...';
+            
+            setTimeout(() => {
+                form.reset();
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+                showPopup();
+                
+                setTimeout(closePopup, 5000);
+            }, 1500);
+        }
+        
+        function showPopup() {
+            const popup = document.getElementById('messagePopup');
+            popup.classList.remove('opacity-0', 'pointer-events-none');
+            popup.querySelector('.neo-card').classList.remove('translate-y-8');
+        }
+        
+        function closePopup() {
+            const popup = document.getElementById('messagePopup');
+            popup.classList.add('opacity-0', 'pointer-events-none');
+            popup.querySelector('.neo-card').classList.add('translate-y-8');
+        }
+        
+        document.getElementById('messagePopup').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closePopup();
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closePopup();
+            }
+        });
     </script>
-    <script>
-// Project filtering and scrolling functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Get all filter buttons and project sections
-    const filterButtons = document.querySelectorAll('[data-filter]');
-    const projectSections = {
-        'website': document.querySelector('[data-section="websites"]'),
-        'webapp': document.querySelector('[data-section="webapps"]'),
-        'extension': document.querySelector('[data-section="extensions"]'),
-        'github': document.querySelector('[data-section="github"]')
-    };
-
-    // Add click event listeners to filter buttons
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => {
-                btn.classList.remove('bg-neo-green', 'text-dark');
-                btn.classList.add('border', 'border-neo-green', 'text-neo-green');
-            });
-
-            // Add active class to clicked button
-            this.classList.remove('border', 'border-neo-green', 'text-neo-green');
-            this.classList.add('bg-neo-green', 'text-dark');
-
-            const filter = this.getAttribute('data-filter');
-
-            // Handle 'all' filter
-            if (filter === 'all') {
-                Object.values(projectSections).forEach(section => {
-                    section.style.display = 'block';
-                });
-                // Scroll to the first project section
-                projectSections['website'].scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
-
-            // Hide all sections first
-            Object.values(projectSections).forEach(section => {
-                section.style.display = 'none';
-            });
-
-            // Show only the selected section
-            if (projectSections[filter]) {
-                projectSections[filter].style.display = 'block';
-                // Smooth scroll to the selected section
-                projectSections[filter].scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-
-    // Add data-section attributes to your HTML sections
-    document.querySelectorAll('.project-section').forEach(section => {
-        if (!section.hasAttribute('data-section')) {
-            const sectionType = section.querySelector('h3').textContent.toLowerCase();
-            if (sectionType.includes('website')) section.setAttribute('data-section', 'websites');
-            else if (sectionType.includes('web app')) section.setAttribute('data-section', 'webapps');
-            else if (sectionType.includes('extension')) section.setAttribute('data-section', 'extensions');
-            else if (sectionType.includes('github')) section.setAttribute('data-section', 'github');
-        }
-    });
-
-    // Initialize AOS animation
-    AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100
-    });
-
-    // Add animation to project cards
-    const projectCards = document.querySelectorAll('.neo-card');
-    projectCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px)';
-            this.style.transition = 'all 0.3s ease';
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-
-    // Update last active timestamp
-    const updateTimestamp = () => {
-        const now = new Date();
-        const formatted = now.getUTCFullYear() + '-' + 
-                         String(now.getUTCMonth() + 1).padStart(2, '0') + '-' +
-                         String(now.getUTCDate()).padStart(2, '0') + ' ' +
-                         String(now.getUTCHours()).padStart(2, '0') + ':' +
-                         String(now.getUTCMinutes()).padStart(2, '0') + ':' +
-                         String(now.getUTCSeconds()).padStart(2, '0');
-        document.querySelector('.timestamp').textContent = formatted;
-    };
-    
-    updateTimestamp();
-    setInterval(updateTimestamp, 1000);
-});
-
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Add active state to navigation links based on scroll position
-window.addEventListener('scroll', function() {
-    let current = '';
-    const sections = document.querySelectorAll('section');
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= (sectionTop - sectionHeight/3)) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    document.querySelectorAll('nav a').forEach(link => {
-        link.classList.remove('text-neo-green');
-        if (link.getAttribute('href').substring(1) === current) {
-            link.classList.add('text-neo-green');
-        }
-    });
-});
-
-// Add loading animation
-const loadingAnimation = () => {
-    const projects = document.querySelectorAll('.neo-card');
-    projects.forEach((project, index) => {
-        project.style.opacity = '0';
-        project.style.transform = 'translateY(20px)';
-        setTimeout(() => {
-            project.style.transition = 'all 0.5s ease';
-            project.style.opacity = '1';
-            project.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
-};
-
-// Call loading animation when page loads
-document.addEventListener('DOMContentLoaded', loadingAnimation);
-</script>
 </body>
 </html>
