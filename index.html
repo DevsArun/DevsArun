@@ -1751,10 +1751,24 @@
         });
 
 
+
+
+
+
+
+
         function submitForm(event) {
     event.preventDefault();
     
     const form = event.target;
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.innerHTML;
+    
+    // Show loading
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-dark inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Sending...';
+    
+    // Collect form data
     const formData = {
         name: form.name.value,
         email: form.email.value,
@@ -1763,16 +1777,20 @@
         timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
     };
     
-    // Get existing submissions or create new array
+    // Save to localStorage
     let submissions = JSON.parse(localStorage.getItem('formSubmissions')) || [];
     submissions.push(formData);
     localStorage.setItem('formSubmissions', JSON.stringify(submissions));
     
-    form.reset();
-    showPopup();
+    console.log('Data saved:', formData); // Debug check
+    console.log('Total submissions:', submissions.length); // Debug check
     
-    // Optional: Auto open result page
-    // window.open('result.html', '_blank');
+    setTimeout(() => {
+        form.reset();
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonText;
+        showPopup();
+    }, 1500);
 }
 
     </script>
