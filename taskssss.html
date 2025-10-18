@@ -396,10 +396,8 @@
 </div>
 
 <script>
-  // CONFIG: GitHub Pages safe mode (query-based). If your hosting supports SPA fallback, set to false for path-based look.
   const USE_QUERY_MODE = true;
 
-  // Random slug generator
   function randomSlug(len = 7) {
     const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let s = '';
@@ -409,81 +407,54 @@
     return s;
   }
 
-  // Short URL builder that ALWAYS uses your current domain (no external domains)
+  // Force folder root: change this to match your folder name
+  const BASE_FOLDER = '/DevsArun/';
+
   function buildShortUrlQuery() {
-    const { origin, pathname } = window.location;
+    const { origin } = window.location;
     const slug = randomSlug(7);
-    // Optional: lock under a specific base path, e.g., '/p/'
-    // const basePath = '/p/';
-    // return `${origin}${basePath}?r=${slug}`;
-    return `${origin}${pathname}?r=${slug}`;
+    // Always target folder root, not the file path
+    return `${origin}${BASE_FOLDER}?r=${slug}`;
   }
 
   function buildShortUrlPath() {
     const { origin } = window.location;
     const slug = randomSlug(7);
-    return `${origin}/p/${slug}`;
+    return `${origin}${BASE_FOLDER}p/${slug}`;
   }
 
   function buildShortUrl() {
     return USE_QUERY_MODE ? buildShortUrlQuery() : buildShortUrlPath();
   }
 
-  function showToast(msg = 'Copied to clipboard') {
-    const t = document.getElementById('shareToast');
-    t.textContent = msg;
-    t.classList.remove('hidden');
-    clearTimeout(showToast._t);
-    showToast._t = setTimeout(() => t.classList.add('hidden'), 1800);
-  }
-
-  async function copyToClipboard(text) {
-    try {
-      await navigator.clipboard.writeText(text);
-      showToast();
-    } catch {
-      const area = document.createElement('textarea');
-      area.value = text;
-      document.body.appendChild(area);
-      area.select();
-      try { document.execCommand('copy'); } catch {}
-      document.body.removeChild(area);
-      showToast();
-    }
-  }
-
   async function handleShareClick() {
-    // Generate short-looking URL for display/copy
     const prettyUrl = buildShortUrl();
 
-    // Update current page URL so refresh or reopen still lands here
+    // Replace address bar so current page “reopens” at folder root with query
     if (USE_QUERY_MODE) {
-      // Already query-based; set the same prettyUrl in the address bar
       window.history.replaceState({}, '', prettyUrl);
     } else {
-      // Path-based look selected; to avoid asset issues, you can also add a query ref if needed
-      const { origin, pathname } = window.location;
-      const localMarker = `${origin}${pathname}?ref=${randomSlug(10)}`;
+      const { origin } = window.location;
+      const localMarker = `${origin}${BASE_FOLDER}?ref=${randomSlug(10)}`;
       window.history.replaceState({}, '', localMarker);
     }
 
-    // Reveal box and show URL
+    // Show in box if you are using the share UI
     const box = document.getElementById('shareBox');
     const input = document.getElementById('shareUrl');
     const hint = document.getElementById('shareHint');
-    input.value = prettyUrl;
-    box.classList.remove('hidden');
-    hint.classList.remove('hidden');
-  }
-
-  function handleCopyClick() {
-    const input = document.getElementById('shareUrl');
-    copyToClipboard(input.value);
+    if (input) input.value = prettyUrl;
+    if (box) box.classList.remove('hidden');
+    if (hint) hint.classList.remove('hidden');
   }
 
   document.getElementById('shareBtn')?.addEventListener('click', handleShareClick);
-  document.getElementById('copyBtn')?.addEventListener('click', handleCopyClick);
+  document.getElementById('copyBtn')?.addEventListener('click', async () => {
+    const v = document.getElementById('shareUrl')?.value || '';
+    try { await navigator.clipboard.writeText(v); } catch {}
+  });
 </script>
+
 
 
 
