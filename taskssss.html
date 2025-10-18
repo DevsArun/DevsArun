@@ -126,7 +126,7 @@
                         <div class="flex-1">
                             <h3 class="text-xl font-bold text-gray-900 mb-3">Visit the Invitation Link</h3>
                             <p class="text-gray-700 leading-relaxed">
-                                Visit this link: <a href="https://pplx.ai/aryabhaide70581" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold underline">https://t.co/hjhd</a>
+                                Visit this link: <a href="https://t.co/hjhd" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold underline">https://t.co/hjhd</a>
                             </p>
                         </div>
                     </div>
@@ -198,7 +198,7 @@
                     <!-- Screenshot 1 -->
                     <div class="form-group">
                         <label class="block text-gray-700 font-semibold mb-2">
-                            Screenshot 1 (Required) <span class="text-red-500">*</span> <p>Screenshot of your perplexity Account login in Comet with Pro Plan Activated (Actually Pro plan is Automatically Activated you don't need to Purchase)</p>
+                            Screenshot 1 (Required) <span class="text-red-500">*</span>
                         </label>
                         <input 
                             type="file" 
@@ -220,7 +220,7 @@
                     <!-- Screenshot 2 -->
                     <div class="form-group">
                         <label class="block text-gray-700 font-semibold mb-2">
-                            Screenshot 2 (Required) <span class="text-red-500">*</span><p>Screenshot of your first search on Comet.</p>
+                            Screenshot 2 (Required) <span class="text-red-500">*</span>
                         </label>
                         <input 
                             type="file" 
@@ -339,7 +339,30 @@
         </div>
     </section>
 
-    <!-- Share Area -->
+    <!-- Trust Section -->
+    <section class="container mx-auto px-4 py-16 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-2xl font-bold text-gray-900 mb-8">Trusted by Thousands</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">5,000+</div>
+                    <div class="text-gray-600">Tasks Completed</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">$25,000+</div>
+                    <div class="text-gray-600">Paid Out</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">1 Hour</div>
+                    <div class="text-gray-600">Average Payment Time</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+   <!-- Share Area -->
 <div class="mt-6 max-w-xl mx-auto">
   <button id="shareBtn"
     class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-3 rounded-lg shadow transition">
@@ -361,26 +384,18 @@
     </button>
   </div>
 
-  <!-- Small helper text -->
   <p id="shareHint" class="hidden mt-2 text-xs text-gray-500">
     Link address bar me bhi update ho gaya hai. Aap is link ko copy/share kar sakte hain.
   </p>
 
-  <!-- Toast -->
   <div id="shareToast" class="fixed left-1/2 -translate-x-1/2 bottom-6 hidden bg-gray-900 text-white px-4 py-2 rounded-lg shadow">
     Copied to clipboard
   </div>
 </div>
-<script>
-  // Pool of different domains (front-end only appearance)
-  const DOMAIN_POOL = [
-    'https://pplx.ai',
-    'https://ioyh.io',
-    'https://vexa.to',
-    'https://fluxy.app',
-    'https://shrt.link'
-  ];
 
+
+<script>
+  // Random slug generator
   function randomSlug(len = 7) {
     const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let s = '';
@@ -390,22 +405,26 @@
     return s;
   }
 
-  function pickRandomDomain() {
-    return DOMAIN_POOL[Math.floor(Math.random() * DOMAIN_POOL.length)];
+  // Build short link that ALWAYS uses your current domain (no external company domains)
+  // Mode A (default here): query-based, safest on GitHub Pages
+  function buildShortUrlQuery() {
+    const { origin, pathname } = window.location;
+    const slug = randomSlug(7);
+    return `${origin}${pathname}?r=${slug}`;
   }
 
-  // Short-style path pattern: '/p/<slug>' or '/i/<slug>' randomly
-  function randomPath(slug) {
-    const prefixes = ['p', 'i', 'r', 'go', 'x'];
-    const pick = prefixes[Math.floor(Math.random() * prefixes.length)];
-    return `/${pick}/${slug}`;
+  // Mode B: path-based nice look (enable only if your hosting handles SPA fallback)
+  function buildShortUrlPath() {
+    const { origin } = window.location;
+    const slug = randomSlug(7);
+    // You can change '/p/' to '/go/' etc.
+    return `${origin}/p/${slug}`;
   }
 
-  function buildPrettyUrl() {
-    const domain = pickRandomDomain();    // different domain each click
-    const slug = randomSlug(7);           // short id
-    const path = randomPath(slug);        // random path style
-    return `${domain}${path}`;
+  // Toggle which builder to use:
+  const USE_QUERY_MODE = true; // set false if your hosting supports path fallback
+  function buildShortUrl() {
+    return USE_QUERY_MODE ? buildShortUrlQuery() : buildShortUrlPath();
   }
 
   function showToast(msg = 'Copied to clipboard') {
@@ -419,8 +438,7 @@
     try {
       await navigator.clipboard.writeText(text);
       showToast();
-    } catch (e) {
-      // Fallback
+    } catch {
       const area = document.createElement('textarea');
       area.value = text;
       document.body.appendChild(area);
@@ -431,31 +449,28 @@
     }
   }
 
-  // On Share click: generate pretty URL, update address bar to still open this page, and show box
   async function handleShareClick() {
-    const prettyUrl = buildPrettyUrl();
+    // Pretty link that user will copy/share (same domain)
+    const prettyUrl = buildShortUrl();
 
-    // Update current URL so same page opens even if user re-opens the link.
-    // Note: because we don’t control prettyUrl domains, we keep the actual page loaded,
-    // and reflect a unique local marker (?ref=...) so this page still works anywhere it’s hosted.
-    const uniqueMarker = `?ref=${randomSlug(10)}`;
-    const { origin, pathname } = window.location;
-    const localUrl = `${origin}${pathname}${uniqueMarker}`;
-    window.history.replaceState({}, '', localUrl);
+    // Update the address bar to a unique local marker so this same page opens again
+    // If using query-mode already, we can re-use prettyUrl itself as current URL
+    if (USE_QUERY_MODE) {
+      window.history.replaceState({}, '', prettyUrl);
+    } else {
+      // Path-mode: also add a local marker to avoid asset/path issues if needed
+      const { origin, pathname } = window.location;
+      const localMarker = `${origin}${pathname}?ref=${randomSlug(10)}`;
+      window.history.replaceState({}, '', localMarker);
+    }
 
-    // Reveal box and set value to the pretty URL (for user to copy/share)
+    // Show the box and put the URL into the input
     const box = document.getElementById('shareBox');
     const input = document.getElementById('shareUrl');
     const hint = document.getElementById('shareHint');
     input.value = prettyUrl;
     box.classList.remove('hidden');
     hint.classList.remove('hidden');
-
-    // If Web Share API available, optional: do not auto-open; user can copy from box
-    // Uncomment if you want to trigger native share:
-    // if (navigator.share) {
-    //   try { await navigator.share({ title: document.title, text: 'Check this out', url: prettyUrl }); } catch {}
-    // }
   }
 
   function handleCopyClick() {
@@ -468,34 +483,7 @@
 </script>
 
 
-    
-    <!-- Share Button -->
-<div class="mt-6 flex justify-center">
-  <button id="shareBtn"
-    class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-3 rounded-lg shadow transition">
-    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
-      <path d="M15 8a3 3 0 100-6 3 3 0 000 6zM21 22a6 6 0 10-12 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M8
-    <!-- Trust Section -->
-    <section class="container mx-auto px-4 py-16 bg-white">
-        <div class="max-w-4xl mx-auto text-center">
-            <h3 class="text-2xl font-bold text-gray-900 mb-8">Trusted by Thousands</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-6">
-                    <div class="text-4xl font-bold text-blue-600 mb-2">5,000+</div>
-                    <div class="text-gray-600">Tasks Completed</div>
-                </div>
-                <div class="p-6">
-                    <div class="text-4xl font-bold text-blue-600 mb-2">$25,000+</div>
-                    <div class="text-gray-600">Paid Out</div>
-                </div>
-                <div class="p-6">
-                    <div class="text-4xl font-bold text-blue-600 mb-2">1 Hour</div>
-                    <div class="text-gray-600">Average Payment Time</div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8">
