@@ -361,9 +361,9 @@
     </section>
 
 
-
-   <!-- Share Area -->
+<!-- Share Area: Button + Output Box + Toast -->
 <div class="mt-6 max-w-xl mx-auto">
+  <!-- Share Button -->
   <button id="shareBtn"
     class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-3 rounded-lg shadow transition">
     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -384,17 +384,21 @@
     </button>
   </div>
 
+  <!-- Helper text -->
   <p id="shareHint" class="hidden mt-2 text-xs text-gray-500">
     Link address bar me bhi update ho gaya hai. Aap is link ko copy/share kar sakte hain.
   </p>
 
+  <!-- Toast -->
   <div id="shareToast" class="fixed left-1/2 -translate-x-1/2 bottom-6 hidden bg-gray-900 text-white px-4 py-2 rounded-lg shadow">
     Copied to clipboard
   </div>
 </div>
 
-
 <script>
+  // CONFIG: GitHub Pages safe mode (query-based). If your hosting supports SPA fallback, set to false for path-based look.
+  const USE_QUERY_MODE = true;
+
   // Random slug generator
   function randomSlug(len = 7) {
     const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -405,24 +409,22 @@
     return s;
   }
 
-  // Build short link that ALWAYS uses your current domain (no external company domains)
-  // Mode A (default here): query-based, safest on GitHub Pages
+  // Short URL builder that ALWAYS uses your current domain (no external domains)
   function buildShortUrlQuery() {
     const { origin, pathname } = window.location;
     const slug = randomSlug(7);
+    // Optional: lock under a specific base path, e.g., '/p/'
+    // const basePath = '/p/';
+    // return `${origin}${basePath}?r=${slug}`;
     return `${origin}${pathname}?r=${slug}`;
   }
 
-  // Mode B: path-based nice look (enable only if your hosting handles SPA fallback)
   function buildShortUrlPath() {
     const { origin } = window.location;
     const slug = randomSlug(7);
-    // You can change '/p/' to '/go/' etc.
     return `${origin}/p/${slug}`;
   }
 
-  // Toggle which builder to use:
-  const USE_QUERY_MODE = true; // set false if your hosting supports path fallback
   function buildShortUrl() {
     return USE_QUERY_MODE ? buildShortUrlQuery() : buildShortUrlPath();
   }
@@ -431,7 +433,8 @@
     const t = document.getElementById('shareToast');
     t.textContent = msg;
     t.classList.remove('hidden');
-    setTimeout(() => t.classList.add('hidden'), 1800);
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(() => t.classList.add('hidden'), 1800);
   }
 
   async function copyToClipboard(text) {
@@ -450,21 +453,21 @@
   }
 
   async function handleShareClick() {
-    // Pretty link that user will copy/share (same domain)
+    // Generate short-looking URL for display/copy
     const prettyUrl = buildShortUrl();
 
-    // Update the address bar to a unique local marker so this same page opens again
-    // If using query-mode already, we can re-use prettyUrl itself as current URL
+    // Update current page URL so refresh or reopen still lands here
     if (USE_QUERY_MODE) {
+      // Already query-based; set the same prettyUrl in the address bar
       window.history.replaceState({}, '', prettyUrl);
     } else {
-      // Path-mode: also add a local marker to avoid asset/path issues if needed
+      // Path-based look selected; to avoid asset issues, you can also add a query ref if needed
       const { origin, pathname } = window.location;
       const localMarker = `${origin}${pathname}?ref=${randomSlug(10)}`;
       window.history.replaceState({}, '', localMarker);
     }
 
-    // Show the box and put the URL into the input
+    // Reveal box and show URL
     const box = document.getElementById('shareBox');
     const input = document.getElementById('shareUrl');
     const hint = document.getElementById('shareHint');
@@ -481,6 +484,7 @@
   document.getElementById('shareBtn')?.addEventListener('click', handleShareClick);
   document.getElementById('copyBtn')?.addEventListener('click', handleCopyClick);
 </script>
+
 
 
 
