@@ -1,0 +1,2409 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta name="google-site-verification" content="x8BQrTz6H_naGRcjiERTqzdanvJGSm2lzrIJyxzb12o" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <!-- SEO -->
+    <title>Best Unisex Salon in Patna - Beauty Service - Kingandqueens</title>
+    <meta name="description" content="King & Queens Unisex Salon is one of the most renowned unisex salon in Patna and serving customers for more than 5 years throughout Patna"/>
+    <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+    <link rel="canonical" href="https://kingandqueens.in/" />
+    
+    <!-- Open Graph -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Best Unisex Salon in Patna - Beauty Service - Kingandqueens" />
+    <meta property="og:description" content="King & Queens Unisex Salon is one of the most renowned unisex salon in Patna and serving customers for more than 5 years throughout Patna" />
+    <meta property="og:url" content="https://kingandqueens.in/" />
+    <meta property="og:site_name" content="Best Unisex Salon in Patna" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Philosopher:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        :root {
+            --gold: #D4AF37;
+            --gold-dark: #AA8A2E;
+            --gold-light: #F4D03F;
+            --black: #0A0A0A;
+            --gray: #1A1A1A;
+            --white: #FFFFFF;
+            --cream: #FAF9F6;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--cream);
+            color: var(--black);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* ===== MOBILE HEADER (< 1024px) ===== */
+        .mobile-header {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 15px 20px;
+            box-shadow: 0 2px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .burger-btn {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border: none;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .burger-btn span {
+            width: 22px;
+            height: 3px;
+            background: var(--black);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+        
+        .burger-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .burger-btn.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        
+        .burger-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 350px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--black), var(--gray));
+            z-index: 999;
+            padding: 80px 30px 30px;
+            overflow-y: auto;
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .mobile-nav-links li a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mobile-nav-links li a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gold);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-nav-links li a:active {
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .mobile-nav-links li a:active::before {
+            transform: scaleY(1);
+        }
+        
+        .mobile-cta-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        .mobile-contact-info {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .mobile-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            color: rgba(250, 249, 246, 0.7);
+            font-size: 0.95rem;
+        }
+        
+        .mobile-contact-item i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            width: 25px;
+        }
+        
+        .mobile-contact-item a {
+            color: rgba(250, 249, 246, 0.7);
+            text-decoration: none;
+        }
+        
+        /* ===== DESKTOP ZIGZAG HEADER (>= 1024px) ===== */
+        .desktop-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, rgba(26, 26, 26, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 97% 100%, 94% 85%, 91% 100%, 88% 85%, 85% 100%, 82% 85%, 79% 100%, 76% 85%, 73% 100%, 70% 85%, 67% 100%, 64% 85%, 61% 100%, 58% 85%, 55% 100%, 52% 85%, 49% 100%, 46% 85%, 43% 100%, 40% 85%, 37% 100%, 34% 85%, 31% 100%, 28% 85%, 25% 100%, 22% 85%, 19% 100%, 16% 85%, 13% 100%, 10% 85%, 7% 100%, 4% 85%, 1% 100%, 0 85%);
+            padding: 20px 40px 35px;
+            box-shadow: 0 10px 50px rgba(212, 175, 55, 0.3);
+        }
+        
+        .desktop-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .desktop-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .desktop-logo img {
+            height: 55px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
+        
+        .desktop-logo-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .desktop-nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .desktop-nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .desktop-nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        .desktop-nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        .desktop-nav-links a:hover::before {
+            width: 100%;
+        }
+        
+        .desktop-cta-btn {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--gold);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .desktop-cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            min-height: 100vh;
+            padding: 80px 20px 40px;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .hero-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Mobile Hero */
+        .hero-mobile {
+            display: block;
+            text-align: center;
+        }
+        
+        .crown-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid var(--gold);
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
+        
+        .crown-badge i {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+        
+        .crown-badge span {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 8vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--white), var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: rgba(250, 249, 246, 0.8);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .btn-hero {
+            padding: 16px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            border: none;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+        
+        .btn-secondary:active {
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .hero-image {
+            margin-top: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Desktop Hero Grid */
+        .hero-desktop {
+            display: none;
+        }
+        
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+            padding: 25px 20px;
+            background: rgba(212, 175, 55, 0.95);
+            border-radius: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--black);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--black);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 60px 20px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--black);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.75rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 6vw, 4rem);
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .section-desc {
+            font-size: 1rem;
+            color: var(--gray);
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Services */
+        .services-section {
+            background: linear-gradient(180deg, var(--cream) 0%, #F5F5DC 100%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+        
+        .service-card:active {
+            transform: scale(0.98);
+            border-color: var(--gold);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .service-icon::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 3px dashed var(--gold);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .service-icon img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+        
+        .service-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 12px;
+        }
+        
+        .service-desc {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .service-features {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+        }
+        
+        .service-features li {
+            font-size: 0.9rem;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-features li::before {
+            content: '♦';
+            color: var(--gold);
+            font-size: 1rem;
+        }
+        
+        /* About */
+        .about-section {
+            background: linear-gradient(135deg, var(--black), var(--gray));
+            color: var(--cream);
+        }
+        
+        .about-section .section-badge {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+        
+        .about-section .section-title {
+            color: var(--cream);
+        }
+        
+        .about-section .section-desc {
+            color: rgba(250, 249, 246, 0.8);
+        }
+        
+        .about-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .about-image {
+            width: 100%;
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 3px solid var(--gold);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 17px;
+        }
+        
+        .about-points {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .about-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .about-point i {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-top: 3px;
+        }
+        
+        .about-point h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+        
+        .about-point p {
+            font-size: 0.9rem;
+            color: rgba(250, 249, 246, 0.7);
+            line-height: 1.5;
+        }
+        
+        /* Gallery */
+        .gallery-section {
+            background: var(--cream);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 1400px;
+            margin: 30px auto 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.9), rgba(170, 138, 46, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        /* Awards */
+        .awards-section {
+            background: linear-gradient(180deg, #F5F5DC 0%, var(--cream) 100%);
+        }
+        
+        .awards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .award-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .award-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.3);
+        }
+        
+        .award-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .award-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--black);
+            margin-bottom: 15px;
+        }
+        
+        .award-card ul {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .award-card ul li {
+            padding: 8px 0;
+            color: var(--gray);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .award-card ul li::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: 900;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        /* Pricing */
+        .pricing-section {
+            background: linear-gradient(180deg, var(--cream) 0%, #F5F5DC 100%);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--gold);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.3);
+        }
+        
+        .pricing-header {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            padding: 30px 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .pricing-card.featured .pricing-header {
+            background: linear-gradient(135deg, var(--black), var(--gray));
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            color: var(--gold);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+        
+        .pricing-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 10px;
+        }
+        
+        .pricing-card.featured .pricing-name {
+            color: var(--gold);
+        }
+        
+        .pricing-price {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--black);
+        }
+        
+        .pricing-card.featured .pricing-price {
+            color: white;
+        }
+        
+        .pricing-body {
+            padding: 30px 25px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            color: var(--gray);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-features li i {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+        
+        .pricing-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-btn:active {
+            transform: scale(0.98);
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            background: linear-gradient(135deg, var(--black), var(--gray));
+            color: var(--cream);
+        }
+        
+        .testimonials-section .section-badge {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+        
+        .testimonials-section .section-title {
+            color: var(--cream);
+        }
+        
+        .testimonials-section .section-desc {
+            color: rgba(250, 249, 246, 0.8);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 30px 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.3);
+        }
+        
+        .testimonial-rating {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-rating i {
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-text {
+            color: var(--cream);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .author-info h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+        }
+        
+        .author-info p {
+            color: rgba(250, 249, 246, 0.6);
+            font-size: 0.85rem;
+        }
+        
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            padding: 50px 20px;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 6vw, 4rem);
+            font-weight: 900;
+            color: var(--black);
+            margin-bottom: 15px;
+        }
+        
+        .cta-section p {
+            font-size: 1rem;
+            color: rgba(10, 10, 10, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .btn-cta {
+            padding: 18px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+        
+        .btn-cta-primary {
+            background: var(--black);
+            color: white;
+            border: none;
+        }
+        
+        .btn-cta-secondary {
+            background: white;
+            color: var(--black);
+            border: none;
+        }
+        
+        /* Contact */
+        .contact-section {
+            background: var(--cream);
+        }
+        
+        .contact-info-box {
+            background: linear-gradient(135deg, var(--black), var(--gray));
+            border-radius: 20px;
+            padding: 40px 25px;
+            margin-bottom: 30px;
+            color: var(--cream);
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-info-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+        
+        .contact-icon-box {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--black);
+            flex-shrink: 0;
+        }
+        
+        .contact-item div h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .contact-item div p {
+            color: rgba(250, 249, 246, 0.8);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .contact-item div a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--black), var(--gray));
+            padding: 50px 20px 30px;
+            color: var(--cream);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-brand {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .footer-brand img {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-brand h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        
+        .footer-brand p {
+            color: rgba(250, 249, 246, 0.7);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-5px);
+        }
+        
+        .footer-links {
+            margin: 30px 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .footer-links h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .footer-links ul li a {
+            color: rgba(250, 249, 246, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links ul li a::before {
+            content: '♦';
+            color: var(--gold);
+            font-size: 0.7rem;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            color: rgba(250, 249, 246, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--black);
+            font-size: 1.2rem;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:active {
+            transform: scale(0.9);
+        }
+        
+        /* ===== DESKTOP RESPONSIVE (>= 768px) ===== */
+        @media (min-width: 768px) {
+            .hero-buttons,
+            .cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            
+            .services-grid,
+            .awards-grid,
+            .pricing-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .about-points {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+        
+        /* ===== DESKTOP ONLY (>= 1024px) ===== */
+        @media (min-width: 1024px) {
+            html {
+                font-size: 18px;
+            }
+            
+            /* Show Desktop Header, Hide Mobile */
+            .mobile-header {
+                display: none;
+            }
+            
+            .desktop-header {
+                display: block;
+            }
+            
+            /* Desktop Hero Grid */
+            .hero-mobile {
+                display: none;
+            }
+            
+            .hero-desktop {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 80px;
+                align-items: center;
+            }
+            
+            .hero-left {
+                text-align: left;
+            }
+            
+            .hero-subtitle {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .hero-buttons {
+                justify-content: flex-start;
+            }
+            
+            .hero-right {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .hexagon-img {
+                position: relative;
+                width: 100%;
+                padding-top: 115%;
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+                overflow: hidden;
+                border: 3px solid var(--gold);
+                animation: float 6s ease-in-out infinite;
+            }
+            
+            .hexagon-img:nth-child(2) { animation-delay: 1s; }
+            .hexagon-img:nth-child(3) { animation-delay: 2s; }
+            .hexagon-img:nth-child(4) { animation-delay: 3s; }
+            
+            @keyframes float {
+                0%, 100% { transform: translateY(0) rotate(0deg); }
+                25% { transform: translateY(-15px) rotate(2deg); }
+                75% { transform: translateY(-10px) rotate(-2deg); }
+            }
+            
+            .hexagon-img img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.6s ease;
+            }
+            
+            .hexagon-img:hover img {
+                transform: scale(1.2);
+            }
+            
+            .stats-bar {
+                position: absolute;
+                bottom: -30px;
+                left: 50%;
+                transform: translateX(-50%);
+                clip-path: polygon(5% 0%, 95% 0%, 100% 25%, 100% 75%, 95% 100%, 5% 100%, 0% 75%, 0% 25%);
+                max-width: 600px;
+            }
+            
+            .section {
+                padding: 100px 40px;
+            }
+            
+            .section-header {
+                margin-bottom: 60px;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .about-section {
+                clip-path: polygon(0 0, 100% 8%, 100% 92%, 0 100%);
+            }
+            
+            .about-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 80px;
+                align-items: center;
+            }
+            
+            .about-text {
+                text-align: left;
+            }
+            
+            .about-text .section-header {
+                text-align: left;
+            }
+            
+            .about-image-wrapper {
+                position: relative;
+            }
+            
+            .about-badge-float {
+                position: absolute;
+                bottom: 30px;
+                left: 30px;
+                background: rgba(212, 175, 55, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 30px 40px;
+                border-radius: 20px;
+                text-align: center;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            }
+            
+            .about-badge-float h3 {
+                font-family: 'Cinzel', serif;
+                font-size: 3rem;
+                font-weight: 900;
+                color: var(--black);
+                margin-bottom: 5px;
+            }
+            
+            .about-badge-float p {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: var(--black);
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(3, 250px);
+            }
+            
+            .gallery-item:nth-child(1) {
+                grid-column: 1 / 3;
+                grid-row: 1 / 3;
+            }
+            
+            .gallery-item:nth-child(4) {
+                grid-column: 3 / 5;
+                grid-row: 2 / 4;
+            }
+            
+            .awards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1.05);
+            }
+            
+            .pricing-card.featured:hover {
+                transform: scale(1.08);
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .contact-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+            }
+            
+            .footer-grid {
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+                gap: 60px;
+                margin-bottom: 60px;
+            }
+            
+            .footer-brand {
+                text-align: left;
+            }
+            
+            .footer-social {
+                justify-content: flex-start;
+            }
+            
+            .footer-links ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Mobile Header (< 1024px) -->
+    <header class="mobile-header">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="https://kingandqueens.in/wp-content/uploads/2022/06/Logo-pdf-removebg-preview-1.png" alt="King & Queens Logo" class="logo-img">
+                <span class="logo-text">King & Queens</span>
+            </div>
+            
+            <button class="burger-btn" id="burgerBtn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Desktop Header (>= 1024px) -->
+    <header class="desktop-header">
+        <nav class="desktop-nav-container">
+            <div class="desktop-logo">
+                <img src="https://kingandqueens.in/wp-content/uploads/2022/06/Logo-pdf-removebg-preview-1.png" alt="King & Queens Logo">
+                <span class="desktop-logo-text">King & Queens</span>
+            </div>
+            
+            <ul class="desktop-nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="tel:+918051102103" class="desktop-cta-btn">Book Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li><a href="#home" class="menu-link">Home</a></li>
+            <li><a href="#services" class="menu-link">Services</a></li>
+            <li><a href="#about" class="menu-link">About</a></li>
+            <li><a href="#gallery" class="menu-link">Gallery</a></li>
+            <li><a href="#awards" class="menu-link">Awards</a></li>
+            <li><a href="#pricing" class="menu-link">Pricing</a></li>
+            <li><a href="#testimonials" class="menu-link">Reviews</a></li>
+            <li><a href="#contact" class="menu-link">Contact</a></li>
+        </ul>
+        
+        <a href="tel:+918051102103" class="mobile-cta-btn">
+            <i class="fas fa-phone-alt"></i> Book Now
+        </a>
+        
+        <div class="mobile-contact-info">
+            <div class="mobile-contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+918051102103">+91 8051102103</a>
+            </div>
+            <div class="mobile-contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:king.queenspatna@gmail.com">king.queenspatna@gmail.com</a>
+            </div>
+            <div class="mobile-contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Kankarbagh, Patna</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-container">
+            <!-- Mobile Hero -->
+            <div class="hero-mobile">
+                <div class="crown-badge">
+                    <i class="fas fa-crown"></i>
+                    <span>Premium Salon Patna</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Where Beauty Meets Royalty
+                </h1>
+                
+                <p class="hero-subtitle">
+                    King & Queens Unisex Salon is one of the most renowned unisex salon in Patna and serving customers for more than 5 years throughout Patna with world-class beauty treatments, expert styling, and rejuvenating spa therapies.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="tel:+918051102103" class="btn-hero btn-primary">
+                        <i class="fas fa-phone-alt"></i> Call Now
+                    </a>
+                    <a href="https://wa.me/918051102103" class="btn-hero btn-secondary">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800" alt="Luxury Salon">
+                </div>
+                
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10K+</span>
+                        <span class="stat-label">Clients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Satisfaction</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Desktop Hero -->
+            <div class="hero-desktop">
+                <div class="hero-left">
+                    <div class="crown-badge">
+                        <i class="fas fa-crown"></i>
+                        <span>Premium Unisex Salon Patna</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Where Beauty<br>Meets Royalty
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        King & Queens Unisex Salon is one of the most renowned unisex salon in Patna and serving customers for more than 5 years throughout Patna with world-class beauty treatments, expert styling, and rejuvenating spa therapies.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="tel:+918051102103" class="btn-hero btn-primary">
+                            <i class="fas fa-phone-alt"></i> Call Now
+                        </a>
+                        <a href="https://wa.me/918051102103" class="btn-hero btn-secondary">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-right">
+                    <div class="hexagon-img">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600" alt="Salon">
+                    </div>
+                    <div class="hexagon-img">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600" alt="Beauty">
+                    </div>
+                    <div class="hexagon-img">
+                        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600" alt="Spa">
+                    </div>
+                    <div class="hexagon-img">
+                        <img src="https://images.unsplash.com/photo-1519415387722-a1c3bbef716c?w=600" alt="Treatment">
+                    </div>
+                    
+                    <div class="stats-bar">
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Years</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Clients</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+        <div class="section-header">
+            <span class="section-badge">Our Expertise</span>
+            <h2 class="section-title">Royal Beauty Services</h2>
+            <p class="section-desc">Get your body and soul, the love and affection they deserve with best beauty parlour in Patna</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="https://kingandqueens.in/wp-content/uploads/2022/06/hair-icon.png" alt="Hair">
+                </div>
+                <h3 class="service-title">Hair Services</h3>
+                <p class="service-desc">High-quality, fashionable hairstyles for kids and adults provided by fully skilled, qualified hairdressers.</p>
+                <ul class="service-features">
+                    <li>Haircuts & Styling</li>
+                    <li>Hair Coloring</li>
+                    <li>Hair Spa Treatment</li>
+                    <li>Keratin Treatment</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="https://kingandqueens.in/wp-content/uploads/2022/06/skin-icon.png" alt="Facial">
+                </div>
+                <h3 class="service-title">Facials & Cleanup</h3>
+                <p class="service-desc">Rejuvenate your skin with our premium facial treatments and deep cleansing therapies.</p>
+                <ul class="service-features">
+                    <li>Deep Cleansing Facial</li>
+                    <li>Anti-Aging Treatment</li>
+                    <li>Hydrating Facial</li>
+                    <li>Acne Treatment</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="https://kingandqueens.in/wp-content/uploads/2022/06/hands-feet-icon.png" alt="Nails">
+                </div>
+                <h3 class="service-title">Manicure & Pedicure</h3>
+                <p class="service-desc">Professional nail care services with gel polish, nail art, and hand/foot treatments.</p>
+                <ul class="service-features">
+                    <li>Classic Manicure</li>
+                    <li>Gel Polish</li>
+                    <li>Luxury Pedicure</li>
+                    <li>Nail Art & Extensions</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="https://kingandqueens.in/wp-content/uploads/2022/06/spa-icon.png" alt="Spa">
+                </div>
+                <h3 class="service-title">Spa & Massage</h3>
+                <p class="service-desc">Therapeutic massages and body treatments for complete relaxation and wellness.</p>
+                <ul class="service-features">
+                    <li>Swedish Massage</li>
+                    <li>Deep Tissue Massage</li>
+                    <li>Body Scrub & Wrap</li>
+                    <li>Aromatherapy</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <img src="https://kingandqueens.in/wp-content/uploads/2022/06/bridal-icon.png" alt="Bridal">
+                </div>
+                <h3 class="service-title">Bridal Packages</h3>
+                <p class="service-desc">Complete bridal makeover packages for your special day with pre-wedding treatments.</p>
+                <ul class="service-features">
+                    <li>Bridal Makeup</li>
+                    <li>Pre-Bridal Treatments</li>
+                    <li>Hair Styling</li>
+                    <li>Mehndi Application</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3 class="service-title">Waxing & Threading</h3>
+                <p class="service-desc">Gentle and effective hair removal for smooth, silky skin using premium products.</p>
+                <ul class="service-features">
+                    <li>Full Body Waxing</li>
+                    <li>Brazilian Wax</li>
+                    <li>Eyebrow Threading</li>
+                    <li>Facial Threading</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 class="service-title">Beard & Grooming</h3>
+                <p class="service-desc">Expert beard styling, trimming, and grooming services for the modern gentleman.</p>
+                <ul class="service-features">
+                    <li>Beard Trimming</li>
+                    <li>Beard Coloring</li>
+                    <li>Shaving Services</li>
+                    <li>Facial Massage</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3 class="service-title">Makeup Services</h3>
+                <p class="service-desc">Professional makeup for every occasion, from natural to glamorous looks.</p>
+                <ul class="service-features">
+                    <li>Party Makeup</li>
+                    <li>Bridal Makeup</li>
+                    <li>Eyebrow & Lash</li>
+                    <li>Makeup Lessons</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="about-content">
+            <div class="about-text">
+                <div class="section-header">
+                    <span class="section-badge">About Us</span>
+                    <h2 class="section-title">Experience The Royal Treatment</h2>
+                    <p class="section-desc">Our family spa and salon in Patna is one of the most exquisite in terms of ambience and services since we believe a person comes to a Spa & Salon to have a nice experience rather than only to receive services.</p>
+                </div>
+                
+                <div class="about-points">
+                    <div class="about-point">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <h4>Certified Experts</h4>
+                            <p>Licensed professionals with 5+ years experience</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-point">
+                        <i class="fas fa-leaf"></i>
+                        <div>
+                            <h4>Premium Products</h4>
+                            <p>Organic & international brands only</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-point">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <h4>Hygiene First</h4>
+                            <p>Sterilized tools & clean environment</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-point">
+                        <i class="fas fa-heart"></i>
+                        <div>
+                            <h4>Personalized Care</h4>
+                            <p>Tailored services for every client</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image-wrapper">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800" alt="Salon Interior">
+                </div>
+                <div class="about-badge-float">
+                    <h3>5+</h3>
+                    <p>Years Serving Patna</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery-section">
+        <div class="section-header">
+            <span class="section-badge">Our Work</span>
+            <h2 class="section-title">Stunning Transformations</h2>
+            <p class="section-desc">Browse through our portfolio of beautiful makeovers</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600" alt="Gallery 1">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600" alt="Gallery 2">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600" alt="Gallery 3">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519415387722-a1c3bbef716c?w=600" alt="Gallery 4">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=600" alt="Gallery 5">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600" alt="Gallery 6">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="section awards-section">
+        <div class="section-header">
+            <span class="section-badge">Recognition</span>
+            <h2 class="section-title">Awards & Achievements</h2>
+        </div>
+        
+        <div class="awards-grid">
+            <div class="award-card">
+                <div class="award-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>HJ British Hairdressing Awards</h3>
+                <ul>
+                    <li>Winner – Excellence in Salon Marketing</li>
+                    <li>Finalist – New Business</li>
+                    <li>Finalist – Apprentice of the Year</li>
+                </ul>
+            </div>
+            
+            <div class="award-card">
+                <div class="award-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>Victorian Hair Awards</h3>
+                <ul>
+                    <li>Winner – Salon Business of the Year</li>
+                </ul>
+            </div>
+            
+            <div class="award-card">
+                <div class="award-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Customer Excellence</h3>
+                <ul>
+                    <li>5+ Years of Trusted Service</li>
+                    <li>10,000+ Satisfied Customers</li>
+                    <li>4.8/5 Average Rating</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section pricing-section">
+        <div class="section-header">
+            <span class="section-badge">Pricing</span>
+            <h2 class="section-title">Affordable Luxury</h2>
+            <p class="section-desc">Choose from our carefully curated packages</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-name">Basic Beauty</h3>
+                    <div class="pricing-price">₹999</div>
+                </div>
+                <div class="pricing-body">
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Haircut & Blow Dry</li>
+                        <li><i class="fas fa-check-circle"></i> Basic Manicure</li>
+                        <li><i class="fas fa-check-circle"></i> Eyebrow Shaping</li>
+                        <li><i class="fas fa-check-circle"></i> Hair Wash</li>
+                    </ul>
+                    <button class="pricing-btn" onclick="window.location.href='tel:+918051102103'">Choose Plan</button>
+                </div>
+            </div>
+            
+            <div class="pricing-card featured">
+                <div class="pricing-header">
+                    <span class="featured-badge">Popular</span>
+                    <h3 class="pricing-name">Premium Style</h3>
+                    <div class="pricing-price">₹2,499</div>
+                </div>
+                <div class="pricing-body">
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Premium Haircut</li>
+                        <li><i class="fas fa-check-circle"></i> Hair Coloring</li>
+                        <li><i class="fas fa-check-circle"></i> Gel Manicure & Pedicure</li>
+                        <li><i class="fas fa-check-circle"></i> Party Makeup</li>
+                        <li><i class="fas fa-check-circle"></i> Facial Treatment</li>
+                    </ul>
+                    <button class="pricing-btn" onclick="window.location.href='tel:+918051102103'">Choose Plan</button>
+                </div>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-name">Spa Retreat</h3>
+                    <div class="pricing-price">₹4,999</div>
+                </div>
+                <div class="pricing-body">
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Full Body Massage</li>
+                        <li><i class="fas fa-check-circle"></i> Luxury Facial</li>
+                        <li><i class="fas fa-check-circle"></i> Body Scrub & Wrap</li>
+                        <li><i class="="fas fa-check-circle"></i> Aromatherapy</li>
+                        <li><i class="fas fa-check-circle"></i> Tea & Snacks</li>
+                    </ul>
+                    <button class="pricing-btn" onclick="window.location.href='tel:+918051102103'">Choose Plan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials-section">
+        <div class="section-header">
+            <span class="section-badge">Testimonials</span>
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-desc">Read authentic reviews from satisfied clients</p>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">
+                    "Best salon experience in Patna! The staff is incredibly professional and the ambiance is so relaxing. I've been coming here for over a year."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">PK</div>
+                    <div class="author-info">
+                        <h4>Priya Kumari</h4>
+                        <p>Regular Client</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">
+                    "The massage therapy here is absolutely incredible. The therapists are highly skilled and truly know how to relieve stress."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">RK</div>
+                    <div class="author-info">
+                        <h4>Raj Kumar</h4>
+                        <p>Spa Client</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">
+                    "King & Queens made my wedding day perfect! The bridal package was worth every penny. My makeup looked stunning."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">NS</div>
+                    <div class="author-info">
+                        <h4>Neha Singh</h4>
+                        <p>Bridal Client</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Transform Your Look?</h2>
+        <p>Book your appointment today and experience the royal treatment you deserve. First-time clients get special discounts!</p>
+        
+        <div class="cta-buttons">
+            <a href="https://wa.me/918051102103" class="btn-cta btn-cta-primary">
+                <i class="fab fa-whatsapp"></i> Book on WhatsApp
+            </a>
+            <a href="tel:+918051102103" class="btn-cta btn-cta-secondary">
+                <i class="fas fa-phone-alt"></i> Call Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="section-header">
+            <span class="section-badge">Get In Touch</span>
+            <h2 class="section-title">Visit King & Queens</h2>
+            <p class="section-desc">Best Unisex Salon in Patna</p>
+        </div>
+        
+        <div class="contact-content">
+            <div class="contact-info-box">
+                <h3>Contact Information</h3>
+                
+                <div class="contact-item">
+                    <div class="contact-icon-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Kankarbagh<br>Patna, Bihar - 800020<br>India</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon-box">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>
+                            <a href="tel:+918051102103">+91 8051102103</a><br>
+                            <a href="https://wa.me/918051102103">WhatsApp: +91 8051102103</a>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon-box">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:king.queenspatna@gmail.com">king.queenspatna@gmail.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon-box">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4>Opening Hours</h4>
+                        <p>Monday - Sunday<br>10:00 AM - 8:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="https://kingandqueens.in/wp-content/uploads/2022/06/Logo-pdf-removebg-preview-1.png" alt="Logo">
+                        <h3>King & Queens</h3>
+                        <p>Premium unisex salon in Patna offering world-class beauty and grooming services. Experience luxury, elegance, and professionalism.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="https://kingandqueens.in/hair/">Hair Services</a></li>
+                        <li><a href="https://kingandqueens.in/facials/">Facials</a></li>
+                        <li><a href="https://kingandqueens.in/nails/">Nails</a></li>
+                        <li><a href="https://kingandqueens.in/massage/">Spa</a></li>
+                        <li><a href="https://kingandqueens.in/waxing/">Waxing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+918051102103">+91 8051102103</a></li>
+                        <li><a href="mailto:king.queenspatna@gmail.com">Email Us</a></li>
+                        <li><a href="#">Kankarbagh, Patna</a></li>
+                        <li><a href="#">Mon-Sun: 10AM-8PM</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-social">
+                <a href="https://www.facebook.com/kingandqueenssalon" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/kingandqueenssalon" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/918051102103" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.youtube.com/@kingandqueenssalon" class="social-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 King & Queens Unisex Salon. All rights reserved.</p>
+                <p>Best Unisex Salon in Patna | Premium Beauty & Spa Services</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        function toggleMenu() {
+            burgerBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMenu() {
+            burgerBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        burgerBtn.addEventListener('click', toggleMenu);
+        mobileOverlay.addEventListener('click', closeMenu);
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                closeMenu();
+                
+                setTimeout(() => {
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 300);
+            });
+        });
+
+        // Scroll to Top
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth Scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && !this.classList.contains('menu-link')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+
+        console.log('👑 King & Queens - Fully Responsive Website Loaded! 📱💻');
+    </script>
+</body>
+</html>
