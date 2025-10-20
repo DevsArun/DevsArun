@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskPay - Earn $5 Per Task</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .step-card {
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .payment-option {
+            transition: all 0.3s ease;
+        }
+        .payment-option.selected {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        .screenshot-preview {
+            max-width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen">
+    
+    <!-- Landing Section -->
+    <section class="container mx-auto px-4 py-16 md:py-24">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <div class="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                🎉 Limited Time Offer
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Earn <span class="text-blue-600">$5</span> by Completing a Simple Task
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 mb-8">
+                Use your PC to complete a quick micro-task and get paid within 1 hour
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                <div class="flex items-center gap-2">
+                    <svg class="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-gray-700">No experience needed</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-gray-700">Takes only 10 minutes</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-gray-700">Payment in 1 hour</span>
+                </div>
+            </div>
+            <button onclick="scrollToTasks()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                Get Started Now →
+            </button>
+        </div>
+    </section>
+
+    <!-- Task Instructions Section -->
+    <section id="tasks" class="container mx-auto px-4 py-16 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
+                Cometplete These Simple Steps
+            </h2>
+            <p class="text-center text-gray-600 mb-12 text-lg">
+                Follow the instructions carefully to ensure payment approval
+            </p>
+            
+            <div class="space-y-6 mb-16">
+                <!-- Step 1 -->
+                <div class="step-card bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 shadow-md border-l-4 border-blue-600">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold flex-shrink-0">
+                            1
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Visit Perplexity and Login</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Visit Perplexity and login to your Perplexity account. If you don't have any account, then create a new one.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+             
+
+                <!-- Step  2-->
+                <div class="step-card bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 shadow-md border-l-4 border-green-600">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold flex-shrink-0">
+                            2
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Visit the Invitation Link</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Visit this link: <a href="https://t.co/hjhd" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold underline">https://t.co/hjhd</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl p-6 shadow-md border-l-4 border-orange-600">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center text-xl font-bold flex-shrink-0">
+                            3
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Claim Invitation & Login</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Claim the invitation, download and launch the app, and login to your Perplexity account. <strong>Important:</strong> Make sure this ID is never used in the Comet browser before.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step-card bg-gradient-to-r from-red-50 to-rose-50 rounded-xl p-6 shadow-md border-l-4 border-red-600">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center text-xl font-bold flex-shrink-0">
+                            4
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-900 mb-3">Send Prompt to Activate</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                Send a quick prompt to the Comet browser to activate Perplexity Pro + unlock your referral link.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Important Notice -->
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg mb-12">
+                <div class="flex items-start">
+                    <svg class="w-6 h-6 text-yellow-600 mr-3 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                    </svg>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-2">Important Requirements:</h4>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• You must upload TWO clear screenshots as proof</li>
+                            <li>• Only one payment method can be selected</li>
+                            <li>• Ensure all information is accurate to avoid delays</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof Submission Form -->
+    <section class="container mx-auto px-4 py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="max-w-3xl mx-auto">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold text-center text-gray-900 mb-3">
+                    Submit Your Proof
+                </h2>
+                <p class="text-center text-gray-600 mb-8">
+                    Upload your screenshots and payment details to claim your $5
+                </p>
+
+                <form id="proofForm" class="space-y-6">
+                    
+                    <!-- Screenshot 1 -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Screenshot 1 (Required) <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="file" 
+                            id="screenshot1" 
+                            accept="image/*"
+                            required
+                            class="block w-full text-sm text-gray-700 file:mr-4 file:py-3 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-all"
+                        >
+                        <img id="preview1" class="screenshot-preview hidden">
+                        <p class="text-sm text-gray-500 mt-2">Or paste image URL:</p>
+                        <input 
+                            type="url" 
+                            id="screenshotUrl1" 
+                            placeholder="https://example.com/screenshot1.png"
+                            class="mt-2 block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        >
+                    </div>
+
+                    <!-- Screenshot 2 -->
+                    <div class="form-group">
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Screenshot 2 (Required) <span class="text-red-500">*</span>
+                        </label>
+                        <input 
+                            type="file" 
+                            id="screenshot2" 
+                            accept="image/*"
+                            required
+                            class="block w-full text-sm text-gray-700 file:mr-4 file:py-3 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-all"
+                        >
+                        <img id="preview2" class="screenshot-preview hidden">
+                        <p class="text-sm text-gray-500 mt-2">Or paste image URL:</p>
+                        <input 
+                            type="url" 
+                            id="screenshotUrl2" 
+                            placeholder="https://example.com/screenshot2.png"
+                            class="mt-2 block w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        >
+                    </div>
+
+                    <div class="border-t pt-6">
+                        <label class="block text-gray-700 font-semibold mb-4">
+                            Select Payment Method <span class="text-red-500">*</span>
+                        </label>
+                        <p class="text-sm text-gray-500 mb-4">Choose ONE method only</p>
+
+                        <!-- Payment Options -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                            <div class="payment-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer" onclick="selectPayment('paypal')">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-semibold text-gray-800">PayPal</span>
+                                    <input type="radio" name="paymentMethod" value="paypal" class="w-5 h-5 text-blue-600">
+                                </div>
+                                <input 
+                                    type="email" 
+                                    id="paypal" 
+                                    placeholder="your@email.com"
+                                    disabled
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
+                                >
+                            </div>
+
+                            <div class="payment-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer" onclick="selectPayment('paytm')">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-semibold text-gray-800">Paytm</span>
+                                    <input type="radio" name="paymentMethod" value="paytm" class="w-5 h-5 text-blue-600">
+                                </div>
+                                <input 
+                                    type="tel" 
+                                    id="paytm" 
+                                    placeholder="10-digit mobile number"
+                                    pattern="[0-9]{10}"
+                                    maxlength="10"
+                                    disabled
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
+                                >
+                            </div>
+
+                            <div class="payment-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer" onclick="selectPayment('phonepe')">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-semibold text-gray-800">PhonePe</span>
+                                    <input type="radio" name="paymentMethod" value="phonepe" class="w-5 h-5 text-blue-600">
+                                </div>
+                                <input 
+                                    type="tel" 
+                                    id="phonepe" 
+                                    placeholder="10-digit mobile number"
+                                    pattern="[0-9]{10}"
+                                    maxlength="10"
+                                    disabled
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
+                                >
+                            </div>
+
+                            <div class="payment-option border-2 border-gray-200 rounded-lg p-4 cursor-pointer" onclick="selectPayment('gpay')">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-semibold text-gray-800">Google Pay</span>
+                                    <input type="radio" name="paymentMethod" value="gpay" class="w-5 h-5 text-blue-600">
+                                </div>
+                                <input 
+                                    type="tel" 
+                                    id="gpay" 
+                                    placeholder="10-digit mobile number"
+                                    pattern="[0-9]{10}"
+                                    maxlength="10"
+                                    disabled
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit" 
+                        id="submitBtn"
+                        class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                    >
+                        Claim Your $5
+                    </button>
+                </form>
+
+                <!-- Success Message (Hidden Initially) -->
+                <div id="successMessage" class="hidden mt-8 bg-green-50 border-l-4 border-green-500 p-6 rounded-lg">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-green-600 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <div>
+                            <h3 class="text-lg font-bold text-green-900 mb-2">Submission Successful! 🎉</h3>
+                            <p class="text-green-800 leading-relaxed">
+                                We are validating your details. Payment will be processed within 1 hour. You'll receive a confirmation at your provided payment method.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="container mx-auto px-4 py-16 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-2xl font-bold text-gray-900 mb-8">Trusted by Thousands</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">5,000+</div>
+                    <div class="text-gray-600">Tasks Completed</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">$25,000+</div>
+                    <div class="text-gray-600">Paid Out</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">1 Hour</div>
+                    <div class="text-gray-600">Average Payment Time</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- Share Area: Button + Output Box + Toast -->
+<div class="mt-6 max-w-xl mx-auto">
+  <!-- Share Button -->
+  <button id="shareBtn"
+    class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-3 rounded-lg shadow transition">
+    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M15 8a3 3 0 100-6 3 3 0 000 6zM21 22a6 6 0 10-12 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M8 12l8-4M8 12l8 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    Share
+  </button>
+
+  <!-- Generated link box -->
+  <div id="shareBox" class="hidden mt-4 bg-white border border-gray-200 rounded-lg p-3 shadow-sm flex items-center gap-3">
+    <input id="shareUrl" type="text" readonly
+      class="flex-1 px-3 py-2 text-sm text-gray-800 bg-gray-50 rounded border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      value="">
+    <button id="copyBtn"
+      class="shrink-0 inline-flex items-center gap-2 bg-gray-900 hover:bg-black text-white text-sm font-medium px-3 py-2 rounded transition">
+      Copy
+    </button>
+  </div>
+
+  <!-- Helper text -->
+  <p id="shareHint" class="hidden mt-2 text-xs text-gray-500">
+    Link address bar me bhi update ho gaya hai. Aap is link ko copy/share kar sakte hain.
+  </p>
+
+  <!-- Toast -->
+  <div id="shareToast" class="fixed left-1/2 -translate-x-1/2 bottom-6 hidden bg-gray-900 text-white px-4 py-2 rounded-lg shadow">
+    Copied to clipboard
+  </div>
+</div>
+
+<script>
+  const USE_QUERY_MODE = true;
+
+  function randomSlug(len = 7) {
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let s = '';
+    const arr = new Uint32Array(len);
+    crypto.getRandomValues(arr);
+    for (let i = 0; i < len; i++) s += chars[arr[i] % chars.length];
+    return s;
+  }
+
+  // Force folder root: change this to match your folder name
+  const BASE_FOLDER = '/DevsArun/';
+
+  function buildShortUrlQuery() {
+    const { origin } = window.location;
+    const slug = randomSlug(7);
+    // Always target folder root, not the file path
+    return `${origin}${BASE_FOLDER}?r=${slug}`;
+  }
+
+  function buildShortUrlPath() {
+    const { origin } = window.location;
+    const slug = randomSlug(7);
+    return `${origin}${BASE_FOLDER}p/${slug}`;
+  }
+
+  function buildShortUrl() {
+    return USE_QUERY_MODE ? buildShortUrlQuery() : buildShortUrlPath();
+  }
+
+  async function handleShareClick() {
+    const prettyUrl = buildShortUrl();
+
+    // Replace address bar so current page “reopens” at folder root with query
+    if (USE_QUERY_MODE) {
+      window.history.replaceState({}, '', prettyUrl);
+    } else {
+      const { origin } = window.location;
+      const localMarker = `${origin}${BASE_FOLDER}?ref=${randomSlug(10)}`;
+      window.history.replaceState({}, '', localMarker);
+    }
+
+    // Show in box if you are using the share UI
+    const box = document.getElementById('shareBox');
+    const input = document.getElementById('shareUrl');
+    const hint = document.getElementById('shareHint');
+    if (input) input.value = prettyUrl;
+    if (box) box.classList.remove('hidden');
+    if (hint) hint.classList.remove('hidden');
+  }
+
+  document.getElementById('shareBtn')?.addEventListener('click', handleShareClick);
+  document.getElementById('copyBtn')?.addEventListener('click', async () => {
+    const v = document.getElementById('shareUrl')?.value || '';
+    try { await navigator.clipboard.writeText(v); } catch {}
+  });
+</script>
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">© 2025 TaskPay. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Smooth scroll to tasks section
+    function scrollToTasks() {
+        document.getElementById('tasks').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Payment method selection logic
+    let selectedPaymentMethod = null;
+
+    function selectPayment(method) {
+        // Clear previous selection
+        document.querySelectorAll('.payment-option').forEach(option => {
+            option.classList.remove('selected');
+        });
+        
+        // Disable all payment inputs
+        document.querySelectorAll('.payment-option input[type="email"], .payment-option input[type="tel"]').forEach(input => {
+            input.disabled = true;
+            input.required = false;
+            input.value = ''; // Clear previous values
+        });
+
+        // Enable and select the chosen method
+        const selectedOption = document.querySelector(`#${method}`).closest('.payment-option');
+        selectedOption.classList.add('selected');
+        
+        const selectedInput = document.getElementById(method);
+        selectedInput.disabled = false;
+        selectedInput.required = true;
+        
+        // Auto-focus on the input field
+        selectedInput.focus();
+        
+        // Check the radio button
+        document.querySelector(`input[value="${method}"]`).checked = true;
+        
+        selectedPaymentMethod = method;
+    }
+
+    // Screenshot preview functionality
+    document.getElementById('screenshot1').addEventListener('change', function(e) {
+        previewImage(e, 'preview1');
+    });
+
+    document.getElementById('screenshot2').addEventListener('change', function(e) {
+        previewImage(e, 'preview2');
+    });
+
+    function previewImage(event, previewId) {
+        const file = event.target.files[0];
+        const preview = document.getElementById(previewId);
+        
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.classList.remove('hidden');
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Form validation and submission
+    document.getElementById('proofForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Validate screenshots
+        const screenshot1 = document.getElementById('screenshot1').files[0];
+        const screenshot2 = document.getElementById('screenshot2').files[0];
+        const screenshotUrl1 = document.getElementById('screenshotUrl1').value;
+        const screenshotUrl2 = document.getElementById('screenshotUrl2').value;
+
+        if ((!screenshot1 && !screenshotUrl1) || (!screenshot2 && !screenshotUrl2)) {
+            alert('Please provide both required screenshots (either upload or provide URL)');
+            return;
+        }
+
+        // Validate payment method selection
+        if (!selectedPaymentMethod) {
+            alert('Please select a payment method');
+            return;
+        }
+
+        const paymentInput = document.getElementById(selectedPaymentMethod);
+        if (!paymentInput.value) {
+            alert('Please enter your payment details');
+            return;
+        }
+
+        // Validate payment format
+        if (selectedPaymentMethod === 'paypal') {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(paymentInput.value)) {
+                alert('Please enter a valid PayPal email address');
+                return;
+            }
+        } else {
+            if (paymentInput.value.length !== 10 || !/^\d{10}$/.test(paymentInput.value)) {
+                alert('Please enter a valid 10-digit mobile number');
+                return;
+            }
+        }
+
+        // Change button text
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.textContent = 'Claim Your $5';
+        submitBtn.classList.add('bg-green-600', 'hover:bg-green-700');
+        submitBtn.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-blue-700');
+
+        // Show success message after short delay
+        setTimeout(() => {
+            document.getElementById('proofForm').classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 1000);
+    });
+
+    // Add fade-in animation to sections on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+</script>
+
+</body>
+</html>
