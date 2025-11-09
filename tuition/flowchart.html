@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Patna Home Tuition Marketplace — System Flow</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#0b0e2e;
+      --grad1:#4f46e5; /* indigo-600 */
+      --grad2:#7c3aed; /* violet-600 */
+      --gold:#d4af37;
+    }
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(135deg,#1f1d47 0%,#1a1740 40%,#0f102b 100%);color:#0f172a}
+    .title-font{font-family:"Playfair Display",serif}
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.06));backdrop-filter: blur(10px);border:1px solid rgba(255,255,255,.12)}
+    .card{background:#ffffff;border-radius:18px;box-shadow:0 10px 28px rgba(3,8,20,.12)}
+    .stage{border-radius:18px;background:linear-gradient(135deg,#f8fafc,#eef2ff)}
+    .stage-badge{background:linear-gradient(135deg,#22d3ee,#818cf8);color:#fff}
+    .box{border-radius:16px;padding:16px;box-shadow:0 8px 24px rgba(2,6,23,.08);transition:transform .25s ease, box-shadow .25s ease}
+    .box:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(2,6,23,.15)}
+    .proc{background:linear-gradient(135deg,#e0f2fe,#bfdbfe);border-left:6px solid #2563eb}
+    .dec{background:linear-gradient(135deg,#fff7ed,#ffedd5);border-left:6px solid #f97316}
+    .sys{background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-left:6px solid #9333ea}
+    .safe{background:linear-gradient(135deg,#ecfccb,#d9f99d);border-left:6px solid #65a30d}
+    .moni{background:linear-gradient(135deg,#dcfce7,#bbf7d0);border-left:6px solid #16a34a}
+    .notif{background:linear-gradient(135deg,#fef9c3,#fde68a);border-left:6px solid #ca8a04}
+    .arrow{font-size:1.75rem;color:white;text-shadow:0 2px 6px rgba(0,0,0,.35);animation:pulse 1.8s infinite}
+    @keyframes pulse{0%,100%{opacity:.7}50%{opacity:1}}
+    .grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .line-v{width:2px;height:56px;background:linear-gradient(180deg,transparent,#fff,transparent);margin:0 auto;position:relative}
+    .line-v:after{content:"▼";position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);color:#fff;font-size:1rem}
+    .pin{display:inline-flex;align-items:center;gap:.5rem;background:#111827;color:#fff;padding:.35rem .65rem;border-radius:999px;border:1px solid #374151}
+    .pin span{display:inline-block;width:.5rem;height:.5rem;border-radius:999px;background:linear-gradient(135deg,#22d3ee,#818cf8)}
+    @media (max-width: 1024px){
+      .flow-row{flex-direction:column}
+      .arrow{transform:rotate(90deg);margin:.5rem 0}
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="bg-gradient-to-r from-indigo-900 to-indigo-700 text-white">
+    <div class="max-w-7xl mx-auto px-4 py-8">
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="pin mb-2"><span></span><small>Product Blueprint</small></div>
+          <h1 class="title-font text-3xl md:text-4xl font-extrabold">Patna Home Tuition Marketplace — System Flow</h1>
+          <p class="opacity-90 mt-1">Parents find verified tutors • Teachers get quality leads • Trusted, fast & local</p>
+        </div>
+        <a href="#metrics" class="hidden md:inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 transition px-4 py-2 rounded-xl border border-white/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3v18h18M7 13l3 3 7-7"/></svg>
+          <span>Key Metrics</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CANVAS -->
+  <main class="max-w-7xl mx-auto px-4 py-10">
+    <!-- STAGE 1 -->
+    <section class="stage p-5 md:p-7 mb-10">
+      <div class="stage-badge inline-flex items-center gap-2 px-4 py-2 rounded-full shadow text-sm font-semibold">
+        🚀 STAGE 1: ENTRY & ROLE SELECTION
+      </div>
+
+      <div class="mt-6 flex items-center gap-3 flow-row">
+        <div class="box proc w-full">
+          <h3 class="font-semibold text-slate-800">🌐 Landing / App Open</h3>
+          <p class="text-slate-700 text-sm">Ultra-fast load • local SEO (Patna) • clear CTAs</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="box dec w-full">
+          <h3 class="font-semibold text-slate-800">👥 Choose Role</h3>
+          <p class="text-slate-700 text-sm">Parent (Find Tutor) or Teacher (Get Students)</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="grid-auto w-full">
+          <div class="box proc"><strong>Parent</strong><p class="text-sm text-slate-700 mt-1">Search tutors / Post tuition</p></div>
+          <div class="box proc"><strong>Teacher</strong><p class="text-sm text-slate-700 mt-1">Create profile / Buy leads</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="line-v"></div>
+
+    <!-- STAGE 2 -->
+    <section class="stage p-5 md:p-7 my-10">
+      <div class="stage-badge inline-flex items-center gap-2 px-4 py-2 rounded-full shadow text-sm font-semibold">
+        📝 STAGE 2: PARENT FLOW (DEMAND)
+      </div>
+
+      <div class="mt-6 grid-auto">
+        <div class="box proc">
+          <h3 class="font-semibold">📍 Enter Requirement</h3>
+          <p class="text-sm text-slate-700">Location (Kankarbagh/Boring Road), Class, Subjects, Days, Budget</p>
+        </div>
+        <div class="box dec">
+          <h3 class="font-semibold">✅ Validate & Geo-Fence</h3>
+          <p class="text-sm text-slate-700">Auto pincode, 3–5 km radius, spam checks</p>
+        </div>
+        <div class="box sys">
+          <h3 class="font-semibold">🎯 Matching Engine</h3>
+          <p class="text-sm text-slate-700">Score by proximity, rating, relevance, response rate</p>
+        </div>
+        <div class="box proc">
+          <h3 class="font-semibold">🧑‍🏫 Browse Tutors</h3>
+          <p class="text-sm text-slate-700">Filters: Class, Fee, Gender, Mode (Home/Online)</p>
+        </div>
+        <div class="box proc">
+          <h3 class="font-semibold">⭐ Shortlist & Request</h3>
+          <p class="text-sm text-slate-700">Top 3 tutors • compare • request contact</p>
+        </div>
+        <div class="box safe">
+          <h3 class="font-semibold">🔐 Safe Connect</h3>
+          <p class="text-sm text-slate-700">Masking • WhatsApp/SMS ping • number reveal after consent</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="line-v"></div>
+
+    <!-- STAGE 3 -->
+    <section class="stage p-5 md:p-7 my-10">
+      <div class="stage-badge inline-flex items-center gap-2 px-4 py-2 rounded-full shadow text-sm font-semibold">
+        🧑‍🏫 STAGE 3: TEACHER FLOW (SUPPLY)
+      </div>
+
+      <div class="mt-6 grid-auto">
+        <div class="box proc">
+          <h3 class="font-semibold">🪪 Create Profile</h3>
+          <p class="text-sm text-slate-700">Name, Subjects, Classes, Fee range, Address radius</p>
+        </div>
+        <div class="box safe">
+          <h3 class="font-semibold">✅ KYC & Verification</h3>
+          <p class="text-sm text-slate-700">Phone OTP • ID proof • Certificate upload • Manual check</p>
+        </div>
+        <div class="box sys">
+          <h3 class="font-semibold">📬 Lead Inbox</h3>
+          <p class="text-sm text-slate-700">Real-time leads (location-matched) with student details</p>
+        </div>
+        <div class="box dec">
+          <h3 class="font-semibold">👍 Accept / ❌ Skip</h3>
+          <p class="text-sm text-slate-700">Accept uses credits; skip impacts ranking</p>
+        </div>
+        <div class="box notif">
+          <h3 class="font-semibold">🔔 WhatsApp/SMS Alerts</h3>
+          <p class="text-sm text-slate-700">Instant notification with CTA: Call / Chat / Navigate</p>
+        </div>
+        <div class="box proc">
+          <h3 class="font-semibold">📅 Demo & Start</h3>
+          <p class="text-sm text-slate-700">Confirm schedule • share location • start tuition</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="line-v"></div>
+
+    <!-- STAGE 4 -->
+    <section class="stage p-5 md:p-7 my-10">
+      <div class="stage-badge inline-flex items-center gap-2 px-4 py-2 rounded-full shadow text-sm font-semibold">
+        🤖 STAGE 4: CORE SYSTEMS
+      </div>
+
+      <div class="mt-6 grid-auto">
+        <div class="box sys">
+          <h3 class="font-semibold">🧠 Matching Engine</h3>
+          <p class="text-sm text-slate-700">Proximity, subject overlap, wallet status, response SLA</p>
+        </div>
+        <div class="box sys">
+          <h3 class="font-semibold">🧾 Lead Router</h3>
+          <p class="text-sm text-slate-700">Distribute to 3–5 best tutors • anti-spam throttling</p>
+        </div>
+        <div class="box safe">
+          <h3 class="font-semibold">🛡️ Trust & Safety</h3>
+          <p class="text-sm text-slate-700">Report/Block, audit trail, verified badge, review moderation</p>
+        </div>
+        <div class="box notif">
+          <h3 class="font-semibold">📣 Communications</h3>
+          <p class="text-sm text-slate-700">WhatsApp templates, SMS, email receipts, reminders</p>
+        </div>
+        <div class="box sys">
+          <h3 class="font-semibold">📊 Ranking & Quality</h3>
+          <p class="text-sm text-slate-700">Response time, acceptance rate, ratings → search order</p>
+        </div>
+        <div class="box safe">
+          <h3 class="font-semibold">🔒 Privacy</h3>
+          <p class="text-sm text-slate-700">Number masking, consent logs, minimal PII exposure</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="line-v"></div>
+
+    <!-- STAGE 5 -->
+    <section class="stage p-5 md:p-7 my-10">
+      <div class="stage-badge inline-flex items-center gap-2 px-4 py-2 rounded-full shadow text-sm font-semibold">
+        💰 STAGE 5: MONETIZATION
+      </div>
+
+      <div class="mt-6 grid-auto">
+        <div class="box moni">
+          <h3 class="font-semibold">💳 Lead Credits (Best to Start)</h3>
+          <p class="text-sm text-slate-700">₹30–₹150 per lead • auto-wallet with UPI</p>
+        </div>
+        <div class="box moni">
+          <h3 class="font-semibold">⭐ Featured Listing</h3>
+          <p class="text-sm text-slate-700">Top row highlight • weekly packages</p>
+        </div>
+        <div class="box moni">
+          <h3 class="font-semibold">📅 Subscription</h3>
+          <p class="text-sm text-slate-700">₹299–₹999/mo • unlimited views • discounted leads</p>
+        </div>
+        <div class="box moni">
+          <h3 class="font-semibold">🤝 Commission (Optional)</h3>
+          <p class="text-sm text-slate-700">10–20% first month fee after confirm</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="line-v"></div>
+
+    <!-- STAGE 6 -->
+    <section class="stage p-5 md:p-7 my-10">
+      <div class="stage-badge inline-flex items-center gap-2 px-4 py-2 rounded-full shadow text-sm font-semibold">
+        🧭 STAGE 6: ADMIN & ANALYTICS
+      </div>
+
+      <div class="mt-6 grid-auto">
+        <div class="box proc">
+          <h3 class="font-semibold">🗂️ Admin Console</h3>
+          <p class="text-sm text-slate-700">Tutor KYC, dispute handling, refund/credit, bans</p>
+        </div>
+        <div class="box sys">
+          <h3 class="font-semibold">📈 City Heatmaps</h3>
+          <p class="text-sm text-slate-700">Area demand/supply • CPC for featured spots</p>
+        </div>
+        <div class="box proc">
+          <h3 class="font-semibold">🧾 GST & Billing</h3>
+          <p class="text-sm text-slate-700">Auto invoices, payout ledger, reconciliations</p>
+        </div>
+        <div class="box safe">
+          <h3 class="font-semibold">⚖️ Compliance</h3>
+          <p class="text-sm text-slate-700">Consent records, data retention & export tools</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- METRICS -->
+    <section id="metrics" class="glass rounded-2xl p-6 my-12 text-white">
+      <h2 class="title-font text-2xl md:text-3xl font-bold text-center mb-4">📊 KEY BUSINESS METRICS</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="text-center bg-white/10 rounded-xl p-4">
+          <div class="text-3xl font-extrabold">3–5</div>
+          <div class="text-sm opacity-90">Leads per Parent</div>
+        </div>
+        <div class="text-center bg-white/10 rounded-xl p-4">
+          <div class="text-3xl font-extrabold">₹60–₹150</div>
+          <div class="text-sm opacity-90">Lead Price</div>
+        </div>
+        <div class="text-center bg-white/10 rounded-xl p-4">
+          <div class="text-3xl font-extrabold">< 2 min</div>
+          <div class="text-sm opacity-90">Tutor Response SLA</div>
+        </div>
+        <div class="text-center bg-white/10 rounded-xl p-4">
+          <div class="text-3xl font-extrabold">85%+</div>
+          <div class="text-sm opacity-90">Verified Profiles</div>
+        </div>
+        <div class="text-center bg-white/10 rounded-xl p-4">
+          <div class="text-3xl font-extrabold">4.7★</div>
+          <div class="text-sm opacity-90">Avg. Rating</div>
+        </div>
+        <div class="text-center bg-white/10 rounded-xl p-4">
+          <div class="text-3xl font-extrabold">30–40%</div>
+          <div class="text-sm opacity-90">Conversion (Lead→Start)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-center my-10">
+      <a href="#"
+         class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-semibold text-white shadow-lg hover:shadow-2xl transition
+                bg-gradient-to-r from-yellow-500 to-yellow-600">
+        Launch MVP Plan
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.75 3.5a.75.75 0 00-1.5 0v5.19L6.53 6.97a.75.75 0 10-1.06 1.06l3.97 3.97a.75.75 0 001.06 0l3.97-3.97a.75.75 0 10-1.06-1.06L10.75 8.69V3.5z"/><path d="M3.5 12.75a.75.75 0 000 1.5h13a.75.75 0 000-1.5h-13z"/></svg>
+      </a>
+    </section>
+  </main>
+
+  <!-- SMALL JS: collapse long sections on mobile -->
+  <script>
+    // optional: click stage badge to collapse/expand on mobile
+    document.querySelectorAll('.stage').forEach((stage)=>{
+      const badge = stage.querySelector('.stage-badge');
+      badge.classList.add('cursor-pointer');
+      badge.addEventListener('click', ()=>{
+        const kids = Array.from(stage.children).slice(1);
+        kids.forEach(k=>k.classList.toggle('hidden'));
+      });
+    });
+  </script>
+</body>
+</html>
