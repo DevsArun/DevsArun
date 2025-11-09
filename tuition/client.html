@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Premium Web Development Flow</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+  background: radial-gradient(circle at 20% 30%, #2a1f68, #0c0824 70%);
+  font-family: 'Inter', sans-serif;
+}
+.step-card{
+  backdrop-filter: blur(18px);
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 22px;
+  border-radius: 18px;
+  transition: .35s;
+}
+.step-card:hover{
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 0 25px rgba(255,215,0,0.45);
+}
+.arrow{
+  text-align:center;
+  color:#ffd54f;
+  font-size:38px;
+  animation: blink 1.5s infinite;
+}
+@keyframes blink{
+  50%{opacity:.4;}
+}
+.title-badge{
+  background: linear-gradient(135deg, #ffde4d, #ffb700);
+  color:black;
+  padding:8px 18px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:15px;
+  display:inline-block;
+}
+</style>
+</head>
+
+<body class="text-white py-14 px-4">
+
+<div class="max-w-5xl mx-auto text-center mb-14">
+  <h1 class="text-3xl md:text-4xl font-extrabold text-yellow-300 tracking-wide">
+    Website Build Roadmap (Step-by-Step)
+  </h1>
+  <p class="text-gray-300 mt-2 text-sm md:text-base">Client-friendly explanation of how we will develop your complete tutor marketplace website.</p>
+</div>
+
+<!-- STEP 1 -->
+<div class="max-w-5xl mx-auto mb-12">
+  <div class="title-badge mb-5">Step 1 — Planning Structure</div>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="step-card">✅ Decide Website Pages<br><span class="text-gray-300 text-sm">Home, Tutor Page, Parent Page, Login, Contact</span></div>
+    <div class="step-card">✅ Define Features<br><span class="text-gray-300 text-sm">Search, Registration, Lead System</span></div>
+    <div class="step-card">✅ User Flow Finalize<br><span class="text-gray-300 text-sm">Who does what & how</span></div>
+  </div>
+</div>
+
+<div class="arrow">↓</div>
+
+<!-- STEP 2 -->
+<div class="max-w-5xl mx-auto my-12">
+  <div class="title-badge mb-5">Step 2 — UI / UX Design</div>
+  <div class="grid md:grid-cols-4 gap-6">
+    <div class="step-card">🎨 Home Page Design</div>
+    <div class="step-card">👨‍🏫 Teacher Registration Page</div>
+    <div class="step-card">👪 Parent Tuition Request Page</div>
+    <div class="step-card">ℹ About + Contact Pages</div>
+  </div>
+</div>
+
+<div class="arrow">↓</div>
+
+<!-- STEP 3 -->
+<div class="max-w-5xl mx-auto my-12">
+  <div class="title-badge mb-5">Step 3 — Function Development</div>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="step-card">🗂 Teacher Database Storage</div>
+    <div class="step-card">📥 Parent Request Lead Capture</div>
+    <div class="step-card">🔍 Search System (Class, Area, Subjects)</div>
+  </div>
+</div>
+
+<div class="arrow">↓</div>
+
+<!-- STEP 4 -->
+<div class="max-w-5xl mx-auto my-12">
+  <div class="title-badge mb-5">Step 4 — Lead & Notification System</div>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="step-card">📲 WhatsApp Lead Alerts</div>
+    <div class="step-card">👨‍🏫 Teacher Dashboard (Phase 2)</div>
+    <div class="step-card">🛠 Admin Control Panel</div>
+  </div>
+</div>
+
+<div class="arrow">↓</div>
+
+<!-- STEP 5 -->
+<div class="max-w-5xl mx-auto my-12">
+  <div class="title-badge mb-5">Step 5 — Testing & Final Launch</div>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="step-card">📱 Mobile + Desktop Responsive</div>
+    <div class="step-card">⚡ Speed & SEO Optimization</div>
+    <div class="step-card">🚀 Website Goes Live</div>
+  </div>
+</div>
+
+</body>
+</html>
