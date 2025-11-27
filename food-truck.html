@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Street Ember Kitchen — Award-Winning Gourmet Food Truck | NYC</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <style>
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    html, body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      background: #0F0F0F;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #FFFFFF;
+      position: relative;
+    }
+    
+    h1, h2, h3 { 
+      font-family: 'Space Grotesk', sans-serif; 
+      font-weight: 700; 
+    }
+    
+    /* GLASSMORPHISM */
+    .glass-ultra {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(60px) saturate(200%);
+      -webkit-backdrop-filter: blur(60px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(40px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+    
+    /* PARTICLES */
+    @keyframes float-particle {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 0.8; }
+      100% { transform: translate(200px, -120vh) rotate(360deg); opacity: 0; }
+    }
+    
+    .particle {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle, rgba(255, 69, 0, 0.8), transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      animation: float-particle 25s infinite;
+    }
+    
+    .particle:nth-child(1) { left: 5%; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 15%; animation-delay: 5s; }
+    .particle:nth-child(3) { left: 25%; animation-delay: 10s; }
+    .particle:nth-child(4) { left: 35%; animation-delay: 15s; }
+    .particle:nth-child(5) { left: 45%; animation-delay: 20s; }
+    .particle:nth-child(6) { left: 55%; animation-delay: 3s; }
+    .particle:nth-child(7) { left: 65%; animation-delay: 8s; }
+    .particle:nth-child(8) { left: 75%; animation-delay: 13s; }
+    .particle:nth-child(9) { left: 85%; animation-delay: 18s; }
+    .particle:nth-child(10) { left: 95%; animation-delay: 23s; }
+    
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      padding: 0.8rem 2rem;
+      border-radius: 100px;
+      transition: all 0.5s;
+      width: 95%;
+      max-width: 1400px;
+    }
+    
+    nav.scrolled {
+      padding: 0.6rem 1.5rem;
+      background: rgba(15, 15, 15, 0.98);
+      box-shadow: 0 20px 60px rgba(255, 69, 0, 0.5);
+    }
+    
+    /* MOBILE MENU */
+    #menuOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s;
+    }
+    
+    #menuOverlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    #mobileMenu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 85%;
+      max-width: 320px;
+      background: rgba(15, 15, 15, 0.98);
+      backdrop-filter: blur(60px);
+      border-left: 2px solid rgba(255, 69, 0, 0.3);
+      box-shadow: -10px 0 50px rgba(0, 0, 0, 0.8);
+      z-index: 1001;
+      transform: translateX(100%);
+      transition: transform 0.5s;
+      overflow-y: auto;
+    }
+    
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 120px 20px 80px;
+      width: 100%;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: 
+        linear-gradient(135deg, rgba(15,15,15,0.75) 0%, rgba(255,69,0,0.15) 50%, rgba(15,15,15,0.8) 100%),
+        url('https://images.unsplash.com/photo-1565123409695-7b5ef1b06d87?w=1920&q=95');
+      background-size: cover;
+      background-position: center;
+      animation: hero-zoom 35s ease-in-out infinite alternate;
+    }
+    
+    @keyframes hero-zoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.12); }
+    }
+    
+    .hero-truck {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 800px;
+      opacity: 0.25;
+      z-index: 5;
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1200px;
+    }
+    
+    /* GRADIENT TEXT */
+    .gradient-text {
+      background: linear-gradient(135deg, #FF4500 0%, #FFA500 40%, #FF69B4 70%, #FF4500 100%);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient-flow 12s ease infinite;
+    }
+    
+    @keyframes gradient-flow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    /* TRUCK BADGE */
+    .truck-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, rgba(255, 69, 0, 0.3), rgba(255, 165, 0, 0.2));
+      border: 2px solid rgba(255, 69, 0, 0.6);
+      border-radius: 100px;
+      font-weight: 800;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 30px rgba(255, 69, 0, 0.5); }
+      50% { box-shadow: 0 0 60px rgba(255, 69, 0, 0.8); }
+    }
+    
+    /* BUTTONS */
+    .btn-primary {
+      background: linear-gradient(135deg, #FF4500, #FFA500);
+      padding: 1.2rem 3rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s;
+      box-shadow: 0 0 60px rgba(255, 69, 0, 0.8);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+      text-decoration: none;
+      text-align: center;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 0 100px rgba(255, 69, 0, 1);
+    }
+    
+    .btn-secondary {
+      padding: 1.2rem 3rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.4s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+      text-decoration: none;
+      text-align: center;
+      background: transparent;
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #FF4500;
+      transform: translateY(-4px);
+    }
+    
+    /* MENU CARDS 3D */
+    .menu-3d {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+      perspective: 1500px;
+    }
+    
+    .menu-3d:hover {
+      transform: translateY(-30px) rotateX(12deg) rotateY(5deg) scale(1.05);
+      box-shadow: 0 60px 120px rgba(255, 69, 0, 0.6);
+    }
+    
+    .menu-3d img {
+      transition: transform 0.8s;
+    }
+    
+    .menu-3d:hover img {
+      transform: scale(1.2);
+    }
+    
+    /* STATS */
+    .stat-box {
+      padding: 3rem 2rem;
+      border-radius: 32px;
+      backdrop-filter: blur(40px);
+      border: 3px solid rgba(255, 69, 0, 0.4);
+      transition: all 0.6s;
+    }
+    
+    .stat-box:hover {
+      border-color: rgba(255, 69, 0, 0.9);
+      box-shadow: 0 0 80px rgba(255, 69, 0, 0.5);
+      transform: translateY(-15px) scale(1.05);
+    }
+    
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+      padding-left: 4rem;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(180deg, #FF4500 0%, rgba(255, 69, 0, 0.2) 100%);
+      border-radius: 10px;
+    }
+    
+    .timeline-card {
+      position: relative;
+      margin-bottom: 3rem;
+      padding: 2.5rem;
+      border-radius: 28px;
+      backdrop-filter: blur(30px);
+      border-left: 6px solid #FF4500;
+      transition: all 0.5s;
+    }
+    
+    .timeline-card:hover {
+      background: rgba(255, 69, 0, 0.12);
+      transform: translateX(25px);
+      box-shadow: 0 30px 60px rgba(255, 69, 0, 0.4);
+    }
+    
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      left: -4.5rem;
+      top: 50%;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #FF4500;
+      border: 5px solid #0F0F0F;
+      box-shadow: 0 0 40px #FF4500;
+      transform: translateY(-50%);
+    }
+    
+    /* GALLERY */
+    .gallery-masonry {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .gallery-photo {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.7s;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .gallery-photo:hover {
+      transform: scale(1.1) rotate(-4deg);
+      box-shadow: 0 50px 100px rgba(255, 69, 0, 0.7);
+      border-color: #FF4500;
+    }
+    
+    .gallery-photo img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: transform 0.7s;
+    }
+    
+    .gallery-photo:hover img {
+      transform: scale(1.25);
+    }
+    
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .lightbox.active {
+      display: flex;
+    }
+    
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: 20px;
+      box-shadow: 0 0 100px rgba(255, 69, 0, 0.8);
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 69, 0, 0.9);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    
+    .lightbox-close:hover {
+      transform: rotate(90deg) scale(1.1);
+      background: #FF4500;
+    }
+    
+    /* TESTIMONIALS */
+    .testimonial {
+      padding: 3rem;
+      border-radius: 32px;
+      backdrop-filter: blur(35px);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: -30px;
+      left: 30px;
+      font-size: 200px;
+      opacity: 0.06;
+      color: #FF4500;
+    }
+    
+    /* TEAM */
+    .team-member {
+      border-radius: 32px;
+      overflow: hidden;
+      transition: all 0.7s;
+    }
+    
+    .team-member:hover {
+      transform: translateY(-20px) scale(1.03);
+      box-shadow: 0 50px 100px rgba(255, 69, 0, 0.5);
+    }
+    
+    .team-member img {
+      transition: transform 0.7s;
+    }
+    
+    .team-member:hover img {
+      transform: scale(1.2);
+    }
+    
+    /* PRICING */
+    .price-card {
+      padding: 3.5rem 2.5rem;
+      border-radius: 36px;
+      backdrop-filter: blur(35px);
+      border: 3px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.7s;
+    }
+    
+    .price-card:hover {
+      border-color: #FF4500;
+      transform: translateY(-20px) scale(1.03);
+      box-shadow: 0 50px 100px rgba(255, 69, 0, 0.5);
+    }
+    
+    .price-featured {
+      background: linear-gradient(135deg, rgba(255, 69, 0, 0.25), rgba(255, 165, 0, 0.2));
+      border-color: #FF4500;
+      border-width: 4px;
+      transform: scale(1.08);
+    }
+    
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 0.7rem 1rem; width: 96%; }
+      .hero { padding: 100px 15px 60px; }
+      h1 { font-size: 2.5rem !important; }
+      .btn-primary, .btn-secondary { padding: 1rem 2rem; font-size: 0.95rem; }
+      .timeline { padding-left: 2.5rem; }
+      .gallery-photo img { height: 300px; }
+      .truck-badge { padding: 0.8rem 1.5rem; font-size: 0.85rem; }
+      .hero-truck { max-width: 500px; }
+    }
+    
+    /* SCROLL ARROW */
+    .scroll-arrow {
+      margin-top: 60px;
+      animation: bounce-arrow 3s infinite;
+    }
+    
+    @keyframes bounce-arrow {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-30px); }
+      60% { transform: translateY(-15px); }
+    }
+    
+    /* LOADING */
+    .loader-screen {
+      position: fixed;
+      inset: 0;
+      background: #0F0F0F;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.7s;
+    }
+    
+    .loader-truck {
+      font-size: 80px;
+      animation: truck-drive 2s ease-in-out infinite;
+    }
+    
+    @keyframes truck-drive {
+      0%, 100% { transform: translateX(-20px); }
+      50% { transform: translateX(20px); }
+    }
+    
+    .loader-text {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-top: 2rem;
+      background: linear-gradient(135deg, #FF4500, #FFA500);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    /* BADGE */
+    .badge-premium {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      background: linear-gradient(135deg, rgba(255, 69, 0, 0.25), rgba(255, 165, 0, 0.2));
+      border: 2px solid rgba(255, 69, 0, 0.5);
+      border-radius: 100px;
+      font-weight: 800;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #FF4500;
+    }
+    
+    /* INPUT */
+    .input-glass {
+      background: rgba(255, 255, 255, 0.06);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 1.2rem 1.8rem;
+      color: white;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      width: 100%;
+    }
+    
+    .input-glass:focus {
+      outline: none;
+      border-color: #FF4500;
+      box-shadow: 0 0 40px rgba(255, 69, 0, 0.4);
+    }
+    
+    .input-glass option {
+      background: #0F0F0F;
+      color: white;
+    }
+    
+    /* FOOTER */
+    .footer-premium {
+      background: linear-gradient(180deg, rgba(255, 69, 0, 0.05) 0%, rgba(15, 15, 15, 1) 100%);
+      border-top: 2px solid rgba(255, 69, 0, 0.3);
+    }
+    /* LIGHTBOX - PROPER SPACING FROM NAVBAR */
+.lightbox {
+  position: fixed !important;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.97) !important;
+  z-index: 99999 !important;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 20px 20px 20px !important; /* Top padding for navbar */
+}
+
+.lightbox.active {
+  display: flex !important;
+}
+
+.lightbox img {
+  max-width: 95%;
+  max-height: calc(100vh - 160px) !important; /* Height minus navbar space */
+  width: auto;
+  border-radius: 24px;
+  box-shadow: 0 0 120px rgba(255, 69, 0, 0.9);
+  position: relative;
+  z-index: 99999;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: fixed !important;
+  top: 100px !important; /* Navbar ke neeche */
+  right: 30px !important;
+  width: 70px !important;
+  height: 70px !important;
+  background: linear-gradient(135deg, #FF4500, #FFA500) !important;
+  border: 4px solid rgba(255, 255, 255, 0.6) !important;
+  border-radius: 50% !important;
+  color: white !important;
+  font-size: 42px !important;
+  font-weight: 900 !important;
+  cursor: pointer !important;
+  transition: all 0.3s !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 100000 !important;
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.9) !important;
+  line-height: 1 !important;
+}
+
+.lightbox-close:hover {
+  transform: rotate(90deg) scale(1.25) !important;
+  background: linear-gradient(135deg, #FFA500, #FF4500) !important;
+  box-shadow: 0 0 100px rgba(255, 69, 0, 1) !important;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .lightbox {
+    padding: 100px 15px 15px 15px !important;
+  }
+  
+  .lightbox img {
+    max-width: 100%;
+    max-height: calc(100vh - 140px) !important;
+  }
+  
+  .lightbox-close {
+    width: 60px !important;
+    height: 60px !important;
+    font-size: 36px !important;
+    top: 80px !important;
+    right: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .lightbox {
+    padding: 90px 10px 10px 10px !important;
+  }
+  
+  .lightbox-close {
+    width: 55px !important;
+    height: 55px !important;
+    font-size: 32px !important;
+    top: 75px !important;
+    right: 15px !important;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- LOADING -->
+  <div class="loader-screen" id="loader">
+    <div class="loader-truck">🚚</div>
+    <div class="loader-text">STREET EMBER KITCHEN</div>
+  </div>
+
+  <!-- PARTICLES -->
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+
+  <!-- NAVBAR -->
+  <nav class="glass-ultra" id="navbar">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="text-4xl">🚚</div>
+        <div>
+          <div class="font-black text-base md:text-xl tracking-tight">STREET EMBER</div>
+          <div class="text-[0.6rem] text-orange-500 font-bold uppercase tracking-wider">Food Truck • NYC</div>
+        </div>
+      </div>
+      <div class="hidden lg:flex gap-6 text-xs font-bold tracking-widest uppercase">
+        <a href="#about" class="hover:text-orange-500 transition">About</a>
+        <a href="#menu" class="hover:text-orange-500 transition">Menu</a>
+        <a href="#location" class="hover:text-orange-500 transition">Find Us</a>
+        <a href="#pricing" class="hover:text-orange-500 transition">Catering</a>
+        <a href="#team" class="hover:text-orange-500 transition">Team</a>
+        <a href="#gallery" class="hover:text-orange-500 transition">Gallery</a>
+        <a href="#contact" class="hover:text-orange-500 transition">Contact</a>
+      </div>
+      <button id="menuBtn" class="lg:hidden text-3xl">☰</button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div id="menuOverlay"></div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu" class="p-8">
+    <button id="closeMenu" class="absolute top-6 right-6 text-4xl hover:rotate-90 transition">&times;</button>
+    <div class="flex flex-col gap-6 mt-20 text-lg font-bold uppercase">
+      <a href="#about" class="hover:text-orange-500 transition mobile-link">About</a>
+      <a href="#menu" class="hover:text-orange-500 transition mobile-link">Menu</a>
+      <a href="#location" class="hover:text-orange-500 transition mobile-link">Find Us</a>
+      <a href="#pricing" class="hover:text-orange-500 transition mobile-link">Catering</a>
+      <a href="#team" class="hover:text-orange-500 transition mobile-link">Team</a>
+      <a href="#gallery" class="hover:text-orange-500 transition mobile-link">Gallery</a>
+      <a href="#contact" class="hover:text-orange-500 transition mobile-link">Contact</a>
+    </div>
+  </div>
+
+  <main class="relative z-10">
+    <!-- HERO -->
+   <!-- HERO - FULL SCREEN FOOD TRUCK -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  
+  <!-- FULL SCREEN FOOD TRUCK IMAGE -->
+  <div class="hero-truck-fullscreen"></div>
+  
+  <div class="hero-content text-center max-w-6xl mx-auto">
+    <div class="truck-badge mb-10" data-aos="fade-down">
+      <span class="text-3xl">🚚</span>
+      <span>AWARD-WINNING FOOD TRUCK</span>
+    </div>
+    
+    <h1 class="text-5xl md:text-8xl font-black mb-8 leading-none" data-aos="fade-up" data-aos-delay="200">
+      GOURMET FOOD<br>
+      <span class="gradient-text">ON WHEELS</span>
+    </h1>
+    
+    <p class="text-xl md:text-3xl text-gray-200 mb-6 font-light leading-relaxed max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+      New York's #1 <span class="text-orange-500 font-bold">Michelin-Quality</span> Street Food Experience
+    </p>
+    
+    <p class="text-base md:text-xl text-gray-400 mb-12" data-aos="fade-up" data-aos-delay="500">
+      🏆 2024 Food Truck Awards Winner • Featured in NY Times • 50,000+ Happy Customers
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-6 justify-center" data-aos="fade-up" data-aos-delay="600">
+      <a href="#menu" class="btn-primary">🍔 View Menu</a>
+      <a href="#location" class="btn-secondary glass-ultra">📍 Track Our Truck</a>
+    </div>
+    
+    <div class="scroll-arrow">
+      <svg class="w-12 h-12 text-orange-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </div>
+</section>
+<style>
+ /* HERO - MUCH DARKER BACKGROUND OVERLAY */
+.hero-truck-fullscreen {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(135deg, rgba(0,0,0,0.70) 0%, rgba(15,15,15,0.65) 50%, rgba(0,0,0,0.75) 100%),
+    url('https://images.unsplash.com/photo-1620589125156-fd5028c5e05b?q=80&w=1920&auto=format&fit=crop') center/cover;
+  z-index: 3;
+  animation: truck-zoom 40s ease-in-out infinite alternate;
+}
+
+/* Additional dark overlay layer */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 4;
+}
+
+/* Content above overlays */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  padding-top: 40px;
+}
+
+/* Text shadow for extra clarity (text color same rahega) */
+.hero-content h1,
+.hero-content p {
+  text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.9);
+}
+
+</style>
+
+    <!-- STATS - MOBILE FIXED -->
+<section class="py-12 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6" data-aos="fade-up">
+      <div class="stat-box glass-card text-center">
+        <div class="text-4xl md:text-6xl font-black gradient-text mb-2">50K+</div>
+        <div class="text-xs md:text-base font-bold text-gray-400 uppercase leading-tight">Happy Customers</div>
+      </div>
+      <div class="stat-box glass-card text-center">
+        <div class="text-4xl md:text-6xl font-black gradient-text mb-2">15+</div>
+        <div class="text-xs md:text-base font-bold text-gray-400 uppercase leading-tight">Awards Won</div>
+      </div>
+      <div class="stat-box glass-card text-center">
+        <div class="text-4xl md:text-6xl font-black gradient-text mb-2">100%</div>
+        <div class="text-xs md:text-base font-bold text-gray-400 uppercase leading-tight">Organic</div>
+      </div>
+      <div class="stat-box glass-card text-center">
+        <div class="text-4xl md:text-6xl font-black gradient-text mb-2">4.9★</div>
+        <div class="text-xs md:text-base font-bold text-gray-400 uppercase leading-tight">Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  /* STATS - MOBILE FIX */
+.stat-box {
+  padding: 2rem 1rem;
+  border-radius: 24px;
+  backdrop-filter: blur(40px);
+  border: 3px solid rgba(255, 69, 0, 0.4);
+  transition: all 0.6s;
+}
+
+@media (max-width: 768px) {
+  .stat-box {
+    padding: 1.5rem 0.75rem;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 69, 0, 0.4);
+  }
+  
+  .stat-box:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+.stat-box:hover {
+  border-color: rgba(255, 69, 0, 0.9);
+  box-shadow: 0 0 80px rgba(255, 69, 0, 0.5);
+  transform: translateY(-15px) scale(1.05);
+}
+
+</style>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-20 md:py-32 px-4">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div data-aos="fade-right">
+          <div class="badge-premium mb-6">
+            <span>🏆</span>
+            <span>Award-Winning Excellence</span>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+            New York's First<br>
+            <span class="gradient-text">Michelin-Grade</span><br>
+            Food Truck
+          </h2>
+          <p class="text-lg md:text-xl text-gray-300 mb-6 leading-relaxed">
+            Founded by <span class="text-white font-bold">Chef Rohan Mehra</span> (Michelin-trained, 15+ years), Street Ember Kitchen revolutionized NYC's street food scene in 2020.
+          </p>
+          <p class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
+            Every dish is chef-crafted using 100% organic, locally-sourced ingredients from Hudson Valley farms.
+          </p>
+          <div class="flex flex-wrap gap-4 mb-8">
+            <div class="glass-card px-5 py-3 rounded-2xl">
+              <div class="text-2xl mb-1">🌱</div>
+              <div class="font-bold text-sm">100% Organic</div>
+            </div>
+            <div class="glass-card px-5 py-3 rounded-2xl">
+              <div class="text-2xl mb-1">👨‍🍳</div>
+              <div class="font-bold text-sm">Michelin Chefs</div>
+            </div>
+            <div class="glass-card px-5 py-3 rounded-2xl">
+              <div class="text-2xl mb-1">⚡</div>
+              <div class="font-bold text-sm">Fast Service</div>
+            </div>
+          </div>
+          <a href="#menu" class="btn-primary">Explore Story</a>
+        </div>
+        
+        <div class="relative" data-aos="fade-left">
+          <div class="glass-card p-8 rounded-[40px]">
+            <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=95" 
+                 alt="Chef preparing gourmet food" 
+                 class="rounded-[32px] w-full shadow-2xl">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu" class="py-20 md:py-32 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20" data-aos="fade-up">
+          <div class="badge-premium mb-6 mx-auto">
+            <span>🍽️</span>
+            <span>Signature Collection</span>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-black mb-8">
+            Chef's<br>
+            <span class="gradient-text">Masterpieces</span>
+          </h2>
+          <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+            Every dish is a work of art—Michelin-quality meets street food soul
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-10">
+          <div class="menu-3d glass-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="overflow-hidden rounded-t-[32px] relative">
+              <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=90" alt="Wagyu Brisket Tacos" class="w-full h-72 object-cover">
+              <div class="absolute top-4 right-4 badge-premium text-xs">🔥 SIGNATURE</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold mb-3">Wagyu Brisket Tacos</h3>
+              <p class="text-gray-400 mb-4 leading-relaxed">12-hour smoked Japanese Wagyu, chipotle-mango salsa</p>
+              <div class="flex justify-between items-center">
+                <span class="text-3xl font-black gradient-text">$18</span>
+                <button class="glass-card px-6 py-3 rounded-full text-sm font-bold hover:bg-orange-500 hover:text-white transition">ADD</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="menu-3d glass-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="overflow-hidden rounded-t-[32px] relative">
+              <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=90" alt="Truffle Mushroom Burger" class="w-full h-72 object-cover">
+              <div class="absolute top-4 right-4 badge-premium text-xs">⭐ BESTSELLER</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold mb-3">Truffle Mushroom Burger</h3>
+              <p class="text-gray-400 mb-4 leading-relaxed">Wild mushrooms, black truffle aioli, aged cheddar</p>
+              <div class="flex justify-between items-center">
+                <span class="text-3xl font-black gradient-text">$22</span>
+                <button class="glass-card px-6 py-3 rounded-full text-sm font-bold hover:bg-orange-500 hover:text-white transition">ADD</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="menu-3d glass-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="overflow-hidden rounded-t-[32px] relative">
+              <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=90" alt="Buddha Bowl" class="w-full h-72 object-cover">
+              <div class="absolute top-4 right-4 badge-premium text-xs">🌱 VEGAN</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold mb-3">Buddha Bowl Deluxe</h3>
+              <p class="text-gray-400 mb-4 leading-relaxed">Organic quinoa, roasted vegetables, tahini dressing</p>
+              <div class="flex justify-between items-center">
+                <span class="text-3xl font-black gradient-text">$16</span>
+                <button class="glass-card px-6 py-3 rounded-full text-sm font-bold hover:bg-orange-500 hover:text-white transition">ADD</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-16" data-aos="fade-up">
+          <a href="#" class="btn-primary">View Full Menu (30+ Dishes)</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section id="location" class="py-20 md:py-32 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20" data-aos="fade-up">
+          <div class="badge-premium mb-6 mx-auto">
+            <span>📍</span>
+            <span>Live GPS Tracking</span>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-black mb-8">
+            <span class="gradient-text">Find</span> Our Truck
+          </h2>
+          <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+            Track us in real-time • Pre-order online • Skip the queue
+          </p>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-16">
+          <div class="timeline" data-aos="fade-right">
+            <div class="timeline-card glass-card">
+              <div class="flex justify-between items-start mb-3">
+                <div>
+                  <div class="font-black text-2xl gradient-text mb-2">MONDAY</div>
+                  <div class="font-bold text-lg">Manhattan - Financial District</div>
+                  <div class="text-gray-400 text-sm">Wall St & Broadway</div>
+                </div>
+                <div class="badge-premium text-xs">TODAY</div>
+              </div>
+              <div class="text-orange-500 font-bold text-lg">🕐 11:00 AM - 2:30 PM</div>
+            </div>
+            
+            <div class="timeline-card glass-card">
+              <div>
+                <div class="font-black text-2xl gradient-text mb-2">TUESDAY</div>
+                <div class="font-bold text-lg">Brooklyn - Tech Hub</div>
+                <div class="text-gray-400 text-sm">Dumbo, Brooklyn Bridge Park</div>
+              </div>
+              <div class="text-orange-500 font-bold text-lg mt-3">🕐 11:30 AM - 2:00 PM</div>
+            </div>
+            
+            <div class="timeline-card glass-card">
+              <div>
+                <div class="font-black text-2xl gradient-text mb-2">FRIDAY</div>
+                <div class="font-bold text-lg">Midtown Manhattan</div>
+                <div class="text-gray-400 text-sm">Bryant Park Area</div>
+              </div>
+              <div class="text-orange-500 font-bold text-lg mt-3">🕐 11:30 AM - 8:00 PM</div>
+            </div>
+          </div>
+          
+          <div class="glass-card p-8 rounded-[40px] h-[600px]" data-aos="fade-left">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976383964465!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1234567890"
+              class="w-full h-full rounded-[32px]"
+              loading="lazy"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="py-20 md:py-32 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20" data-aos="fade-up">
+          <div class="badge-premium mb-6 mx-auto">
+            <span>🎉</span>
+            <span>Catering Packages</span>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-black mb-8">
+            <span class="gradient-text">Elevate</span> Your Event
+          </h2>
+          <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+            Corporate • Weddings • Private Parties • Film Shoots
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="price-card glass-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="text-center mb-8">
+              <div class="text-4xl mb-4">🌟</div>
+              <h3 class="text-2xl font-bold mb-3">STARTER</h3>
+              <div class="text-5xl font-black gradient-text mb-2">$499</div>
+              <p class="text-gray-400">Up to 25 guests</p>
+            </div>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl">✓</span>
+                <span>3 signature dishes</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl">✓</span>
+                <span>2-hour service</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl">✓</span>
+                <span>Basic setup</span>
+              </li>
+            </ul>
+            <button class="w-full glass-card py-4 rounded-full font-bold hover:bg-orange-500 hover:text-white transition">Select</button>
+          </div>
+          
+          <div class="price-card price-featured" data-aos="fade-up" data-aos-delay="200">
+            <div class="absolute top-6 right-6 badge-premium text-xs">POPULAR</div>
+            <div class="text-center mb-8">
+              <div class="text-4xl mb-4">🏆</div>
+              <h3 class="text-2xl font-bold mb-3">PRO</h3>
+              <div class="text-5xl font-black gradient-text mb-2">$1,299</div>
+              <p class="text-gray-300 font-semibold">Up to 75 guests</p>
+            </div>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl">✓</span>
+                <span>5 premium dishes</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl">✓</span>
+                <span>4-hour full service</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl">✓</span>
+                <span>Custom branding</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl">✓</span>
+                <span>Professional staff</span>
+              </li>
+            </ul>
+            <button class="w-full btn-primary">Select</button>
+          </div>
+          
+          <div class="price-card glass-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="text-center mb-8">
+              <div class="text-4xl mb-4">💎</div>
+              <h3 class="text-2xl font-bold mb-3">ELITE</h3>
+              <div class="text-5xl font-black gradient-text mb-2">$2,999</div>
+              <p class="text-gray-400">Up to 150 guests</p>
+            </div>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl">✓</span>
+                <span>Unlimited menu</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl">✓</span>
+                <span>All-day service</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl">✓</span>
+                <span>Full event management</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-orange-500 text-xl">✓</span>
+                <span>Premium tableware</span>
+              </li>
+            </ul>
+            <button class="w-full glass-card py-4 rounded-full font-bold hover:bg-orange-500 hover:text-white transition">Select</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team" class="py-20 md:py-32 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20" data-aos="fade-up">
+          <div class="badge-premium mb-6 mx-auto">
+            <span>👨‍🍳</span>
+            <span>Our Team</span>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-black mb-8">
+            <span class="gradient-text">Master</span> Chefs
+          </h2>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-10">
+          <div class="team-member glass-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="overflow-hidden rounded-t-[32px]">
+              <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=600&q=90" alt="Chef Rohan" class="w-full h-80 object-cover">
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold mb-2">Chef Rohan Mehra</h3>
+              <p class="text-orange-500 font-bold mb-3">Founder & Head Chef</p>
+              <p class="text-gray-400 leading-relaxed">Michelin-trained at Noma. 15+ years experience.</p>
+            </div>
+          </div>
+          
+          <div class="team-member glass-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="overflow-hidden rounded-t-[32px]">
+              <img src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?w=600&q=90" alt="Chef Priya" class="w-full h-80 object-cover">
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold mb-2">Chef Priya Singh</h3>
+              <p class="text-orange-500 font-bold mb-3">Sous Chef</p>
+              <p class="text-gray-400 leading-relaxed">Le Cordon Bleu Paris graduate. Fusion specialist.</p>
+            </div>
+          </div>
+          
+          <div class="team-member glass-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="overflow-hidden rounded-t-[32px]">
+              <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&q=90" alt="Chef Arjun" class="w-full h-80 object-cover">
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold mb-2">Chef Arjun Patel</h3>
+              <p class="text-orange-500 font-bold mb-3">Pastry Chef</p>
+              <p class="text-gray-400 leading-relaxed">3x winner USA Dessert Competition.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="py-20 md:py-32 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20" data-aos="fade-up">
+          <div class="badge-premium mb-6 mx-auto">
+            <span>📸</span>
+            <span>Visual Feast</span>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-black mb-8">
+            <span class="gradient-text">Gallery</span>
+          </h2>
+        </div>
+        
+        <div class="gallery-masonry">
+          <div class="gallery-photo glass-card" data-aos="zoom-in" data-aos-delay="100" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=90" alt="Food truck exterior">
+          </div>
+          <div class="gallery-photo glass-card" data-aos="zoom-in" data-aos-delay="200" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=600&q=90" alt="Gourmet dish">
+          </div>
+          <div class="gallery-photo glass-card" data-aos="zoom-in" data-aos-delay="300" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=600&q=90" alt="Tacos">
+          </div>
+          <div class="gallery-photo glass-card" data-aos="zoom-in" data-aos-delay="400" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&q=90" alt="Bowl dish">
+          </div>
+          <div class="gallery-photo glass-card" data-aos="zoom-in" data-aos-delay="500" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1612208176815-e132bcf971b0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sandwich">
+          </div>
+          <div class="gallery-photo glass-card" data-aos="zoom-in" data-aos-delay="600" onclick="openLightbox(this)">
+            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=90" alt="Salad">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <img id="lightboxImg" src="" alt="Gallery image">
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-20 md:py-32 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20" data-aos="fade-up">
+          <div class="badge-premium mb-6 mx-auto">
+            <span>⭐</span>
+            <span>Reviews</span>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-black mb-8">
+            What <span class="gradient-text">People</span> Say
+          </h2>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-10">
+          <div class="testimonial glass-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center gap-4 mb-6">
+              <img src="https://i.pravatar.cc/100?img=1" alt="Customer" class="w-16 h-16 rounded-full border-4 border-orange-500">
+              <div>
+                <div class="font-bold text-lg">Sarah Johnson</div>
+                <div class="text-orange-500 text-xl">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-gray-300 italic leading-relaxed text-lg">"Best food truck in NYC! The truffle burger is absolutely life-changing."</p>
+          </div>
+          
+          <div class="testimonial glass-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center gap-4 mb-6">
+              <img src="https://i.pravatar.cc/100?img=12" alt="Customer" class="w-16 h-16 rounded-full border-4 border-orange-500">
+              <div>
+                <div class="font-bold text-lg">Michael Chen</div>
+                <div class="text-orange-500 text-xl">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-gray-300 italic leading-relaxed text-lg">"Michelin-quality street food. Chef Rohan is a genius. Worth every penny!"</p>
+          </div>
+          
+          <div class="testimonial glass-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="flex items-center gap-4 mb-6">
+              <img src="https://i.pravatar.cc/100?img=5" alt="Customer" class="w-16 h-16 rounded-full border-4 border-orange-500">
+              <div>
+                <div class="font-bold text-lg">Emily Rodriguez</div>
+                <div class="text-orange-500 text-xl">★★★★★</div>
+              </div>
+            </div>
+            <p class="text-gray-300 italic leading-relaxed text-lg">"Their vegan Buddha Bowl is my weekly ritual. Fresh, bold, Instagram-perfect!"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 md:py-32 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-4xl md:text-6xl font-black mb-8">
+            <span class="gradient-text">Get</span> In Touch
+          </h2>
+          <p class="text-xl text-gray-300">Questions? Catering inquiry? We'd love to hear from you!</p>
+        </div>
+        
+        <div class="glass-card p-10 md:p-16 rounded-[40px]" data-aos="fade-up" data-aos-delay="200">
+          <div class="grid md:grid-cols-2 gap-12 mb-12">
+            <div>
+              <h3 class="text-2xl font-bold mb-8">Contact Info</h3>
+              <div class="space-y-6 mb-8">
+                <div class="flex items-start gap-4">
+                  <span class="text-4xl">📍</span>
+                  <div>
+                    <div class="font-bold text-lg mb-1">Location</div>
+                    <div class="text-gray-400">New York City, USA</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <span class="text-4xl">📞</span>
+                  <div>
+                    <div class="font-bold text-lg mb-1">Phone</div>
+                    <a href="tel:+12125551234" class="text-orange-500 hover:underline">+1 (212) 555-1234</a>
+                  </div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <span class="text-4xl">✉️</span>
+                  <div>
+                    <div class="font-bold text-lg mb-1">Email</div>
+                    <a href="mailto:hello@streetember.com" class="text-orange-500 hover:underline">hello@streetember.com</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <h4 class="font-bold text-lg mb-4">Follow Us</h4>
+                <div class="flex gap-4">
+                  <a href="https://facebook.com" target="_blank" class="w-14 h-14 glass-card rounded-full flex items-center justify-center hover:bg-orange-500 transition text-2xl">📘</a>
+                  <a href="https://instagram.com" target="_blank" class="w-14 h-14 glass-card rounded-full flex items-center justify-center hover:bg-orange-500 transition text-2xl">📷</a>
+                  <a href="https://twitter.com" target="_blank" class="w-14 h-14 glass-card rounded-full flex items-center justify-center hover:bg-orange-500 transition text-2xl">🐦</a>
+                  <a href="https://tiktok.com" target="_blank" class="w-14 h-14 glass-card rounded-full flex items-center justify-center hover:bg-orange-500 transition text-2xl">🎵</a>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="text-2xl font-bold mb-8">Send Message via WhatsApp</h3>
+              <form id="contactForm" class="space-y-5">
+                <input type="text" id="name" placeholder="Full Name *" required class="input-glass">
+                <input type="email" id="email" placeholder="Email Address *" required class="input-glass">
+                <input type="tel" id="phone" placeholder="Phone Number *" required class="input-glass">
+                <select id="eventType" required class="input-glass">
+                  <option value="">Event Type *</option>
+                  <option value="Corporate Event">Corporate Event</option>
+                  <option value="Wedding">Wedding</option>
+                  <option value="Private Party">Private Party</option>
+                  <option value="Film Shoot">Film Shoot</option>
+                  <option value="Other">Other</option>
+                </select>
+                <input type="number" id="guests" placeholder="Number of Guests *" required min="10" class="input-glass">
+                <input type="date" id="eventDate" required class="input-glass">
+                <textarea id="message" placeholder="Additional Details *" rows="4" required class="input-glass"></textarea>
+                <button type="submit" class="btn-primary w-full">📱 Send via WhatsApp</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-premium py-20 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-4 gap-12 mb-16">
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="text-5xl">🚚</div>
+              <div>
+                <div class="font-black text-2xl">STREET EMBER</div>
+                <div class="text-xs text-orange-500 font-bold">FOOD TRUCK • NYC</div>
+              </div>
+            </div>
+            <p class="text-gray-400 leading-relaxed mb-6">New York's #1 Michelin-quality food truck delivering gourmet street food excellence since 2020.</p>
+            <div class="flex gap-4">
+              <a href="#" class="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-orange-500 transition text-xl">📘</a>
+              <a href="#" class="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-orange-500 transition text-xl">📷</a>
+              <a href="#" class="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-orange-500 transition text-xl">🐦</a>
+              <a href="#" class="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:bg-orange-500 transition text-xl">🎵</a>
+            </div>
+          </div>
+          
+          <div>
+            <h4 class="font-bold text-xl mb-6">Quick Links</h4>
+            <ul class="space-y-3">
+              <li><a href="#about" class="text-gray-400 hover:text-orange-500 transition">About Us</a></li>
+              <li><a href="#menu" class="text-gray-400 hover:text-orange-500 transition">Our Menu</a></li>
+              <li><a href="#location" class="text-gray-400 hover:text-orange-500 transition">Find Us</a></li>
+              <li><a href="#pricing" class="text-gray-400 hover:text-orange-500 transition">Catering</a></li>
+              <li><a href="#team" class="text-gray-400 hover:text-orange-500 transition">Our Team</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="font-bold text-xl mb-6">Service Hours</h4>
+            <ul class="space-y-3 text-gray-400">
+              <li class="flex justify-between">
+                <span>Mon - Fri:</span>
+                <span class="text-white font-semibold">11AM - 8PM</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Saturday:</span>
+                <span class="text-white font-semibold">9AM - 10PM</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Sunday:</span>
+                <span class="text-white font-semibold">12PM - 6PM</span>
+              </li>
+            </ul>
+            <div class="mt-8 glass-card px-5 py-4 rounded-2xl">
+              <div class="text-2xl mb-2">🏆</div>
+              <div class="font-bold mb-1">2024 Food Truck</div>
+              <div class="text-sm text-gray-400">Awards Winner</div>
+            </div>
+          </div>
+          
+          <div>
+            <h4 class="font-bold text-xl mb-6">Newsletter</h4>
+            <p class="text-gray-400 mb-6">Get updates on our locations, new dishes & special events.</p>
+            <form class="space-y-4">
+              <input type="email" placeholder="Your email" required class="input-glass">
+              <button type="submit" class="btn-primary w-full">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        
+        <div class="text-center pt-12 border-t border-gray-800">
+          <p class="text-gray-500 mb-2">© 2025 Street Ember Kitchen. All rights reserved.</p>
+          <p class="text-gray-600 text-sm">Made with ❤️ in New York City • Serving excellence since 2020</p>
+          <div class="flex justify-center gap-6 mt-6 text-sm text-gray-500">
+            <a href="#" class="hover:text-orange-500 transition">Privacy Policy</a>
+            <a href="#" class="hover:text-orange-500 transition">Terms of Service</a>
+            <a href="#" class="hover:text-orange-500 transition">Refund Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // AOS INIT
+    AOS.init({
+      duration: 1200,
+      once: true,
+      offset: 100,
+      easing: 'ease-out-cubic'
+    });
+
+    // NAVBAR SCROLL
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if(window.scrollY > 100) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+
+    // MOBILE MENU
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    
+    menuBtn.onclick = () => {
+      mobileMenu.style.transform = 'translateX(0)';
+      menuOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+    
+    const closeMobileMenu = () => {
+      mobileMenu.style.transform = 'translateX(100%)';
+      menuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+    
+    closeMenu.onclick = closeMobileMenu;
+    menuOverlay.onclick = closeMobileMenu;
+    
+    document.querySelectorAll('.mobile-link').forEach(a => {
+      a.onclick = () => {
+        closeMobileMenu();
+        setTimeout(() => {
+          const target = document.querySelector(a.getAttribute('href'));
+          if(target) target.scrollIntoView({behavior:'smooth', block: 'start'});
+        }, 300);
+      };
+    });
+
+    // LIGHTBOX
+    function openLightbox(element) {
+      const img = element.querySelector('img');
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // WHATSAPP FORM
+    document.getElementById('contactForm').onsubmit = (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const eventType = document.getElementById('eventType').value;
+      const guests = document.getElementById('guests').value;
+      const eventDate = document.getElementById('eventDate').value;
+      const message = document.getElementById('message').value;
+      
+      const whatsappMessage = `*STREET EMBER KITCHEN - Catering Inquiry*
+
+*Name:* ${name}
+*Email:* ${email}
+*Phone:* ${phone}
+*Event Type:* ${eventType}
+*Number of Guests:* ${guests}
+*Event Date:* ${eventDate}
+*Additional Details:*
+${message}
+
+Looking forward to your response!`;
+      
+      const whatsappUrl = `https://wa.me/12125551234?text=${encodeURIComponent(whatsappMessage)}`;
+      window.open(whatsappUrl, '_blank');
+    };
+
+    // SMOOTH SCROLL
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.onclick = e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth', block: 'start'});
+      };
+    });
+
+    // LOADING
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').style.opacity = '0';
+        setTimeout(() => {
+          document.getElementById('loader').style.display = 'none';
+        }, 700);
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
