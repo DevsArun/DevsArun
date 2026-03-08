@@ -860,6 +860,35 @@ footer{background:#0d0620;padding:52px 0 0}
   .results-grid{grid-template-columns:1fr}
   .ep-h{font-size:1.1rem}
 }
+
+ /* ── VIDEO SPLIT SECTION ── */
+  .split-row{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;}
+  .sp-badge{display:inline-block;background:linear-gradient(135deg,#f3edfb,#dcfce7);border:1px solid rgba(79,28,118,.16);color:var(--purple);border-radius:50px;padding:5px 16px;font-size:.73rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:14px;}
+  .sp-h2{font-family:Montserrat,sans-serif;font-size:clamp(1.35rem,2.2vw,1.72rem);font-weight:800;color:var(--gray-900);margin-bottom:12px;line-height:1.22;}
+  .sp-h2 span{background:linear-gradient(135deg,var(--purple),var(--purple2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .sp-p{font-size:.87rem;color:var(--gray-500);line-height:1.75;margin-bottom:20px;}
+  .sp-list{display:flex;flex-direction:column;gap:10px;margin-bottom:22px;list-style:none;}
+  .sp-list li{display:flex;align-items:flex-start;gap:10px;font-size:.85rem;color:#374151;font-weight:500;}
+  .sp-list li i{color:var(--green);margin-top:2px;flex-shrink:0;}
+  .sp-chips{display:flex;flex-wrap:wrap;gap:10px;}
+  .sp-chip{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--gray-200);border-radius:12px;padding:10px 14px;box-shadow:0 1px 4px rgba(0,0,0,.05);}
+  .sp-chip i{font-size:1.1rem;flex-shrink:0;}
+  .sc-t{font-size:.82rem;font-weight:700;color:var(--gray-900);line-height:1.2;}
+  .sc-s{font-size:.72rem;color:var(--gray-500);}
+  /* Video wrapper */
+  .sp-img{position:relative;}
+  .vid-wrap{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;box-shadow:0 16px 48px rgba(79,28,118,.18);}
+  .vid-wrap img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;}
+  .vid-ovr{position:absolute;inset:0;background:rgba(15,7,36,.35);display:flex;align-items:center;justify-content:center;transition:background .25s;}
+  .vid-wrap:hover .vid-ovr{background:rgba(15,7,36,.18);}
+  .vid-play{width:64px;height:64px;background:linear-gradient(135deg,var(--purple),var(--purple2));border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;padding-left:4px;box-shadow:0 6px 24px rgba(79,28,118,.45);transition:transform .25s,box-shadow .25s;}
+  .vid-wrap:hover .vid-play{transform:scale(1.1);box-shadow:0 10px 32px rgba(79,28,118,.55);}
+  /* Responsive */
+  @media(max-width:768px){
+    .split-row{grid-template-columns:1fr!important;gap:28px!important;}
+    .sp-img{order:-1;}
+    .sp-chips{flex-direction:column;}
+  }
 </style>
 </head>
 <body>
@@ -1326,6 +1355,54 @@ footer{background:#0d0620;padding:52px 0 0}
     </div>
   </div>
 </section>
+<!-- ▓▓▓ VIDEO SPLIT — Section 6.5 ▓▓▓ -->
+<section class="sec sec-light">
+  <div class="con">
+    <div class="split-row">
+
+      <!-- LEFT — Text -->
+      <div data-aos="fade-right">
+        <span class="sp-badge">📹 Video Lessons</span>
+        <h2 class="sp-h2">Learn at Your Pace with<br><span>Expert Video Lessons</span></h2>
+        <p class="sp-p">Our 300+ hours of HD video lessons are crafted by ex-bankers who know exactly what CAIIB requires. Complex banking concepts explained simply — in both English and Hindi.</p>
+        <ul class="sp-list">
+          <li><i class="fa-solid fa-circle-check"></i> 300+ Hrs. covering full CAIIB 2026 syllabus</li>
+          <li><i class="fa-solid fa-circle-check"></i> Bilingual — English &amp; Hindi both available</li>
+          <li><i class="fa-solid fa-circle-check"></i> Case study based explanations (new exam pattern)</li>
+          <li><i class="fa-solid fa-circle-check"></i> Watch offline on Android app anytime</li>
+        </ul>
+        <div class="sp-chips">
+          <div class="sp-chip">
+            <i class="fa-solid fa-play" style="color:#4f1c76"></i>
+            <div><div class="sc-t">300+ Hours</div><div class="sc-s">Video Content</div></div>
+          </div>
+          <div class="sp-chip">
+            <i class="fa-solid fa-language" style="color:#4f1c76"></i>
+            <div><div class="sc-t">Bilingual</div><div class="sc-s">EN + HI</div></div>
+          </div>
+          <div class="sp-chip">
+            <i class="fa-solid fa-wifi" style="color:#4f1c76;text-decoration:line-through"></i>
+            <div><div class="sc-t">Offline Mode</div><div class="sc-s">Download &amp; Watch</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — Video Thumbnail -->
+      <div class="sp-img" data-aos="fade-left">
+        <div class="vid-wrap" data-vid="tyiYwv3qHc0">
+          <img src="https://img.youtube.com/vi/tyiYwv3qHc0/maxresdefault.jpg"
+               alt="CAIIB Video Lesson Preview"
+               onerror="this.src='https://placehold.co/640x360/4f1c76/ffffff?text=Watch+Video+Lessons'">
+          <div class="vid-ovr">
+            <div class="vid-play"><i class="fa-solid fa-play"></i></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ▓▓▓ /VIDEO SPLIT ▓▓▓ -->
 
 <!-- ══════════════════════════════════════
      SECTION 7 — MENTORS (AUTHORITY)
@@ -1378,6 +1455,7 @@ footer{background:#0d0620;padding:52px 0 0}
     </div>
   </div>
 </section>
+
 
 <!-- ══════════════════════════════════════
      SECTION 8 — RESULTS
