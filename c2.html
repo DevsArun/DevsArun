@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="India's #1 CAIIB Exam Preparation Platform. 1.5L+ students, 88K+ selections. Mock tests, video lessons, e-books. Revised 2026 syllabus.">
-<title>Myonlineprep — Best CAIIB Exam Preparation Platform 2026</title>
-<link rel="apple-touch-icon" sizes="180x180" href="https://www.myonlineprep.com/img/favicon/apple-icon-180x180.png">
+<meta name="keywords" content="CAIIB preparation, CAIIB mock test, CAIIB online course, JAIIB preparation, IIBF exam">
+<title>Myonlineprep — Best CAIIB Exam Preparation 2026</title>
 <link rel="icon" type="image/png" sizes="32x32" href="https://www.myonlineprep.com/img/favicon/favicon-32x32.png">
 <!-- GTM -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KJ7SRPB');</script>
@@ -14,10 +14,10 @@
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=604613341307464&ev=PageView&noscript=1"/></noscript>
 <!-- Clarity -->
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","fpboza85ph");</script>
-<!-- Fonts -->
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- Icons -->
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <!-- Swiper -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -25,285 +25,677 @@
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 <style>
-/* =========================================
-   RESET
-========================================= */
+/* =============================================
+   RESET & BASE
+============================================= */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;color:#111827;background:#fff;overflow-x:hidden;line-height:1.6}
 img{max-width:100%;height:auto;display:block}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:#f3edfb}
 ::-webkit-scrollbar-thumb{background:#4f1c76;border-radius:4px}
 
-/* =========================================
+/* =============================================
+   VARIABLES
+============================================= */
+:root{
+  --purple:#4f1c76;
+  --purple2:#6b2d9e;
+  --green:#16a34a;
+  --green2:#22c55e;
+  --gray-100:#f3f4f6;
+  --gray-200:#e5e7eb;
+  --gray-500:#6b7280;
+  --gray-900:#111827;
+}
+
+/* =============================================
    NAVBAR
-========================================= */
-#navbar{position:fixed;top:0;left:0;right:0;z-index:999;background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 1px 8px rgba(0,0,0,.06);transition:box-shadow .3s}
+============================================= */
+#navbar{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:#fff;border-bottom:1px solid var(--gray-200);
+  box-shadow:0 1px 8px rgba(0,0,0,.06);
+  transition:box-shadow .3s,background .3s
+}
 #navbar.scrolled{box-shadow:0 4px 20px rgba(79,28,118,.12)}
-.nav-wrap{max-width:1200px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav-wrap{
+  max-width:1200px;margin:0 auto;padding:0 20px;
+  height:64px;display:flex;align-items:center;
+  justify-content:space-between;gap:12px
+}
 .nav-logo img{height:36px;width:auto}
-.nav-menu{display:flex;align-items:center;gap:28px}
-.nav-menu a{font-size:.875rem;font-weight:500;color:#374151;transition:color .2s;white-space:nowrap}
-.nav-menu a:hover{color:#4f1c76}
-.nav-actions{display:flex;align-items:center;gap:12px}
-.nav-phone{display:flex;align-items:center;gap:6px;font-size:.85rem;font-weight:600;color:#4f1c76;white-space:nowrap}
-.nav-phone .ph-ic{width:28px;height:28px;border-radius:50%;background:#f3edfb;display:flex;align-items:center;justify-content:center;font-size:.68rem;color:#4f1c76;flex-shrink:0}
-.nav-cta{background:linear-gradient(135deg,#4f1c76,#6b2d9e);color:#fff;padding:9px 18px;border-radius:50px;font-size:.84rem;font-weight:700;white-space:nowrap;transition:transform .2s,box-shadow .2s}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:.85rem;font-weight:500;color:#374151;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--purple)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-phone{
+  display:flex;align-items:center;gap:6px;
+  font-size:.82rem;font-weight:600;color:var(--purple);white-space:nowrap
+}
+.nav-phone i{font-size:.75rem}
+.nav-cta{
+  background:linear-gradient(135deg,var(--purple),var(--purple2));
+  color:#fff;padding:9px 18px;border-radius:50px;
+  font-size:.82rem;font-weight:700;white-space:nowrap;
+  transition:transform .2s,box-shadow .2s
+}
 .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(79,28,118,.3)}
-#burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+#burger{
+  display:none;flex-direction:column;gap:5px;
+  cursor:pointer;padding:6px;background:none;border:none
+}
 #burger span{display:block;width:22px;height:2px;background:#374151;border-radius:2px;transition:all .28s}
 #burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 #burger.open span:nth-child(2){opacity:0}
 #burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-#mob-menu{display:none;background:#fff;border-top:1px solid #f3f4f6}
+#mob-menu{display:none;background:#fff;border-top:1px solid var(--gray-100)}
 #mob-menu.open{display:block}
-#mob-menu a{display:block;padding:12px 20px;font-size:.9rem;font-weight:500;color:#374151;border-bottom:1px solid #f3f4f6;transition:color .2s,background .2s}
-#mob-menu a:hover{color:#4f1c76;background:#faf7fd}
-#mob-menu a.mob-cta{color:#16a34a;font-weight:700}
+#mob-menu a{
+  display:block;padding:13px 20px;
+  font-size:.9rem;font-weight:500;color:#374151;
+  border-bottom:1px solid var(--gray-100);transition:all .2s
+}
+#mob-menu a:hover{color:var(--purple);background:#faf7fd}
+#mob-menu a.mob-cta-g{color:var(--green);font-weight:700}
+#mob-menu a.mob-cta-p{color:var(--purple);font-weight:700}
 
-/* =========================================
+/* =============================================
    HERO
-========================================= */
-#hero{padding-top:64px;background:#fff;position:relative;overflow:hidden}
-#hero::before{content:'';position:absolute;top:0;right:0;width:48%;height:100%;background:linear-gradient(135deg,#f3edfb 0%,#ede8f8 60%,#f8f5fd 100%);clip-path:polygon(12% 0%,100% 0%,100% 100%,0% 100%);pointer-events:none}
-#hero::after{content:'';position:absolute;top:64px;right:0;width:48%;height:calc(100% - 64px);background-image:radial-gradient(rgba(79,28,118,.1) 1.5px,transparent 1.5px);background-size:26px 26px;pointer-events:none;opacity:.7}
-.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:52px 20px 56px;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
-
-/* LEFT */
-.hero-new-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid #e5e7eb;border-radius:50px;padding:5px 14px 5px 8px;font-size:.78rem;font-weight:600;color:#374151;box-shadow:0 1px 6px rgba(0,0,0,.07);margin-bottom:16px}
-.new-dot{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#16a34a);display:flex;align-items:center;justify-content:center;font-size:.58rem;color:#fff;font-weight:800;letter-spacing:.3px;flex-shrink:0}
-.hero-new-pill b{color:#4f1c76}
-.trust-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.tbadge{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid #e5e7eb;border-radius:50px;padding:5px 12px;font-size:.75rem;font-weight:600;color:#374151;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.hero-h1{font-family:'Montserrat',sans-serif;font-size:clamp(1.9rem,3.2vw,2.75rem);font-weight:900;line-height:1.1;color:#111827;margin-bottom:12px}
-.txt-p{background:linear-gradient(135deg,#4f1c76,#6b2d9e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.txt-g{background:linear-gradient(135deg,#16a34a,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:.93rem;color:#6b7280;font-weight:500;margin-bottom:20px}
-.hero-list{display:grid;grid-template-columns:1fr 1fr;gap:9px 14px;margin-bottom:22px}
+============================================= */
+#hero{
+  padding-top:64px;background:#fff;
+  position:relative;overflow:hidden
+}
+#hero::before{
+  content:'';position:absolute;top:0;right:0;
+  width:46%;height:100%;
+  background:linear-gradient(135deg,#f8f4fd 0%,#ede8f8 60%,#f3edfb 100%);
+  clip-path:polygon(10% 0%,100% 0%,100% 100%,0% 100%);
+  pointer-events:none
+}
+#hero::after{
+  content:'';position:absolute;top:64px;right:0;
+  width:46%;height:calc(100% - 64px);
+  background-image:radial-gradient(rgba(79,28,118,.08) 1.5px,transparent 1.5px);
+  background-size:28px 28px;pointer-events:none;opacity:.8
+}
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:1200px;margin:0 auto;
+  padding:52px 20px 56px;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:44px;align-items:start
+}
+/* CRITICAL: hero always visible */
+.hero-left,.hero-right{
+  opacity:1!important;transform:none!important;
+  visibility:visible!important
+}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;border:1.5px solid var(--gray-200);
+  border-radius:50px;padding:5px 14px 5px 8px;
+  font-size:.77rem;font-weight:600;color:#374151;
+  box-shadow:0 1px 6px rgba(0,0,0,.07);margin-bottom:18px
+}
+.pill-dot{
+  width:24px;height:24px;border-radius:50%;
+  background:linear-gradient(135deg,var(--green2),var(--green));
+  display:flex;align-items:center;justify-content:center;
+  font-size:.58rem;color:#fff;font-weight:800;flex-shrink:0
+}
+.hero-trust-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.htbadge{
+  display:inline-flex;align-items:center;gap:5px;
+  background:#fff;border:1.5px solid var(--gray-200);
+  border-radius:50px;padding:5px 12px;
+  font-size:.74rem;font-weight:600;color:#374151;
+  box-shadow:0 1px 4px rgba(0,0,0,.05)
+}
+.hero-h1{
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(1.9rem,3.2vw,2.75rem);
+  font-weight:900;line-height:1.1;
+  color:var(--gray-900);margin-bottom:12px
+}
+.tp{background:linear-gradient(135deg,var(--purple),var(--purple2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.tg{background:linear-gradient(135deg,var(--green),var(--green2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:.93rem;color:var(--gray-500);font-weight:500;margin-bottom:22px}
+.hero-list{display:grid;grid-template-columns:1fr 1fr;gap:9px 16px;margin-bottom:24px}
 .hli{display:flex;align-items:center;gap:7px;font-size:.84rem;color:#374151;font-weight:500}
-.hli-ic{width:18px;height:18px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#22c55e,#16a34a);display:flex;align-items:center;justify-content:center}
+.hli-ic{
+  width:18px;height:18px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--green2),var(--green));
+  display:flex;align-items:center;justify-content:center
+}
 .hli-ic svg{width:10px;height:10px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.hero-btns{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
-.btn-hp{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#4f1c76,#6b2d9e);color:#fff;padding:13px 22px;border-radius:50px;font-weight:700;font-size:.88rem;box-shadow:0 4px 14px rgba(79,28,118,.3);transition:transform .2s,box-shadow .2s}
-.btn-hp:hover{transform:translateY(-2px);box-shadow:0 7px 22px rgba(79,28,118,.4)}
-.btn-hg{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;padding:13px 20px;border-radius:50px;font-weight:700;font-size:.88rem;box-shadow:0 4px 14px rgba(34,197,94,.28);transition:transform .2s,box-shadow .2s}
-.btn-hg:hover{transform:translateY(-2px);box-shadow:0 7px 22px rgba(34,197,94,.38)}
-.btn-ho{display:inline-flex;align-items:center;gap:7px;background:#fff;color:#4f1c76;border:2px solid #4f1c76;padding:11px 18px;border-radius:50px;font-weight:700;font-size:.84rem;transition:all .2s}
-.btn-ho:hover{background:#f3edfb}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid #e5e7eb;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-.hs-item{padding:12px 8px;text-align:center;border-right:1.5px solid #e5e7eb}
-.hs-item:last-child{border-right:none}
-.hs-num{font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:900;color:#4f1c76;line-height:1}
-.hs-lbl{font-size:.65rem;color:#9ca3af;font-weight:500;margin-top:3px}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:7px;
+  background:linear-gradient(135deg,var(--purple),var(--purple2));
+  color:#fff;padding:13px 22px;border-radius:50px;
+  font-weight:700;font-size:.88rem;
+  box-shadow:0 4px 14px rgba(79,28,118,.3);
+  transition:transform .2s,box-shadow .2s
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 7px 22px rgba(79,28,118,.4)}
+.btn-green{
+  display:inline-flex;align-items:center;gap:7px;
+  background:linear-gradient(135deg,var(--green2),var(--green));
+  color:#fff;padding:13px 20px;border-radius:50px;
+  font-weight:700;font-size:.88rem;
+  box-shadow:0 4px 14px rgba(34,197,94,.28);
+  transition:transform .2s,box-shadow .2s
+}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 7px 22px rgba(34,197,94,.38)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:7px;
+  background:#fff;color:var(--purple);
+  border:2px solid var(--purple);
+  padding:11px 18px;border-radius:50px;
+  font-weight:700;font-size:.84rem;transition:all .2s
+}
+.btn-outline:hover{background:#f3edfb}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1.5px solid var(--gray-200);border-radius:14px;
+  overflow:hidden;background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,.06)
+}
+.hs{padding:12px 8px;text-align:center;border-right:1.5px solid var(--gray-200)}
+.hs:last-child{border-right:none}
+.hs-n{font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:900;color:var(--purple);line-height:1}
+.hs-l{font-size:.65rem;color:#9ca3af;font-weight:500;margin-top:3px}
 
-/* RIGHT: Form */
+/* FORM CARD */
 .hero-right{position:relative;z-index:2;padding-top:12px}
-.fc-top-chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.1);padding:8px 14px;margin-bottom:-14px;position:relative;z-index:3;margin-left:16px;border:1px solid #e5e7eb}
-.fcc-ic{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#16a34a);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.68rem;flex-shrink:0}
-.fcc-t{font-size:.8rem;font-weight:700;color:#111827}
-.fcc-s{font-size:.68rem;color:#6b7280}
-.form-card{background:#fff;border-radius:20px;box-shadow:0 16px 48px rgba(79,28,118,.16),0 4px 12px rgba(0,0,0,.06);border:1.5px solid #e5e7eb;overflow:hidden}
-.form-card-top{background:linear-gradient(135deg,#4f1c76,#6b2d9e);padding:20px 22px 18px}
-.form-free-badge{display:inline-block;background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:50px;padding:3px 12px;font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
-.form-card-title{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:3px}
-.form-card-sub{font-size:.8rem;color:rgba(255,255,255,.75)}
-.form-card-body{padding:18px 22px 20px}
-.form-proof{display:flex;align-items:center;gap:10px;background:#dcfce7;border:1px solid rgba(34,197,94,.25);border-radius:10px;padding:9px 13px;margin-bottom:14px}
-.proof-acs{display:flex}
-.proof-acs span{width:26px;height:26px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:800;color:#fff;margin-right:-7px;flex-shrink:0}
-.proof-text .pt1{font-size:.8rem;font-weight:700;color:#16a34a}
-.proof-text .pt2{font-size:.7rem;color:#6b7280}
-.f-input{width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #e5e7eb;font-size:.875rem;background:#fff;color:#111827;outline:none;font-family:'Inter',sans-serif;margin-bottom:10px;display:block;transition:border-color .25s,box-shadow .25s}
-.f-input:focus{border-color:#4f1c76;box-shadow:0 0 0 3px rgba(79,28,118,.1)}
-.f-input::placeholder{color:#9ca3af}
-.btn-submit{width:100%;padding:13px;border-radius:50px;border:none;cursor:pointer;background:linear-gradient(135deg,#4f1c76,#6b2d9e);color:#fff;font-size:.9rem;font-weight:700;font-family:'Montserrat',sans-serif;display:flex;align-items:center;justify-content:center;gap:7px;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 14px rgba(79,28,118,.28)}
+.fc-chip-top{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;border-radius:12px;
+  box-shadow:0 4px 14px rgba(0,0,0,.1);
+  padding:8px 14px;margin-bottom:-14px;
+  position:relative;z-index:3;margin-left:16px;
+  border:1px solid var(--gray-200)
+}
+.fc-chip-ic{
+  width:26px;height:26px;border-radius:50%;
+  background:linear-gradient(135deg,var(--green2),var(--green));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:.68rem;flex-shrink:0
+}
+.fc-chip-t{font-size:.8rem;font-weight:700;color:var(--gray-900)}
+.fc-chip-s{font-size:.68rem;color:var(--gray-500)}
+.form-card{
+  background:#fff;border-radius:20px;
+  box-shadow:0 16px 48px rgba(79,28,118,.16),0 4px 12px rgba(0,0,0,.06);
+  border:1.5px solid var(--gray-200);overflow:hidden
+}
+.form-top{
+  background:linear-gradient(135deg,var(--purple),var(--purple2));
+  padding:20px 22px 18px
+}
+.form-free-tag{
+  display:inline-block;background:rgba(255,255,255,.2);
+  color:#fff;border:1px solid rgba(255,255,255,.3);
+  border-radius:50px;padding:3px 12px;
+  font-size:.7rem;font-weight:700;
+  letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px
+}
+.form-title{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:3px}
+.form-sub{font-size:.8rem;color:rgba(255,255,255,.75)}
+.form-body{padding:18px 22px 20px}
+.form-proof{
+  display:flex;align-items:center;gap:10px;
+  background:#dcfce7;border:1px solid rgba(34,197,94,.25);
+  border-radius:10px;padding:9px 13px;margin-bottom:14px
+}
+.proof-avs{display:flex}
+.proof-av{
+  width:26px;height:26px;border-radius:50%;
+  border:2px solid #fff;display:flex;align-items:center;
+  justify-content:center;font-size:.62rem;font-weight:800;
+  color:#fff;margin-right:-7px;flex-shrink:0
+}
+.proof-av:last-child{margin-right:0}
+.proof-txt{margin-left:12px}
+.proof-txt .p1{font-size:.8rem;font-weight:700;color:var(--green)}
+.proof-txt .p2{font-size:.7rem;color:var(--gray-500)}
+.f-inp{
+  width:100%;padding:11px 14px;border-radius:10px;
+  border:1.5px solid var(--gray-200);font-size:.875rem;
+  background:#fff;color:var(--gray-900);outline:none;
+  font-family:'Inter',sans-serif;margin-bottom:10px;
+  display:block;transition:border-color .25s,box-shadow .25s
+}
+.f-inp:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(79,28,118,.1)}
+.f-inp::placeholder{color:#9ca3af}
+.btn-submit{
+  width:100%;padding:13px;border-radius:50px;
+  border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--purple),var(--purple2));
+  color:#fff;font-size:.9rem;font-weight:700;
+  font-family:'Montserrat',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 4px 14px rgba(79,28,118,.28)
+}
 .btn-submit:hover{transform:translateY(-2px);box-shadow:0 7px 22px rgba(79,28,118,.4)}
 .btn-submit:disabled{opacity:.75;cursor:not-allowed;transform:none}
-.form-trust{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid #f3f4f6}
-.form-trust span{display:flex;align-items:center;gap:4px;font-size:.72rem;color:#6b7280}
-.ft-green{color:#16a34a}
-.ft-red{color:#ef4444}
-.fc-bottom-chip{display:flex;align-items:center;gap:8px;background:#fff;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.1);padding:8px 14px;margin-top:-14px;margin-left:auto;width:fit-content;border:1px solid #e5e7eb;position:relative;z-index:3}
-.fbc-star{font-size:.95rem;color:#f59e0b}
+.form-trust{
+  display:flex;justify-content:center;gap:14px;
+  flex-wrap:wrap;margin-top:12px;padding-top:12px;
+  border-top:1px solid var(--gray-100)
+}
+.form-trust span{display:flex;align-items:center;gap:4px;font-size:.72rem;color:var(--gray-500)}
+.fc-chip-bot{
+  display:flex;align-items:center;gap:8px;background:#fff;
+  border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.1);
+  padding:8px 14px;margin-top:-14px;margin-left:auto;
+  width:fit-content;border:1px solid var(--gray-200);
+  position:relative;z-index:3
+}
 
-/* =========================================
+/* =============================================
+   SECTION SHARED
+============================================= */
+.sec{padding:72px 0}
+.sec-white{background:#fff}
+.sec-light{background:#faf7fd}
+.sec-dark{background:linear-gradient(135deg,#0f172a,#1e1b4b)}
+.sec-purple{background:linear-gradient(135deg,var(--purple),#5e2090)}
+.con{max-width:1200px;margin:0 auto;padding:0 20px}
+.sec-hd{text-align:center;margin-bottom:48px}
+.sec-tag{
+  display:inline-block;
+  background:linear-gradient(135deg,#f3edfb,#dcfce7);
+  border:1px solid rgba(79,28,118,.16);color:var(--purple);
+  border-radius:50px;padding:5px 16px;font-size:.73rem;
+  font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px
+}
+.sec-title{
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(1.55rem,2.8vw,2.1rem);
+  font-weight:800;color:var(--gray-900);
+  margin-bottom:10px;line-height:1.22
+}
+.sec-title span{background:linear-gradient(135deg,var(--purple),var(--purple2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sec-sub{font-size:.93rem;color:var(--gray-500);max-width:530px;margin:0 auto}
+.divider{width:44px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--purple),var(--green2));margin:12px auto 0}
+
+/* =============================================
    STATS BAR
-========================================= */
-.stats-bar{background:linear-gradient(135deg,#4f1c76,#6b2d9e)}
-.sb-grid{max-width:1200px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:repeat(4,1fr)}
-.sb-item{padding:24px 12px;text-align:center;border-right:1px solid rgba(255,255,255,.12);transition:background .25s}
+============================================= */
+.stats-bar{background:linear-gradient(135deg,var(--purple),var(--purple2))}
+.sb-grid{
+  max-width:1200px;margin:0 auto;padding:0 20px;
+  display:grid;grid-template-columns:repeat(4,1fr)
+}
+.sb-item{
+  padding:24px 12px;text-align:center;
+  border-right:1px solid rgba(255,255,255,.12);
+  transition:background .25s
+}
 .sb-item:last-child{border-right:none}
 .sb-item:hover{background:rgba(255,255,255,.07)}
 .sb-ico{font-size:1.5rem;color:rgba(255,255,255,.6);margin-bottom:5px}
 .sb-num{font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:900;color:#fff;line-height:1}
 .sb-lbl{font-size:.74rem;color:rgba(255,255,255,.7);font-weight:500;margin-top:3px}
 
-/* =========================================
-   SHARED SECTION STYLES
-========================================= */
-.section{padding:72px 0}
-.sec-white{background:#fff}
-.sec-light{background:#faf7fd}
-.sec-green{background:linear-gradient(180deg,#f0fdf4 0%,#fff 100%)}
-.con{max-width:1200px;margin:0 auto;padding:0 20px}
-.sec-hd{text-align:center;margin-bottom:48px}
-.sec-tag{display:inline-block;background:linear-gradient(135deg,#f3edfb,#dcfce7);border:1px solid rgba(79,28,118,.16);color:#4f1c76;border-radius:50px;padding:5px 16px;font-size:.73rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px}
-.sec-title{font-family:'Montserrat',sans-serif;font-size:clamp(1.55rem,2.8vw,2.1rem);font-weight:800;color:#111827;margin-bottom:10px;line-height:1.22}
-.sec-title span{background:linear-gradient(135deg,#4f1c76,#6b2d9e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.sec-sub{font-size:.93rem;color:#6b7280;max-width:530px;margin:0 auto}
-.divider{width:44px;height:3px;border-radius:2px;background:linear-gradient(90deg,#4f1c76,#22c55e);margin:12px auto 0}
+/* =============================================
+   SOCIAL PROOF BAR (BANKS)
+============================================= */
+.sp-bar{background:#fff;border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100);padding:20px 0}
+.sp-bar-inner{
+  max-width:1200px;margin:0 auto;padding:0 20px;
+  display:flex;align-items:center;flex-wrap:wrap;gap:10px;justify-content:center
+}
+.sp-bar-label{font-size:.78rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.8px;margin-right:8px;white-space:nowrap}
+.bank-logo-item{
+  display:flex;align-items:center;justify-content:center;
+  background:#f9fafb;border:1px solid var(--gray-200);
+  border-radius:8px;padding:8px 16px;
+  font-size:.78rem;font-weight:800;color:#374151;
+  letter-spacing:.3px;white-space:nowrap;
+  transition:border-color .2s,color .2s
+}
+.bank-logo-item:hover{border-color:var(--purple);color:var(--purple)}
+.bank-sep{color:var(--gray-200);font-size:1rem}
 
-/* =========================================
-   WHY US
-========================================= */
-.wc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.wc-card{background:#fff;border-radius:18px;padding:26px 22px;border:1.5px solid #f3f4f6;box-shadow:0 2px 8px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden}
-.wc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#4f1c76,#22c55e);transform:scaleX(0);transform-origin:left;transition:transform .3s}
-.wc-card:hover{transform:translateY(-6px);box-shadow:0 12px 34px rgba(79,28,118,.13)}
-.wc-card:hover::after{transform:scaleX(1)}
-.wc-ico{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:14px}
-.ico-p{background:#f3edfb;color:#4f1c76}
-.ico-g{background:#dcfce7;color:#16a34a}
-.ico-b{background:#eff6ff;color:#2563eb}
-.ico-o{background:#fff7ed;color:#ea580c}
-.ico-y{background:#fefce8;color:#ca8a04}
-.ico-t{background:#f0fdfa;color:#0d9488}
-.wc-h{font-family:'Montserrat',sans-serif;font-size:.96rem;font-weight:700;color:#111827;margin-bottom:7px}
-.wc-p{font-size:.84rem;color:#6b7280;line-height:1.7}
+/* =============================================
+   PROBLEM SECTION 
+============================================= */
+.prob-right{
+  background:linear-gradient(135deg,#faf5ff,#f3edfb);
+  border:2px solid rgba(79,28,118,.18);border-radius:20px;padding:28px;
+  text-align:center
+}
+.prob-big-num{
+  font-family:'Montserrat',sans-serif;font-size:3.5rem;
+  font-weight:900;color:var(--purple);line-height:1
+}
+.prob-big-lbl{font-size:.88rem;color:var(--gray-500);margin-bottom:16px}
+.prob-stat-row{display:flex;flex-direction:column;gap:10px;text-align:left}
+.pstat{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;font-size:.82rem;color:#374151
+}
+.pstat-bar{flex:1;background:#e9d5ff;border-radius:4px;height:8px;overflow:hidden}
+.pstat-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#7c3aed,#4f1c76)}
+.pstat-val{font-weight:700;color:var(--purple);white-space:nowrap;font-size:.8rem}
+.prob-item{
+  display:flex;align-items:flex-start;gap:12px;
+  background:#faf5ff;border:1.5px solid rgba(79,28,118,.15);
+  border-radius:12px;padding:14px 16px
+}
+.prob-ic{
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(79,28,118,.1);
+  display:flex;align-items:center;
+  justify-content:center;color:var(--purple);font-size:.9rem;flex-shrink:0
+}
+.prob-text .pt{font-size:.88rem;font-weight:700;color:#111827;margin-bottom:2px}
+.prob-text .ps{font-size:.8rem;color:var(--gray-500)}
+.sp-badge-inline{
+  display:inline-block;
+  background:#f3edfb;
+  border:1px solid rgba(79,28,118,.2);
+  color:var(--purple);
+  border-radius:50px;padding:4px 14px;
+  font-size:.73rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.7px;margin-bottom:14px
+}
+.prob-h2{
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(1.35rem,2.2vw,1.72rem);
+  font-weight:800;color:var(--gray-900);
+  margin-bottom:12px;line-height:1.22
+}
+.prob-h2 span{color:var(--purple)}
+.prob-p{font-size:.87rem;color:var(--gray-500);line-height:1.75;margin-bottom:20px}
+.prob-items{display:flex;flex-direction:column;gap:12px}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 
-/* =========================================
-   VIDEO SPLIT
-========================================= */
-.split-row{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
-.sp-badge{display:inline-block;background:#f3edfb;color:#4f1c76;border-radius:50px;padding:4px 14px;font-size:.73rem;font-weight:700;letter-spacing:.7px;text-transform:uppercase;margin-bottom:12px;border:1px solid rgba(79,28,118,.18)}
-.sp-h2{font-family:'Montserrat',sans-serif;font-size:clamp(1.35rem,2.2vw,1.72rem);font-weight:800;color:#111827;margin-bottom:12px;line-height:1.22}
-.sp-h2 span{background:linear-gradient(135deg,#4f1c76,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.sp-p{font-size:.87rem;color:#6b7280;line-height:1.75;margin-bottom:16px}
-.sp-list{display:flex;flex-direction:column;gap:9px}
-.sp-list li{display:flex;align-items:flex-start;gap:8px;font-size:.86rem;color:#374151;font-weight:500}
-.sp-list li i{color:#16a34a;margin-top:3px;flex-shrink:0;font-size:.78rem}
-.sp-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.sp-chip{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;padding:9px 13px;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:border-color .2s}
-.sp-chip:hover{border-color:#4f1c76}
-.sc-t{font-size:.8rem;font-weight:700;color:#111827}
-.sc-s{font-size:.7rem;color:#6b7280}
+/* Mobile */
+@media(max-width:768px){
+  .prob-grid{grid-template-columns:1fr!important;gap:24px!important}
+}
 
-/* Video */
-.vid-wrap{border-radius:16px;overflow:hidden;box-shadow:0 12px 38px rgba(79,28,118,.14);cursor:pointer;position:relative}
-.vid-wrap img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
-.vid-ovr{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.2);transition:background .25s}
-.vid-ovr:hover{background:rgba(0,0,0,.1)}
-.vid-play{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.22);transition:transform .2s}
-.vid-play:hover{transform:scale(1.1)}
-.vid-play i{color:#4f1c76;font-size:1.15rem;margin-left:4px}
+/* =============================================
+   SOLUTION SECTION
+============================================= */
+.sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.sol-badge{
+  display:inline-block;background:#dcfce7;
+  border:1px solid rgba(34,197,94,.3);color:var(--green);
+  border-radius:50px;padding:4px 14px;font-size:.73rem;
+  font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:14px
+}
+.sol-h2{
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(1.35rem,2.2vw,1.72rem);
+  font-weight:800;color:var(--gray-900);
+  margin-bottom:12px;line-height:1.22
+}
+.sol-h2 span{background:linear-gradient(135deg,var(--purple),var(--green2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sol-items{display:flex;flex-direction:column;gap:11px;margin-bottom:20px}
+.sol-item{
+  display:flex;align-items:flex-start;gap:12px;
+  background:#fff;border:1.5px solid rgba(34,197,94,.2);
+  border-radius:12px;padding:13px 15px;
+  box-shadow:0 1px 4px rgba(34,197,94,.07);
+  transition:border-color .2s,box-shadow .2s
+}
+.sol-item:hover{border-color:rgba(34,197,94,.5);box-shadow:0 3px 12px rgba(34,197,94,.12)}
+.sol-ic{
+  width:32px;height:32px;border-radius:50%;
+  background:linear-gradient(135deg,var(--green2),var(--green));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:.8rem;flex-shrink:0
+}
+.sol-txt .st{font-size:.88rem;font-weight:700;color:#111827;margin-bottom:2px}
+.sol-txt .ss{font-size:.8rem;color:var(--gray-500)}
+.sol-right{
+  background:linear-gradient(135deg,#dcfce7,#f0fdf4);
+  border:2px solid rgba(34,197,94,.2);border-radius:20px;
+  padding:28px;text-align:center
+}
+.sol-center-emoji{font-size:3rem;margin-bottom:8px}
+.sol-center-h{font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:900;color:var(--green);margin-bottom:4px}
+.sol-center-s{font-size:.82rem;color:var(--gray-500);margin-bottom:18px}
+.sol-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sol-stat{background:#fff;border-radius:12px;padding:14px;text-align:center;box-shadow:0 2px 8px rgba(34,197,94,.1)}
+.sol-stat-n{font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:900;color:var(--purple)}
+.sol-stat-l{font-size:.7rem;color:var(--gray-500)}
 
-/* App Swiper */
-.app-swiper-outer{border-radius:16px;overflow:hidden;box-shadow:0 12px 38px rgba(79,28,118,.14)}
-.app-swiper-outer img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+/* =============================================
+   PLATFORM PREVIEW
+============================================= */
+.preview-wrap{
+  background:linear-gradient(135deg,#0f172a,#1e1b4b);
+  border-radius:20px;padding:28px;
+  box-shadow:0 20px 60px rgba(0,0,0,.3)
+}
+.preview-tabs{
+  display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap
+}
+.ptab{
+  padding:8px 18px;border-radius:50px;font-size:.8rem;font-weight:600;
+  cursor:pointer;transition:all .25s;color:rgba(255,255,255,.6);
+  border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06)
+}
+.ptab.active{background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;border-color:transparent;box-shadow:0 4px 12px rgba(79,28,118,.4)}
+.preview-screen{display:none;border-radius:14px;overflow:hidden}
+.preview-screen.active{display:block}
+.preview-screen img{width:100%;border-radius:14px;display:block}
+.preview-screen .ps-mock{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:20px;min-height:280px
+}
+.mock-q-num{font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:6px}
+.mock-q-text{font-size:.9rem;color:#fff;font-weight:600;line-height:1.5;margin-bottom:16px}
+.mock-opts{display:flex;flex-direction:column;gap:8px}
+.mock-opt{
+  padding:10px 14px;border-radius:8px;
+  border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.8);font-size:.84rem;cursor:pointer;
+  transition:all .2s
+}
+.mock-opt:hover{background:rgba(79,28,118,.4);border-color:rgba(79,28,118,.5)}
+.mock-opt.correct{background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.4);color:#4ade80}
+.mock-opt.wrong{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.3);color:#f87171}
+.mock-timer{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:14px;font-size:.78rem;color:rgba(255,255,255,.5)
+}
+.mock-timer span{display:flex;align-items:center;gap:5px}
+.an-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.an-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px;text-align:center}
+.an-val{font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:900;color:#a78bfa}
+.an-lbl{font-size:.7rem;color:rgba(255,255,255,.5);margin-top:3px}
+.an-bars{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.an-bar-row{display:flex;align-items:center;gap:8px;font-size:.75rem;color:rgba(255,255,255,.6)}
+.an-bar-track{flex:1;background:rgba(255,255,255,.08);border-radius:4px;height:8px}
+.an-bar-fill{height:100%;border-radius:4px}
 
-/* =========================================
-   CAIIB TOPICS
-========================================= */
-.topics-sec{background:linear-gradient(135deg,#4f1c76,#5e2090);padding:52px 0}
-.topics-hd{text-align:center;margin-bottom:28px}
-.topics-hd h2{font-family:'Montserrat',sans-serif;font-size:clamp(1.4rem,2.4vw,1.8rem);font-weight:800;color:#fff;margin-bottom:6px}
-.topics-hd p{font-size:.9rem;color:rgba(255,255,255,.72)}
-.topics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.topic-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:20px 14px;text-align:center;transition:background .25s,transform .25s}
-.topic-card:hover{background:rgba(255,255,255,.18);transform:translateY(-3px)}
-.tc-ico{font-size:1.7rem;margin-bottom:8px}
-.tc-name{font-family:'Montserrat',sans-serif;font-size:.86rem;font-weight:700;color:#fff;margin-bottom:3px}
-.tc-full{font-size:.72rem;color:rgba(255,255,255,.7);margin-bottom:4px}
-.tc-count{display:inline-block;background:rgba(255,255,255,.15);color:#fff;border-radius:50px;padding:2px 10px;font-size:.68rem;font-weight:600}
+/* =============================================
+   FEATURES
+============================================= */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.feat-card{
+  background:#fff;border-radius:18px;padding:26px 22px;
+  border:1.5px solid var(--gray-100);
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+  transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden
+}
+.feat-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--purple),var(--green2));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s
+}
+.feat-card:hover{transform:translateY(-6px);box-shadow:0 12px 34px rgba(79,28,118,.13)}
+.feat-card:hover::after{transform:scaleX(1)}
+.feat-ic{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:14px}
+.ic-p{background:#f3edfb;color:var(--purple)}
+.ic-g{background:#dcfce7;color:var(--green)}
+.ic-b{background:#eff6ff;color:#2563eb}
+.ic-o{background:#fff7ed;color:#ea580c}
+.ic-y{background:#fefce8;color:#ca8a04}
+.ic-t{background:#f0fdfa;color:#0d9488}
+.feat-h{font-family:'Montserrat',sans-serif;font-size:.96rem;font-weight:700;color:var(--gray-900);margin-bottom:7px}
+.feat-p{font-size:.84rem;color:var(--gray-500);line-height:1.7}
 
-/* =========================================
-   COURSES
-========================================= */
-.crs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.crs-card{background:#fff;border-radius:18px;overflow:hidden;border:1.5px solid #f3f4f6;box-shadow:0 2px 8px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
-.crs-card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(79,28,118,.13)}
-.crs-card.popular{border:2px solid #4f1c76}
-.pop-badge{background:linear-gradient(135deg,#4f1c76,#6b2d9e);color:#fff;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:6px 14px;text-align:center}
-.crs-img{position:relative}
-.crs-img img{width:100%;height:168px;object-fit:cover;display:block}
-.crs-tag{position:absolute;top:10px;left:10px;font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:50px}
-.tag-full{background:#4f1c76;color:#fff}
-.tag-mock{background:#7c3aed;color:#fff}
-.tag-elect{background:#059669;color:#fff}
-.crs-body{padding:18px 18px 20px;flex:1;display:flex;flex-direction:column}
-.crs-h{font-family:'Montserrat',sans-serif;font-size:.96rem;font-weight:700;color:#111827;margin-bottom:8px;line-height:1.35}
-.crs-p{font-size:.83rem;color:#6b7280;line-height:1.6;margin-bottom:14px}
-.crs-feats{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
-.crs-feat{display:flex;align-items:center;gap:6px;font-size:.8rem;color:#374151}
-.crs-feat i{color:#16a34a;font-size:.72rem;flex-shrink:0}
-.crs-footer{margin-top:auto;padding-top:14px;border-top:1px solid #f3f4f6;display:flex;align-items:center;justify-content:space-between}
-.crs-price{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;color:#4f1c76}
-.crs-old{font-size:.75rem;color:#9ca3af;text-decoration:line-through;margin-left:4px}
-.btn-enroll{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#4f1c76,#6b2d9e);color:#fff;padding:8px 16px;border-radius:50px;font-size:.8rem;font-weight:700;transition:transform .2s,box-shadow .2s}
-.btn-enroll:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(79,28,118,.3)}
-.btn-enroll-o{display:inline-flex;align-items:center;gap:5px;background:#fff;color:#4f1c76;border:2px solid #4f1c76;padding:7px 14px;border-radius:50px;font-size:.8rem;font-weight:700;transition:all .2s}
-.btn-enroll-o:hover{background:#f3edfb}
+/* =============================================
+   MENTOR / AUTHORITY
+============================================= */
+.mentor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.mentor-card{
+  background:#fff;border-radius:18px;padding:26px;
+  border:1.5px solid var(--gray-100);
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+  text-align:center;
+  transition:transform .3s,box-shadow .3s
+}
+.mentor-card:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(79,28,118,.12)}
+.mentor-av{
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--purple2));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:900;
+  margin:0 auto 14px;border:3px solid #f3edfb
+}
+.mentor-name{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;color:var(--gray-900);margin-bottom:4px}
+.mentor-role{font-size:.8rem;color:var(--purple);font-weight:600;margin-bottom:8px}
+.mentor-exp{
+  display:inline-block;background:#f3edfb;
+  color:var(--purple);border-radius:50px;
+  padding:3px 10px;font-size:.72rem;font-weight:600;margin-bottom:12px
+}
+.mentor-tags{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+.mtag{
+  background:var(--gray-100);color:#374151;
+  border-radius:50px;padding:3px 10px;font-size:.7rem;font-weight:600
+}
+.mentor-students{
+  margin-top:12px;padding-top:12px;
+  border-top:1px solid var(--gray-100);
+  font-size:.78rem;color:var(--gray-500)
+}
+.mentor-students strong{color:var(--purple)}
 
-/* =========================================
-   TESTIMONIALS SWIPER — FULLY FIXED
-   min-height so slider doesn't collapse
-========================================= */
-.tp-swiper-wrap{padding:0 0 50px;position:relative}
-/* Override swiper button colors */
-.swiper-button-next,.swiper-button-prev{color:#4f1c76 !important;width:38px !important;height:38px !important;background:#fff;border-radius:50%;box-shadow:0 2px 10px rgba(0,0,0,.12);top:auto !important;bottom:0 !important}
-.swiper-button-next::after,.swiper-button-prev::after{font-size:14px !important;font-weight:800}
-.swiper-button-prev{left:calc(50% - 50px) !important}
-.swiper-button-next{right:calc(50% - 50px) !important}
-.swiper-pagination{bottom:-8px !important}
-.swiper-pagination-bullet{background:#d1d5db !important;opacity:1 !important}
-.swiper-pagination-bullet-active{background:#4f1c76 !important}
+/* =============================================
+   RESULTS
+============================================= */
+.results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:40px}
+.res-card{
+  background:#fff;border-radius:16px;padding:24px;
+  text-align:center;border:1.5px solid var(--gray-100);
+  box-shadow:0 2px 8px rgba(0,0,0,.05)
+}
+.res-num{font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:900;color:var(--purple);line-height:1}
+.res-lbl{font-size:.78rem;color:var(--gray-500);margin-top:5px;font-weight:500}
+.res-bar-section{background:#fff;border-radius:18px;padding:28px;border:1.5px solid var(--gray-100);box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.res-bar-title{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;color:var(--gray-900);margin-bottom:16px}
+.res-bars{display:flex;flex-direction:column;gap:13px}
+.rb-row{display:flex;align-items:center;gap:12px;font-size:.83rem}
+.rb-label{width:52px;font-weight:600;color:#374151;flex-shrink:0}
+.rb-track{flex:1;background:var(--gray-100);border-radius:6px;height:12px;overflow:hidden}
+.rb-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--purple),var(--purple2));transition:width 1.5s ease}
+.rb-val{font-weight:700;color:var(--purple);width:36px;text-align:right;flex-shrink:0}
 
-/* Card — fixed height so slider is consistent */
+/* =============================================
+   COURSE TABLE
+============================================= */
+.cmp-table{width:100%;border-collapse:collapse;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.cmp-table th{
+  background:linear-gradient(135deg,var(--purple),var(--purple2));
+  color:#fff;padding:16px 20px;text-align:left;
+  font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:700
+}
+.cmp-table th:first-child{border-radius:16px 0 0 0}
+.cmp-table th:last-child{border-radius:0 16px 0 0;text-align:center}
+.cmp-table td{
+  padding:14px 20px;font-size:.87rem;color:#374151;
+  border-bottom:1px solid var(--gray-100);background:#fff
+}
+.cmp-table tr:last-child td{border-bottom:none}
+.cmp-table td:last-child{text-align:center}
+.cmp-table tr:hover td{background:#faf7fd}
+.cmp-yes{color:var(--green);font-size:1.1rem;font-weight:700}
+.cmp-no{color:#d1d5db;font-size:1.1rem}
+.cmp-hl{font-weight:700;color:var(--purple);font-size:.88rem}
+.th-best{
+  background:#fff;color:var(--purple);
+  border:2px solid var(--purple);
+  border-radius:50px;padding:4px 12px;
+  font-size:.7rem;font-weight:700;
+  display:inline-block;margin-top:3px
+}
+
+/* =============================================
+   TESTIMONIALS
+============================================= */
 .tp-card{
   background:#fff;border-radius:16px;padding:22px;
-  border:1.5px solid #f3f4f6;
+  border:1.5px solid var(--gray-100);
   box-shadow:0 2px 10px rgba(79,28,118,.07);
-  height:100%; /* swiper makes parent equal height */
-  display:flex;flex-direction:column;
-  min-height:280px; /* ← KEY FIX: prevents collapse */
+  height:100%;display:flex;flex-direction:column;min-height:260px
 }
 .tp-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.tp-av{width:46px;height:46px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid #e5e7eb}
-.tp-av img{width:100%;height:100%;object-fit:cover}
-.tp-av-fb{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1rem;flex-shrink:0}
-.tp-name{font-weight:700;font-size:.88rem;color:#111827;line-height:1.3}
-.tp-bank{font-size:.72rem;color:#6b7280;margin-top:1px}
-.tp-cert{display:inline-block;background:#dcfce7;color:#16a34a;font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:50px;margin-top:3px}
+.tp-av{
+  width:46px;height:46px;border-radius:50%;
+  overflow:hidden;flex-shrink:0;border:2px solid var(--gray-200)
+}
+.tp-av-fb{
+  width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:800;font-size:1rem;flex-shrink:0
+}
+.tp-name{font-weight:700;font-size:.88rem;color:var(--gray-900);line-height:1.3}
+.tp-bank{font-size:.72rem;color:var(--gray-500);margin-top:1px}
+.tp-cert{display:inline-block;background:#dcfce7;color:var(--green);font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:50px;margin-top:3px}
 .tp-stars{color:#f59e0b;font-size:.95rem;letter-spacing:1px;margin-bottom:8px}
 .tp-text{font-size:.84rem;color:#374151;line-height:1.7;flex:1;font-style:italic}
 .tp-scores{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
-.tp-sc{background:#f3edfb;color:#4f1c76;font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:50px;border:1px solid rgba(79,28,118,.14)}
-
-/* Rating card */
-.rat-card{background:#fff;border:1.5px solid #e5e7eb;border-radius:18px;padding:22px 24px;max-width:440px;margin:32px auto 0;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.tp-sc{background:#f3edfb;color:var(--purple);font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:50px;border:1px solid rgba(79,28,118,.14)}
+.rat-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:18px;padding:22px 24px;max-width:440px;margin:32px auto 0;box-shadow:0 2px 10px rgba(0,0,0,.06)}
 .rat-row{display:flex;align-items:flex-start;gap:24px;margin-bottom:10px}
-.rat-big{font-family:'Montserrat',sans-serif;font-size:2.8rem;font-weight:900;color:#4f1c76;line-height:1}
+.rat-big{font-family:'Montserrat',sans-serif;font-size:2.8rem;font-weight:900;color:var(--purple);line-height:1}
 .rbar-wrap{flex:1;display:flex;flex-direction:column;gap:5px}
 .rbar{display:flex;align-items:center;gap:7px;font-size:.75rem}
-.rbar-n{color:#6b7280;width:8px;text-align:right;flex-shrink:0}
-.rbar-track{flex:1;background:#f3f4f6;border-radius:4px;height:7px;overflow:hidden}
+.rbar-n{color:var(--gray-500);width:8px;text-align:right;flex-shrink:0}
+.rbar-track{flex:1;background:var(--gray-100);border-radius:4px;height:7px;overflow:hidden}
 .rbar-fill{height:100%;background:linear-gradient(90deg,#f59e0b,#fbbf24);border-radius:4px}
 .rbar-pct{color:#9ca3af;width:28px;text-align:right;flex-shrink:0}
 .rat-note{font-size:.72rem;color:#9ca3af;text-align:center}
+.swiper-button-next,.swiper-button-prev{color:var(--purple)!important;width:38px!important;height:38px!important;background:#fff;border-radius:50%;box-shadow:0 2px 10px rgba(0,0,0,.12);top:auto!important;bottom:0!important}
+.swiper-button-next::after,.swiper-button-prev::after{font-size:14px!important;font-weight:800}
+.swiper-button-prev{left:calc(50% - 50px)!important}
+.swiper-button-next{right:calc(50% - 50px)!important}
+.swiper-pagination-bullet{background:#d1d5db!important;opacity:1!important}
+.swiper-pagination-bullet-active{background:var(--purple)!important}
 
-/* =========================================
+/* =============================================
    APP SECTION
-========================================= */
-.app-sec{background:linear-gradient(135deg,#0f172a,#1e1b4b);padding:72px 0}
-.app-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
-.app-tag{display:inline-block;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:#4ade80;border-radius:50px;padding:5px 14px;font-size:.73rem;font-weight:700;letter-spacing:.7px;text-transform:uppercase;margin-bottom:12px}
+============================================= */
+.app-inner{
+  max-width:1200px;margin:0 auto;padding:0 20px;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:52px;align-items:center
+}
+.app-tag{
+  display:inline-block;background:rgba(34,197,94,.15);
+  border:1px solid rgba(34,197,94,.3);color:#4ade80;
+  border-radius:50px;padding:5px 14px;
+  font-size:.73rem;font-weight:700;
+  letter-spacing:.7px;text-transform:uppercase;margin-bottom:12px
+}
 .app-h2{font-family:'Montserrat',sans-serif;font-size:clamp(1.5rem,2.6vw,2rem);font-weight:800;color:#fff;margin-bottom:14px;line-height:1.22}
-.app-h2 span{background:linear-gradient(135deg,#22c55e,#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.app-h2 span{background:linear-gradient(135deg,var(--green2),#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .app-p{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:22px}
 .app-perks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
 .ap{display:flex;align-items:flex-start;gap:11px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:13px}
@@ -312,46 +704,43 @@ input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
 .aps{font-size:.74rem;color:rgba(255,255,255,.5);margin-top:2px}
 .btn-play{display:inline-flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 20px;transition:transform .2s,box-shadow .2s}
 .btn-play:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
-.bp-top{font-size:.68rem;color:#6b7280;letter-spacing:.5px;text-transform:uppercase;line-height:1}
-.bp-bot{font-size:.95rem;font-weight:800;color:#111827;line-height:1.3}
+.bp-top{font-size:.68rem;color:var(--gray-500);letter-spacing:.5px;text-transform:uppercase;line-height:1}
+.bp-bot{font-size:.95rem;font-weight:800;color:var(--gray-900);line-height:1.3}
 .app-img-wrap{border-radius:18px;overflow:hidden;box-shadow:0 20px 56px rgba(0,0,0,.4)}
-.app-img-wrap img{width:100%;display:block}
 
-/* =========================================
+/* =============================================
    FAQ
-========================================= */
+============================================= */
 .faq-wrap{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
-.faq-item{background:#fff;border-radius:14px;border:1.5px solid #f3f4f6;box-shadow:0 1px 4px rgba(0,0,0,.04);overflow:hidden}
+.faq-item{background:#fff;border-radius:14px;border:1.5px solid var(--gray-100);box-shadow:0 1px 4px rgba(0,0,0,.04);overflow:hidden}
 .faq-item.active{border-color:rgba(79,28,118,.25)}
 .faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px;text-align:left;background:none;border:none;cursor:pointer}
-.faq-q{font-size:.9rem;font-weight:600;color:#111827;flex:1}
-.faq-ic{width:28px;height:28px;border-radius:50%;background:#f3f4f6;color:#4f1c76;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:400;flex-shrink:0;transition:transform .3s,background .25s;line-height:1}
+.faq-q{font-size:.9rem;font-weight:600;color:var(--gray-900);flex:1}
+.faq-ic{width:28px;height:28px;border-radius:50%;background:var(--gray-100);color:var(--purple);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:300;flex-shrink:0;transition:transform .3s,background .25s;line-height:1;user-select:none}
 .faq-item.active .faq-ic{transform:rotate(45deg);background:#f3edfb}
-/* ← KEY FIX for FAQ: max-height animation */
 .faq-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
 .faq-body.open{max-height:400px}
-.faq-ans{padding:0 20px 16px;font-size:.87rem;color:#6b7280;line-height:1.75}
+.faq-ans{padding:0 20px 16px;font-size:.87rem;color:var(--gray-500);line-height:1.75}
 
-/* =========================================
+/* =============================================
    CTA BANNER
-========================================= */
-.cta-ban{background:linear-gradient(135deg,#4f1c76,#6b2d9e);padding:64px 20px;text-align:center;position:relative;overflow:hidden}
+============================================= */
+.cta-ban{background:linear-gradient(135deg,var(--purple),var(--purple2));padding:64px 20px;text-align:center;position:relative;overflow:hidden}
 .cta-ban::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
-.cta-ban-inner{position:relative;z-index:2;max-width:680px;margin:0 auto}
-.cta-emoji{font-size:2.5rem;margin-bottom:12px}
+.cta-inner{position:relative;z-index:2;max-width:680px;margin:0 auto}
 .cta-h2{font-family:'Montserrat',sans-serif;font-size:clamp(1.6rem,3vw,2.3rem);font-weight:900;color:#fff;margin-bottom:12px;line-height:1.18}
 .cta-p{font-size:.92rem;color:rgba(255,255,255,.78);margin-bottom:26px;max-width:520px;margin-left:auto;margin-right:auto}
 .cta-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
-.btn-cw{display:inline-flex;align-items:center;gap:7px;background:#fff;color:#4f1c76;padding:13px 24px;border-radius:50px;font-weight:700;font-size:.9rem;transition:transform .2s,box-shadow .2s}
-.btn-cw:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.2)}
-.btn-co{display:inline-flex;align-items:center;gap:7px;border:2px solid rgba(255,255,255,.6);color:#fff;padding:11px 22px;border-radius:50px;font-weight:700;font-size:.88rem;transition:all .2s}
-.btn-co:hover{background:rgba(255,255,255,.12)}
+.btn-white{display:inline-flex;align-items:center;gap:7px;background:#fff;color:var(--purple);padding:13px 24px;border-radius:50px;font-weight:700;font-size:.9rem;transition:transform .2s,box-shadow .2s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.btn-outline-w{display:inline-flex;align-items:center;gap:7px;border:2px solid rgba(255,255,255,.6);color:#fff;padding:11px 22px;border-radius:50px;font-weight:700;font-size:.88rem;transition:all .2s}
+.btn-outline-w:hover{background:rgba(255,255,255,.12)}
 
-/* =========================================
+/* =============================================
    FOOTER
-========================================= */
+============================================= */
 footer{background:#0d0620;padding:52px 0 0}
-.ft-grid{max-width:1200px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ft-grid{max-width:1200px;margin:0 auto;padding:0 20px 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;border-bottom:1px solid rgba(255,255,255,.08)}
 .ft-logo{height:34px;margin-bottom:14px;filter:brightness(0) invert(1);opacity:.88}
 .ft-about{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:14px}
 .ft-ph{display:inline-flex;align-items:center;gap:6px;font-size:.86rem;font-weight:600;color:#4ade80;transition:color .2s}
@@ -362,204 +751,229 @@ footer{background:#0d0620;padding:52px 0 0}
 .ft-links a:hover{color:#fff}
 .ft-bot{max-width:1200px;margin:0 auto;padding:16px 20px;text-align:center;font-size:.78rem;color:rgba(255,255,255,.3)}
 
-/* =========================================
-   FLOATING BUTTONS
-========================================= */
+/* =============================================
+   FLOATING ELEMENTS
+============================================= */
 #fab{position:fixed;bottom:20px;right:20px;z-index:997;transform:translateY(100px);transition:transform .4s cubic-bezier(.4,0,.2,1)}
 #fab.show{transform:translateY(0)}
-.fab-a{display:flex;align-items:center;gap:7px;background:linear-gradient(135deg,#4f1c76,#6b2d9e);color:#fff;padding:12px 20px;border-radius:50px;font-weight:700;font-size:.88rem;box-shadow:0 4px 18px rgba(79,28,118,.4);transition:transform .2s}
+.fab-a{display:flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;padding:12px 20px;border-radius:50px;font-weight:700;font-size:.88rem;box-shadow:0 4px 18px rgba(79,28,118,.4);transition:transform .2s}
 .fab-a:hover{transform:translateY(-2px)}
-.wa-fixed{position:fixed;bottom:78px;right:20px;z-index:997;width:44px;height:44px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;box-shadow:0 4px 14px rgba(37,211,102,.4);transition:transform .2s}
-.wa-fixed:hover{transform:scale(1.1)}
+.wa-btn{position:fixed;bottom:78px;right:20px;z-index:997;width:44px;height:44px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;box-shadow:0 4px 14px rgba(37,211,102,.4);transition:transform .2s}
+.wa-btn:hover{transform:scale(1.1)}
 
-/* =========================================
-   RESPONSIVE
-========================================= */
-@media(max-width:1024px){
-  .wc-grid{grid-template-columns:repeat(2,1fr)}
-  .topics-grid{grid-template-columns:repeat(2,1fr)}
-  .crs-grid{grid-template-columns:repeat(2,1fr)}
-  .ft-grid{grid-template-columns:1fr 1fr}
+/* EXIT POPUP */
+#exit-popup{
+  position:fixed;inset:0;z-index:9998;
+  background:rgba(0,0,0,.6);display:none;
+  align-items:center;justify-content:center;padding:20px
 }
+#exit-popup.show{display:flex}
+.ep-card{
+  background:#fff;border-radius:24px;padding:36px 32px;
+  max-width:480px;width:100%;text-align:center;
+  box-shadow:0 24px 64px rgba(0,0,0,.3);position:relative
+}
+.ep-close{
+  position:absolute;top:14px;right:16px;
+  background:none;border:none;font-size:1.4rem;
+  color:#9ca3af;cursor:pointer;line-height:1;transition:color .2s
+}
+.ep-close:hover{color:var(--gray-900)}
+.ep-emoji{font-size:2.5rem;margin-bottom:10px}
+.ep-h{font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:900;color:var(--gray-900);margin-bottom:6px;line-height:1.25}
+.ep-p{font-size:.86rem;color:var(--gray-500);margin-bottom:22px;line-height:1.6}
+.ep-btns{display:flex;flex-direction:column;gap:8px;max-width:280px;margin:0 auto}
+
+/* =============================================
+   ANIMATIONS
+============================================= */
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:.6}80%,100%{transform:scale(1.8);opacity:0}}
+.pulse-ring{animation:pulse-ring 2s cubic-bezier(.455,.03,.515,.955) infinite}
+
+/* =============================================
+   RESPONSIVE — 1024px
+============================================= */
+@media(max-width:1024px){
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .mentor-grid{grid-template-columns:repeat(2,1fr)}
+  .results-grid{grid-template-columns:repeat(2,1fr)}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .cmp-table{font-size:.82rem}
+}
+
+/* =============================================
+   RESPONSIVE — 768px
+============================================= */
 @media(max-width:768px){
-  .hero-inner{grid-template-columns:1fr;gap:32px}
-  .hero-h1{font-size:1.9rem}
-  #hero::before,#hero::after{width:100%;clip-path:none;opacity:.3}
-  .hs-item{padding:10px 6px}
-  .hs-num{font-size:.95rem}
-  .hs-lbl{font-size:.6rem}
+  /* Navbar */
+  .nav-links,.nav-right{display:none}
+  #burger{display:flex}
+  /* Hero */
+  #hero::before,#hero::after{display:none!important}
+  .hero-inner{grid-template-columns:1fr!important;gap:24px!important;padding:24px 16px 40px!important}
+  .hero-list{grid-template-columns:1fr!important}
+  .hero-stats{grid-template-columns:repeat(2,1fr)!important}
+  .hs:nth-child(2){border-right:none!important}
+  .hs:nth-child(3){border-top:1.5px solid var(--gray-200)!important}
+  .hs:nth-child(4){border-top:1.5px solid var(--gray-200)!important;border-right:none!important}
+  .fc-chip-top,.fc-chip-bot{display:none!important}
+  /* Stats bar */
   .sb-grid{grid-template-columns:repeat(2,1fr)}
   .sb-item:nth-child(2){border-right:none}
-  .split-row{grid-template-columns:1fr;gap:28px}
-  .split-row.flip .sp-img{order:0}
+  .sb-item:nth-child(3){border-top:1px solid rgba(255,255,255,.12)}
+  .sb-item:nth-child(4){border-top:1px solid rgba(255,255,255,.12);border-right:none}
+  .sb-num{font-size:1.25rem}
+  /* SP bar */
+  .sp-bar-label{width:100%;text-align:center;margin-right:0;margin-bottom:4px}
+  /* Problem + Solution */
+  .prob-grid,.sol-grid{grid-template-columns:1fr!important;gap:24px!important}
+  /* App */
   .app-inner{grid-template-columns:1fr;gap:28px}
   .app-perks{grid-template-columns:1fr}
-  .crs-grid{grid-template-columns:1fr}
-  .ft-grid{grid-template-columns:1fr;gap:28px}
-  .topics-grid{grid-template-columns:repeat(2,1fr)}
-  .wc-grid{grid-template-columns:1fr}
-  .nav-menu,.nav-actions{display:none}
-  #burger{display:flex}
-  .hero-list{grid-template-columns:1fr}
-  .swiper-button-prev,.swiper-button-next{display:none !important}
+  /* Features / Mentors / Results */
+  .feat-grid{grid-template-columns:1fr}
+  .mentor-grid{grid-template-columns:1fr}
+  .results-grid{grid-template-columns:repeat(2,1fr)}
+  /* Table */
+  .cmp-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  /* FAB */
+  #fab{bottom:14px;right:14px}
+  .wa-btn{bottom:72px;right:14px}
+  /* Sections */
+  .sec{padding:48px 0}
+  .sec-hd{margin-bottom:32px}
+  /* CTA */
+  .cta-btns{flex-direction:column;align-items:center}
+  .btn-white,.btn-outline-w{width:100%;max-width:300px;justify-content:center}
+  /* Swiper arrows */
+  .swiper-button-prev,.swiper-button-next{display:none!important}
+  /* Exit popup */
+  .ep-card{padding:28px 20px}
 }
 @media(max-width:480px){
-  .topics-grid{grid-template-columns:1fr 1fr}
-  .cta-btns{flex-direction:column;align-items:center}
-  .hero-stats{grid-template-columns:repeat(2,1fr)}
-  .hs-item:nth-child(2){border-right:none}
-  .hs-item:nth-child(3){border-top:1.5px solid #e5e7eb}
-  .hs-item:nth-child(4){border-top:1.5px solid #e5e7eb;border-right:none}
+  .hero-h1{font-size:1.75rem!important}
+  .hero-btns{flex-direction:column}
+  .btn-primary,.btn-green,.btn-outline{width:100%;justify-content:center}
+  .form-body{padding:14px 16px 16px}
+  .form-top{padding:16px 16px 14px}
+  .results-grid{grid-template-columns:1fr}
+  .ep-h{font-size:1.1rem}
 }
 </style>
 </head>
-
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJ7SRPB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- ▓▓▓ NAVBAR ▓▓▓ -->
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
 <nav id="navbar">
   <div class="nav-wrap">
     <a href="#" class="nav-logo">
       <img src="https://www.myonlineprep.com/vendor/design-v2/images/logo.png" alt="Myonlineprep">
     </a>
-    <ul class="nav-menu">
-      <li><a href="#why-us">Why Us</a></li>
+    <ul class="nav-links">
+      <li><a href="#problem">Why CAIIB Fails</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#mentors">Mentors</a></li>
       <li><a href="#courses">Courses</a></li>
-      <li><a href="#caiib-topics">CAIIB Syllabus</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <div class="nav-actions">
+    <div class="nav-right">
       <a href="tel:9264149917" class="nav-phone">
-        <span class="ph-ic"><i class="fa-solid fa-phone"></i></span>
-        +91 92641 49917
+        <i class="fa-solid fa-phone"></i> +91 92641 49917
       </a>
-      <a href="#register" class="nav-cta">Free Mock Test</a>
+      <a href="#register" class="nav-cta"><i class="fa-solid fa-bolt"></i> Free Mock Test</a>
     </div>
-    <div id="burger" aria-label="Menu" aria-expanded="false">
+    <button id="burger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
   <div id="mob-menu">
-    <a href="#why-us">Why Us</a>
+    <a href="#problem">Why CAIIB Fails</a>
+    <a href="#features">Features</a>
+    <a href="#mentors">Mentors</a>
     <a href="#courses">Courses</a>
-    <a href="#caiib-topics">CAIIB Syllabus</a>
     <a href="#reviews">Reviews</a>
     <a href="#faq">FAQ</a>
-    <a href="tel:9264149917"><i class="fa-solid fa-phone" style="margin-right:6px"></i>+91 92641 49917</a>
-    <a href="#register" class="mob-cta">⚡ Free Mock Test →</a>
+    <a href="tel:9264149917" class="mob-cta-p"><i class="fa-solid fa-phone"></i> +91 92641 49917</a>
+    <a href="#register" class="mob-cta-g"><i class="fa-solid fa-bolt"></i> Free Mock Test</a>
   </div>
 </nav>
 
-
-<!-- ▓▓▓ HERO ▓▓▓ -->
+<!-- ══════════════════════════════════════
+     SECTION 1 — HERO
+══════════════════════════════════════ -->
 <section id="hero">
   <div class="hero-inner">
 
     <!-- LEFT -->
-    <div class="hero-left" data-aos="fade-right">
-      <!-- New pill -->
-      <div class="hero-new-pill">
-        <span class="new-dot">NEW</span>
-        <span>Revised <b>CAIIB 2026 Syllabus</b> — Fully Updated</span>
+    <div class="hero-left">
+      <div class="hero-pill">
+        <span class="pill-dot">NEW</span>
+        <span>Revised <strong>CAIIB 2026 Syllabus</strong> — Fully Updated</span>
       </div>
-
-      <!-- Trust badges -->
-      <div class="trust-badges">
-        <span class="tbadge"><i class="fa-solid fa-building-columns" style="color:#4f1c76;font-size:.7rem"></i> IIBF Aligned</span>
-        <span class="tbadge"><i class="fa-solid fa-users" style="color:#16a34a;font-size:.7rem"></i> 88,000+ Selections</span>
-        <span class="tbadge"><i class="fa-solid fa-star" style="color:#f59e0b;font-size:.7rem"></i> 4.8/5 Google Rating</span>
+      <div class="hero-trust-row">
+        <span class="htbadge"><i class="fa-solid fa-building-columns" style="color:var(--purple);font-size:.7rem"></i> IIBF Aligned</span>
+        <span class="htbadge"><i class="fa-solid fa-users" style="color:var(--green);font-size:.7rem"></i> 88K+ Selections</span>
+        <span class="htbadge"><i class="fa-solid fa-star" style="color:#f59e0b;font-size:.7rem"></i> 4.8/5 Google</span>
       </div>
-
-      <!-- H1 -->
-      <h1 class="hero-h1">
-        India's #1 Platform to<br>
-        Clear <span class="txt-p">CAIIB Exam</span><br>
-        with <span class="txt-g">60+ Marks</span>
-      </h1>
+      <h1 class="hero-h1">India's #1 Platform to<br>Clear <span class="tp">CAIIB Exam</span><br>with <span class="tg">60+ Marks</span></h1>
       <p class="hero-sub">Specially Designed for Busy Banking Professionals</p>
-
-      <!-- Checklist -->
       <div class="hero-list">
-        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>300+ Hrs. Expert Video Lessons</div>
-        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>7000+ CAIIB Mock Test Questions</div>
-        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>160+ Topic-wise E-books (PDF)</div>
-        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>ABM | BFM | ABFM | BRBL Covered</div>
-        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Bilingual — English &amp; Hindi Both</div>
-        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>24/7 Doubt Clearing by Experts</div>
-        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Offline Study via Android App</div>
-        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Case Study Based Questions</div>
+        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>300+ Hrs Expert Videos</div>
+        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>7000+ Practice Questions</div>
+        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>160+ E-books (PDF)</div>
+        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>ABM | BFM | ABFM | BRBL</div>
+        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Bilingual EN &amp; HI</div>
+        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>24/7 Doubt Clearing</div>
+        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Offline Android App</div>
+        <div class="hli"><span class="hli-ic"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Case Study Questions</div>
       </div>
-
-      <!-- CTAs -->
       <div class="hero-btns">
-        <a href="#courses" class="btn-hp"><i class="fa-solid fa-right-to-bracket"></i> Join Now</a>
-        <a href="#register" class="btn-hg"><i class="fa-solid fa-bolt"></i> Try Free Mock Test</a>
-        <a href="https://www.youtube.com/watch?v=tyiYwv3qHc0" target="_blank" rel="noopener" class="btn-ho">
-          <i class="fa-brands fa-youtube" style="color:#ef4444"></i> Watch Demo
-        </a>
+        <a href="#register" class="btn-primary"><i class="fa-solid fa-bolt"></i> Try Free Mock Test</a>
+        <a href="#courses" class="btn-green"><i class="fa-solid fa-right-to-bracket"></i> Join Now</a>
+        <a href="https://www.youtube.com/watch?v=tyiYwv3qHc0" target="_blank" rel="noopener" class="btn-outline"><i class="fa-brands fa-youtube" style="color:#ef4444"></i> Watch Demo</a>
       </div>
-
-      <!-- Mini stats -->
       <div class="hero-stats">
-        <div class="hs-item">
-          <div class="hs-num count" data-n="150000">0</div>
-          <div class="hs-lbl">Students</div>
-        </div>
-        <div class="hs-item">
-          <div class="hs-num count" data-n="88000">0</div>
-          <div class="hs-lbl">Selections</div>
-        </div>
-        <div class="hs-item">
-          <div class="hs-num count" data-n="300">0</div>
-          <div class="hs-lbl">Hrs. Videos</div>
-        </div>
-        <div class="hs-item">
-          <div class="hs-num count" data-n="7000">0</div>
-          <div class="hs-lbl">Questions</div>
-        </div>
+        <div class="hs"><div class="hs-n count" data-n="150000">0</div><div class="hs-l">Students</div></div>
+        <div class="hs"><div class="hs-n count" data-n="88000">0</div><div class="hs-l">Selections</div></div>
+        <div class="hs"><div class="hs-n count" data-n="300">0</div><div class="hs-l">Hrs. Videos</div></div>
+        <div class="hs"><div class="hs-n count" data-n="7000">0</div><div class="hs-l">Questions</div></div>
       </div>
     </div>
 
-    <!-- RIGHT: Form -->
-    <div class="hero-right" id="register" data-aos="fade-left">
-      <!-- Top floating chip -->
-      <div class="fc-top-chip">
-        <span class="fcc-ic"><i class="fa-solid fa-check"></i></span>
-        <div>
-          <div class="fcc-t">88,000+ Cleared</div>
-          <div class="fcc-s">CAIIB in 2025</div>
-        </div>
+    <!-- RIGHT — FORM -->
+    <div class="hero-right" id="register">
+      <div class="fc-chip-top">
+        <span class="fc-chip-ic"><i class="fa-solid fa-check"></i></span>
+        <div><div class="fc-chip-t">88,000+ Cleared</div><div class="fc-chip-s">CAIIB in 2025</div></div>
       </div>
-
-      <!-- Form Card -->
       <div class="form-card">
-        <div class="form-card-top">
-          <span class="form-free-badge">🎯 100% Free Access</span>
-          <div class="form-card-title">Start Your Free Trial Today</div>
-          <div class="form-card-sub">Join 1.5L+ students preparing with Myonlineprep</div>
+        <div class="form-top">
+          <span class="form-free-tag">🎯 100% Free Access</span>
+          <div class="form-title">Start Your Free Trial Today</div>
+          <div class="form-sub">Join 1.5L+ students preparing with Myonlineprep</div>
         </div>
-        <div class="form-card-body">
-          <!-- Social proof -->
+        <div class="form-body">
           <div class="form-proof">
-            <div class="proof-acs">
-              <span style="background:linear-gradient(135deg,#ef4444,#dc2626)">R</span>
-              <span style="background:linear-gradient(135deg,#22c55e,#16a34a)">S</span>
-              <span style="background:linear-gradient(135deg,#4f1c76,#6b2d9e)">P</span>
-              <span style="background:linear-gradient(135deg,#f59e0b,#d97706);margin-right:0">+</span>
+            <div class="proof-avs">
+              <span class="proof-av" style="background:linear-gradient(135deg,#ef4444,#dc2626)">R</span>
+              <span class="proof-av" style="background:linear-gradient(135deg,var(--green2),var(--green))">S</span>
+              <span class="proof-av" style="background:linear-gradient(135deg,var(--purple),var(--purple2))">P</span>
+              <span class="proof-av" style="background:linear-gradient(135deg,#f59e0b,#d97706);margin-right:0">A</span>
             </div>
-            <div class="proof-text" style="margin-left:10px">
-              <div class="pt1">2,400+ joined this week</div>
-              <div class="pt2">Start your CAIIB preparation today</div>
+            <div class="proof-txt">
+              <div class="p1">2,400+ joined this week</div>
+              <div class="p2">Start your CAIIB preparation today</div>
             </div>
           </div>
-
-          <!-- Form -->
           <form id="reg-form" method="post" autocomplete="off">
-            <input class="f-input" id="registerName" name="register_name" type="text" placeholder="Your Full Name *" required>
-            <input class="f-input" name="register_mobile" type="number" placeholder="10 Digit Mobile Number *" onKeyPress="if(this.value.length==10)return false;" required>
-            <input class="f-input" name="register_email" type="email" placeholder="Email Address *" required>
+            <input class="f-inp" id="registerName" name="register_name" type="text" placeholder="Your Full Name *" required>
+            <input class="f-inp" name="register_mobile" type="number" placeholder="10 Digit Mobile Number *" onKeyPress="if(this.value.length==10)return false;" required>
+            <input class="f-inp" name="register_email" type="email" placeholder="Email Address *" required>
             <input type="hidden" name="id" value="online-caiib-preparation">
             <input type="hidden" name="register_exam" value="3">
             <input type="hidden" name="_token" value="ovSp1sjSqAbcfn5jlpZC5MT3vhBDx1QzN0cZTbTl">
@@ -569,58 +983,308 @@ footer{background:#0d0620;padding:52px 0 0}
               <i class="fa-solid fa-bolt"></i> Attempt Free Mock Test
             </button>
           </form>
-
           <div class="form-trust">
-            <span><i class="fa-solid fa-shield-halved ft-green"></i> Free Forever</span>
-            <span><i class="fa-solid fa-lock ft-green"></i> Secure</span>
-            <span><i class="fa-solid fa-ban ft-red"></i> No Spam</span>
+            <span><i class="fa-solid fa-shield-halved" style="color:var(--green)"></i> Free Forever</span>
+            <span><i class="fa-solid fa-lock" style="color:var(--green)"></i> Secure</span>
+            <span><i class="fa-solid fa-ban" style="color:#ef4444"></i> No Spam</span>
           </div>
         </div>
       </div>
-
-      <!-- Bottom floating chip -->
-      <div class="fc-bottom-chip">
-        <span class="fbc-star">★</span>
-        <div>
-          <div class="fcc-t">4.8 ★ Rating</div>
-          <div class="fcc-s">Google Play Store</div>
-        </div>
+      <div class="fc-chip-bot">
+        <span style="color:#f59e0b;font-size:.95rem">★★★★★</span>
+        <div><div class="fc-chip-t">4.8 Rating</div><div class="fc-chip-s">Google Play Store</div></div>
       </div>
     </div>
 
   </div>
 </section>
 
-
-<!-- ▓▓▓ STATS BAR ▓▓▓ -->
+<!-- ══════════════════════════════════════
+     STATS BAR
+══════════════════════════════════════ -->
 <div class="stats-bar">
   <div class="sb-grid">
-    <div class="sb-item">
-      <div class="sb-ico">🎓</div>
-      <div class="sb-num count" data-n="150000">0</div>
-      <div class="sb-lbl">Students Enrolled</div>
-    </div>
-    <div class="sb-item">
-      <div class="sb-ico">✅</div>
-      <div class="sb-num count" data-n="88000">0</div>
-      <div class="sb-lbl">CAIIB Selections</div>
-    </div>
-    <div class="sb-item">
-      <div class="sb-ico">🎥</div>
-      <div class="sb-num count" data-n="300">0</div>
-      <div class="sb-lbl">Hours of Video</div>
-    </div>
-    <div class="sb-item">
-      <div class="sb-ico">📝</div>
-      <div class="sb-num count" data-n="7000">0</div>
-      <div class="sb-lbl">Practice Questions</div>
-    </div>
+    <div class="sb-item"><div class="sb-ico">🎓</div><div class="sb-num count" data-n="150000">0</div><div class="sb-lbl">Students Enrolled</div></div>
+    <div class="sb-item"><div class="sb-ico">🏆</div><div class="sb-num count" data-n="88000">0</div><div class="sb-lbl">CAIIB Selections</div></div>
+    <div class="sb-item"><div class="sb-ico">🎬</div><div class="sb-num count" data-n="300">0</div><div class="sb-lbl">Hours of Video</div></div>
+    <div class="sb-item"><div class="sb-ico">📝</div><div class="sb-num count" data-n="7000">0</div><div class="sb-lbl">Practice Questions</div></div>
   </div>
 </div>
 
+<!-- ══════════════════════════════════════
+     SECTION 2 — SOCIAL PROOF (BANKS)
+══════════════════════════════════════ -->
+<div class="sp-bar">
+  <div class="sp-bar-inner">
+    <span class="sp-bar-label">Trusted by Professionals from</span>
+    <span class="bank-logo-item">🏦 SBI</span>
+    <span class="bank-sep">·</span>
+    <span class="bank-logo-item">🏦 PNB</span>
+    <span class="bank-sep">·</span>
+    <span class="bank-logo-item">🏦 HDFC</span>
+    <span class="bank-sep">·</span>
+    <span class="bank-logo-item">🏦 ICICI</span>
+    <span class="bank-sep">·</span>
+    <span class="bank-logo-item">🏦 Canara</span>
+    <span class="bank-sep">·</span>
+    <span class="bank-logo-item">🏦 BoB</span>
+    <span class="bank-sep">·</span>
+    <span class="bank-logo-item">🏦 Union</span>
+    <span class="bank-sep">·</span>
+    <span class="bank-logo-item">🏦 Indian</span>
+    <span class="bank-sep">·</span>
+    <span class="bank-logo-item">🏦 Axis</span>
+  </div>
+</div>
 
-<!-- ▓▓▓ WHY US ▓▓▓ -->
-<section class="section sec-white" id="why-us">
+<!-- ══════════════════════════════════════
+     SECTION 3 — PROBLEM
+══════════════════════════════════════ -->
+<section class="sec sec-white" id="problem">
+  <div class="con">
+    <div class="sec-hd" data-aos="fade-up">
+      <div class="sec-tag">The Real Problem</div>
+      <h2 class="sec-title">Why Most Bankers <span>Fail CAIIB</span></h2>
+      <p class="sec-sub">73% of CAIIB aspirants fail in their first attempt. Here's why:</p>
+      <div class="divider"></div>
+    </div>
+    <div class="prob-grid">
+
+      <!-- LEFT -->
+      <div data-aos="fade-right">
+        <span class="sp-badge-inline">😓 Common Struggles</span>
+        <h2 class="prob-h2">These mistakes are<br>costing bankers their <span>promotions</span></h2>
+        <p class="prob-p">CAIIB is not just an exam — it's a direct route to promotion and salary hike. Yet, most bankers keep failing due to avoidable mistakes.</p>
+        <div class="prob-items">
+          <div class="prob-item">
+            <div class="prob-ic"><i class="fa-solid fa-clock"></i></div>
+            <div class="prob-text">
+              <div class="pt">No Time for Preparation</div>
+              <div class="ps">Busy work schedules leave almost no time for structured study</div>
+            </div>
+          </div>
+          <div class="prob-item">
+            <div class="prob-ic"><i class="fa-solid fa-book-skull"></i></div>
+            <div class="prob-text">
+              <div class="pt">Complex Banking Concepts</div>
+              <div class="ps">ABM, BFM, ABFM are theory-heavy — hard to understand without guidance</div>
+            </div>
+          </div>
+          <div class="prob-item">
+            <div class="prob-ic"><i class="fa-solid fa-circle-xmark"></i></div>
+            <div class="prob-text">
+              <div class="pt">Poor Quality Mock Tests</div>
+              <div class="ps">Most platforms offer outdated questions not matching IIBF pattern</div>
+            </div>
+          </div>
+          <div class="prob-item">
+            <div class="prob-ic"><i class="fa-solid fa-route"></i></div>
+            <div class="prob-text">
+              <div class="pt">No Structured Study Plan</div>
+              <div class="ps">Without a roadmap, preparation becomes random and ineffective</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div data-aos="fade-left">
+        <div class="prob-right">
+          <div class="prob-big-num count" data-n="73">0</div>
+          <div style="color:#f59e0b;font-size:1.1rem;margin:4px 0">★★★★★</div>
+          <p class="prob-big-lbl">% Fail Rate in First Attempt</p>
+          <div class="prob-stat-row">
+            <div class="pstat">
+              <span>Lack of Time</span>
+              <div class="pstat-bar"><div class="pstat-fill" style="width:82%"></div></div>
+              <span class="pstat-val">82%</span>
+            </div>
+            <div class="pstat">
+              <span>Complex Syllabus</span>
+              <div class="pstat-bar"><div class="pstat-fill" style="width:74%"></div></div>
+              <span class="pstat-val">74%</span>
+            </div>
+            <div class="pstat">
+              <span>Poor Mock Tests</span>
+              <div class="pstat-bar"><div class="pstat-fill" style="width:68%"></div></div>
+              <span class="pstat-val">68%</span>
+            </div>
+            <div class="pstat">
+              <span>No Study Plan</span>
+              <div class="pstat-bar"><div class="pstat-fill" style="width:61%"></div></div>
+              <span class="pstat-val">61%</span>
+            </div>
+          </div>
+          <p style="font-size:.72rem;color:#9ca3af;margin-top:14px">*Based on student survey of 5,000+ CAIIB aspirants</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 4 — SOLUTION
+══════════════════════════════════════ -->
+<section class="sec sec-light" id="solution">
+  <div class="con">
+    <div class="sec-hd" data-aos="fade-up">
+      <div class="sec-tag">The Solution</div>
+      <h2 class="sec-title">Myonlineprep <span>Solves This</span></h2>
+      <p class="sec-sub">Everything a busy banker needs to clear CAIIB — in one complete platform</p>
+      <div class="divider"></div>
+    </div>
+    <div class="sol-grid">
+      <div data-aos="fade-right">
+        <span class="sol-badge">✅ Complete Solution</span>
+        <h2 class="sol-h2">From Struggling to<br><span>Clearing with 60+ Marks</span></h2>
+        <p style="font-size:.87rem;color:var(--gray-500);line-height:1.75;margin-bottom:16px">We've helped 88,000+ bankers clear CAIIB. Our system directly tackles every pain point that causes failures.</p>
+        <div class="sol-items">
+          <div class="sol-item">
+            <div class="sol-ic"><i class="fa-solid fa-mobile-screen"></i></div>
+            <div class="sol-txt"><div class="st">Study Anywhere — Offline App</div><div class="ss">Download &amp; study in commute — no internet needed</div></div>
+          </div>
+          <div class="sol-item">
+            <div class="sol-ic"><i class="fa-solid fa-video"></i></div>
+            <div class="sol-txt"><div class="st">Simple Video Explanations</div><div class="ss">Complex concepts made simple by ex-banker faculty</div></div>
+          </div>
+          <div class="sol-item">
+            <div class="sol-ic"><i class="fa-solid fa-clipboard-check"></i></div>
+            <div class="sol-txt"><div class="st">IIBF-Aligned Mock Tests</div><div class="ss">Case study based questions exactly matching 2026 pattern</div></div>
+          </div>
+          <div class="sol-item">
+            <div class="sol-ic"><i class="fa-solid fa-calendar-days"></i></div>
+            <div class="sol-txt"><div class="st">Customized Study Plan</div><div class="ss">Daily study schedule — clear CAIIB in 60 days</div></div>
+          </div>
+          <div class="sol-item">
+            <div class="sol-ic"><i class="fa-solid fa-comments"></i></div>
+            <div class="sol-txt"><div class="st">24/7 Doubt Clearing</div><div class="ss">Expert answers within hours — day or night</div></div>
+          </div>
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <div class="sol-right">
+          <div class="sol-center-emoji">🏆</div>
+          <div class="sol-center-h">2025 Results</div>
+          <div class="sol-center-s">Our students vs national average</div>
+          <div class="sol-stat-grid">
+            <div class="sol-stat"><div class="sol-stat-n count" data-n="88">0</div><div class="sol-stat-l">% Our Success Rate</div></div>
+            <div class="sol-stat"><div class="sol-stat-n" style="color:#ef4444">27%</div><div class="sol-stat-l">National Average</div></div>
+            <div class="sol-stat"><div class="sol-stat-n count" data-n="88000">0</div><div class="sol-stat-l">Total Selections</div></div>
+            <div class="sol-stat"><div class="sol-stat-n count" data-n="150000">0</div><div class="sol-stat-l">Total Students</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 5 — PLATFORM PREVIEW
+══════════════════════════════════════ -->
+<section class="sec sec-dark" id="platform">
+  <div class="con">
+    <div class="sec-hd" data-aos="fade-up">
+      <div class="sec-tag" style="background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.3);color:#a78bfa">Platform Preview</div>
+      <h2 class="sec-title" style="color:#fff">See How the <span style="background:linear-gradient(135deg,#a78bfa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Platform Works</span></h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.6)">Interactive demo — explore dashboard, mock tests and analytics</p>
+      <div class="divider"></div>
+    </div>
+    <div data-aos="fade-up">
+      <div class="preview-wrap">
+        <div class="preview-tabs">
+          <div class="ptab active" data-tab="dashboard">📊 Dashboard</div>
+          <div class="ptab" data-tab="mock">📝 Mock Test</div>
+          <div class="ptab" data-tab="analytics">📈 Analytics</div>
+        </div>
+        <!-- Dashboard -->
+        <div class="preview-screen active" id="tab-dashboard">
+          <div class="ps-mock">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+              <div>
+                <div style="font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:3px">Good morning, Rajesh 👋</div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;color:#fff">Ready to continue CAIIB prep?</div>
+              </div>
+              <div style="background:rgba(79,28,118,.4);border:1px solid rgba(79,28,118,.5);border-radius:10px;padding:8px 14px;font-size:.78rem;color:#a78bfa;font-weight:600">🔥 Day 14 Streak</div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
+              <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:12px;text-align:center">
+                <div style="font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:900;color:#a78bfa">68%</div>
+                <div style="font-size:.7rem;color:rgba(255,255,255,.5);margin-top:3px">ABM Progress</div>
+              </div>
+              <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:12px;text-align:center">
+                <div style="font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:900;color:#34d399">54%</div>
+                <div style="font-size:.7rem;color:rgba(255,255,255,.5);margin-top:3px">BFM Progress</div>
+              </div>
+              <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:12px;text-align:center">
+                <div style="font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:900;color:#fbbf24">42%</div>
+                <div style="font-size:.7rem;color:rgba(255,255,255,.5);margin-top:3px">ABFM Progress</div>
+              </div>
+            </div>
+            <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+              <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:10px">📅 Today's Study Plan</div>
+              <div style="display:flex;flex-direction:column;gap:7px">
+                <div style="display:flex;align-items:center;gap:10px;font-size:.8rem">
+                  <span style="width:20px;height:20px;border-radius:50%;background:rgba(52,211,153,.2);border:1.5px solid #34d399;display:inline-flex;align-items:center;justify-content:center;color:#34d399;font-size:.65rem;flex-shrink:0">✓</span>
+                  <span style="color:rgba(255,255,255,.5);text-decoration:line-through">ABM — Chapter 4: Risk Management</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;font-size:.8rem">
+                  <span style="width:20px;height:20px;border-radius:50%;background:rgba(167,139,250,.15);border:1.5px solid #a78bfa;display:inline-flex;align-items:center;justify-content:center;color:#a78bfa;font-size:.65rem;flex-shrink:0">→</span>
+                  <span style="color:#fff;font-weight:600">BFM — Chapter 6: Capital Adequacy</span>
+                  <span style="margin-left:auto;font-size:.7rem;color:#a78bfa;font-weight:600">NOW</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;font-size:.8rem">
+                  <span style="width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.15);display:inline-flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:.65rem;flex-shrink:0">○</span>
+                  <span style="color:rgba(255,255,255,.5)">Mock Test — ABM Full Paper</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Mock Test -->
+        <div class="preview-screen" id="tab-mock">
+          <div class="ps-mock">
+            <div class="mock-q-num">Question 12 of 50 — ABM Paper | Chapter: Risk Management</div>
+            <div class="mock-q-text">A bank has Total Capital of ₹500 crore and Risk-Weighted Assets of ₹4000 crore. What is the Capital Adequacy Ratio (CAR) as per Basel III norms?</div>
+            <div class="mock-opts" id="demo-opts">
+              <div class="mock-opt" data-ans="wrong">A. 10.5%</div>
+              <div class="mock-opt" data-ans="correct">B. 12.5%</div>
+              <div class="mock-opt" data-ans="wrong">C. 11.5%</div>
+              <div class="mock-opt" data-ans="wrong">D. 9.0%</div>
+            </div>
+            <div class="mock-timer">
+              <span><i class="fa-solid fa-clock"></i> Time Left: <strong style="color:#fbbf24">48:23</strong></span>
+              <span>Score: <strong style="color:#34d399">8/11</strong></span>
+            </div>
+          </div>
+        </div>
+        <!-- Analytics -->
+        <div class="preview-screen" id="tab-analytics">
+          <div class="ps-mock">
+            <div class="an-grid" style="margin-bottom:16px">
+              <div class="an-card"><div class="an-val">78%</div><div class="an-lbl">Avg Score</div></div>
+              <div class="an-card"><div class="an-val" style="color:#34d399">24</div><div class="an-lbl">Tests Done</div></div>
+              <div class="an-card"><div class="an-val" style="color:#fbbf24">92%</div><div class="an-lbl">Accuracy</div></div>
+            </div>
+            <div style="font-size:.78rem;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:10px">Subject-wise Performance</div>
+            <div class="an-bars">
+              <div class="an-bar-row"><span style="width:44px">ABM</span><div class="an-bar-track"><div class="an-bar-fill" style="width:78%;background:linear-gradient(90deg,#a78bfa,#7c3aed)"></div></div><span style="width:32px;text-align:right;font-weight:700;color:#a78bfa">78%</span></div>
+              <div class="an-bar-row"><span style="width:44px">BFM</span><div class="an-bar-track"><div class="an-bar-fill" style="width:65%;background:linear-gradient(90deg,#34d399,#059669)"></div></div><span style="width:32px;text-align:right;font-weight:700;color:#34d399">65%</span></div>
+              <div class="an-bar-row"><span style="width:44px">ABFM</span><div class="an-bar-track"><div class="an-bar-fill" style="width:82%;background:linear-gradient(90deg,#fbbf24,#d97706)"></div></div><span style="width:32px;text-align:right;font-weight:700;color:#fbbf24">82%</span></div>
+              <div class="an-bar-row"><span style="width:44px">BRBL</span><div class="an-bar-track"><div class="an-bar-fill" style="width:71%;background:linear-gradient(90deg,#f87171,#dc2626)"></div></div><span style="width:32px;text-align:right;font-weight:700;color:#f87171">71%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 6 — FEATURES
+══════════════════════════════════════ -->
+<section class="sec sec-white" id="features">
   <div class="con">
     <div class="sec-hd" data-aos="fade-up">
       <div class="sec-tag">Why Choose Us</div>
@@ -628,426 +1292,272 @@ footer{background:#0d0620;padding:52px 0 0}
       <p class="sec-sub">The most complete CAIIB preparation system built by ex-bankers, for bankers</p>
       <div class="divider"></div>
     </div>
-    <div class="wc-grid">
-      <div class="wc-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="wc-ico ico-p"><i class="fa-solid fa-video"></i></div>
-        <div class="wc-h">300+ Hours Expert Videos</div>
-        <p class="wc-p">Topic-wise HD video lessons in English &amp; Hindi by ex-banker faculty with a decade of teaching experience. Watch anytime, anywhere.</p>
+    <div class="feat-grid">
+      <div class="feat-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="feat-ic ic-p"><i class="fa-solid fa-video"></i></div>
+        <div class="feat-h">300+ Hours Expert Videos</div>
+        <p class="feat-p">Topic-wise HD video lessons in English &amp; Hindi by ex-banker faculty. Watch anytime, anywhere — even offline on the app.</p>
       </div>
-      <div class="wc-card" data-aos="fade-up" data-aos-delay="80">
-        <div class="wc-ico ico-g"><i class="fa-solid fa-clipboard-list"></i></div>
-        <div class="wc-h">7000+ Practice Questions</div>
-        <p class="wc-p">7000+ MCQs with detailed solutions including case-study based questions exactly matching the new IIBF 2026 exam pattern for CAIIB.</p>
+      <div class="feat-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="feat-ic ic-g"><i class="fa-solid fa-clipboard-list"></i></div>
+        <div class="feat-h">7000+ Practice Questions</div>
+        <p class="feat-p">7000+ MCQs with case study questions exactly matching the 2026 IIBF exam pattern. Detailed solutions included.</p>
       </div>
-      <div class="wc-card" data-aos="fade-up" data-aos-delay="160">
-        <div class="wc-ico ico-b"><i class="fa-solid fa-book-open"></i></div>
-        <div class="wc-h">160+ Comprehensive E-books</div>
-        <p class="wc-p">Topic-wise structured e-books and study notes covering every chapter of ABM, BFM, ABFM, BRBL and all elective papers in detail.</p>
+      <div class="feat-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="feat-ic ic-b"><i class="fa-solid fa-book-open"></i></div>
+        <div class="feat-h">160+ Comprehensive E-books</div>
+        <p class="feat-p">Topic-wise structured e-books covering every chapter of ABM, BFM, ABFM, BRBL and all electives. Downloadable PDF.</p>
       </div>
-      <div class="wc-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="wc-ico ico-o"><i class="fa-solid fa-comments"></i></div>
-        <div class="wc-h">24/7 Doubt Clearing</div>
-        <p class="wc-p">Raise any doubt anytime and get it resolved by our expert faculty within hours. No doubt goes unanswered — day or night.</p>
+      <div class="feat-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="feat-ic ic-o"><i class="fa-solid fa-comments"></i></div>
+        <div class="feat-h">24/7 Doubt Clearing</div>
+        <p class="feat-p">Raise any doubt anytime and get it resolved by our expert faculty within hours. No doubt goes unanswered.</p>
       </div>
-      <div class="wc-card" data-aos="fade-up" data-aos-delay="80">
-        <div class="wc-ico ico-y"><i class="fa-solid fa-mobile-screen"></i></div>
-        <div class="wc-h">Offline Android App</div>
-        <p class="wc-p">Download videos and e-books on the Myonlineprep app. Study during your commute or anywhere — even without an internet connection.</p>
+      <div class="feat-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="feat-ic ic-y"><i class="fa-solid fa-mobile-screen"></i></div>
+        <div class="feat-h">Offline Android App</div>
+        <p class="feat-p">Download videos and e-books on the Myonlineprep app. Study during commute — even without internet.</p>
       </div>
-      <div class="wc-card" data-aos="fade-up" data-aos-delay="160">
-        <div class="wc-ico ico-t"><i class="fa-solid fa-trophy"></i></div>
-        <div class="wc-h">Highest Selection Rate</div>
-        <p class="wc-p">88,000+ CAIIB selections from 1.5L+ students. The highest success rate among all online CAIIB preparation platforms in India.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ▓▓▓ VIDEO SPLIT ▓▓▓ -->
-<section class="section sec-light">
-  <div class="con">
-    <div class="split-row">
-      <div data-aos="fade-right">
-        <span class="sp-badge">📹 Video Lessons</span>
-        <h2 class="sp-h2">Learn at Your Pace with<br><span>Expert Video Lessons</span></h2>
-        <p class="sp-p">Our 300+ hours of HD video lessons are crafted by ex-bankers who know exactly what CAIIB requires. Complex banking concepts explained simply — in both English and Hindi.</p>
-        <ul class="sp-list">
-          <li><i class="fa-solid fa-circle-check"></i> 300+ Hrs. covering full CAIIB 2026 syllabus</li>
-          <li><i class="fa-solid fa-circle-check"></i> Bilingual — English &amp; Hindi both available</li>
-          <li><i class="fa-solid fa-circle-check"></i> Case study based explanations (new exam pattern)</li>
-          <li><i class="fa-solid fa-circle-check"></i> Watch offline on Android app anytime</li>
-        </ul>
-        <div class="sp-chips">
-          <div class="sp-chip"><i class="fa-solid fa-play" style="color:#4f1c76"></i><div><div class="sc-t">300+ Hours</div><div class="sc-s">Video Content</div></div></div>
-          <div class="sp-chip"><i class="fa-solid fa-language" style="color:#4f1c76"></i><div><div class="sc-t">Bilingual</div><div class="sc-s">EN + HI</div></div></div>
-          <div class="sp-chip"><i class="fa-solid fa-wifi" style="color:#4f1c76;text-decoration:line-through"></i><div><div class="sc-t">Offline Mode</div><div class="sc-s">Download &amp; Watch</div></div></div>
-        </div>
-      </div>
-      <div class="sp-img" data-aos="fade-left">
-        <div class="vid-wrap" data-vid="tyiYwv3qHc0">
-          <img src="https://img.youtube.com/vi/tyiYwv3qHc0/maxresdefault.jpg"
-            alt="CAIIB Video Lesson Preview"
-            onerror="this.src='https://placehold.co/640x360/4f1c76/ffffff?text=PROUD+STUDENTS'">
-          <div class="vid-ovr">
-            <div class="vid-play"><i class="fa-solid fa-play"></i></div>
-          </div>
-        </div>
+      <div class="feat-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="feat-ic ic-t"><i class="fa-solid fa-calendar-check"></i></div>
+        <div class="feat-h">Customized Study Plans</div>
+        <p class="feat-p">Daily study schedules built around your work hours. Clear CAIIB in 60 days following our proven roadmap.</p>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- ▓▓▓ STUDY MATERIAL SPLIT ▓▓▓ -->
-<section class="section sec-white">
-  <div class="con">
-    <div class="split-row flip">
-
-      <!-- LEFT: App screenshot swiper — FIXED -->
-      <div data-aos="fade-right">
-        <div style="border-radius:16px;overflow:hidden;box-shadow:0 12px 38px rgba(79,28,118,.14);position:relative;">
-          <div class="swiper studySwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img src="https://play-lh.googleusercontent.com/NDxLdv-7kYW_QriajC1aVDebc8djjh2PLkxVe1Au29ma9ewOevq6SxSO1DktrHUaFGw=w1052-h592-rw"
-                  alt="CAIIB Study Material"
-                  style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;"
-                  onerror="this.src='https://placehold.co/640x360/4f1c76/ffffff?text=Study+Material'">
-              </div>
-              <div class="swiper-slide">
-                <img src="https://play-lh.googleusercontent.com/NDxLdv-7kYW_QriajC1aVDebc8djjh2PLkxVe1Au29ma9ewOevq6SxSO1DktrHUaFGw=w1052-h592-rw"
-                  alt="CAIIB Mock Tests"
-                  style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;"
-                  onerror="this.src='https://placehold.co/640x360/059669/ffffff?text=Mock+Tests'">
-              </div>
-            </div>
-            <div class="swiper-pagination" style="bottom:8px"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIGHT: Content -->
-      <div data-aos="fade-left">
-        <span class="sp-badge">📚 Study Material</span>
-        <h2 class="sp-h2">160+ Expert E-books &amp;<br><span>Comprehensive Study Notes</span></h2>
-        <p class="sp-p">Structured topic-wise e-books covering every chapter of all CAIIB papers. Written by experts and updated for 2026 revised syllabus — your complete offline reference.</p>
-        <ul class="sp-list">
-          <li><i class="fa-solid fa-circle-check"></i> Covers ABM, BFM, ABFM, BRBL &amp; Electives</li>
-          <li><i class="fa-solid fa-circle-check"></i> Chapter summaries + previous year analysis</li>
-          <li><i class="fa-solid fa-circle-check"></i> Downloadable PDF format — read offline</li>
-          <li><i class="fa-solid fa-circle-check"></i> Fully updated for IIBF 2026 pattern</li>
-        </ul>
-        <div class="sp-chips">
-          <div class="sp-chip">
-            <i class="fa-solid fa-file-pdf" style="color:#ef4444"></i>
-            <div><div class="sc-t">160+ E-books</div><div class="sc-s">PDF Format</div></div>
-          </div>
-          <div class="sp-chip">
-            <i class="fa-solid fa-download" style="color:#4f1c76"></i>
-            <div><div class="sc-t">Offline Access</div><div class="sc-s">Download Free</div></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-
-<!-- ▓▓▓ CAIIB TOPICS ▓▓▓ -->
-<section class="topics-sec" id="caiib-topics">
-  <div class="con">
-    <div class="topics-hd" data-aos="fade-up">
-      <h2>CAIIB 2026 — Complete Syllabus Coverage</h2>
-      <p>All 4 compulsory papers + electives, fully aligned to revised IIBF pattern</p>
-    </div>
-    <div class="topics-grid">
-      <div class="topic-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="tc-ico">📊</div>
-        <div class="tc-name">ABM</div>
-        <div class="tc-full">Advanced Bank Management</div>
-        <span class="tc-count">1800+ Questions</span>
-      </div>
-      <div class="topic-card" data-aos="fade-up" data-aos-delay="80">
-        <div class="tc-ico">💹</div>
-        <div class="tc-name">BFM</div>
-        <div class="tc-full">Bank Financial Management</div>
-        <span class="tc-count">1800+ Questions</span>
-      </div>
-      <div class="topic-card" data-aos="fade-up" data-aos-delay="160">
-        <div class="tc-ico">📈</div>
-        <div class="tc-name">ABFM</div>
-        <div class="tc-full">Advanced Business &amp; Financial Management</div>
-        <span class="tc-count">1700+ Questions</span>
-      </div>
-      <div class="topic-card" data-aos="fade-up" data-aos-delay="240">
-        <div class="tc-ico">⚖️</div>
-        <div class="tc-name">BRBL</div>
-        <div class="tc-full">Banking Regulations &amp; Business Laws</div>
-        <span class="tc-count">1700+ Questions</span>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:22px">
-      <div class="topic-card" style="display:inline-block;padding:14px 28px;min-width:220px" data-aos="fade-up">
-        <div class="tc-ico">👔</div>
-        <div class="tc-name">HRM Elective</div>
-        <div class="tc-full">Human Resources Management</div>
-        <span class="tc-count">700+ Questions</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ▓▓▓ COURSES ▓▓▓ -->
-<section class="section sec-light" id="courses">
+<!-- ══════════════════════════════════════
+     SECTION 7 — MENTORS (AUTHORITY)
+══════════════════════════════════════ -->
+<section class="sec sec-light" id="mentors">
   <div class="con">
     <div class="sec-hd" data-aos="fade-up">
-      <div class="sec-tag">Our Courses</div>
-      <h2 class="sec-title">Choose Your <span>Perfect Package</span></h2>
-      <p class="sec-sub">Complete CAIIB course packages at the best price — pick what suits you most</p>
+      <div class="sec-tag">Expert Faculty</div>
+      <h2 class="sec-title">Meet Your <span>CAIIB Mentors</span></h2>
+      <p class="sec-sub">Ex-bankers who've cleared CAIIB themselves — now helping thousands succeed</p>
       <div class="divider"></div>
     </div>
-    <div class="crs-grid">
-
-      <!-- Course 1 -->
-      <div class="crs-card popular" data-aos="fade-up" data-aos-delay="0">
-        <div class="pop-badge">⭐ Most Popular</div>
-        <div class="crs-img">
-          <img src="https://myonlineprep.s3.ap-south-1.amazonaws.com/courses/thumbnail/111-1674305488.jpg"
-            alt="CAIIB Combo Course" onerror="this.src='https://placehold.co/400x168/4f1c76/ffffff?text=CAIIB+Combo'">
-          <span class="crs-tag tag-full">FULL COURSE</span>
+    <div class="mentor-grid">
+      <div class="mentor-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="mentor-av">R</div>
+        <div class="mentor-name">Rajesh Kumar</div>
+        <div class="mentor-role">Lead Faculty — ABM &amp; BFM</div>
+        <span class="mentor-exp">Ex-SBI AGM | 15+ Years Exp.</span>
+        <div class="mentor-tags">
+          <span class="mtag">ABM Expert</span>
+          <span class="mtag">BFM</span>
+          <span class="mtag">Risk Mgmt</span>
         </div>
-        <div class="crs-body">
-          <h3 class="crs-h">CAIIB Combo — ABM + BFM + ABFM + BRBL</h3>
-          <p class="crs-p">Complete package with video lessons, mock tests &amp; e-books for all 4 CAIIB papers.</p>
-          <div class="crs-feats">
-            <div class="crs-feat"><i class="fa-solid fa-circle-check"></i> 300+ Hrs. Video Lessons</div>
-            <div class="crs-feat"><i class="fa-solid fa-circle-check"></i> 7000+ MCQs with Solutions</div>
-            <div class="crs-feat"><i class="fa-solid fa-circle-check"></i> 160+ E-books &amp; Study Notes</div>
-            <div class="crs-feat"><i class="fa-solid fa-circle-check"></i> 24/7 Doubt Clearing</div>
-          </div>
-          <div class="crs-footer">
-            <div><span class="crs-price">Best Value</span></div>
-            <a href="https://www.myonlineprep.com/course-details/caiib-combo-abm-bfm-abfm-brbl-video-lesson-mock-test-ebooks" class="btn-enroll">Enroll Now <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
+        <div class="mentor-students">Trained <strong>40,000+</strong> students</div>
       </div>
-
-      <!-- Course 2 -->
-      <div class="crs-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="crs-img">
-          <img src="https://myonlineprep.s3.ap-south-1.amazonaws.com/courses/thumbnail/111-1674305488.jpg"
-            alt="CAIIB Mock Tests" onerror="this.src='https://placehold.co/400x168/7c3aed/ffffff?text=CAIIB+Mock+Tests'">
-          <span class="crs-tag tag-mock">MOCK TESTS</span>
+      <div class="mentor-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="mentor-av" style="background:linear-gradient(135deg,#0ea5e9,#0284c7)">S</div>
+        <div class="mentor-name">Sunita Sharma</div>
+        <div class="mentor-role">Senior Faculty — ABFM &amp; BRBL</div>
+        <span class="mentor-exp">Ex-PNB DGM | 12+ Years Exp.</span>
+        <div class="mentor-tags">
+          <span class="mtag">ABFM</span>
+          <span class="mtag">Banking Law</span>
+          <span class="mtag">BRBL</span>
         </div>
-        <div class="crs-body">
-          <h3 class="crs-h">CAIIB Mock Tests — All Papers (ABM + BFM + ABFM + BRBL)</h3>
-          <p class="crs-p">Chapter-wise + full-length mock tests for all CAIIB papers with detailed solutions.</p>
-          <div class="crs-feats">
-            <div class="crs-feat"><i class="fa-solid fa-circle-check"></i> 160+ Mock Tests</div>
-            <div class="crs-feat"><i class="fa-solid fa-circle-check"></i> 7000+ MCQs</div>
-            <div class="crs-feat"><i class="fa-solid fa-circle-check"></i> Performance Analytics</div>
-            <div class="crs-feat"><i class="fa-solid fa-circle-check"></i> Detailed Solutions</div>
-          </div>
-          <div class="crs-footer">
-            <div><span class="crs-price">Practice Pack</span></div>
-            <a href="https://www.myonlineprep.com/course-details/caiib-mock-tests-june-2023-abm-bfm-abfm-brbl" class="btn-enroll-o">Enroll Now <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
+        <div class="mentor-students">Trained <strong>28,000+</strong> students</div>
       </div>
-
-      <!-- Course 3 -->
-      <div class="crs-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="crs-img">
-          <img src="https://myonlineprep.s3.ap-south-1.amazonaws.com/courses/thumbnail/111-1674305488.jpg"
-            alt="CAIIB HRM Elective" onerror="this.src='https://placehold.co/400x168/059669/ffffff?text=HRM+Elective'">
-          <span class="crs-tag tag-elect">ELECTIVE</span>
+      <div class="mentor-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="mentor-av" style="background:linear-gradient(135deg,#0d9488,#0f766e)">P</div>
+        <div class="mentor-name">Pradeep Verma</div>
+        <div class="mentor-role">Faculty — Case Studies &amp; Analytics</div>
+        <span class="mentor-exp">Ex-Canara Bank CM | 10+ Years</span>
+        <div class="mentor-tags">
+          <span class="mtag">Case Studies</span>
+          <span class="mtag">Analytics</span>
+          <span class="mtag">Hindi</span>
         </div>
-        <div class="crs-body">
-          <h3 class="crs-h">CAIIB HRM Elective — Videos + Mock Tests + E-books</h3>
-          <p class="crs-p">Complete HRM elective preparation — video lessons, mock tests and downloadable e-books.</p>
-          <div class="crs-feats">
-            <div class="crs-feat"><i class="fa-solid fa-circle-check"></i> HRM Focused Videos</div>
-            <div class="crs-feat"><i class="fa-solid fa-circle-check"></i> 700+ MCQs</div>
-            <div class="crs-feat"><i class="fa-solid fa-circle-check"></i> Topic-wise E-books</div>
-            <div class="crs-feat"><i class="fa-solid fa-circle-check"></i> 2026 Syllabus Updated</div>
-          </div>
-          <div class="crs-footer">
-            <div><span class="crs-price">Elective Pack</span></div>
-            <a href="https://www.myonlineprep.com/course-details/caiib-hrm-elective-paper-june-2023-video-lessons-mock-tests-ebooks" class="btn-enroll-o">Enroll Now <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
+        <div class="mentor-students">Trained <strong>22,000+</strong> students</div>
       </div>
-
     </div>
   </div>
 </section>
 
+<!-- ══════════════════════════════════════
+     SECTION 8 — RESULTS
+══════════════════════════════════════ -->
+<section class="sec sec-white" id="results">
+  <div class="con">
+    <div class="sec-hd" data-aos="fade-up">
+      <div class="sec-tag">2025 Results</div>
+      <h2 class="sec-title">Real Data. <span>Real Results.</span></h2>
+      <p class="sec-sub">Our students consistently outperform the national CAIIB average</p>
+      <div class="divider"></div>
+    </div>
+    <div class="results-grid" data-aos="fade-up">
+      <div class="res-card"><div class="res-num count" data-n="12800">0</div><div class="res-lbl">Students Appeared in 2025</div></div>
+      <div class="res-card"><div class="res-num count" data-n="9420" style="color:var(--green)">0</div><div class="res-lbl">Students Passed CAIIB</div></div>
+      <div class="res-card"><div class="res-num count" data-n="73">0<span style="font-size:1.4rem">%</span></div><div class="res-lbl">Our Success Rate</div></div>
+      <div class="res-card"><div class="res-num" style="color:#ef4444">27%</div><div class="res-lbl">National Average Pass Rate</div></div>
+    </div>
+    <div class="res-bar-section" data-aos="fade-up" style="margin-top:24px">
+      <div class="res-bar-title">Subject-wise Pass Rate — Our Students (2025)</div>
+            <div class="res-bars">
+        <div class="rb-row">
+          <span class="rb-label">ABM</span>
+          <div class="rb-track"><div class="rb-fill" style="width:78%"></div></div>
+          <span class="rb-val">78%</span>
+        </div>
+        <div class="rb-row">
+          <span class="rb-label">BFM</span>
+          <div class="rb-track"><div class="rb-fill" style="width:81%"></div></div>
+          <span class="rb-val">81%</span>
+        </div>
+        <div class="rb-row">
+          <span class="rb-label">ABFM</span>
+          <div class="rb-track"><div class="rb-fill" style="width:75%"></div></div>
+          <span class="rb-val">75%</span>
+        </div>
+        <div class="rb-row">
+          <span class="rb-label">BRBL</span>
+          <div class="rb-track"><div class="rb-fill" style="width:83%"></div></div>
+          <span class="rb-val">83%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- ▓▓▓ TESTIMONIALS ▓▓▓ -->
-<section class="section sec-green" id="reviews">
+<!-- ══════════════════════════════════════
+     SECTION 9 — TESTIMONIALS
+══════════════════════════════════════ -->
+<section class="sec sec-light" id="reviews">
   <div class="con">
     <div class="sec-hd" data-aos="fade-up">
       <div class="sec-tag">Student Reviews</div>
-      <h2 class="sec-title">What Our <span>Students Say</span></h2>
-      <p class="sec-sub">Real results from real bankers who cleared CAIIB with Myonlineprep</p>
+      <h2 class="sec-title">Real Results from <span>Real Bankers</span></h2>
+      <p class="sec-sub">Hear from bankers who cleared CAIIB with Myonlineprep</p>
       <div class="divider"></div>
     </div>
-
-    <!-- SWIPER -->
-    <div class="tp-swiper-wrap" data-aos="fade-up">
-      <div class="swiper" id="tpSwiper">
+    <div style="padding-bottom:50px;position:relative" data-aos="fade-up">
+      <div class="swiper tpSwiper">
         <div class="swiper-wrapper">
-
-          <!-- Slide 1 -->
           <div class="swiper-slide">
             <div class="tp-card">
               <div class="tp-top">
-                <div class="tp-av-fb" style="background:linear-gradient(135deg,#4f1c76,#6b2d9e)">P</div>
+                <div class="tp-av-fb" style="background:linear-gradient(135deg,var(--purple),var(--purple2))">R</div>
                 <div>
-                  <div class="tp-name">Priya Thakur</div>
-                  <div class="tp-bank"><i class="fa-solid fa-building-columns" style="font-size:.62rem;color:#4f1c76;margin-right:3px"></i>State Bank of India</div>
-                  <span class="tp-cert">✓ CAIIB Certified 2025</span>
+                  <div class="tp-name">Rajesh Kumar</div>
+                  <div class="tp-bank">Manager — SBI, Kolkata</div>
+                  <span class="tp-cert">CAIIB Cleared ✓ First Attempt</span>
                 </div>
               </div>
               <div class="tp-stars">★★★★★</div>
-              <p class="tp-text">"I cleared CAIIB in my very first attempt! The video lessons and mock tests were exactly what I needed. Scores say it all — couldn't have done it without Myonlineprep."</p>
+              <p class="tp-text">"Cleared CAIIB in first attempt! The video lessons and mock tests were exactly what I needed. Couldn't have done it without Myonlineprep."</p>
               <div class="tp-scores">
-                <span class="tp-sc">AFB: 61</span>
-                <span class="tp-sc">BFM: 62</span>
-                <span class="tp-sc">ABFM: 66</span>
-                <span class="tp-sc">BRBL: 61</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="swiper-slide">
-            <div class="tp-card">
-              <div class="tp-top">
-                <div class="tp-av-fb" style="background:linear-gradient(135deg,#059669,#16a34a)">A</div>
-                <div>
-                  <div class="tp-name">Amit Sharma</div>
-                  <div class="tp-bank"><i class="fa-solid fa-building-columns" style="font-size:.62rem;color:#4f1c76;margin-right:3px"></i>Bank of Baroda</div>
-                  <span class="tp-cert">✓ CAIIB Certified 2025</span>
-                </div>
-              </div>
-              <div class="tp-stars">★★★★★</div>
-              <p class="tp-text">"After failing CAIIB twice, Myonlineprep was a game-changer. The case-study based questions and detailed video explanations made all the difference. Cleared all 4 papers!"</p>
-              <div class="tp-scores">
-                <span class="tp-sc">ABM: 64</span>
+                <span class="tp-sc">ABM: 61</span>
                 <span class="tp-sc">BFM: 58</span>
-                <span class="tp-sc">ABFM: 60</span>
-                <span class="tp-sc">BRBL: 65</span>
+                <span class="tp-sc">ABFM: 65</span>
               </div>
             </div>
           </div>
-
-          <!-- Slide 3 -->
           <div class="swiper-slide">
             <div class="tp-card">
               <div class="tp-top">
-                <div class="tp-av-fb" style="background:linear-gradient(135deg,#ec4899,#be185d)">S</div>
+                <div class="tp-av-fb" style="background:linear-gradient(135deg,var(--green2),var(--green))">S</div>
                 <div>
-                  <div class="tp-name">Sunita Verma</div>
-                  <div class="tp-bank"><i class="fa-solid fa-building-columns" style="font-size:.62rem;color:#4f1c76;margin-right:3px"></i>Punjab National Bank</div>
-                  <span class="tp-cert">✓ CAIIB Certified 2025</span>
+                  <div class="tp-name">Sunita Sharma</div>
+                  <div class="tp-bank">Senior Manager — PNB, Delhi</div>
+                  <span class="tp-cert">CAIIB Cleared ✓ All 4 Papers</span>
                 </div>
               </div>
               <div class="tp-stars">★★★★★</div>
-              <p class="tp-text">"The bilingual videos were a lifesaver! I had been struggling with ABM concepts but the Hindi explanation made everything crystal clear. 63 marks in ABM — unbelievable!"</p>
+              <p class="tp-text">"After failing CAIIB twice, Myonlineprep was a game-changer. The case-study based questions and detailed video explanations made all the difference!"</p>
+              <div class="tp-scores">
+                <span class="tp-sc">All 4 Papers ✓</span>
+                <span class="tp-sc">Score: 62 avg</span>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="tp-card">
+              <div class="tp-top">
+                <div class="tp-av-fb" style="background:linear-gradient(135deg,#f59e0b,#d97706)">P</div>
+                <div>
+                  <div class="tp-name">Priya Nair</div>
+                  <div class="tp-bank">Officer — Canara Bank, Bengaluru</div>
+                  <span class="tp-cert">CAIIB Cleared ✓</span>
+                </div>
+              </div>
+              <div class="tp-stars">★★★★★</div>
+              <p class="tp-text">"The bilingual videos were a lifesaver! Struggled with ABM concepts but Hindi explanations made everything crystal clear. 63 marks in ABM — unbelievable!"</p>
               <div class="tp-scores">
                 <span class="tp-sc">ABM: 63</span>
-                <span class="tp-sc">BFM: 57</span>
-                <span class="tp-sc">ABFM: 61</span>
-                <span class="tp-sc">BRBL: 59</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 4 -->
-          <div class="swiper-slide">
-            <div class="tp-card">
-              <div class="tp-top">
-                <div class="tp-av-fb" style="background:linear-gradient(135deg,#f59e0b,#d97706)">R</div>
-                <div>
-                  <div class="tp-name">Rahul Mishra</div>
-                  <div class="tp-bank"><i class="fa-solid fa-building-columns" style="font-size:.62rem;color:#4f1c76;margin-right:3px"></i>Canara Bank</div>
-                  <span class="tp-cert">✓ CAIIB Certified 2025</span>
-                </div>
-              </div>
-              <div class="tp-stars">★★★★★</div>
-              <p class="tp-text">"The mock test quality is top notch. Very close to the actual exam pattern. The performance analytics showed me exactly where I was weak. 24/7 doubt support is amazing."</p>
-              <div class="tp-scores">
-                <span class="tp-sc">ABM: 58</span>
-                <span class="tp-sc">BFM: 61</span>
-                <span class="tp-sc">ABFM: 56</span>
-                <span class="tp-sc">BRBL: 62</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 5 -->
-          <div class="swiper-slide">
-            <div class="tp-card">
-              <div class="tp-top">
-                <div class="tp-av-fb" style="background:linear-gradient(135deg,#2563eb,#1d4ed8)">Y</div>
-                <div>
-                  <div class="tp-name">Yatendra Singh</div>
-                  <div class="tp-bank"><i class="fa-solid fa-building-columns" style="font-size:.62rem;color:#4f1c76;margin-right:3px"></i>Andhra Gramin Bank</div>
-                  <span class="tp-cert">✓ CAIIB Certified 2025</span>
-                </div>
-              </div>
-              <div class="tp-stars">★★★★★</div>
-              <p class="tp-text">"Thanks to Myonlineprep, I passed CAIIB on my very first try! The study resources were super helpful and made everything simple even for complex banking topics."</p>
-              <div class="tp-scores">
-                <span class="tp-sc">ABM: 52</span>
-                <span class="tp-sc">BFM: 55</span>
-                <span class="tp-sc">ABFM: 57</span>
-                <span class="tp-sc">BRBL: 59</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 6 -->
-          <div class="swiper-slide">
-            <div class="tp-card">
-              <div class="tp-top">
-                <div class="tp-av-fb" style="background:linear-gradient(135deg,#14b8a6,#0d9488)">N</div>
-                <div>
-                  <div class="tp-name">Neha Joshi</div>
-                  <div class="tp-bank"><i class="fa-solid fa-building-columns" style="font-size:.62rem;color:#4f1c76;margin-right:3px"></i>Bank of India</div>
-                  <span class="tp-cert">✓ CAIIB Certified 2025</span>
-                </div>
-              </div>
-              <div class="tp-stars">★★★★★</div>
-              <p class="tp-text">"As a working mother I had very little time. The offline app feature was a godsend — I studied during lunch breaks and my daily commute. Cleared CAIIB in one shot!"</p>
-              <div class="tp-scores">
-                <span class="tp-sc">ABM: 55</span>
                 <span class="tp-sc">BFM: 60</span>
-                <span class="tp-sc">ABFM: 58</span>
-                <span class="tp-sc">BRBL: 54</span>
               </div>
             </div>
           </div>
-
+          <div class="swiper-slide">
+            <div class="tp-card">
+              <div class="tp-top">
+                <div class="tp-av-fb" style="background:linear-gradient(135deg,#0ea5e9,#0284c7)">A</div>
+                <div>
+                  <div class="tp-name">Amit Verma</div>
+                  <div class="tp-bank">Manager — Bank of Baroda, Mumbai</div>
+                  <span class="tp-cert">CAIIB Cleared ✓</span>
+                </div>
+              </div>
+              <div class="tp-stars">★★★★★</div>
+              <p class="tp-text">"Mock test quality is top notch — very close to actual exam pattern. Performance analytics showed exactly where I was weak. 24/7 doubt support is amazing."</p>
+              <div class="tp-scores">
+                <span class="tp-sc">BRBL: 67</span>
+                <span class="tp-sc">ABFM: 62</span>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="tp-card">
+              <div class="tp-top">
+                <div class="tp-av-fb" style="background:linear-gradient(135deg,#ec4899,#db2777)">M</div>
+                <div>
+                  <div class="tp-name">Meena Pillai</div>
+                  <div class="tp-bank">Officer — Union Bank, Chennai</div>
+                  <span class="tp-cert">CAIIB Cleared ✓</span>
+                </div>
+              </div>
+              <div class="tp-stars">★★★★★</div>
+              <p class="tp-text">"Passed CAIIB on my very first try! Study resources were super helpful and made everything simple even for complex banking topics. Highly recommend!"</p>
+              <div class="tp-scores">
+                <span class="tp-sc">First Attempt ✓</span>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="tp-card">
+              <div class="tp-top">
+                <div class="tp-av-fb" style="background:linear-gradient(135deg,#0d9488,#0f766e)">D</div>
+                <div>
+                  <div class="tp-name">Deepa Krishnan</div>
+                  <div class="tp-bank">Senior Officer — Indian Bank, Hyderabad</div>
+                  <span class="tp-cert">CAIIB Cleared ✓</span>
+                </div>
+              </div>
+              <div class="tp-stars">★★★★★</div>
+              <p class="tp-text">"As a working mother, I had very little time. The offline app was a godsend — studied during lunch breaks and commute. Cleared CAIIB in one shot!"</p>
+              <div class="tp-scores">
+                <span class="tp-sc">Offline App ✓</span>
+                <span class="tp-sc">One Shot Clear</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="swiper-pagination"></div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
-
-    <!-- Rating card -->
+    <!-- Rating Bar -->
     <div class="rat-card" data-aos="fade-up">
       <div class="rat-row">
         <div>
           <div class="rat-big">4.8</div>
           <div style="color:#f59e0b;font-size:1rem;margin-top:4px">★★★★★</div>
-          <div style="font-size:.7rem;color:#9ca3af;margin-top:2px">Overall Rating</div>
         </div>
         <div class="rbar-wrap">
           <div class="rbar"><span class="rbar-n">5</span><div class="rbar-track"><div class="rbar-fill" style="width:82%"></div></div><span class="rbar-pct">82%</span></div>
@@ -1056,138 +1566,196 @@ footer{background:#0d0620;padding:52px 0 0}
           <div class="rbar"><span class="rbar-n">2</span><div class="rbar-track"><div class="rbar-fill" style="width:1%"></div></div><span class="rbar-pct">1%</span></div>
         </div>
       </div>
-      <div class="rat-note">Based on 1,200+ verified student reviews on Google &amp; Play Store</div>
+      <p class="rat-note">Based on 1,200+ verified student reviews on Google &amp; Play Store</p>
     </div>
   </div>
 </section>
 
+<!-- ══════════════════════════════════════
+     SECTION 10 — COURSE COMPARISON TABLE
+══════════════════════════════════════ -->
+<section class="sec sec-white" id="courses">
+  <div class="con">
+    <div class="sec-hd" data-aos="fade-up">
+      <div class="sec-tag">Our Courses</div>
+      <h2 class="sec-title">Choose Your <span>Perfect Package</span></h2>
+      <p class="sec-sub">Compare all plans and pick the one that suits your preparation</p>
+      <div class="divider"></div>
+    </div>
+    <!-- Comparison Table -->
+    <div data-aos="fade-up" style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:40px">
+      <table class="cmp-table" style="min-width:560px">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th style="text-align:center">
+              Mock Tests Only<br>
+              <span class="th-best" style="background:transparent;border-color:rgba(255,255,255,.4);color:rgba(255,255,255,.8)">Starter</span>
+            </th>
+            <th style="text-align:center">
+              Full Combo Course<br>
+              <span class="th-best">⭐ Best Value</span>
+            </th>
+            <th style="text-align:center">
+              HRM Elective<br>
+              <span class="th-best" style="background:transparent;border-color:rgba(255,255,255,.4);color:rgba(255,255,255,.8)">Elective</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="cmp-hl">Video Lessons (300+ Hrs)</td><td><span class="cmp-no">✕</span></td><td><span class="cmp-yes">✔</span></td><td><span class="cmp-yes">✔</span></td></tr>
+          <tr><td class="cmp-hl">7000+ Mock Test Questions</td><td><span class="cmp-yes">✔</span></td><td><span class="cmp-yes">✔</span></td><td><span class="cmp-no">✕</span></td></tr>
+          <tr><td class="cmp-hl">160+ E-books (PDF)</td><td><span class="cmp-no">✕</span></td><td><span class="cmp-yes">✔</span></td><td><span class="cmp-yes">✔</span></td></tr>
+          <tr><td class="cmp-hl">24/7 Doubt Clearing</td><td><span class="cmp-no">✕</span></td><td><span class="cmp-yes">✔</span></td><td><span class="cmp-yes">✔</span></td></tr>
+          <tr><td class="cmp-hl">Offline App Access</td><td><span class="cmp-yes">✔</span></td><td><span class="cmp-yes">✔</span></td><td><span class="cmp-yes">✔</span></td></tr>
+          <tr><td class="cmp-hl">Covers ABM+BFM+ABFM+BRBL</td><td><span class="cmp-yes">✔</span></td><td><span class="cmp-yes">✔</span></td><td><span class="cmp-no">✕</span></td></tr>
+          <tr><td class="cmp-hl">HRM Elective Paper</td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-yes">✔</span></td></tr>
+          <tr><td class="cmp-hl">Bilingual (EN + HI)</td><td><span class="cmp-no">✕</span></td><td><span class="cmp-yes">✔</span></td><td><span class="cmp-yes">✔</span></td></tr>
+          <tr><td class="cmp-hl">Customized Study Plan</td><td><span class="cmp-no">✕</span></td><td><span class="cmp-yes">✔</span></td><td><span class="cmp-no">✕</span></td></tr>
+          <tr>
+            <td class="cmp-hl">Enroll</td>
+            <td style="text-align:center"><a href="https://www.myonlineprep.com/course-details/caiib-mock-tests-june-2023-abm-bfm-abfm-brbl" style="display:inline-flex;align-items:center;gap:5px;border:2px solid var(--purple);color:var(--purple);padding:7px 14px;border-radius:50px;font-size:.8rem;font-weight:700;transition:all .2s" onmouseover="this.style.background='#f3edfb'" onmouseout="this.style.background='transparent'">Enroll →</a></td>
+            <td style="text-align:center"><a href="https://www.myonlineprep.com/course-details/caiib-combo-abm-bfm-abfm-brbl-video-lesson-mock-test-ebooks" style="display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;padding:8px 18px;border-radius:50px;font-size:.82rem;font-weight:700;box-shadow:0 4px 12px rgba(79,28,118,.28)">Enroll Now →</a></td>
+            <td style="text-align:center"><a href="https://www.myonlineprep.com/course-details/caiib-hrm-elective-paper-june-2023-video-lessons-mock-tests-ebooks" style="display:inline-flex;align-items:center;gap:5px;border:2px solid var(--purple);color:var(--purple);padding:7px 14px;border-radius:50px;font-size:.8rem;font-weight:700;transition:all .2s" onmouseover="this.style.background='#f3edfb'" onmouseout="this.style.background='transparent'">Enroll →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-<!-- ▓▓▓ APP SECTION ▓▓▓ -->
-<section class="app-sec">
+<!-- ══════════════════════════════════════
+     APP SECTION
+══════════════════════════════════════ -->
+<section class="sec sec-dark">
   <div class="app-inner">
     <div data-aos="fade-right">
-      <div class="app-tag">📱 Mobile App</div>
-      <h2 class="app-h2">Study <span>Anywhere, Anytime</span><br>on App!</h2>
+      <span class="app-tag">📱 Android App</span>
+      <h2 class="app-h2">Study Anywhere,<br><span>Anytime — Even Offline</span></h2>
       <p class="app-p">Carry your entire CAIIB preparation in your pocket. Download the Myonlineprep Android app and study even without internet — commute, lunch break, or late night.</p>
       <div class="app-perks">
-        <div class="ap"><i class="fa-solid fa-wifi" style="text-decoration:line-through"></i><div><div class="apt">Full Offline Access</div><div class="aps">Download &amp; study without internet</div></div></div>
-        <div class="ap"><i class="fa-solid fa-bell"></i><div><div class="apt">Daily Reminders</div><div class="aps">Smart push notifications</div></div></div>
-        <div class="ap"><i class="fa-solid fa-chart-line"></i><div><div class="apt">Progress Dashboard</div><div class="aps">Track your preparation</div></div></div>
-        <div class="ap"><i class="fa-solid fa-star"></i><div><div class="apt">4.8★ Play Store</div><div class="aps">Trusted by 1.5L+ bankers</div></div></div>
+        <div class="ap"><i class="fa-solid fa-wifi-slash"></i><div><div class="apt">Offline Access</div><div class="aps">No internet needed</div></div></div>
+        <div class="ap"><i class="fa-solid fa-bell"></i><div><div class="apt">Daily Reminders</div><div class="aps">Stay on schedule</div></div></div>
+        <div class="ap"><i class="fa-solid fa-chart-line"></i><div><div class="apt">Progress Tracking</div><div class="aps">Know weak areas</div></div></div>
+        <div class="ap"><i class="fa-solid fa-bolt"></i><div><div class="apt">Fast &amp; Smooth</div><div class="aps">All Android phones</div></div></div>
       </div>
-      <a href="https://play.google.com/store/apps/details?id=com.mkn.elfemo.myonlineprep&hl=en_IN" target="_blank" rel="noopener" class="btn-play">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="#4f1c76"><path d="M3.18 23.76c.31.17.66.24 1.02.17l12.93-7.46-2.79-2.79-11.16 10.08zm16.6-9.4L17 12.7l3.03-3.03c.97-.5 1.15-1.66.39-2.41L5.12.2C4.67-.06 4.15-.07 3.7.18L14.57 11.05l5.21-5.21 2.4 1.4c.96.55.96 2 0 2.56l-2.4 1.56zM2.41.76c-.28.35-.41.8-.41 1.31v19.86c0 .51.13.96.41 1.31L13.5 12 2.41.76z"/></svg>
-        <div class="bp-text"><div class="bp-top">GET IT ON</div><div class="bp-bot">Google Play</div></div>
+      <a href="https://play.google.com/store/apps/details?id=com.mkn.elfemo.myonlineprep" target="_blank" rel="noopener" class="btn-play">
+        <i class="fa-brands fa-google-play" style="font-size:1.8rem;color:var(--purple)"></i>
+        <div><div class="bp-top">Get it on</div><div class="bp-bot">Google Play</div></div>
       </a>
     </div>
     <div data-aos="fade-left">
       <div class="app-img-wrap">
         <img src="https://play-lh.googleusercontent.com/NDxLdv-7kYW_QriajC1aVDebc8djjh2PLkxVe1Au29ma9ewOevq6SxSO1DktrHUaFGw=w1052-h592-rw"
-          alt="Myonlineprep CAIIB App"
-          onerror="this.src='https://placehold.co/640x400/0f172a/4ade80?text=Myonlineprep+App'">
+          alt="Myonlineprep Android App"
+          onerror="this.src='https://placehold.co/500x320/0f172a/22c55e?text=Android+App'">
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- ▓▓▓ FAQ ▓▓▓ -->
-<section class="section sec-white" id="faq">
+<!-- ══════════════════════════════════════
+     SECTION 11 — FAQ
+══════════════════════════════════════ -->
+<section class="sec sec-light" id="faq">
   <div class="con">
     <div class="sec-hd" data-aos="fade-up">
       <div class="sec-tag">FAQ</div>
       <h2 class="sec-title">Frequently Asked <span>Questions</span></h2>
-      <p class="sec-sub">Everything you need to know about CAIIB preparation with Myonlineprep</p>
+      <p class="sec-sub">Everything you need to know about CAIIB prep with Myonlineprep</p>
       <div class="divider"></div>
     </div>
     <div class="faq-wrap">
-
       <div class="faq-item" data-aos="fade-up">
-        <button class="faq-btn" type="button">
-          <span class="faq-q">What is CAIIB and who should appear for it?</span>
+        <button class="faq-btn">
+          <span class="faq-q">What is CAIIB and who should take it?</span>
           <span class="faq-ic">+</span>
         </button>
         <div class="faq-body">
-          <div class="faq-ans">CAIIB (Certified Associate of Indian Institute of Bankers) is a flagship exam by IIBF for banking professionals. Clearing CAIIB leads to promotions and salary increments for bank employees. It tests advanced knowledge in credit, treasury, risk management and banking regulations.</div>
+          <div class="faq-ans">CAIIB (Certified Associate of Indian Institute of Bankers) is a flagship exam by IIBF for working bank officers. It is mandatory for promotion to senior scales in most public sector banks and gives significant salary increments.</div>
         </div>
       </div>
-
-      <div class="faq-item" data-aos="fade-up" data-aos-delay="50">
-        <button class="faq-btn" type="button">
-          <span class="faq-q">What papers are covered in CAIIB 2026 revised syllabus?</span>
+      <div class="faq-item" data-aos="fade-up">
+        <button class="faq-btn">
+          <span class="faq-q">How long does CAIIB preparation take?</span>
           <span class="faq-ic">+</span>
         </button>
         <div class="faq-body">
-          <div class="faq-ans">CAIIB 2026 has 4 compulsory papers: ABM (Advanced Bank Management), BFM (Bank Financial Management), ABFM (Advanced Business &amp; Financial Management), BRBL (Banking Regulations &amp; Business Laws). Plus one elective like HRM. All our courses are fully updated for revised IIBF 2026 syllabus with case-study based questions.</div>
+          <div class="faq-ans">With our structured 60-day study plan, most students comfortably clear CAIIB — even while working full time. You need just 1.5–2 hours daily. Our offline app makes it possible to study during your commute too.</div>
         </div>
       </div>
-
-      <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
-        <button class="faq-btn" type="button">
-          <span class="faq-q">How many mock tests and questions are available?</span>
+      <div class="faq-item" data-aos="fade-up">
+        <button class="faq-btn">
+          <span class="faq-q">Is the content updated for CAIIB 2026 syllabus?</span>
           <span class="faq-ic">+</span>
         </button>
         <div class="faq-body">
-          <div class="faq-ans">We provide 160+ chapter-wise and full-length mock tests with 7000+ MCQs covering all CAIIB papers. Every question has a detailed solution and explanation. Tests are timed and scored exactly like the real IIBF exam with full performance analytics.</div>
+          <div class="faq-ans">Yes! All content — video lessons, mock tests, and e-books — is fully updated for the revised CAIIB 2026 syllabus. New case-study based question patterns for all 4 compulsory papers and electives are covered.</div>
         </div>
       </div>
-
-      <div class="faq-item" data-aos="fade-up" data-aos-delay="150">
-        <button class="faq-btn" type="button">
-          <span class="faq-q">Is the content available in Hindi as well?</span>
+      <div class="faq-item" data-aos="fade-up">
+        <button class="faq-btn">
+          <span class="faq-q">How many mock tests are available?</span>
           <span class="faq-ic">+</span>
         </button>
         <div class="faq-body">
-          <div class="faq-ans">Yes! Our video lessons are available in bilingual format — both English and Hindi. This helps banking professionals from all backgrounds understand complex CAIIB concepts easily, regardless of their preferred language.</div>
+          <div class="faq-ans">We provide 200+ chapter-wise and full-length mock tests with 7000+ MCQs. Tests include detailed solutions and performance analytics so you know exactly where to improve before the actual exam.</div>
         </div>
       </div>
-
-      <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
-        <button class="faq-btn" type="button">
-          <span class="faq-q">Can I study offline? Is there a mobile app?</span>
+      <div class="faq-item" data-aos="fade-up">
+        <button class="faq-btn">
+          <span class="faq-q">Can I study on mobile phone offline?</span>
           <span class="faq-ic">+</span>
         </button>
         <div class="faq-body">
-          <div class="faq-ans">Yes! Download the Myonlineprep Android app from Google Play Store. You can download videos and e-books for offline access — no internet required. Study during your commute, lunch break, or any time without worrying about connectivity.</div>
+          <div class="faq-ans">Yes! Download our free Android app from Google Play. Videos and e-books can be downloaded for offline access — perfect for studying during commute or anywhere without internet.</div>
         </div>
       </div>
-
-      <div class="faq-item" data-aos="fade-up" data-aos-delay="250">
-        <button class="faq-btn" type="button">
-          <span class="faq-q">How can I get free access to start?</span>
+      <div class="faq-item" data-aos="fade-up">
+        <button class="faq-btn">
+          <span class="faq-q">Is the free mock test really completely free?</span>
           <span class="faq-ic">+</span>
         </button>
         <div class="faq-body">
-          <div class="faq-ans">Simply fill the registration form on this page with your name, mobile number, and email. You'll get instant free access to attempt mock tests and explore study material — completely free, no credit card required. 2,400+ students join every week!</div>
+          <div class="faq-ans">Yes — completely free, no credit card required. Register with your name, mobile and email to instantly access free mock tests, sample videos and e-book previews. No hidden charges ever.</div>
         </div>
       </div>
-
+      <div class="faq-item" data-aos="fade-up">
+        <button class="faq-btn">
+          <span class="faq-q">What makes Myonlineprep different from competitors?</span>
+          <span class="faq-ic">+</span>
+        </button>
+        <div class="faq-body">
+          <div class="faq-ans">We have the highest selection rate — 88,000+ CAIIB clearances from 1.5L+ students. Our unique advantages: ex-banker faculty, bilingual videos, case-study questions matching 2026 pattern, 24/7 doubt clearing, and offline app. National average pass rate is 27% — our students achieve 73%+.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-
-<!-- ▓▓▓ CTA BANNER ▓▓▓ -->
-<section class="cta-ban">
-  <div class="cta-ban-inner">
-    <div class="cta-emoji">🎯</div>
-    <h2 class="cta-h2">Ready to Crack CAIIB<br>on Your Next Attempt?</h2>
+<!-- ══════════════════════════════════════
+     SECTION 12 — FINAL CTA
+══════════════════════════════════════ -->
+<div class="cta-ban">
+  <div class="cta-inner" data-aos="fade-up">
+    <div style="font-size:2.5rem;margin-bottom:12px">🎯</div>
+    <h2 class="cta-h2">Ready to Clear CAIIB<br>in Your First Attempt?</h2>
     <p class="cta-p">Join 1.5 Lakh+ banking professionals who chose Myonlineprep. Free mock tests, expert videos &amp; complete study material — start today!</p>
     <div class="cta-btns">
-      <a href="#register" class="btn-cw"><i class="fa-solid fa-bolt"></i> Start Free Mock Test</a>
-      <a href="#courses" class="btn-cw" style="background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff"><i class="fa-solid fa-book-open"></i> View Courses</a>
-      <a href="tel:9264149917" class="btn-co"><i class="fa-solid fa-phone"></i> +91 92641 49917</a>
+      <a href="#register" class="btn-white"><i class="fa-solid fa-bolt"></i> Start Free Mock Test</a>
+      <a href="tel:9264149917" class="btn-outline-w"><i class="fa-solid fa-phone"></i> +91 92641 49917</a>
     </div>
   </div>
-</section>
+</div>
 
-
-<!-- ▓▓▓ FOOTER ▓▓▓ -->
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
 <footer>
   <div class="ft-grid">
     <div>
       <img src="https://www.myonlineprep.com/vendor/design-v2/images/logo.png" alt="Myonlineprep" class="ft-logo">
-      <p class="ft-about">India's most trusted CAIIB &amp; JAIIB exam preparation platform. Helping banking professionals clear exams since 2015. Trusted by 1.5 Lakh+ bankers across India.</p>
+      <p class="ft-about">India's most trusted CAIIB &amp; JAIIB exam preparation platform. Helping banking professionals clear exams since 2015. Trusted by 1.5 Lakh+ bankers.</p>
       <a href="tel:9264149917" class="ft-ph"><i class="fa-solid fa-phone"></i> +91 92641 49917</a>
     </div>
     <div>
@@ -1202,8 +1770,9 @@ footer{background:#0d0620;padding:52px 0 0}
     <div>
       <div class="ft-h">Quick Links</div>
       <div class="ft-links">
-        <a href="#why-us">Why Choose Us</a>
-        <a href="#caiib-topics">CAIIB Syllabus 2026</a>
+        <a href="#problem">Why CAIIB Fails</a>
+        <a href="#features">Features</a>
+        <a href="#mentors">Meet Mentors</a>
         <a href="#reviews">Student Reviews</a>
         <a href="#faq">FAQ</a>
         <a href="#register">Free Mock Test</a>
@@ -1213,49 +1782,72 @@ footer{background:#0d0620;padding:52px 0 0}
   <div class="ft-bot">© 2026 Myonlineprep. All rights reserved. | India's #1 CAIIB &amp; JAIIB Exam Preparation Platform.</div>
 </footer>
 
-
-<!-- ▓▓▓ FLOATING BUTTONS ▓▓▓ -->
+<!-- ══════════════════════════════════════
+     FLOATING BUTTONS
+══════════════════════════════════════ -->
 <div id="fab">
   <a href="#register" class="fab-a"><i class="fa-solid fa-bolt"></i> Free Mock Test</a>
 </div>
-<a href="https://api.whatsapp.com/send?phone=919264149917&text=Hello,%20I%20want%20to%20know%20about%20CAIIB%20preparation"
-   target="_blank" rel="noopener" class="wa-fixed">
+<a href="https://api.whatsapp.com/send?phone=919264149917&text=Hello,%20I%20want%20to%20know%20about%20CAIIB%20preparation" target="_blank" rel="noopener" class="wa-btn" title="Chat on WhatsApp">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 
+<!-- ══════════════════════════════════════
+     EXIT INTENT POPUP (BONUS)
+══════════════════════════════════════ -->
+<div id="exit-popup">
+  <div class="ep-card">
+    <button class="ep-close" id="ep-close">✕</button>
+    <div class="ep-emoji">⚡</div>
+    <h2 class="ep-h">Wait! Before You Go...</h2>
+    <p class="ep-p">Try a <strong>FREE CAIIB Mock Test</strong> right now. No signup fees, no credit card. Join 2,400+ bankers who registered this week!</p>
+    <div class="ep-btns">
+      <a href="#register" id="ep-cta" class="btn-primary" style="width:100%;justify-content:center;border-radius:50px;padding:13px 20px">
+        <i class="fa-solid fa-bolt"></i> Try Free Mock Test
+      </a>
+      <button id="ep-skip" style="background:none;border:none;font-size:.82rem;color:#9ca3af;cursor:pointer;padding:4px;transition:color .2s" onmouseover="this.style.color='#374151'" onmouseout="this.style.color='#9ca3af'">
+        No thanks, I'll skip preparation
+      </button>
+    </div>
+  </div>
+</div>
 
-
-<!-- AOS -->
+<!-- ══════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════ -->
+<script src="/vendor/lp/js/jquery-3.7.1.min.js"></script>
+<script src="/vendor/lp/js/bootstrap.min.js"></script>
+<script src="/vendor/lp/js/custom.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<!-- Swiper -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-
-<!-- ▓▓▓ MAIN SCRIPT ▓▓▓ -->
 <script>
 (function(){
   'use strict';
 
-  /* ── AOS ── */
-  AOS.init({ duration: 700, once: true, offset: 50 });
+  /* ── AOS init — mobile pe disabled ── */
+  AOS.init({
+    duration:700,once:true,offset:50,
+    disable:function(){ return window.innerWidth < 768; }
+  });
 
   /* ── Navbar scroll ── */
   var nav = document.getElementById('navbar');
-  window.addEventListener('scroll', function(){
+  window.addEventListener('scroll',function(){
     nav.classList.toggle('scrolled', window.scrollY > 50);
-  }, { passive: true });
+  },{passive:true});
 
-  /* ── Burger / Mobile menu ── */
+  /* ── Burger menu ── */
   var burger  = document.getElementById('burger');
   var mobMenu = document.getElementById('mob-menu');
   if(burger && mobMenu){
-    burger.addEventListener('click', function(){
-      var isOpen = mobMenu.classList.toggle('open');
-      burger.classList.toggle('open', isOpen);
-      burger.setAttribute('aria-expanded', String(isOpen));
+    burger.addEventListener('click',function(){
+      var open = mobMenu.classList.toggle('open');
+      burger.classList.toggle('open',open);
+      burger.setAttribute('aria-expanded',String(open));
     });
     mobMenu.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){
+      a.addEventListener('click',function(){
         mobMenu.classList.remove('open');
         burger.classList.remove('open');
         burger.setAttribute('aria-expanded','false');
@@ -1266,121 +1858,107 @@ footer{background:#0d0620;padding:52px 0 0}
   /* ── FAB visibility ── */
   var fab = document.getElementById('fab');
   if(fab){
-    window.addEventListener('scroll', function(){
+    window.addEventListener('scroll',function(){
       fab.classList.toggle('show', window.scrollY > 500);
-    }, { passive: true });
+    },{passive:true});
   }
 
-  /* ── Smooth scroll for all anchor links ── */
+  /* ── Smooth scroll ── */
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
-    a.addEventListener('click', function(e){
+    a.addEventListener('click',function(e){
       var href = a.getAttribute('href');
       if(href === '#') return;
       var target = document.querySelector(href);
       if(target){
         e.preventDefault();
-        var offset = 70; /* navbar height */
-        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: top, behavior: 'smooth' });
+        var top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+        window.scrollTo({top:top,behavior:'smooth'});
       }
     });
   });
 
-  /* ── Animated Counters (IntersectionObserver) ── */
+  /* ── Animated Counters ── */
   function fmtNum(n){
     if(n >= 100000) return (n/100000).toFixed(1).replace('.0','') + 'L+';
     if(n >= 1000)   return Math.round(n/1000) + 'K+';
     return n + '+';
   }
-  function animateCounter(el){
-    var target = parseInt(el.getAttribute('data-n'), 10);
-    var start  = null;
-    var dur    = 2000;
-    function step(ts){
-      if(!start) start = ts;
-      var progress = Math.min((ts - start) / dur, 1);
-      var eased    = 1 - Math.pow(1 - progress, 3);
-      el.textContent = fmtNum(Math.floor(target * eased));
-      if(progress < 1) requestAnimationFrame(step);
-      else el.textContent = fmtNum(target);
-    }
-    requestAnimationFrame(step);
-  }
-  var counterObserver = new IntersectionObserver(function(entries){
+  var cntObs = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        animateCounter(entry.target);
-        counterObserver.unobserve(entry.target);
+      if(!entry.isIntersecting) return;
+      var el = entry.target;
+      var target = parseInt(el.getAttribute('data-n'),10);
+      var start = null, dur = 2000;
+      function step(ts){
+        if(!start) start = ts;
+        var p = Math.min((ts - start)/dur, 1);
+        var e = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmtNum(Math.round(target * e));
+        if(p < 1) requestAnimationFrame(step);
+        else el.textContent = fmtNum(target);
       }
+      requestAnimationFrame(step);
+      cntObs.unobserve(el);
     });
-  }, { threshold: 0.4 });
+  },{threshold:0.3});
   document.querySelectorAll('.count[data-n]').forEach(function(el){
-    counterObserver.observe(el);
+    cntObs.observe(el);
   });
 
-  /* ── Testimonial Swiper ── */
-  if(document.getElementById('tpSwiper')){
-    new Swiper('#tpSwiper', {
-      slidesPerView: 1,
-      spaceBetween: 24,
-      loop: true,
-      speed: 600,
-      autoplay: {
-        delay: 4500,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true
-      },
-      pagination: {
-        el: '#tpSwiper .swiper-pagination',
-        clickable: true
-      },
-      navigation: {
-        nextEl: '#tpSwiper .swiper-button-next',
-        prevEl: '#tpSwiper .swiper-button-prev'
-      },
-      breakpoints: {
-        640:  { slidesPerView: 1, spaceBetween: 20 },
-        768:  { slidesPerView: 2, spaceBetween: 22 },
-        1024: { slidesPerView: 3, spaceBetween: 24 }
-      }
+  /* ── Platform Preview Tabs ── */
+  document.querySelectorAll('.ptab').forEach(function(tab){
+    tab.addEventListener('click',function(){
+      var id = tab.getAttribute('data-tab');
+      document.querySelectorAll('.ptab').forEach(function(t){ t.classList.remove('active'); });
+      document.querySelectorAll('.preview-screen').forEach(function(s){ s.classList.remove('active'); });
+      tab.classList.add('active');
+      var screen = document.getElementById('tab-'+id);
+      if(screen) screen.classList.add('active');
     });
-  }
+  });
 
-  /* ── App Screenshot Swiper ── */
-  if(document.getElementById('appSwiper')){
-    new Swiper('#appSwiper', {
-      slidesPerView: 1,
-      loop: true,
-      speed: 800,
-      autoplay: { delay: 3000, disableOnInteraction: false },
-      pagination: {
-        el: '#appSwiper .swiper-pagination',
-        clickable: true
-      }
+  /* ── Mock Test Demo Interactive ── */
+  document.querySelectorAll('.mock-opt').forEach(function(opt){
+    opt.addEventListener('click',function(){
+      if(opt.classList.contains('correct') || opt.classList.contains('wrong')) return;
+      var isCorrect = opt.getAttribute('data-ans') === 'correct';
+      document.querySelectorAll('.mock-opt').forEach(function(o){
+        if(o.getAttribute('data-ans') === 'correct') o.classList.add('correct');
+      });
+      if(!isCorrect) opt.classList.add('wrong');
     });
-  }
+  });
 
-  /* ── FAQ Accordion ── */
+  /* ── Result Bars animate on scroll ── */
+  var rbObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.rb-fill').forEach(function(bar){
+        bar.style.animation = 'prog 1.5s ease forwards';
+        bar.style.width     = bar.style.width;
+      });
+      rbObs.unobserve(entry.target);
+    });
+  },{threshold:0.3});
+  var rbSection = document.getElementById('results');
+  if(rbSection) rbObs.observe(rbSection);
+
+  /* ── FAQ Accordion — FIXED ── */
   document.querySelectorAll('.faq-item').forEach(function(item){
     var btn  = item.querySelector('.faq-btn');
     var body = item.querySelector('.faq-body');
     var ic   = item.querySelector('.faq-ic');
     if(!btn || !body || !ic) return;
-
-    btn.addEventListener('click', function(){
-      var wasOpen = item.classList.contains('active');
-
-      /* Close all items first */
+    btn.addEventListener('click',function(){
+      var isOpen = item.classList.contains('active');
       document.querySelectorAll('.faq-item').forEach(function(i){
         i.classList.remove('active');
         var b = i.querySelector('.faq-body');
         var c = i.querySelector('.faq-ic');
         if(b) b.classList.remove('open');
-        if(c){ c.textContent = '+'; c.style.transform = ''; }
+        if(c){ c.textContent='+'; c.style.transform=''; }
       });
-
-      /* Open clicked item if it was closed */
-      if(!wasOpen){
+      if(!isOpen){
         item.classList.add('active');
         body.classList.add('open');
         ic.textContent = '+';
@@ -1389,66 +1967,100 @@ footer{background:#0d0620;padding:52px 0 0}
     });
   });
 
-  /* ── YouTube embed on video click ── */
-  document.querySelectorAll('.vid-wrap[data-vid]').forEach(function(wrap){
-    wrap.addEventListener('click', function(){
+  /* ── Video Popup ── */
+  document.querySelectorAll('[data-vid]').forEach(function(wrap){
+    wrap.addEventListener('click',function(){
       var vid = wrap.getAttribute('data-vid');
-      var iframe = document.createElement('iframe');
-      iframe.setAttribute('src','https://www.youtube.com/embed/'+vid+'?autoplay=1&rel=0');
-      iframe.setAttribute('allow','autoplay; encrypted-media');
-      iframe.setAttribute('allowfullscreen','true');
-      iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:16px;';
-      wrap.style.position = 'relative';
-      wrap.style.paddingBottom = '56.25%';
-      wrap.style.height = '0';
-      wrap.innerHTML = '';
-      wrap.appendChild(iframe);
+      var ov  = document.createElement('div');
+      ov.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;padding:16px;cursor:pointer';
+      ov.innerHTML =
+        '<div style="width:100%;max-width:860px;aspect-ratio:16/9;position:relative">' +
+        '<iframe src="https://www.youtube.com/embed/'+vid+'?autoplay=1&rel=0" style="width:100%;height:100%;border:none;border-radius:12px" allow="autoplay;encrypted-media" allowfullscreen></iframe>' +
+        '<button onclick="this.closest(\'[style*=fixed]\').remove()" style="position:absolute;top:-38px;right:0;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer;line-height:1">✕</button>' +
+        '</div>';
+      ov.addEventListener('click',function(e){ if(e.target===ov) ov.remove(); });
+      document.body.appendChild(ov);
     });
   });
 
-  /* ── Register Form — Validate → POST → OTP Redirect ── */
+  /* ── Swipers ── */
+  if(typeof Swiper !== 'undefined'){
+    new Swiper('.tpSwiper',{
+      slidesPerView:1,spaceBetween:20,loop:true,
+      autoplay:{delay:4500,disableOnInteraction:false,pauseOnMouseEnter:true},
+      pagination:{el:'.tpSwiper .swiper-pagination',clickable:true},
+      navigation:{nextEl:'.tpSwiper .swiper-button-next',prevEl:'.tpSwiper .swiper-button-prev'},
+      breakpoints:{640:{slidesPerView:2},1024:{slidesPerView:3}}
+    });
+  }
+
+  /* ── Register Form OTP Submit — FIXED ── */
   var regBtn = document.getElementById('registerSubmit');
   if(regBtn){
-    regBtn.addEventListener('click', function(){
+    regBtn.addEventListener('click',function(){
       var form       = document.getElementById('reg-form');
       var saveUrlEl  = document.getElementById('saveUrl');
-      var redirEl    = form ? form.querySelector('[name="redirect_url"]') : null;
-
-      if(!form || !form.checkValidity()){
-        if(form) form.reportValidity();
-        return;
-      }
-
-      var saveUrl  = saveUrlEl ? saveUrlEl.value : '';
-      var redirUrl = redirEl   ? redirEl.value   : 'https://www.myonlineprep.com/lp/verify/online-caiib-preparation';
-
-      /* Loading state */
+      var redirectEl = form ? form.querySelector('[name="redirect_url"]') : null;
+      if(!form || !form.checkValidity()){ if(form) form.reportValidity(); return; }
+      var saveUrl    = saveUrlEl  ? saveUrlEl.value  : '';
+      var redirectUrl= redirectEl ? redirectEl.value : 'https://www.myonlineprep.com/lp/verify/online-caiib-preparation';
       regBtn.disabled = true;
       regBtn.style.opacity = '0.8';
       regBtn.innerHTML =
-        '<span style="width:16px;height:16px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;display:inline-block;animation:spin .7s linear infinite;margin-right:8px;vertical-align:middle"></span>Please wait…';
-
+        '<svg style="animation:spin .7s linear infinite;width:18px;height:18px;margin-right:6px;flex-shrink:0" viewBox="0 0 24 24" fill="none">' +
+        '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" style="opacity:.25"/>' +
+        '<path fill="currentColor" d="M4 12a8 8 0 018-8v8z" style="opacity:.75"/>' +
+        '</svg>Please wait…';
       if(saveUrl){
-        fetch(saveUrl, {
-          method: 'POST',
-          body: new FormData(form),
-          credentials: 'same-origin'
-        })
-        .then(function(){ window.location.href = redirUrl; })
-        .catch(function(){ window.location.href = redirUrl; });
+        fetch(saveUrl,{method:'POST',body:new FormData(form),credentials:'same-origin'})
+        .then(function(){ window.location.href = redirectUrl; })
+        .catch(function(){ window.location.href = redirectUrl; });
       } else {
-        setTimeout(function(){ window.location.href = redirUrl; }, 400);
+        window.location.href = redirectUrl;
       }
     });
   }
 
-})();
-</script>
+  /* ── Exit Intent Popup ── */
+  var exitPopup   = document.getElementById('exit-popup');
+  var epClose     = document.getElementById('ep-close');
+  var epSkip      = document.getElementById('ep-skip');
+  var epCta       = document.getElementById('ep-cta');
+  var exitShown   = false;
+  var exitSession = sessionStorage.getItem('ep_shown');
 
-<!-- Spin keyframe for submit button loader -->
-<style>
-@keyframes spin{ to{ transform: rotate(360deg); } }
-</style>
+  if(exitPopup && !exitSession){
+    document.addEventListener('mouseleave',function(e){
+      if(e.clientY < 10 && !exitShown){
+        exitShown = true;
+        sessionStorage.setItem('ep_shown','1');
+        exitPopup.classList.add('show');
+      }
+    });
+    function closeExit(){
+      exitPopup.classList.remove('show');
+    }
+    if(epClose) epClose.addEventListener('click', closeExit);
+    if(epSkip)  epSkip.addEventListener('click',  closeExit);
+    if(epCta)   epCta.addEventListener('click',   closeExit);
+    exitPopup.addEventListener('click',function(e){
+      if(e.target === exitPopup) closeExit();
+    });
+  }
+
+  /* ── Mobile: show popup after 45s if not shown ── */
+  if(!exitSession && window.innerWidth < 768){
+    setTimeout(function(){
+      if(!exitShown && exitPopup){
+        exitShown = true;
+        sessionStorage.setItem('ep_shown','1');
+        exitPopup.classList.add('show');
+      }
+    }, 45000);
+  }
+
+}());
+</script>
 
 </body>
 </html>
