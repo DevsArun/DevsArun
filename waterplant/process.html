@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DivyaShakti MultiServices Pvt. Ltd. | Pure Water, Pure Future</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','sans-serif'], display: ['Playfair Display','serif'] },
+          colors: {
+            water: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e',950:'#082f49' },
+            deep:  { 800:'#0a2540', 900:'#061828', 950:'#030e18' },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --blue-1: #0c4a6e;
+      --blue-2: #0369a1;
+      --blue-3: #0ea5e9;
+      --blue-4: #38bdf8;
+      --blue-5: #7dd3fc;
+      --gold:   #f59e0b;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1e293b; overflow-x: hidden; }
+
+    /* ── Custom scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f0f9ff; }
+    ::-webkit-scrollbar-thumb { background: var(--blue-3); border-radius: 10px; }
+
+    /* ── Glassmorphism ── */
+    .glass {
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .glass-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+    }
+    .glass-light {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.95);
+    }
+
+    /* ── Navbar ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 18px 0;
+      transition: all 0.4s cubic-bezier(.4,0,.2,1);
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.96) !important;
+      backdrop-filter: blur(28px);
+      box-shadow: 0 2px 40px rgba(3,105,161,0.10);
+      padding: 12px 0;
+    }
+    #navbar.scrolled .logo-name  { color: #0369a1 !important; }
+    #navbar.scrolled .logo-sub   { color: #64748b !important; }
+    #navbar.scrolled .nav-link   { color: #475569 !important; }
+    #navbar.scrolled .nav-link:hover { color: #0369a1 !important; }
+    #navbar.scrolled .nav-cta    { background: linear-gradient(135deg,#0369a1,#0ea5e9) !important; color: white !important; border-color: transparent !important; }
+    #navbar.scrolled .ham-line   { background: #0369a1 !important; }
+
+    /* ── Hero ── */
+    .hero-section {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #061828 0%, #0c4a6e 35%, #0369a1 65%, #0ea5e9 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Animated water waves */
+    .wave-container {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 160px;
+      overflow: hidden;
+    }
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: -100%;
+      width: 300%;
+      height: 100%;
+    }
+    .wave svg { width: 100%; height: 100%; }
+    .wave-1 { animation: waveMove 8s linear infinite; opacity: 0.4; }
+    .wave-2 { animation: waveMove 12s linear infinite reverse; opacity: 0.25; bottom: 8px; }
+    .wave-3 { animation: waveMove 6s linear infinite; opacity: 0.6; bottom: -4px; }
+    @keyframes waveMove {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(33.33%); }
+    }
+
+    /* Particles / bubbles */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(255,255,255,0.05));
+      animation: particleRise linear infinite;
+      pointer-events: none;
+    }
+    @keyframes particleRise {
+      0%   { transform: translateY(0) scale(1); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.4; }
+      100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+    }
+
+    /* Float */
+    @keyframes float {
+      0%,100% { transform: translateY(0px) rotate(0deg); }
+      33%      { transform: translateY(-12px) rotate(1deg); }
+      66%      { transform: translateY(-6px) rotate(-1deg); }
+    }
+    .float { animation: float 5s ease-in-out infinite; }
+
+    /* Gradient text */
+    .grad-text {
+      background: linear-gradient(135deg, #38bdf8, #7dd3fc, #bae6fd);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .grad-text-gold {
+      background: linear-gradient(135deg, #f59e0b, #fbbf24, #fde68a);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .grad-text-blue {
+      background: linear-gradient(135deg, #0369a1, #0ea5e9, #38bdf8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* Reveal animations */
+    .reveal        { opacity:0; transform:translateY(40px);  transition: opacity .7s ease, transform .7s ease; }
+    .reveal-left   { opacity:0; transform:translateX(-40px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal-right  { opacity:0; transform:translateX(40px);  transition: opacity .7s ease, transform .7s ease; }
+    .reveal-scale  { opacity:0; transform:scale(0.9);        transition: opacity .7s ease, transform .7s ease; }
+    .on { opacity:1 !important; transform:translate(0,0) scale(1) !important; }
+
+    /* Cards */
+    .hover-card {
+      transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s ease;
+    }
+    .hover-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 32px 64px rgba(3,105,161,0.18);
+    }
+
+    /* Section divider */
+    .section-divider { display: block; width: 100%; overflow: hidden; line-height: 0; }
+    .section-divider svg { display: block; }
+
+    /* Floating WA */
+    #wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+      animation: float 3.5s ease-in-out infinite;
+    }
+    #wa-float:hover #wa-tip { opacity:1; transform:translateX(0) translateY(-50%); pointer-events:auto; }
+    #wa-tip {
+      position: absolute; right: 68px; top: 50%;
+      transform: translateX(8px) translateY(-50%);
+      background: #075e54; color: #fff;
+      font-size: 12px; font-weight: 700;
+      padding: 6px 14px; border-radius: 10px;
+      white-space: nowrap; opacity: 0;
+      transition: all .3s ease; pointer-events: none;
+    }
+    #wa-tip::after {
+      content:''; position:absolute; right:-5px; top:50%;
+      transform:translateY(-50%);
+      border:5px solid transparent; border-right:none; border-left-color:#075e54;
+    }
+
+    /* Mobile menu */
+    #mob-menu {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+    }
+    #mob-menu.open { max-height: 600px; opacity: 1; }
+
+    /* Hamburger */
+    .ham-line {
+      display: block; width: 24px; height: 2px;
+      background: white; border-radius: 2px;
+      transition: all .3s ease;
+      transform-origin: center;
+    }
+    #ham-btn.active .ham-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    #ham-btn.active .ham-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    #ham-btn.active .ham-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Number counter */
+    .counter { font-variant-numeric: tabular-nums; }
+
+    /* Tag badge */
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 14px; border-radius: 999px;
+    }
+    .badge-blue { background: rgba(14,165,233,0.12); color: #0369a1; border: 1px solid rgba(14,165,233,0.25); }
+    .badge-white { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.2); }
+    .badge-gold  { background: rgba(245,158,11,0.12); color: #b45309; border: 1px solid rgba(245,158,11,0.25); }
+
+    /* Pipe/plant decorative */
+    .plant-line {
+      position: absolute; background: linear-gradient(180deg, rgba(56,189,248,0.3), transparent);
+      width: 2px; border-radius: 1px;
+    }
+
+    /* Timeline dot */
+    .timeline-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: linear-gradient(135deg, #0369a1, #38bdf8);
+      box-shadow: 0 0 0 4px rgba(14,165,233,0.2);
+      flex-shrink: 0; margin-top: 4px;
+    }
+
+    /* Glow effects */
+    .glow-blue { box-shadow: 0 0 40px rgba(14,165,233,0.4); }
+    .glow-sm   { box-shadow: 0 0 20px rgba(14,165,233,0.3); }
+
+    /* Water drop shape */
+    .water-drop {
+      position: absolute;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.3), rgba(14,165,233,0.1));
+      pointer-events: none;
+    }
+
+    /* Process step */
+    .process-line {
+      position: absolute; top: 28px; left: 50%; right: -50%;
+      height: 2px;
+      background: linear-gradient(90deg, #0ea5e9, rgba(14,165,233,0.1));
+    }
+    /* Mobile menu links always visible */
+#mob-menu .mob-lnk {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* Jab navbar scrolled ho tab mobile menu dark text */
+#navbar.scrolled #mob-menu .mob-lnk {
+  color: #1e293b !important;
+}
+#navbar.scrolled #mob-menu {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 16px;
+}
+#navbar.scrolled #mob-menu .glass {
+  background: rgba(248, 250, 252, 0.98) !important;
+  border: 1px solid rgba(3, 105, 161, 0.1) !important;
+}
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+}
+
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     FLOATING WHATSAPP
+═════════════════════════════════════ -->
+<div id="wa-float">
+  <div id="wa-tip">Order LUXURY H₂O</div>
+  <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20order%20LUXURY%20H2O%20water."
+     target="_blank" rel="noopener"
+     class="flex items-center justify-center w-14 h-14 rounded-full shadow-2xl glow-sm"
+     style="background:linear-gradient(135deg,#25d366,#128c7e);">
+    <i class="fab fa-whatsapp text-white text-3xl"></i>
+  </a>
+</div>
+
+<!-- ════════════════════════════════════
+     NAVBAR
+═════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="max-w-7xl mx-auto px-5 flex items-center justify-between">
+
+    <!-- Logo -->
+<a href="#home" class="flex items-center gap-3">
+  <div class="w-10 h-10 rounded-xl flex items-center justify-center glow-sm shrink-0 overflow-hidden"
+       style="background:linear-gradient(135deg,#0369a1,#38bdf8);">
+    
+    <img src="https://i.ibb.co/NdnVXJqN/321b3903-c76f-47f6-abfa-93aa45a7e5d2.jpg"
+         alt="DivyaShakti Logo"
+         class="w-full h-full object-cover">
+         
+  </div>
+
+  <div class="leading-tight">
+    <div class="logo-name font-display font-bold text-white text-[15px] tracking-wide">
+      DivyaShakti
+    </div>
+    <div class="logo-sub text-white/55 text-[9px] tracking-widest uppercase font-semibold">
+      MultiServices Pvt. Ltd.
+    </div>
+  </div>
+</a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center gap-6">
+      <a href="#about"    class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">About</a>
+      <a href="#process"  class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Process</a>
+      <a href="#services" class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Services</a>
+      <a href="#brands"   class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Brands</a>
+      <a href="#luxury"   class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">LUXURY H₂O</a>
+      <a href="#contact"  class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Contact</a>
+      <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20connect."
+         target="_blank"
+         class="nav-cta flex items-center gap-2 text-white text-sm font-bold px-5 py-2.5 rounded-full border border-white/25 hover:bg-white/20 transition-all duration-300 glass">
+        <i class="fab fa-whatsapp text-green-400"></i> WhatsApp
+      </a>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="ham-btn" class="lg:hidden flex flex-col gap-1.5 p-2 focus:outline-none" aria-label="Menu">
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mob-menu" class="lg:hidden mx-4 mt-3 rounded-2xl overflow-hidden">
+    <div class="glass p-5 space-y-1" style="background:rgba(6,24,40,0.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">
+      <a href="#about"    class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">About Us</a>
+      <a href="#process"  class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Our Process</a>
+      <a href="#services" class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Services</a>
+      <a href="#brands"   class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Our Brands</a>
+      <a href="#luxury"   class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">LUXURY H₂O</a>
+      <a href="#contact"  class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Contact</a>
+      <div class="pt-2">
+        <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20connect."
+           target="_blank"
+           class="mob-lnk flex items-center justify-center gap-2 text-white font-bold py-3.5 rounded-2xl transition text-sm"
+           style="background:linear-gradient(135deg,#25d366,#128c7e);">
+          <i class="fab fa-whatsapp text-lg"></i> WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ════════════════════════════════════
+     HERO — PROCESS
+═════════════════════════════════════ -->
+<section class="relative overflow-hidden pt-20"
+         style="background:linear-gradient(160deg,#061828 0%,#0c4a6e 40%,#0369a1 80%,#0ea5e9 100%);min-height:60vh;display:flex;align-items:center;">
+
+  <div class="particle" style="width:12px;height:12px;left:8%;bottom:0;animation-duration:10s;animation-delay:0s;"></div>
+  <div class="particle" style="width:8px;height:8px;left:35%;bottom:0;animation-duration:8s;animation-delay:1.5s;"></div>
+  <div class="particle" style="width:14px;height:14px;left:65%;bottom:0;animation-duration:12s;animation-delay:3s;"></div>
+  <div class="particle" style="width:6px;height:6px;left:88%;bottom:0;animation-duration:9s;animation-delay:2s;"></div>
+
+  <div style="position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.06),transparent);top:-120px;right:-100px;pointer-events:none;"></div>
+  <div style="position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,0.1),transparent);bottom:-60px;left:-60px;pointer-events:none;"></div>
+
+  <div class="max-w-7xl mx-auto px-5 py-20 w-full relative z-10">
+    <div class="max-w-3xl">
+      <div class="badge badge-white mb-5"><i class="fas fa-cog text-xs"></i> Our Purification Process</div>
+      <h1 class="font-display font-black text-white leading-tight mb-6"
+          style="font-size:clamp(2.6rem,6vw,4.5rem);">
+        How We Make<br/>
+        <span class="grad-text">Water Pure.</span>
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed max-w-2xl mb-8">
+        LUXURY H₂O by DivyaShakti MultiServices uses a rigorous 6-stage RO + UV + Ozone purification process — inspired by global water treatment plant standards — ensuring every drop is safe, mineral-rich, and perfect for your family.
+      </p>
+      <div class="flex items-center gap-2 text-white/40 text-sm">
+        <a href="index.html" class="hover:text-white transition-colors">Home</a>
+        <i class="fas fa-chevron-right text-xs"></i>
+        <span class="text-white/70 font-medium">Our Process</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;bottom:0;left:0;right:0;">
+    <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;">
+      <path d="M0,35 C480,70 960,0 1440,40 L1440,70 L0,70 Z" fill="white"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     TRUST BAR
+═════════════════════════════════════ -->
+<section class="py-5 bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+      <div class="flex items-center gap-2 text-slate-500 text-sm"><i class="fas fa-atom text-blue-500"></i> RO Purification</div>
+      <div class="w-px h-4 bg-slate-200 hidden md:block"></div>
+      <div class="flex items-center gap-2 text-slate-500 text-sm"><i class="fas fa-sun text-blue-500"></i> UV Sterilization</div>
+      <div class="w-px h-4 bg-slate-200 hidden md:block"></div>
+      <div class="flex items-center gap-2 text-slate-500 text-sm"><i class="fas fa-wind text-blue-500"></i> Ozone Treatment</div>
+      <div class="w-px h-4 bg-slate-200 hidden md:block"></div>
+      <div class="flex items-center gap-2 text-slate-500 text-sm"><i class="fas fa-flask text-blue-500"></i> Mineral Enriched</div>
+      <div class="w-px h-4 bg-slate-200 hidden md:block"></div>
+      <div class="flex items-center gap-2 text-slate-500 text-sm"><i class="fas fa-box-open text-blue-500"></i> Clean Room Pack</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     TECHNOLOGY OVERVIEW
+═════════════════════════════════════ -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-14 reveal">
+      <div class="badge badge-blue mx-auto mb-4"><i class="fas fa-microchip text-xs"></i> Triple Technology</div>
+      <h2 class="font-display font-black text-slate-800 mb-3"
+          style="font-size:clamp(2rem,4vw,3rem);">
+        RO + UV + <span class="grad-text-blue">Ozone</span>
+      </h2>
+      <p class="text-slate-500 text-base max-w-2xl mx-auto">
+        Three industry-leading technologies working together — the same standard used by global premium water brands — right here in Bihar.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-16">
+
+      <!-- RO -->
+      <div class="hover-card rounded-3xl overflow-hidden shadow-lg border border-slate-100 reveal" style="transition-delay:.1s;">
+        <div class="h-2" style="background:linear-gradient(90deg,#0369a1,#0ea5e9);"></div>
+        <div class="p-8">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+               style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <i class="fas fa-atom"></i>
+          </div>
+          <div class="badge badge-blue mb-3">Stage 3</div>
+          <h3 class="font-display font-bold text-slate-800 text-xl mb-3">Reverse Osmosis</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-5">
+            RO membrane with pore size of just <strong>0.0001 microns</strong> — 100x smaller than a bacteria cell — physically blocks dissolved salts, heavy metals, fluoride, arsenic, and all harmful particles.
+          </p>
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-2.5 p-2.5 rounded-xl" style="background:#f0f9ff;">
+              <i class="fas fa-check-circle text-sm" style="color:#0ea5e9;"></i>
+              <span class="text-slate-600 text-xs font-medium">Removes 99% TDS (Total Dissolved Solids)</span>
+            </div>
+            <div class="flex items-center gap-2.5 p-2.5 rounded-xl" style="background:#f0f9ff;">
+              <i class="fas fa-check-circle text-sm" style="color:#0ea5e9;"></i>
+              <span class="text-slate-600 text-xs font-medium">Eliminates Lead, Arsenic, Fluoride</span>
+            </div>
+            <div class="flex items-center gap-2.5 p-2.5 rounded-xl" style="background:#f0f9ff;">
+              <i class="fas fa-check-circle text-sm" style="color:#0ea5e9;"></i>
+              <span class="text-slate-600 text-xs font-medium">Removes Bacteria & Viruses physically</span>
+            </div>
+            <div class="flex items-center gap-2.5 p-2.5 rounded-xl" style="background:#f0f9ff;">
+              <i class="fas fa-check-circle text-sm" style="color:#0ea5e9;"></i>
+              <span class="text-slate-600 text-xs font-medium">No chemicals — purely mechanical</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UV -->
+      <div class="hover-card rounded-3xl overflow-hidden shadow-lg border border-slate-100 reveal" style="transition-delay:.2s;">
+        <div class="h-2" style="background:linear-gradient(90deg,#7c3aed,#a78bfa);"></div>
+        <div class="p-8">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+               style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
+            <i class="fas fa-sun"></i>
+          </div>
+          <div class="badge mb-3" style="background:rgba(124,58,237,0.1);color:#7c3aed;border:1px solid rgba(124,58,237,0.25);">Stage 4</div>
+          <h3 class="font-display font-bold text-slate-800 text-xl mb-3">UV Sterilization</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-5">
+            UV light at <strong>254nm wavelength</strong> penetrates the cell walls of microorganisms, destroying their DNA so they cannot reproduce — eliminating 99.99% of all biological threats without adding any chemicals.
+          </p>
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-2.5 p-2.5 rounded-xl" style="background:#faf5ff;">
+              <i class="fas fa-check-circle text-sm" style="color:#a78bfa;"></i>
+              <span class="text-slate-600 text-xs font-medium">99.99% germ & pathogen elimination</span>
+            </div>
+            <div class="flex items-center gap-2.5 p-2.5 rounded-xl" style="background:#faf5ff;">
+              <i class="fas fa-check-circle text-sm" style="color:#a78bfa;"></i>
+              <span class="text-slate-600 text-xs font-medium">Zero chemical addition to water</span>
+            </div>
+            <div class="flex items-center gap-2.5 p-2.5 rounded-xl" style="background:#faf5ff;">
+              <i class="fas fa-check-circle text-sm" style="color:#a78bfa;"></i>
+              <span class="text-slate-600 text-xs font-medium">Kills E.Coli, Typhoid, Hepatitis</span>
+            </div>
+            <div class="flex items-center gap-2.5 p-2.5 rounded-xl" style="background:#faf5ff;">
+              <i class="fas fa-check-circle text-sm" style="color:#a78bfa;"></i>
+              <span class="text-slate-600 text-xs font-medium">Safe for infants, elderly & patients</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ozone -->
+      <div class="hover-card rounded-3xl overflow-hidden shadow-lg border border-slate-100 reveal" style="transition-delay:.3s;">
+        <div class="h-2" style="background:linear-gradient(90deg,#059669,#34d399);"></div>
+        <div class="p-8">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+               style="background:linear-gradient(135deg,#059669,#10b981);">
+            <i class="fas fa-wind"></i>
+          </div>
+          <div class="badge mb-3" style="background:rgba(5,150,105,0.1);color:#059669;border:1px solid rgba(5,150,105,0.25);">Stage 5</div>
+          <h3 class="font-display font-bold text-slate-800 text-xl mb-3">Ozone Treatment</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-5">
+            Ozone (O₃) is nature's most powerful disinfectant — <strong>3000x stronger than chlorine</strong>. It oxidizes any remaining trace contaminants, completely eliminates odour, improves taste, and naturally extends shelf life.
+          </p>
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-2.5 p-2.5 rounded-xl" style="background:#f0fdf4;">
+              <i class="fas fa-check-circle text-sm" style="color:#10b981;"></i>
+              <span class="text-slate-600 text-xs font-medium">3000x stronger than chlorine</span>
+            </div>
+            <div class="flex items-center gap-2.5 p-2.5 rounded-xl" style="background:#f0fdf4;">
+              <i class="fas fa-check-circle text-sm" style="color:#10b981;"></i>
+              <span class="text-slate-600 text-xs font-medium">Eliminates all odour and bad taste</span>
+            </div>
+            <div class="flex items-center gap-2.5 p-2.5 rounded-xl" style="background:#f0fdf4;">
+              <i class="fas fa-check-circle text-sm" style="color:#10b981;"></i>
+              <span class="text-slate-600 text-xs font-medium">Naturally extends shelf life</span>
+            </div>
+            <div class="flex items-center gap-2.5 p-2.5 rounded-xl" style="background:#f0fdf4;">
+              <i class="fas fa-check-circle text-sm" style="color:#10b981;"></i>
+              <span class="text-slate-600 text-xs font-medium">Leaves zero residue — 100% safe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     6-STAGE PROCESS — DETAILED
+═════════════════════════════════════ -->
+<section class="py-24" style="background:linear-gradient(180deg,#f0f9ff 0%,#ffffff 100%);">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-16 reveal">
+      <div class="badge badge-blue mx-auto mb-4"><i class="fas fa-list-ol text-xs"></i> Step by Step</div>
+      <h2 class="font-display font-black text-slate-800 mb-3"
+          style="font-size:clamp(2rem,4vw,3rem);">
+        6-Stage <span class="grad-text-blue">Purification Journey</span>
+      </h2>
+      <p class="text-slate-500 text-base max-w-2xl mx-auto">
+        From raw groundwater to your bottle — every step is carefully controlled, tested, and verified before LUXURY H₂O reaches your hands.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+
+      <!-- Stage 1 -->
+      <div class="hover-card bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden reveal" style="transition-delay:.05s;">
+        <div class="grid md:grid-cols-[auto,1fr] gap-0">
+          <div class="flex items-center justify-center p-8 md:w-32"
+               style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <div class="text-center">
+              <div class="font-display font-black text-white text-4xl leading-none">01</div>
+              <div class="text-white/60 text-xs mt-1 uppercase tracking-wider">Stage</div>
+            </div>
+          </div>
+          <div class="p-7">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-3">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style="background:#e0f2fe;">
+                  <i class="fas fa-water text-xl" style="color:#0369a1;"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 text-lg">Raw Water Collection</h3>
+                  <span class="badge badge-blue text-[10px]">Source Stage</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              Water is sourced from deep protected groundwater bores in Padrauna, Bihar — far below surface level where contamination risk is minimal. The source is regularly tested for natural quality before entering the plant. Only approved water enters Stage 2.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0f9ff;color:#0369a1;">Deep Groundwater</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0f9ff;color:#0369a1;">Source Quality Test</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0f9ff;color:#0369a1;">Protected Bore</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="hover-card bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden reveal" style="transition-delay:.1s;">
+        <div class="grid md:grid-cols-[auto,1fr] gap-0">
+          <div class="flex items-center justify-center p-8 md:w-32"
+               style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <div class="text-center">
+              <div class="font-display font-black text-white text-4xl leading-none">02</div>
+              <div class="text-white/60 text-xs mt-1 uppercase tracking-wider">Stage</div>
+            </div>
+          </div>
+          <div class="p-7">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-3">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style="background:#e0f2fe;">
+                  <i class="fas fa-layer-group text-xl" style="color:#0369a1;"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 text-lg">Multi-Stage Pre-Filtration</h3>
+                  <span class="badge badge-blue text-[10px]">Physical Filter</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              Raw water passes through a series of pre-filters: <strong>Sand Filter</strong> (removes sediment & suspended particles), <strong>Activated Carbon Filter</strong> (removes chlorine, organic compounds & odour), and <strong>5-Micron Cartridge Filter</strong> (removes fine particles before RO). This protects the RO membrane and ensures longevity.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0f9ff;color:#0369a1;">Sand Filter</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0f9ff;color:#0369a1;">Activated Carbon</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0f9ff;color:#0369a1;">5-Micron Cartridge</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0f9ff;color:#0369a1;">Sediment Removal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="hover-card bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden reveal" style="transition-delay:.15s;">
+        <div class="grid md:grid-cols-[auto,1fr] gap-0">
+          <div class="flex items-center justify-center p-8 md:w-32"
+               style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <div class="text-center">
+              <div class="font-display font-black text-white text-4xl leading-none">03</div>
+              <div class="text-white/60 text-xs mt-1 uppercase tracking-wider">Stage</div>
+            </div>
+          </div>
+          <div class="p-7">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-3">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style="background:#e0f2fe;">
+                  <i class="fas fa-atom text-xl" style="color:#0369a1;"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 text-lg">Reverse Osmosis (RO)</h3>
+                  <span class="badge badge-blue text-[10px]">Core Purification</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              High-pressure RO membrane with <strong>0.0001 micron pore size</strong> removes 99% of all dissolved solids including heavy metals (lead, arsenic, mercury), fluoride, nitrates, pesticides, dissolved bacteria and viruses. Water is forced through the semi-permeable membrane — only pure H₂O molecules pass through.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0f9ff;color:#0369a1;">0.0001 Micron Membrane</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0f9ff;color:#0369a1;">99% TDS Removal</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0f9ff;color:#0369a1;">Heavy Metal Removal</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0f9ff;color:#0369a1;">High-Pressure System</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 4 -->
+      <div class="hover-card bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden reveal" style="transition-delay:.2s;">
+        <div class="grid md:grid-cols-[auto,1fr] gap-0">
+          <div class="flex items-center justify-center p-8 md:w-32"
+               style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
+            <div class="text-center">
+              <div class="font-display font-black text-white text-4xl leading-none">04</div>
+              <div class="text-white/60 text-xs mt-1 uppercase tracking-wider">Stage</div>
+            </div>
+          </div>
+          <div class="p-7">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-3">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style="background:#faf5ff;">
+                  <i class="fas fa-sun text-xl" style="color:#7c3aed;"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 text-lg">UV Sterilization</h3>
+                  <span class="badge text-[10px]" style="background:rgba(124,58,237,0.1);color:#7c3aed;border:1px solid rgba(124,58,237,0.25);">Bio-Kill Stage</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              Post-RO water flows through a UV sterilization chamber. UV light at <strong>254nm wavelength</strong> destroys the DNA/RNA of any remaining microorganisms — bacteria, viruses, cysts, and protozoa — making them permanently inactive. This stage adds zero chemicals and has zero taste impact.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#faf5ff;color:#7c3aed;">254nm UV Wavelength</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#faf5ff;color:#7c3aed;">99.99% Germ Kill</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#faf5ff;color:#7c3aed;">No Chemicals</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#faf5ff;color:#7c3aed;">DNA Destruction</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 5 -->
+      <div class="hover-card bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden reveal" style="transition-delay:.25s;">
+        <div class="grid md:grid-cols-[auto,1fr] gap-0">
+          <div class="flex items-center justify-center p-8 md:w-32"
+               style="background:linear-gradient(135deg,#059669,#10b981);">
+            <div class="text-center">
+              <div class="font-display font-black text-white text-4xl leading-none">05</div>
+              <div class="text-white/60 text-xs mt-1 uppercase tracking-wider">Stage</div>
+            </div>
+          </div>
+          <div class="p-7">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-3">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style="background:#f0fdf4;">
+                  <i class="fas fa-wind text-xl" style="color:#059669;"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 text-lg">Ozone (O₃) Treatment</h3>
+                  <span class="badge text-[10px]" style="background:rgba(5,150,105,0.1);color:#059669;border:1px solid rgba(5,150,105,0.25);">Final Disinfection</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              Ozone gas (O₃) is dissolved into the purified water — oxidizing any trace remaining contaminants, eliminating all odour and improving taste clarity. Ozone is <strong>3000x more powerful than chlorine</strong> and breaks down into plain oxygen after treatment — leaving absolutely zero residue. It also extends the shelf life of LUXURY H₂O naturally.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0fdf4;color:#059669;">3000x Stronger than Chlorine</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0fdf4;color:#059669;">Zero Residue</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0fdf4;color:#059669;">Odour Elimination</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#f0fdf4;color:#059669;">Extended Shelf Life</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 6 -->
+      <div class="hover-card bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden reveal" style="transition-delay:.3s;">
+        <div class="grid md:grid-cols-[auto,1fr] gap-0">
+          <div class="flex items-center justify-center p-8 md:w-32"
+               style="background:linear-gradient(135deg,#f59e0b,#fbbf24);">
+            <div class="text-center">
+              <div class="font-display font-black text-white text-4xl leading-none">06</div>
+              <div class="text-white/60 text-xs mt-1 uppercase tracking-wider">Stage</div>
+            </div>
+          </div>
+          <div class="p-7">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-3">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style="background:#fefce8;">
+                  <i class="fas fa-box-open text-xl text-amber-500"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 text-lg">Clean Room Packaging</h3>
+                  <span class="badge text-[10px]" style="background:rgba(245,158,11,0.1);color:#b45309;border:1px solid rgba(245,158,11,0.25);">Final Stage</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              Purified water is filled and sealed in a <strong>dust-free, air-filtered clean room</strong> under strict hygiene protocols. Bottles and jars are sanitized before filling. Tamper-evident seals are applied immediately. Every batch is labelled with production date and tested before dispatch — ensuring the purity that reached Stage 6 stays intact until you open it.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#fefce8;color:#b45309;">Dust-Free Clean Room</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#fefce8;color:#b45309;">Tamper-Proof Seal</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#fefce8;color:#b45309;">Batch Quality Check</span>
+              <span class="text-xs px-3 py-1 rounded-full" style="background:#fefce8;color:#b45309;">Date Labelled</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     MINERAL ENRICHMENT
+═════════════════════════════════════ -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="reveal-left">
+        <div class="badge badge-blue mb-5"><i class="fas fa-flask text-xs"></i> Added Health Benefit</div>
+        <h2 class="font-display font-black text-slate-800 leading-tight mb-5"
+            style="font-size:clamp(1.8rem,3.5vw,2.8rem);">
+          Mineral Enriched<br/><span class="grad-text-blue">After Purification</span>
+        </h2>
+        <p class="text-slate-600 leading-relaxed mb-5">
+          RO removes almost everything — including essential minerals. That's why after full purification, LUXURY H₂O reintroduces a scientifically calibrated blend of essential minerals — making the water not just pure, but genuinely healthy and great-tasting.
+        </p>
+        <p class="text-slate-500 text-sm leading-relaxed mb-6">
+          This is the same approach used by premium bottled water brands worldwide — pure water + added minerals = optimal health benefit.
+        </p>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="flex items-center gap-3 p-4 rounded-2xl" style="background:#f0f9ff;">
+            <i class="fas fa-circle-dot text-blue-400"></i>
+            <div><div class="font-bold text-slate-800 text-sm">Calcium</div><div class="text-slate-400 text-xs">Bone & teeth strength</div></div>
+          </div>
+          <div class="flex items-center gap-3 p-4 rounded-2xl" style="background:#f0f9ff;">
+            <i class="fas fa-circle-dot text-blue-400"></i>
+            <div><div class="font-bold text-slate-800 text-sm">Magnesium</div><div class="text-slate-400 text-xs">Muscle & nerve function</div></div>
+          </div>
+          <div class="flex items-center gap-3 p-4 rounded-2xl" style="background:#f0f9ff;">
+            <i class="fas fa-circle-dot text-blue-400"></i>
+            <div><div class="font-bold text-slate-800 text-sm">Potassium</div><div class="text-slate-400 text-xs">Heart & blood pressure</div></div>
+          </div>
+          <div class="flex items-center gap-3 p-4 rounded-2xl" style="background:#f0f9ff;">
+            <i class="fas fa-circle-dot text-blue-400"></i>
+            <div><div class="font-bold text-slate-800 text-sm">Bicarbonates</div><div class="text-slate-400 text-xs">pH balance & digestion</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <div class="rounded-3xl p-8 shadow-2xl"
+             style="background:linear-gradient(160deg,#061828,#0369a1,#0ea5e9);">
+          <h3 class="font-bold text-white text-lg mb-6 text-center">LUXURY H₂O Water Quality</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="text-white/70">Purity Level</span>
+                <span class="text-white font-bold">99.9%</span>
+              </div>
+              <div class="h-2 rounded-full" style="background:rgba(255,255,255,0.1);">
+                <div class="h-2 rounded-full" style="background:linear-gradient(90deg,#38bdf8,#7dd3fc);width:99.9%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="text-white/70">Germ Elimination</span>
+                <span class="text-white font-bold">99.99%</span>
+              </div>
+              <div class="h-2 rounded-full" style="background:rgba(255,255,255,0.1);">
+                <div class="h-2 rounded-full" style="background:linear-gradient(90deg,#38bdf8,#7dd3fc);width:99.9%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="text-white/70">TDS Removal</span>
+                <span class="text-white font-bold">99%</span>
+              </div>
+              <div class="h-2 rounded-full" style="background:rgba(255,255,255,0.1);">
+                <div class="h-2 rounded-full" style="background:linear-gradient(90deg,#38bdf8,#7dd3fc);width:99%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="text-white/70">Mineral Balance</span>
+                <span class="text-white font-bold">Optimised</span>
+              </div>
+              <div class="h-2 rounded-full" style="background:rgba(255,255,255,0.1);">
+                <div class="h-2 rounded-full" style="background:linear-gradient(90deg,#f59e0b,#fbbf24);width:90%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="text-white/70">pH Level</span>
+                <span class="text-white font-bold">7.2 – 7.8 (Neutral)</span>
+              </div>
+              <div class="h-2 rounded-full" style="background:rgba(255,255,255,0.1);">
+                <div class="h-2 rounded-full" style="background:linear-gradient(90deg,#10b981,#34d399);width:75%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3 mt-8">
+            <div class="glass-card p-4 text-center">
+              <div class="font-black text-white text-xl">6</div>
+              <div class="text-white/45 text-[10px] mt-0.5 uppercase tracking-wide">Stages</div>
+            </div>
+            <div class="glass-card p-4 text-center">
+              <div class="font-black text-white text-xl">3X</div>
+              <div class="text-white/45 text-[10px] mt-0.5 uppercase tracking-wide">Protection</div>
+            </div>
+            <div class="glass-card p-4 text-center">
+              <div class="font-black text-white text-xl">0</div>
+              <div class="text-white/45 text-[10px] mt-0.5 uppercase tracking-wide">Chemicals</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     COMPARISON TABLE
+═════════════════════════════════════ -->
+<section class="py-24" style="background:linear-gradient(180deg,#f0f9ff,#ffffff);">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="text-center mb-12 reveal">
+      <div class="badge badge-blue mx-auto mb-4"><i class="fas fa-table text-xs"></i> Why LUXURY H₂O</div>
+      <h2 class="font-display font-black text-slate-800 mb-3"
+          style="font-size:clamp(1.8rem,3.5vw,2.8rem);">
+        LUXURY H₂O vs <span class="grad-text-blue">Ordinary Water</span>
+      </h2>
+    </div>
+
+    <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-100 reveal">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+              <th class="text-left text-white font-bold py-4 px-6">Feature</th>
+              <th class="text-center text-white font-bold py-4 px-6">Tap / Ordinary Water</th>
+              <th class="text-center text-white font-bold py-4 px-6">
+                <span class="flex items-center justify-center gap-1.5">
+                  <i class="fas fa-droplet text-blue-200 text-xs"></i> LUXURY H₂O
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-slate-100">
+              <td class="py-4 px-6 font-medium text-slate-700">RO Purification</td>
+              <td class="py-4 px-6 text-center"><i class="fas fa-times-circle text-red-400 text-lg"></i></td>
+              <td class="py-4 px-6 text-center" style="background:#f0f9ff;"><i class="fas fa-check-circle text-lg" style="color:#0ea5e9;"></i></td>
+            </tr>
+            <tr class="border-b border-slate-100">
+              <td class="py-4 px-6 font-medium text-slate-700">UV Sterilization</td>
+              <td class="py-4 px-6 text-center"><i class="fas fa-times-circle text-red-400 text-lg"></i></td>
+              <td class="py-4 px-6 text-center" style="background:#f0f9ff;"><i class="fas fa-check-circle text-lg" style="color:#0ea5e9;"></i></td>
+            </tr>
+            <tr class="border-b border-slate-100">
+              <td class="py-4 px-6 font-medium text-slate-700">Ozone Treatment</td>
+              <td class="py-4 px-6 text-center"><i class="fas fa-times-circle text-red-400 text-lg"></i></td>
+              <td class="py-4 px-6 text-center" style="background:#f0f9ff;"><i class="fas fa-check-circle text-lg" style="color:#0ea5e9;"></i></td>
+            </tr>
+            <tr class="border-b border-slate-100">
+              <td class="py-4 px-6 font-medium text-slate-700">Heavy Metal Removal</td>
+              <td class="py-4 px-6 text-center"><i class="fas fa-times-circle text-red-400 text-lg"></i></td>
+              <td class="py-4 px-6 text-center" style="background:#f0f9ff;"><i class="fas fa-check-circle text-lg" style="color:#0ea5e9;"></i></td>
+            </tr>
+            <tr class="border-b border-slate-100">
+              <td class="py-4 px-6 font-medium text-slate-700">Added Essential Minerals</td>
+              <td class="py-4 px-6 text-center"><i class="fas fa-times-circle text-red-400 text-lg"></i></td>
+              <td class="py-4 px-6 text-center" style="background:#f0f9ff;"><i class="fas fa-check-circle text-lg" style="color:#0ea5e9;"></i></td>
+            </tr>
+            <tr class="border-b border-slate-100">
+              <td class="py-4 px-6 font-medium text-slate-700">Tamper-Proof Packaging</td>
+              <td class="py-4 px-6 text-center"><i class="fas fa-times-circle text-red-400 text-lg"></i></td>
+              <td class="py-4 px-6 text-center" style="background:#f0f9ff;"><i class="fas fa-check-circle text-lg" style="color:#0ea5e9;"></i></td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 font-medium text-slate-700">Batch Quality Testing</td>
+              <td class="py-4 px-6 text-center"><i class="fas fa-times-circle text-red-400 text-lg"></i></td>
+              <td class="py-4 px-6 text-center" style="background:#f0f9ff;"><i class="fas fa-check-circle text-lg" style="color:#0ea5e9;"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     CTA
+═════════════════════════════════════ -->
+<section class="py-20 relative overflow-hidden"
+         style="background:linear-gradient(135deg,#061828 0%,#0369a1 50%,#0ea5e9 100%);">
+  <div class="particle" style="width:10px;height:10px;left:10%;bottom:0;animation-duration:9s;animation-delay:0s;"></div>
+  <div class="particle" style="width:14px;height:14px;left:70%;bottom:0;animation-duration:11s;animation-delay:2s;"></div>
+
+  <div class="max-w-3xl mx-auto px-5 text-center relative z-10 reveal">
+    <div class="badge badge-white mx-auto mb-6">
+      <i class="fas fa-bolt text-yellow-300 text-xs"></i> Order in 30 Seconds
+    </div>
+    <h2 class="font-display font-black text-white mb-4"
+        style="font-size:clamp(1.8rem,4vw,3rem);line-height:1.1;">
+      Experience RO+UV+Ozone<br/><span class="grad-text">Purity Today</span>
+    </h2>
+    <p class="text-white/60 text-base mb-8 max-w-xl mx-auto">
+      Order LUXURY H₂O — Bihar's most advanced packaged drinking water — directly from DivyaShakti MultiServices via WhatsApp.
+    </p>
+    <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20order%20LUXURY%20H2O%20water."
+       target="_blank"
+       class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold text-base px-10 py-4 rounded-2xl shadow-2xl transition-all hover:scale-105 mb-4">
+      <i class="fab fa-whatsapp text-2xl"></i> Order LUXURY H₂O Now
+    </a>
+    <div class="text-white/35 text-sm mt-3">
+      <i class="fas fa-clock mr-1"></i> Responds within minutes
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     JS
+═════════════════════════════════════ -->
+<script>
+  const ro2 = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const d = parseFloat(e.target.style.transitionDelay || '0') * 1000;
+        setTimeout(() => e.target.classList.add('on'), d);
+        ro2.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => ro2.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+
+
+
+<!-- ════════════════════════════════════
+     FOOTER
+═════════════════════════════════════ -->
+<footer class="bg-slate-950 text-slate-400 pt-14 pb-8">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div class="lg:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,#0369a1,#38bdf8);">
+            <i class="fas fa-water text-white text-sm"></i>
+          </div>
+          <div>
+            <div class="font-display font-bold text-white text-base leading-none">DivyaShakti MultiServices</div>
+            <div class="text-slate-500 text-[10px] tracking-widest uppercase mt-0.5">Private Limited</div>
+          </div>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed max-w-sm">A registered Pvt. Ltd. company based in Bihar — building trusted brands and delivering quality products to communities across the region.</p>
+        <div class="text-sm text-slate-600 space-y-1">
+          <div><span class="text-slate-400">GST:</span> 10AAMCD1575G1ZW</div>
+          <div><span class="text-slate-400">Directors:</span> Ms. Anaras Devi & Mr. Adarsh Singh</div>
+          <div><span class="text-slate-400">HQ:</span> Padrauna, Lamichour Bazar, Bhore, Gopalganj, Bihar 841426</div>
+        </div>
+        <div class="flex gap-2.5 pt-1">
+          <a href="https://wa.me/917783877709" target="_blank" class="w-9 h-9 rounded-xl bg-green-700 hover:bg-green-600 flex items-center justify-center text-white transition-all hover:scale-110"><i class="fab fa-whatsapp text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-pink-600 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110"><i class="fab fa-instagram text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-blue-600 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110"><i class="fab fa-facebook-f text-sm"></i></a>
+          <a href="tel:+917783877709" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-blue-500 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110"><i class="fas fa-phone text-xs"></i></a>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="text-white font-bold text-xs uppercase tracking-widest mb-5">Company</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#about"    class="hover:text-blue-400 transition-colors">About Us</a></li>
+          <li><a href="#process"  class="hover:text-blue-400 transition-colors">Our Process</a></li>
+          <li><a href="#services" class="hover:text-blue-400 transition-colors">Services</a></li>
+          <li><a href="#brands"   class="hover:text-blue-400 transition-colors">Our Brands</a></li>
+          <li><a href="#reviews"  class="hover:text-blue-400 transition-colors">Reviews</a></li>
+          <li><a href="#contact"  class="hover:text-blue-400 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Brands & contact -->
+      <div>
+        <h4 class="text-white font-bold text-xs uppercase tracking-widest mb-5">Our Brands</h4>
+        <ul class="space-y-3 text-sm mb-6">
+          <li><a href="#luxury" class="hover:text-blue-400 transition-colors">LUXURY H₂O</a></li>
+          <li class="text-slate-600 italic text-xs">More coming soon...</li>
+        </ul>
+        <div class="p-4 rounded-2xl border border-slate-800 bg-slate-900 space-y-2">
+          <div class="text-xs text-slate-600 uppercase tracking-widest mb-2">Get in Touch</div>
+          <a href="tel:+917783877709" class="flex items-center gap-2 text-sm hover:text-white transition-colors">
+            <i class="fas fa-phone text-xs text-blue-400 w-3"></i> +91 77838 77709
+          </a>
+          <a href="https://wa.me/917783877709" target="_blank" class="flex items-center gap-2 text-sm hover:text-white transition-colors">
+            <i class="fab fa-whatsapp text-xs text-green-400 w-3"></i> WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
+      <div>© 2025 DivyaShakti MultiServices Private Limited. All rights reserved.</div>
+      <div class="flex items-center gap-1.5 text-slate-600">
+        <i class="fas fa-water text-blue-500 text-xs"></i>
+        Powering <span class="text-blue-400 font-semibold ml-1">LUXURY H₂O</span> <span class="ml-1">& beyond</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════
+     JAVASCRIPT
+═════════════════════════════════════ -->
+<script>
+  // ── Navbar scroll ──
+  const nav = document.getElementById('navbar');
+  let lastY = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 60);
+    lastY = y;
+  }, { passive: true });
+
+  // ── Hamburger ──
+  const hamBtn  = document.getElementById('ham-btn');
+  const mobMenu = document.getElementById('mob-menu');
+  hamBtn.addEventListener('click', () => {
+    hamBtn.classList.toggle('active');
+    mobMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mob-lnk').forEach(l => {
+    l.addEventListener('click', () => {
+      hamBtn.classList.remove('active');
+      mobMenu.classList.remove('open');
+    });
+  });
+
+  // ── Scroll reveal ──
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const delay = e.target.style.transitionDelay || '0s';
+        setTimeout(() => e.target.classList.add('on'), parseFloat(delay) * 1000);
+        ro.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => ro.observe(el));
+
+  // ── Counter animation ──
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 2000;
+    const start = performance.now();
+    const update = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + '+';
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateCounter(e.target); counterObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  
+
+  // ── Smooth scroll ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  // ── Navbar scrolled: fix ham-line color ──
+  const hamLines = document.querySelectorAll('.ham-line');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      hamLines.forEach(l => l.style.background = '#0369a1');
+    } else {
+      hamLines.forEach(l => l.style.background = 'white');
+    }
+  }, { passive: true });
+
+</script>
+</body>
+</html>
