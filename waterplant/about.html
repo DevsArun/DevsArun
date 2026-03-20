@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DivyaShakti MultiServices Pvt. Ltd. | Pure Water, Pure Future</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','sans-serif'], display: ['Playfair Display','serif'] },
+          colors: {
+            water: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e',950:'#082f49' },
+            deep:  { 800:'#0a2540', 900:'#061828', 950:'#030e18' },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --blue-1: #0c4a6e;
+      --blue-2: #0369a1;
+      --blue-3: #0ea5e9;
+      --blue-4: #38bdf8;
+      --blue-5: #7dd3fc;
+      --gold:   #f59e0b;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1e293b; overflow-x: hidden; }
+
+    /* ── Custom scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f0f9ff; }
+    ::-webkit-scrollbar-thumb { background: var(--blue-3); border-radius: 10px; }
+
+    /* ── Glassmorphism ── */
+    .glass {
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .glass-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+    }
+    .glass-light {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.95);
+    }
+
+    /* ── Navbar ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 18px 0;
+      transition: all 0.4s cubic-bezier(.4,0,.2,1);
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.96) !important;
+      backdrop-filter: blur(28px);
+      box-shadow: 0 2px 40px rgba(3,105,161,0.10);
+      padding: 12px 0;
+    }
+    #navbar.scrolled .logo-name  { color: #0369a1 !important; }
+    #navbar.scrolled .logo-sub   { color: #64748b !important; }
+    #navbar.scrolled .nav-link   { color: #475569 !important; }
+    #navbar.scrolled .nav-link:hover { color: #0369a1 !important; }
+    #navbar.scrolled .nav-cta    { background: linear-gradient(135deg,#0369a1,#0ea5e9) !important; color: white !important; border-color: transparent !important; }
+    #navbar.scrolled .ham-line   { background: #0369a1 !important; }
+
+    /* ── Hero ── */
+    .hero-section {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #061828 0%, #0c4a6e 35%, #0369a1 65%, #0ea5e9 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Animated water waves */
+    .wave-container {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 160px;
+      overflow: hidden;
+    }
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: -100%;
+      width: 300%;
+      height: 100%;
+    }
+    .wave svg { width: 100%; height: 100%; }
+    .wave-1 { animation: waveMove 8s linear infinite; opacity: 0.4; }
+    .wave-2 { animation: waveMove 12s linear infinite reverse; opacity: 0.25; bottom: 8px; }
+    .wave-3 { animation: waveMove 6s linear infinite; opacity: 0.6; bottom: -4px; }
+    @keyframes waveMove {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(33.33%); }
+    }
+
+    /* Particles / bubbles */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(255,255,255,0.05));
+      animation: particleRise linear infinite;
+      pointer-events: none;
+    }
+    @keyframes particleRise {
+      0%   { transform: translateY(0) scale(1); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.4; }
+      100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+    }
+
+    /* Float */
+    @keyframes float {
+      0%,100% { transform: translateY(0px) rotate(0deg); }
+      33%      { transform: translateY(-12px) rotate(1deg); }
+      66%      { transform: translateY(-6px) rotate(-1deg); }
+    }
+    .float { animation: float 5s ease-in-out infinite; }
+
+    /* Gradient text */
+    .grad-text {
+      background: linear-gradient(135deg, #38bdf8, #7dd3fc, #bae6fd);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .grad-text-gold {
+      background: linear-gradient(135deg, #f59e0b, #fbbf24, #fde68a);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .grad-text-blue {
+      background: linear-gradient(135deg, #0369a1, #0ea5e9, #38bdf8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* Reveal animations */
+    .reveal        { opacity:0; transform:translateY(40px);  transition: opacity .7s ease, transform .7s ease; }
+    .reveal-left   { opacity:0; transform:translateX(-40px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal-right  { opacity:0; transform:translateX(40px);  transition: opacity .7s ease, transform .7s ease; }
+    .reveal-scale  { opacity:0; transform:scale(0.9);        transition: opacity .7s ease, transform .7s ease; }
+    .on { opacity:1 !important; transform:translate(0,0) scale(1) !important; }
+
+    /* Cards */
+    .hover-card {
+      transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s ease;
+    }
+    .hover-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 32px 64px rgba(3,105,161,0.18);
+    }
+
+    /* Section divider */
+    .section-divider { display: block; width: 100%; overflow: hidden; line-height: 0; }
+    .section-divider svg { display: block; }
+
+    /* Floating WA */
+    #wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+      animation: float 3.5s ease-in-out infinite;
+    }
+    #wa-float:hover #wa-tip { opacity:1; transform:translateX(0) translateY(-50%); pointer-events:auto; }
+    #wa-tip {
+      position: absolute; right: 68px; top: 50%;
+      transform: translateX(8px) translateY(-50%);
+      background: #075e54; color: #fff;
+      font-size: 12px; font-weight: 700;
+      padding: 6px 14px; border-radius: 10px;
+      white-space: nowrap; opacity: 0;
+      transition: all .3s ease; pointer-events: none;
+    }
+    #wa-tip::after {
+      content:''; position:absolute; right:-5px; top:50%;
+      transform:translateY(-50%);
+      border:5px solid transparent; border-right:none; border-left-color:#075e54;
+    }
+
+    /* Mobile menu */
+    #mob-menu {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+    }
+    #mob-menu.open { max-height: 600px; opacity: 1; }
+
+    /* Hamburger */
+    .ham-line {
+      display: block; width: 24px; height: 2px;
+      background: white; border-radius: 2px;
+      transition: all .3s ease;
+      transform-origin: center;
+    }
+    #ham-btn.active .ham-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    #ham-btn.active .ham-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    #ham-btn.active .ham-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Number counter */
+    .counter { font-variant-numeric: tabular-nums; }
+
+    /* Tag badge */
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 14px; border-radius: 999px;
+    }
+    .badge-blue { background: rgba(14,165,233,0.12); color: #0369a1; border: 1px solid rgba(14,165,233,0.25); }
+    .badge-white { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.2); }
+    .badge-gold  { background: rgba(245,158,11,0.12); color: #b45309; border: 1px solid rgba(245,158,11,0.25); }
+
+    /* Pipe/plant decorative */
+    .plant-line {
+      position: absolute; background: linear-gradient(180deg, rgba(56,189,248,0.3), transparent);
+      width: 2px; border-radius: 1px;
+    }
+
+    /* Timeline dot */
+    .timeline-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: linear-gradient(135deg, #0369a1, #38bdf8);
+      box-shadow: 0 0 0 4px rgba(14,165,233,0.2);
+      flex-shrink: 0; margin-top: 4px;
+    }
+
+    /* Glow effects */
+    .glow-blue { box-shadow: 0 0 40px rgba(14,165,233,0.4); }
+    .glow-sm   { box-shadow: 0 0 20px rgba(14,165,233,0.3); }
+
+    /* Water drop shape */
+    .water-drop {
+      position: absolute;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.3), rgba(14,165,233,0.1));
+      pointer-events: none;
+    }
+
+    /* Process step */
+    .process-line {
+      position: absolute; top: 28px; left: 50%; right: -50%;
+      height: 2px;
+      background: linear-gradient(90deg, #0ea5e9, rgba(14,165,233,0.1));
+    }
+    /* Mobile menu links always visible */
+#mob-menu .mob-lnk {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* Jab navbar scrolled ho tab mobile menu dark text */
+#navbar.scrolled #mob-menu .mob-lnk {
+  color: #1e293b !important;
+}
+#navbar.scrolled #mob-menu {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 16px;
+}
+#navbar.scrolled #mob-menu .glass {
+  background: rgba(248, 250, 252, 0.98) !important;
+  border: 1px solid rgba(3, 105, 161, 0.1) !important;
+}
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+}
+
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     FLOATING WHATSAPP
+═════════════════════════════════════ -->
+<div id="wa-float">
+  <div id="wa-tip">Order LUXURY H₂O</div>
+  <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20order%20LUXURY%20H2O%20water."
+     target="_blank" rel="noopener"
+     class="flex items-center justify-center w-14 h-14 rounded-full shadow-2xl glow-sm"
+     style="background:linear-gradient(135deg,#25d366,#128c7e);">
+    <i class="fab fa-whatsapp text-white text-3xl"></i>
+  </a>
+</div>
+
+<!-- ════════════════════════════════════
+     NAVBAR
+═════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="max-w-7xl mx-auto px-5 flex items-center justify-between">
+
+    <!-- Logo -->
+<a href="#home" class="flex items-center gap-3">
+  <div class="w-10 h-10 rounded-xl flex items-center justify-center glow-sm shrink-0 overflow-hidden"
+       style="background:linear-gradient(135deg,#0369a1,#38bdf8);">
+    
+    <img src="https://i.ibb.co/NdnVXJqN/321b3903-c76f-47f6-abfa-93aa45a7e5d2.jpg"
+         alt="DivyaShakti Logo"
+         class="w-full h-full object-cover">
+         
+  </div>
+
+  <div class="leading-tight">
+    <div class="logo-name font-display font-bold text-white text-[15px] tracking-wide">
+      DivyaShakti
+    </div>
+    <div class="logo-sub text-white/55 text-[9px] tracking-widest uppercase font-semibold">
+      MultiServices Pvt. Ltd.
+    </div>
+  </div>
+</a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center gap-6">
+      <a href="#about"    class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">About</a>
+      <a href="#process"  class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Process</a>
+      <a href="#services" class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Services</a>
+      <a href="#brands"   class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Brands</a>
+      <a href="#luxury"   class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">LUXURY H₂O</a>
+      <a href="#contact"  class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Contact</a>
+      <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20connect."
+         target="_blank"
+         class="nav-cta flex items-center gap-2 text-white text-sm font-bold px-5 py-2.5 rounded-full border border-white/25 hover:bg-white/20 transition-all duration-300 glass">
+        <i class="fab fa-whatsapp text-green-400"></i> WhatsApp
+      </a>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="ham-btn" class="lg:hidden flex flex-col gap-1.5 p-2 focus:outline-none" aria-label="Menu">
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mob-menu" class="lg:hidden mx-4 mt-3 rounded-2xl overflow-hidden">
+    <div class="glass p-5 space-y-1" style="background:rgba(6,24,40,0.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">
+      <a href="#about"    class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">About Us</a>
+      <a href="#process"  class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Our Process</a>
+      <a href="#services" class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Services</a>
+      <a href="#brands"   class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Our Brands</a>
+      <a href="#luxury"   class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">LUXURY H₂O</a>
+      <a href="#contact"  class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Contact</a>
+      <div class="pt-2">
+        <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20connect."
+           target="_blank"
+           class="mob-lnk flex items-center justify-center gap-2 text-white font-bold py-3.5 rounded-2xl transition text-sm"
+           style="background:linear-gradient(135deg,#25d366,#128c7e);">
+          <i class="fab fa-whatsapp text-lg"></i> WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<!-- ════════════════════════════════════
+     HERO — ABOUT US
+═════════════════════════════════════ -->
+<section class="relative overflow-hidden pt-20"
+         style="background:linear-gradient(160deg,#061828 0%,#0c4a6e 40%,#0369a1 80%,#0ea5e9 100%);min-height:60vh;display:flex;align-items:center;">
+
+  <!-- Particles -->
+  <div class="particle" style="width:12px;height:12px;left:8%;bottom:0;animation-duration:10s;animation-delay:0s;"></div>
+  <div class="particle" style="width:8px;height:8px;left:35%;bottom:0;animation-duration:8s;animation-delay:1.5s;"></div>
+  <div class="particle" style="width:14px;height:14px;left:65%;bottom:0;animation-duration:12s;animation-delay:3s;"></div>
+  <div class="particle" style="width:6px;height:6px;left:85%;bottom:0;animation-duration:9s;animation-delay:2s;"></div>
+
+  <!-- Water drop deco -->
+  <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.06),transparent);top:-120px;right:-100px;pointer-events:none;"></div>
+  <div style="position:absolute;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,0.1),transparent);bottom:-60px;left:-60px;pointer-events:none;"></div>
+
+  <div class="max-w-7xl mx-auto px-5 py-20 w-full relative z-10">
+    <div class="max-w-3xl">
+      <div class="badge badge-white mb-5"><i class="fas fa-building text-xs"></i> About DivyaShakti MultiServices</div>
+      <h1 class="font-display font-black text-white leading-tight mb-6"
+          style="font-size:clamp(2.6rem,6vw,4.5rem);">
+        Built on Trust.<br/>
+        <span class="grad-text">Driven by Purpose.</span>
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed max-w-2xl mb-8">
+        DivyaShakti MultiServices Private Limited is a Bihar-based, legally registered company committed to delivering quality products and essential services to communities across Padrauna, Gopalganj and beyond.
+      </p>
+      <!-- Breadcrumb -->
+      <div class="flex items-center gap-2 text-white/40 text-sm">
+        <a href="index.html" class="hover:text-white transition-colors">Home</a>
+        <i class="fas fa-chevron-right text-xs"></i>
+        <span class="text-white/70 font-medium">About Us</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave -->
+  <div style="position:absolute;bottom:0;left:0;right:0;">
+    <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;">
+      <path d="M0,35 C480,70 960,0 1440,40 L1440,70 L0,70 Z" fill="white"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     QUICK STATS
+═════════════════════════════════════ -->
+<section class="py-14 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+
+      <div class="hover-card rounded-3xl p-6 text-center reveal" style="transition-delay:.1s;background:linear-gradient(135deg,#f0f9ff,#e0f2fe);">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-3 text-white"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-users text-base"></i>
+        </div>
+        <div class="font-display font-black text-slate-800 text-3xl counter" data-target="500">0</div>
+        <div class="text-slate-500 text-xs mt-1 uppercase tracking-wider">Happy Customers</div>
+      </div>
+
+      <div class="hover-card rounded-3xl p-6 text-center reveal" style="transition-delay:.15s;background:linear-gradient(135deg,#f0f9ff,#e0f2fe);">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-3 text-white"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-layer-group text-base"></i>
+        </div>
+        <div class="font-display font-black text-slate-800 text-3xl">2+</div>
+        <div class="text-slate-500 text-xs mt-1 uppercase tracking-wider">Active Brands</div>
+      </div>
+
+      <div class="hover-card rounded-3xl p-6 text-center reveal" style="transition-delay:.2s;background:linear-gradient(135deg,#f0f9ff,#e0f2fe);">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-3 text-white"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-filter text-base"></i>
+        </div>
+        <div class="font-display font-black text-slate-800 text-3xl">6</div>
+        <div class="text-slate-500 text-xs mt-1 uppercase tracking-wider">Purification Stages</div>
+      </div>
+
+      <div class="hover-card rounded-3xl p-6 text-center reveal" style="transition-delay:.25s;background:linear-gradient(135deg,#f0f9ff,#e0f2fe);">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-3 text-white"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-shield-halved text-base"></i>
+        </div>
+        <div class="font-display font-black text-slate-800 text-3xl">100%</div>
+        <div class="text-slate-500 text-xs mt-1 uppercase tracking-wider">Quality Assured</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     WHO WE ARE
+═════════════════════════════════════ -->
+<section class="py-24" style="background:linear-gradient(180deg,#f8fafc 0%,#ffffff 100%);">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Visual -->
+      <div class="reveal-left">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl"
+             style="background:linear-gradient(160deg,#061828,#0369a1);padding:2.5rem;min-height:400px;display:flex;align-items:center;justify-content:center;">
+          <div style="position:absolute;width:300px;height:300px;border:1px solid rgba(255,255,255,.06);border-radius:50%;top:-80px;right:-80px;"></div>
+          <div style="position:absolute;width:200px;height:200px;border:1px solid rgba(56,189,248,.1);border-radius:50%;bottom:-40px;left:-40px;"></div>
+
+          <div class="relative z-10 text-center space-y-6 w-full">
+            <!-- Company icon -->
+            <div class="w-20 h-20 rounded-3xl flex items-center justify-center mx-auto"
+                 style="background:rgba(255,255,255,0.12);">
+              <i class="fas fa-water text-white text-4xl"></i>
+            </div>
+            <div class="font-display font-bold text-white text-2xl">DivyaShakti MultiServices</div>
+            <div class="text-blue-300 text-sm">Private Limited Company · Bihar, India</div>
+
+            <!-- Details grid -->
+            <div class="space-y-3 text-left mt-4">
+              <div class="glass-card p-3.5 flex items-center gap-3">
+                <i class="fas fa-user-tie text-blue-300 w-4 text-center shrink-0"></i>
+                <div class="text-white/80 text-sm"><strong class="text-white">Director:</strong> Ms. Anaras Devi</div>
+              </div>
+              <div class="glass-card p-3.5 flex items-center gap-3">
+                <i class="fas fa-user-tie text-blue-300 w-4 text-center shrink-0"></i>
+                <div class="text-white/80 text-sm"><strong class="text-white">Director:</strong> Mr. Adarsh Singh</div>
+              </div>
+              <div class="glass-card p-3.5 flex items-center gap-3">
+                <i class="fas fa-map-marker-alt text-blue-300 w-4 text-center shrink-0"></i>
+                <div class="text-white/80 text-sm">Padrauna, Lamichour Bazar, Bhore,<br/>Gopalganj, Bihar – 841426</div>
+              </div>
+              <div class="glass-card p-3.5 flex items-center gap-3">
+                <i class="fas fa-file-invoice text-blue-300 w-4 text-center shrink-0"></i>
+                <div class="text-white/80 text-sm"><strong class="text-white">GST:</strong> 10AAMCD1575G1ZW</div>
+              </div>
+              <div class="glass-card p-3.5 flex items-center gap-3">
+                <i class="fas fa-phone text-blue-300 w-4 text-center shrink-0"></i>
+                <div class="text-white/80 text-sm"><strong class="text-white">Phone:</strong> +91 77838 77709</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="space-y-6 reveal-right">
+        <div class="badge badge-blue"><i class="fas fa-building text-xs"></i> Who We Are</div>
+        <h2 class="font-display font-black text-slate-800 leading-tight"
+            style="font-size:clamp(1.8rem,3.5vw,2.8rem);">
+          A Pvt. Ltd. Company<br/><span class="grad-text-blue">Rooted in Bihar.</span>
+        </h2>
+        <p class="text-slate-600 leading-relaxed">
+          <strong>DivyaShakti MultiServices Private Limited</strong> is a legally registered multi-service company headquartered at Padrauna, Lamichour Bazar, Bhore, Gopalganj, Bihar. We operate across multiple business verticals — from FMCG consumer products to local supply & distribution.
+        </p>
+        <p class="text-slate-500 leading-relaxed text-sm">
+          Think of us like a parent company — just as Coca-Cola owns Sprite and Maaza, <strong>DivyaShakti MultiServices</strong> owns and operates multiple brands. Our flagship brand <strong>LUXURY H₂O</strong> is an advanced packaged drinking water brand powered by RO + UV + Ozone purification technology — with more brands on the horizon.
+        </p>
+
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <div class="flex items-center gap-3 p-4 rounded-2xl" style="background:#f0f9ff;">
+            <i class="fas fa-certificate text-xl" style="color:#0369a1;"></i>
+            <div>
+              <div class="font-bold text-slate-800 text-sm">Pvt. Ltd. Registered</div>
+              <div class="text-slate-400 text-xs">Legal Entity, Bihar</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-4 rounded-2xl" style="background:#f0f9ff;">
+            <i class="fas fa-star text-xl text-amber-500"></i>
+           <div>
+  <div class="font-bold text-slate-800 text-sm">GST Compliant</div>
+  <div class="text-slate-400 text-[10px]">10AAMCD1575G1ZW</div>
+</div>
+          </div>
+          <div class="flex items-center gap-3 p-4 rounded-2xl" style="background:#f0f9ff;">
+            <i class="fas fa-industry text-xl" style="color:#0369a1;"></i>
+            <div>
+              <div class="font-bold text-slate-800 text-sm">In-House Plant</div>
+              <div class="text-slate-400 text-xs">RO+UV+Ozone Tech</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 p-4 rounded-2xl" style="background:#f0f9ff;">
+            <i class="fas fa-map-marker-alt text-xl" style="color:#0369a1;"></i>
+            <div>
+              <div class="font-bold text-slate-800 text-sm">Gopalganj, Bihar</div>
+              <div class="text-slate-400 text-xs">Padrauna HQ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     MISSION VISION VALUES
+═════════════════════════════════════ -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-14 reveal">
+      <div class="badge badge-blue mx-auto mb-4"><i class="fas fa-compass text-xs"></i> Our Foundation</div>
+      <h2 class="font-display font-black text-slate-800 mb-3"
+          style="font-size:clamp(2rem,4vw,3rem);">
+        Mission, Vision <span class="grad-text-blue">&amp; Values</span>
+      </h2>
+      <p class="text-slate-500 text-base max-w-xl mx-auto">The principles that guide every decision we make at DivyaShakti MultiServices.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- Mission -->
+      <div class="hover-card rounded-3xl overflow-hidden shadow-lg reveal" style="transition-delay:.1s;">
+        <div class="h-2" style="background:linear-gradient(90deg,#0369a1,#0ea5e9);"></div>
+        <div class="p-8 bg-white">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+               style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <h3 class="font-display font-bold text-slate-800 text-xl mb-3">Our Mission</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">
+            To deliver safe, pure, and affordable drinking water and essential consumer products to every household in Bihar — without compromise on quality, hygiene, or trust.
+          </p>
+          <div class="mt-5 pt-5 border-t border-slate-100">
+            <div class="flex items-start gap-2 text-slate-500 text-xs mb-2">
+              <i class="fas fa-check-circle mt-0.5 shrink-0" style="color:#0ea5e9;"></i>
+              Quality over everything else
+            </div>
+            <div class="flex items-start gap-2 text-slate-500 text-xs mb-2">
+              <i class="fas fa-check-circle mt-0.5 shrink-0" style="color:#0ea5e9;"></i>
+              Serve every Bihar household
+            </div>
+            <div class="flex items-start gap-2 text-slate-500 text-xs">
+              <i class="fas fa-check-circle mt-0.5 shrink-0" style="color:#0ea5e9;"></i>
+              Affordable pricing always
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vision -->
+      <div class="hover-card rounded-3xl overflow-hidden shadow-lg reveal" style="transition-delay:.2s;">
+        <div class="h-2" style="background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div>
+        <div class="p-8 bg-white">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+               style="background:linear-gradient(135deg,#d97706,#f59e0b);">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3 class="font-display font-bold text-slate-800 text-xl mb-3">Our Vision</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">
+            To become Bihar's most trusted multi-service company — building a growing portfolio of consumer brands that empower communities, create local employment, and set new standards of excellence.
+          </p>
+          <div class="mt-5 pt-5 border-t border-slate-100">
+            <div class="flex items-start gap-2 text-slate-500 text-xs mb-2">
+              <i class="fas fa-check-circle mt-0.5 shrink-0 text-amber-400"></i>
+              Bihar's #1 multi-service company
+            </div>
+            <div class="flex items-start gap-2 text-slate-500 text-xs mb-2">
+              <i class="fas fa-check-circle mt-0.5 shrink-0 text-amber-400"></i>
+              Multi-brand portfolio growth
+            </div>
+            <div class="flex items-start gap-2 text-slate-500 text-xs">
+              <i class="fas fa-check-circle mt-0.5 shrink-0 text-amber-400"></i>
+              Create local employment
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Values -->
+      <div class="hover-card rounded-3xl overflow-hidden shadow-lg reveal" style="transition-delay:.3s;">
+        <div class="h-2" style="background:linear-gradient(90deg,#10b981,#34d399);"></div>
+        <div class="p-8 bg-white">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+               style="background:linear-gradient(135deg,#059669,#10b981);">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3 class="font-display font-bold text-slate-800 text-xl mb-3">Our Values</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">
+            Purity, transparency, and community — these are not just words for us. Every product we make and every service we deliver is guided by our core commitment to the people of Bihar.
+          </p>
+          <div class="mt-5 pt-5 border-t border-slate-100">
+            <div class="flex items-start gap-2 text-slate-500 text-xs mb-2">
+              <i class="fas fa-check-circle mt-0.5 shrink-0 text-green-500"></i>
+              Integrity in every product
+            </div>
+            <div class="flex items-start gap-2 text-slate-500 text-xs mb-2">
+              <i class="fas fa-check-circle mt-0.5 shrink-0 text-green-500"></i>
+              Community-first approach
+            </div>
+            <div class="flex items-start gap-2 text-slate-500 text-xs">
+              <i class="fas fa-check-circle mt-0.5 shrink-0 text-green-500"></i>
+              Transparent business practices
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     PURIFICATION TECHNOLOGY
+═════════════════════════════════════ -->
+<section class="py-24 relative overflow-hidden"
+         style="background:linear-gradient(160deg,#061828 0%,#0c4a6e 40%,#0369a1 80%,#0ea5e9 100%);">
+
+  <div class="particle" style="width:10px;height:10px;left:5%;bottom:0;animation-duration:10s;animation-delay:0s;"></div>
+  <div class="particle" style="width:14px;height:14px;left:50%;bottom:0;animation-duration:12s;animation-delay:2s;"></div>
+  <div class="particle" style="width:8px;height:8px;left:80%;bottom:0;animation-duration:9s;animation-delay:1s;"></div>
+
+  <div class="max-w-7xl mx-auto px-5 relative z-10">
+    <div class="text-center mb-14 reveal">
+      <div class="badge badge-white mx-auto mb-4"><i class="fas fa-atom text-xs"></i> Advanced Technology</div>
+      <h2 class="font-display font-black text-white mb-3"
+          style="font-size:clamp(2rem,4vw,3rem);">
+        RO + UV + <span class="grad-text">Ozone</span> Purification
+      </h2>
+      <p class="text-white/60 text-base max-w-2xl mx-auto">
+        LUXURY H₂O uses triple-stage advanced purification technology — the gold standard in modern water treatment plants worldwide.
+      </p>
+    </div>
+
+    <!-- 3 Tech pillars -->
+    <div class="grid md:grid-cols-3 gap-6 mb-14">
+
+      <div class="glass-card p-8 reveal" style="transition-delay:.1s;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+             style="background:rgba(255,255,255,0.15);">
+          <i class="fas fa-atom"></i>
+        </div>
+        <h3 class="font-bold text-white text-lg mb-2">Reverse Osmosis (RO)</h3>
+        <p class="text-white/60 text-sm leading-relaxed mb-4">
+          High-pressure RO membrane removes dissolved salts, heavy metals, fluoride, arsenic, pesticides, and bacteria at a molecular level — down to 0.0001 microns.
+        </p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 text-white/55 text-xs">
+            <i class="fas fa-check text-blue-300 text-xs w-3"></i> Removes 99% TDS
+          </div>
+          <div class="flex items-center gap-2 text-white/55 text-xs">
+            <i class="fas fa-check text-blue-300 text-xs w-3"></i> Eliminates heavy metals
+          </div>
+          <div class="flex items-center gap-2 text-white/55 text-xs">
+            <i class="fas fa-check text-blue-300 text-xs w-3"></i> Kills bacteria & viruses
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card p-8 reveal" style="transition-delay:.2s;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+             style="background:rgba(255,255,255,0.15);">
+          <i class="fas fa-sun"></i>
+        </div>
+        <h3 class="font-bold text-white text-lg mb-2">Ultra-Violet (UV)</h3>
+        <p class="text-white/60 text-sm leading-relaxed mb-4">
+          UV light at 254nm wavelength destroys the DNA of microorganisms — eliminating 99.99% of bacteria, viruses, cysts, and pathogens without adding any chemicals to the water.
+        </p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 text-white/55 text-xs">
+            <i class="fas fa-check text-blue-300 text-xs w-3"></i> 99.99% germ elimination
+          </div>
+          <div class="flex items-center gap-2 text-white/55 text-xs">
+            <i class="fas fa-check text-blue-300 text-xs w-3"></i> No chemicals added
+          </div>
+          <div class="flex items-center gap-2 text-white/55 text-xs">
+            <i class="fas fa-check text-blue-300 text-xs w-3"></i> Safe for all ages
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card p-8 reveal" style="transition-delay:.3s;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+             style="background:rgba(255,255,255,0.15);">
+          <i class="fas fa-wind"></i>
+        </div>
+        <h3 class="font-bold text-white text-lg mb-2">Ozone (O₃) Treatment</h3>
+        <p class="text-white/60 text-sm leading-relaxed mb-4">
+          Ozone is nature's most powerful disinfectant — 3000x stronger than chlorine. It eliminates any remaining trace contaminants, deodorizes water, and extends shelf life naturally.
+        </p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 text-white/55 text-xs">
+            <i class="fas fa-check text-blue-300 text-xs w-3"></i> 3000x stronger than chlorine
+          </div>
+          <div class="flex items-center gap-2 text-white/55 text-xs">
+            <i class="fas fa-check text-blue-300 text-xs w-3"></i> Removes odour & taste
+          </div>
+          <div class="flex items-center gap-2 text-white/55 text-xs">
+            <i class="fas fa-check text-blue-300 text-xs w-3"></i> Extends shelf life
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Purification steps timeline -->
+    <div class="glass-card p-8 reveal">
+      <h3 class="font-bold text-white text-lg mb-6 text-center">Complete 6-Stage Purification Journey</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-2 text-white font-black"
+               style="background:rgba(255,255,255,0.15);">1</div>
+          <div class="text-white/70 text-xs font-semibold">Raw Water</div>
+          <div class="text-white/35 text-xs mt-0.5">Collection</div>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-2 text-white font-black"
+               style="background:rgba(255,255,255,0.15);">2</div>
+          <div class="text-white/70 text-xs font-semibold">Pre-Filter</div>
+          <div class="text-white/35 text-xs mt-0.5">Sand + Carbon</div>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-2 text-white font-black"
+               style="background:rgba(255,255,255,0.15);">3</div>
+          <div class="text-white/70 text-xs font-semibold">RO</div>
+          <div class="text-white/35 text-xs mt-0.5">Membrane</div>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-2 text-white font-black"
+               style="background:rgba(255,255,255,0.15);">4</div>
+          <div class="text-white/70 text-xs font-semibold">UV</div>
+          <div class="text-white/35 text-xs mt-0.5">Sterilization</div>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-2 text-white font-black"
+               style="background:rgba(255,255,255,0.15);">5</div>
+          <div class="text-white/70 text-xs font-semibold">Ozone</div>
+          <div class="text-white/35 text-xs mt-0.5">Treatment</div>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-2 text-white font-black"
+               style="background:rgba(255,255,255,0.15);">6</div>
+          <div class="text-white/70 text-xs font-semibold">Pack</div>
+          <div class="text-white/35 text-xs mt-0.5">Clean Room</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;bottom:0;left:0;right:0;">
+    <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;">
+      <path d="M0,35 C480,70 960,0 1440,40 L1440,70 L0,70 Z" fill="white"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     DIRECTORS MESSAGE
+═════════════════════════════════════ -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-14 reveal">
+      <div class="badge badge-blue mx-auto mb-4"><i class="fas fa-quote-left text-xs"></i> Leadership</div>
+      <h2 class="font-display font-black text-slate-800 mb-3"
+          style="font-size:clamp(2rem,4vw,3rem);">
+        Message from Our <span class="grad-text-blue">Directors</span>
+      </h2>
+      <p class="text-slate-500 text-base max-w-xl mx-auto">The vision and values behind DivyaShakti MultiServices — in their own words.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- Director 1 -->
+      <div class="hover-card rounded-3xl overflow-hidden shadow-xl reveal" style="transition-delay:.1s;background:linear-gradient(160deg,#061828 0%,#0c4a6e 60%,#0369a1 100%);">
+        <div class="relative">
+          <img src="https://i.ibb.co/4nRnv3Xn/image.png" alt="Ms. Anaras Devi" class="w-full block">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,#061828 0%,rgba(6,24,40,0.15) 40%,transparent 100%);"></div>
+          <div class="absolute bottom-4 left-6 right-6">
+            <div class="font-display font-bold text-white text-xl drop-shadow-lg">Ms. Anaras Devi</div>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="w-2 h-2 rounded-full bg-blue-400 inline-block"></span>
+              <span class="text-blue-300 text-sm font-semibold">Director & Co-Founder</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-7">
+          <i class="fas fa-quote-left text-4xl mb-4 block" style="color:rgba(56,189,248,0.3);"></i>
+          <p class="text-white/75 text-sm leading-relaxed mb-3">"At DivyaShakti MultiServices, our mission has always been simple — deliver quality that people can trust. When we started LUXURY H₂O, we knew Bihar deserved better access to clean, pure drinking water without compromise.</p>
+          <p class="text-white/75 text-sm leading-relaxed mb-6">Every bottle we produce carries our promise of purity, hygiene, and care. We are not just building a business — we are building a healthier Bihar, one drop at a time."</p>
+          <div class="flex items-center justify-between pt-5" style="border-top:1px solid rgba(255,255,255,0.1);">
+            <div>
+              <div class="font-bold text-white text-sm">Ms. Anaras Devi</div>
+              <div class="text-white/40 text-xs">DivyaShakti MultiServices Pvt. Ltd.</div>
+            </div>
+            <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.25);">
+              <i class="fas fa-leaf text-sm" style="color:#38bdf8;"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Director 2 -->
+      <div class="hover-card rounded-3xl overflow-hidden shadow-xl reveal" style="transition-delay:.2s;background:linear-gradient(160deg,#061828 0%,#0c4a6e 60%,#0369a1 100%);">
+        <div class="relative">
+          <img src="https://i.ibb.co/ZzGp93gr/image.png" alt="Mr. Adarsh Singh" class="w-full block">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,#061828 0%,rgba(6,24,40,0.15) 40%,transparent 100%);"></div>
+          <div class="absolute bottom-4 left-6 right-6">
+            <div class="font-display font-bold text-white text-xl drop-shadow-lg">Mr. Adarsh Singh</div>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="w-2 h-2 rounded-full bg-blue-400 inline-block"></span>
+              <span class="text-blue-300 text-sm font-semibold">Director & Co-Founder</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-7">
+          <i class="fas fa-quote-left text-4xl mb-4 block" style="color:rgba(56,189,248,0.3);"></i>
+          <p class="text-white/75 text-sm leading-relaxed mb-3">"DivyaShakti MultiServices was founded on the belief that local businesses can create a lasting impact on their communities. Bihar has immense potential, and we are here to unlock it — starting with the most essential need: pure, safe drinking water.</p>
+          <p class="text-white/75 text-sm leading-relaxed mb-6">LUXURY H₂O is our first step. Our vision is to build a multi-brand company that touches every household in Bihar — with products they can rely on, at prices they can afford."</p>
+          <div class="flex items-center justify-between pt-5" style="border-top:1px solid rgba(255,255,255,0.1);">
+            <div>
+              <div class="font-bold text-white text-sm">Mr. Adarsh Singh</div>
+              <div class="text-white/40 text-xs">DivyaShakti MultiServices Pvt. Ltd.</div>
+            </div>
+            <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.25);">
+              <i class="fas fa-rocket text-sm" style="color:#38bdf8;"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     WHY CHOOSE US
+═════════════════════════════════════ -->
+<section class="py-24" style="background:linear-gradient(180deg,#f0f9ff 0%,#ffffff 100%);">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-14 reveal">
+      <div class="badge badge-blue mx-auto mb-4"><i class="fas fa-trophy text-xs"></i> Why Choose Us</div>
+      <h2 class="font-display font-black text-slate-800 mb-3"
+          style="font-size:clamp(2rem,4vw,3rem);">
+        What Makes Us <span class="grad-text-blue">Different</span>
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <div class="hover-card bg-white p-7 rounded-3xl border border-slate-100 shadow-sm reveal" style="transition-delay:.1s;">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 text-white"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-industry text-base"></i>
+        </div>
+        <h4 class="font-bold text-slate-800 mb-2">Own Manufacturing Plant</h4>
+        <p class="text-slate-500 text-sm leading-relaxed">We don't outsource — our in-house RO+UV+Ozone water plant ensures full control over quality from source to bottle.</p>
+      </div>
+
+      <div class="hover-card bg-white p-7 rounded-3xl border border-slate-100 shadow-sm reveal" style="transition-delay:.15s;">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 text-white"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-shield-halved text-base"></i>
+        </div>
+        <h4 class="font-bold text-slate-800 mb-2">Triple Purification</h4>
+        <p class="text-slate-500 text-sm leading-relaxed">RO + UV + Ozone — three layers of protection make LUXURY H₂O one of the most rigorously purified waters in Bihar.</p>
+      </div>
+
+      <div class="hover-card bg-white p-7 rounded-3xl border border-slate-100 shadow-sm reveal" style="transition-delay:.2s;">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 text-white"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-truck-fast text-base"></i>
+        </div>
+        <h4 class="font-bold text-slate-800 mb-2">Same-Day Delivery</h4>
+        <p class="text-slate-500 text-sm leading-relaxed">Order in the morning, delivered by afternoon. We cover Padrauna, Gopalganj and surrounding areas with reliable same-day service.</p>
+      </div>
+
+      <div class="hover-card bg-white p-7 rounded-3xl border border-slate-100 shadow-sm reveal" style="transition-delay:.1s;">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 text-white"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-certificate text-base"></i>
+        </div>
+        <h4 class="font-bold text-slate-800 mb-2">Legally Registered</h4>
+        <p class="text-slate-500 text-sm leading-relaxed">A proper Pvt. Ltd. company with GST registration — transparent, accountable, and fully compliant with all regulations.</p>
+      </div>
+
+      <div class="hover-card bg-white p-7 rounded-3xl border border-slate-100 shadow-sm reveal" style="transition-delay:.15s;">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 text-white"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-flask text-base"></i>
+        </div>
+        <h4 class="font-bold text-slate-800 mb-2">Mineral Enriched</h4>
+        <p class="text-slate-500 text-sm leading-relaxed">We don't just purify — we add back essential minerals like Calcium, Magnesium & Potassium for healthy, great-tasting water.</p>
+      </div>
+
+      <div class="hover-card bg-white p-7 rounded-3xl border border-slate-100 shadow-sm reveal" style="transition-delay:.2s;">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 text-white"
+             style="background:linear-gradient(135deg,#f59e0b,#fbbf24);">
+          <i class="fas fa-handshake text-base"></i>
+        </div>
+        <h4 class="font-bold text-slate-800 mb-2">Community First</h4>
+        <p class="text-slate-500 text-sm leading-relaxed">Born in Bihar, built for Bihar. We reinvest in local communities, create local jobs, and keep our pricing accessible for all.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     ADDRESS / FIND US
+═════════════════════════════════════ -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-12 reveal">
+      <div class="badge badge-blue mx-auto mb-4"><i class="fas fa-map-marker-alt text-xs"></i> Find Us</div>
+      <h2 class="font-display font-black text-slate-800 mb-3"
+          style="font-size:clamp(1.8rem,3.5vw,2.8rem);">
+        Our <span class="grad-text-blue">Location</span>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8 items-center">
+
+      <!-- Address card -->
+      <div class="space-y-4 reveal-left">
+        <div class="rounded-3xl overflow-hidden shadow-xl"
+             style="background:linear-gradient(160deg,#061828,#0369a1);">
+          <div class="p-8 space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-white shrink-0"
+                   style="background:rgba(255,255,255,0.12);">
+                <i class="fas fa-building text-lg"></i>
+              </div>
+              <div>
+                <div class="font-display font-bold text-white text-xl">DivyaShakti MultiServices Pvt. Ltd.</div>
+                <div class="text-blue-300 text-sm mt-0.5">Registered Office</div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div class="glass-card p-4 flex items-start gap-3">
+                <i class="fas fa-map-marker-alt text-blue-300 mt-0.5 shrink-0"></i>
+                <div class="text-white/80 text-sm leading-relaxed">
+                  Padrauna, Lamichour Bazar, Bhore,<br/>
+                  Gopalganj, Bihar – 841426<br/>
+                  India
+                </div>
+              </div>
+              <div class="glass-card p-4 flex items-center gap-3">
+                <i class="fas fa-phone text-blue-300 shrink-0"></i>
+                <a href="tel:+917783877709" class="text-white/80 text-sm hover:text-white transition-colors">+91 77838 77709</a>
+              </div>
+              <div class="glass-card p-4 flex items-center gap-3">
+                <i class="fab fa-whatsapp text-green-400 shrink-0"></i>
+                <a href="https://wa.me/917783877709" target="_blank" class="text-white/80 text-sm hover:text-white transition-colors">WhatsApp: +91 77838 77709</a>
+              </div>
+              <div class="glass-card p-4 flex items-center gap-3">
+                <i class="fas fa-file-invoice text-blue-300 shrink-0"></i>
+                <div class="text-white/80 text-sm">GST: 10AAMCD1575G1ZW</div>
+              </div>
+            </div>
+
+            <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20connect."
+               target="_blank"
+               class="flex items-center justify-center gap-2 w-full text-white font-bold py-3.5 rounded-2xl transition-all hover:scale-105 text-sm"
+               style="background:linear-gradient(135deg,#25d366,#128c7e);">
+              <i class="fab fa-whatsapp text-lg"></i> Connect on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map embed -->
+      <div class="reveal-right">
+        <div class="rounded-3xl overflow-hidden shadow-xl border-4 border-white" style="height:420px;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3564.1!2d84.1!3d26.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU0JzAwLjAiTiA4NMKwMDYnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890!5m2!1sen!2sin&q=Padrauna,+Lamichour+Bazar,+Bhore,+Gopalganj,+Bihar+841426"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="DivyaShakti MultiServices Location">
+          </iframe>
+        </div>
+        <p class="text-slate-400 text-xs text-center mt-3">
+          <i class="fas fa-map-marker-alt mr-1 text-blue-400"></i>
+          Padrauna, Lamichour Bazar, Bhore, Gopalganj, Bihar – 841426
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     CTA
+═════════════════════════════════════ -->
+<section class="py-20 relative overflow-hidden"
+         style="background:linear-gradient(135deg,#061828 0%,#0369a1 50%,#0ea5e9 100%);">
+  <div class="particle" style="width:10px;height:10px;left:10%;bottom:0;animation-duration:9s;animation-delay:0s;"></div>
+  <div class="particle" style="width:14px;height:14px;left:70%;bottom:0;animation-duration:11s;animation-delay:2s;"></div>
+
+  <div class="max-w-3xl mx-auto px-5 text-center relative z-10 reveal">
+    <div class="badge badge-white mx-auto mb-6">
+      <i class="fas fa-bolt text-yellow-300 text-xs"></i> Order in 30 Seconds
+    </div>
+    <h2 class="font-display font-black text-white mb-4"
+        style="font-size:clamp(1.8rem,4vw,3rem);line-height:1.1;">
+      Ready to Experience<br/><span class="grad-text">LUXURY H₂O?</span>
+    </h2>
+    <p class="text-white/60 text-base mb-8 max-w-xl mx-auto">
+      Order RO+UV+Ozone purified, mineral-rich water directly from DivyaShakti MultiServices. WhatsApp us for same-day delivery.
+    </p>
+    <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20order%20LUXURY%20H2O%20water."
+       target="_blank"
+       class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold text-base px-10 py-4 rounded-2xl shadow-2xl transition-all hover:scale-105 mb-4">
+      <i class="fab fa-whatsapp text-2xl"></i> Order LUXURY H₂O Now
+    </a>
+    <div class="text-white/35 text-sm mt-3">
+      <i class="fas fa-clock mr-1"></i> Responds within minutes
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ════════════════════════════════════
+     FOOTER
+═════════════════════════════════════ -->
+<footer class="bg-slate-950 text-slate-400 pt-14 pb-8">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div class="lg:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,#0369a1,#38bdf8);">
+            <i class="fas fa-water text-white text-sm"></i>
+          </div>
+          <div>
+            <div class="font-display font-bold text-white text-base leading-none">DivyaShakti MultiServices</div>
+            <div class="text-slate-500 text-[10px] tracking-widest uppercase mt-0.5">Private Limited</div>
+          </div>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed max-w-sm">A registered Pvt. Ltd. company based in Bihar — building trusted brands and delivering quality products to communities across the region.</p>
+        <div class="text-sm text-slate-600 space-y-1">
+          <div><span class="text-slate-400">GST:</span>10AAMCD1575G1ZW</div>
+          <div><span class="text-slate-400">Directors:</span> Ms. Anaras Devi & Mr. Adarsh Singh</div>
+          <div><span class="text-slate-400">HQ:</span> Padrauna, Lamichour Bazar, Bhore, Gopalganj, Bihar 841426</div>
+        </div>
+        <div class="flex gap-2.5 pt-1">
+          <a href="https://wa.me/917783877709" target="_blank" class="w-9 h-9 rounded-xl bg-green-700 hover:bg-green-600 flex items-center justify-center text-white transition-all hover:scale-110"><i class="fab fa-whatsapp text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-pink-600 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110"><i class="fab fa-instagram text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-blue-600 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110"><i class="fab fa-facebook-f text-sm"></i></a>
+          <a href="tel:+917783877709" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-blue-500 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110"><i class="fas fa-phone text-xs"></i></a>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="text-white font-bold text-xs uppercase tracking-widest mb-5">Company</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#about"    class="hover:text-blue-400 transition-colors">About Us</a></li>
+          <li><a href="#process"  class="hover:text-blue-400 transition-colors">Our Process</a></li>
+          <li><a href="#services" class="hover:text-blue-400 transition-colors">Services</a></li>
+          <li><a href="#brands"   class="hover:text-blue-400 transition-colors">Our Brands</a></li>
+          <li><a href="#reviews"  class="hover:text-blue-400 transition-colors">Reviews</a></li>
+          <li><a href="#contact"  class="hover:text-blue-400 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Brands & contact -->
+      <div>
+        <h4 class="text-white font-bold text-xs uppercase tracking-widest mb-5">Our Brands</h4>
+        <ul class="space-y-3 text-sm mb-6">
+          <li><a href="#luxury" class="hover:text-blue-400 transition-colors">LUXURY H₂O</a></li>
+          <li class="text-slate-600 italic text-xs">More coming soon...</li>
+        </ul>
+        <div class="p-4 rounded-2xl border border-slate-800 bg-slate-900 space-y-2">
+          <div class="text-xs text-slate-600 uppercase tracking-widest mb-2">Get in Touch</div>
+          <a href="tel:+917783877709" class="flex items-center gap-2 text-sm hover:text-white transition-colors">
+            <i class="fas fa-phone text-xs text-blue-400 w-3"></i> +91 77838 77709
+          </a>
+          <a href="https://wa.me/917783877709" target="_blank" class="flex items-center gap-2 text-sm hover:text-white transition-colors">
+            <i class="fab fa-whatsapp text-xs text-green-400 w-3"></i> WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
+      <div>© 2025 DivyaShakti MultiServices Private Limited. All rights reserved.</div>
+      <div class="flex items-center gap-1.5 text-slate-600">
+        <i class="fas fa-water text-blue-500 text-xs"></i>
+        Powering <span class="text-blue-400 font-semibold ml-1">LUXURY H₂O</span> <span class="ml-1">& beyond</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════
+     JAVASCRIPT
+═════════════════════════════════════ -->
+<script>
+  // ── Navbar scroll ──
+  const nav = document.getElementById('navbar');
+  let lastY = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 60);
+    lastY = y;
+  }, { passive: true });
+
+  // ── Hamburger ──
+  const hamBtn  = document.getElementById('ham-btn');
+  const mobMenu = document.getElementById('mob-menu');
+  hamBtn.addEventListener('click', () => {
+    hamBtn.classList.toggle('active');
+    mobMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mob-lnk').forEach(l => {
+    l.addEventListener('click', () => {
+      hamBtn.classList.remove('active');
+      mobMenu.classList.remove('open');
+    });
+  });
+
+  // ── Scroll reveal ──
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const delay = e.target.style.transitionDelay || '0s';
+        setTimeout(() => e.target.classList.add('on'), parseFloat(delay) * 1000);
+        ro.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => ro.observe(el));
+
+  // ── Counter animation ──
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 2000;
+    const start = performance.now();
+    const update = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + '+';
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateCounter(e.target); counterObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  
+
+  // ── Smooth scroll ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  // ── Navbar scrolled: fix ham-line color ──
+  const hamLines = document.querySelectorAll('.ham-line');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      hamLines.forEach(l => l.style.background = '#0369a1');
+    } else {
+      hamLines.forEach(l => l.style.background = 'white');
+    }
+  }, { passive: true });
+
+</script>
+</body>
+</html>
