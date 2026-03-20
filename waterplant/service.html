@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DivyaShakti MultiServices Pvt. Ltd. | Pure Water, Pure Future</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','sans-serif'], display: ['Playfair Display','serif'] },
+          colors: {
+            water: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e',950:'#082f49' },
+            deep:  { 800:'#0a2540', 900:'#061828', 950:'#030e18' },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --blue-1: #0c4a6e;
+      --blue-2: #0369a1;
+      --blue-3: #0ea5e9;
+      --blue-4: #38bdf8;
+      --blue-5: #7dd3fc;
+      --gold:   #f59e0b;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1e293b; overflow-x: hidden; }
+
+    /* ── Custom scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f0f9ff; }
+    ::-webkit-scrollbar-thumb { background: var(--blue-3); border-radius: 10px; }
+
+    /* ── Glassmorphism ── */
+    .glass {
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .glass-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+    }
+    .glass-light {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.95);
+    }
+
+    /* ── Navbar ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 18px 0;
+      transition: all 0.4s cubic-bezier(.4,0,.2,1);
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.96) !important;
+      backdrop-filter: blur(28px);
+      box-shadow: 0 2px 40px rgba(3,105,161,0.10);
+      padding: 12px 0;
+    }
+    #navbar.scrolled .logo-name  { color: #0369a1 !important; }
+    #navbar.scrolled .logo-sub   { color: #64748b !important; }
+    #navbar.scrolled .nav-link   { color: #475569 !important; }
+    #navbar.scrolled .nav-link:hover { color: #0369a1 !important; }
+    #navbar.scrolled .nav-cta    { background: linear-gradient(135deg,#0369a1,#0ea5e9) !important; color: white !important; border-color: transparent !important; }
+    #navbar.scrolled .ham-line   { background: #0369a1 !important; }
+
+    /* ── Hero ── */
+    .hero-section {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #061828 0%, #0c4a6e 35%, #0369a1 65%, #0ea5e9 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Animated water waves */
+    .wave-container {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 160px;
+      overflow: hidden;
+    }
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: -100%;
+      width: 300%;
+      height: 100%;
+    }
+    .wave svg { width: 100%; height: 100%; }
+    .wave-1 { animation: waveMove 8s linear infinite; opacity: 0.4; }
+    .wave-2 { animation: waveMove 12s linear infinite reverse; opacity: 0.25; bottom: 8px; }
+    .wave-3 { animation: waveMove 6s linear infinite; opacity: 0.6; bottom: -4px; }
+    @keyframes waveMove {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(33.33%); }
+    }
+
+    /* Particles / bubbles */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(255,255,255,0.05));
+      animation: particleRise linear infinite;
+      pointer-events: none;
+    }
+    @keyframes particleRise {
+      0%   { transform: translateY(0) scale(1); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.4; }
+      100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+    }
+
+    /* Float */
+    @keyframes float {
+      0%,100% { transform: translateY(0px) rotate(0deg); }
+      33%      { transform: translateY(-12px) rotate(1deg); }
+      66%      { transform: translateY(-6px) rotate(-1deg); }
+    }
+    .float { animation: float 5s ease-in-out infinite; }
+
+    /* Gradient text */
+    .grad-text {
+      background: linear-gradient(135deg, #38bdf8, #7dd3fc, #bae6fd);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .grad-text-gold {
+      background: linear-gradient(135deg, #f59e0b, #fbbf24, #fde68a);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .grad-text-blue {
+      background: linear-gradient(135deg, #0369a1, #0ea5e9, #38bdf8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* Reveal animations */
+    .reveal        { opacity:0; transform:translateY(40px);  transition: opacity .7s ease, transform .7s ease; }
+    .reveal-left   { opacity:0; transform:translateX(-40px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal-right  { opacity:0; transform:translateX(40px);  transition: opacity .7s ease, transform .7s ease; }
+    .reveal-scale  { opacity:0; transform:scale(0.9);        transition: opacity .7s ease, transform .7s ease; }
+    .on { opacity:1 !important; transform:translate(0,0) scale(1) !important; }
+
+    /* Cards */
+    .hover-card {
+      transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s ease;
+    }
+    .hover-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 32px 64px rgba(3,105,161,0.18);
+    }
+
+    /* Section divider */
+    .section-divider { display: block; width: 100%; overflow: hidden; line-height: 0; }
+    .section-divider svg { display: block; }
+
+    /* Floating WA */
+    #wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+      animation: float 3.5s ease-in-out infinite;
+    }
+    #wa-float:hover #wa-tip { opacity:1; transform:translateX(0) translateY(-50%); pointer-events:auto; }
+    #wa-tip {
+      position: absolute; right: 68px; top: 50%;
+      transform: translateX(8px) translateY(-50%);
+      background: #075e54; color: #fff;
+      font-size: 12px; font-weight: 700;
+      padding: 6px 14px; border-radius: 10px;
+      white-space: nowrap; opacity: 0;
+      transition: all .3s ease; pointer-events: none;
+    }
+    #wa-tip::after {
+      content:''; position:absolute; right:-5px; top:50%;
+      transform:translateY(-50%);
+      border:5px solid transparent; border-right:none; border-left-color:#075e54;
+    }
+
+    /* Mobile menu */
+    #mob-menu {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+    }
+    #mob-menu.open { max-height: 600px; opacity: 1; }
+
+    /* Hamburger */
+    .ham-line {
+      display: block; width: 24px; height: 2px;
+      background: white; border-radius: 2px;
+      transition: all .3s ease;
+      transform-origin: center;
+    }
+    #ham-btn.active .ham-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    #ham-btn.active .ham-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    #ham-btn.active .ham-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Number counter */
+    .counter { font-variant-numeric: tabular-nums; }
+
+    /* Tag badge */
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 14px; border-radius: 999px;
+    }
+    .badge-blue { background: rgba(14,165,233,0.12); color: #0369a1; border: 1px solid rgba(14,165,233,0.25); }
+    .badge-white { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.2); }
+    .badge-gold  { background: rgba(245,158,11,0.12); color: #b45309; border: 1px solid rgba(245,158,11,0.25); }
+
+    /* Pipe/plant decorative */
+    .plant-line {
+      position: absolute; background: linear-gradient(180deg, rgba(56,189,248,0.3), transparent);
+      width: 2px; border-radius: 1px;
+    }
+
+    /* Timeline dot */
+    .timeline-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: linear-gradient(135deg, #0369a1, #38bdf8);
+      box-shadow: 0 0 0 4px rgba(14,165,233,0.2);
+      flex-shrink: 0; margin-top: 4px;
+    }
+
+    /* Glow effects */
+    .glow-blue { box-shadow: 0 0 40px rgba(14,165,233,0.4); }
+    .glow-sm   { box-shadow: 0 0 20px rgba(14,165,233,0.3); }
+
+    /* Water drop shape */
+    .water-drop {
+      position: absolute;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.3), rgba(14,165,233,0.1));
+      pointer-events: none;
+    }
+
+    /* Process step */
+    .process-line {
+      position: absolute; top: 28px; left: 50%; right: -50%;
+      height: 2px;
+      background: linear-gradient(90deg, #0ea5e9, rgba(14,165,233,0.1));
+    }
+    /* Mobile menu links always visible */
+#mob-menu .mob-lnk {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* Jab navbar scrolled ho tab mobile menu dark text */
+#navbar.scrolled #mob-menu .mob-lnk {
+  color: #1e293b !important;
+}
+#navbar.scrolled #mob-menu {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 16px;
+}
+#navbar.scrolled #mob-menu .glass {
+  background: rgba(248, 250, 252, 0.98) !important;
+  border: 1px solid rgba(3, 105, 161, 0.1) !important;
+}
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+}
+
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     FLOATING WHATSAPP
+═════════════════════════════════════ -->
+<div id="wa-float">
+  <div id="wa-tip">Order LUXURY H₂O</div>
+  <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20order%20LUXURY%20H2O%20water."
+     target="_blank" rel="noopener"
+     class="flex items-center justify-center w-14 h-14 rounded-full shadow-2xl glow-sm"
+     style="background:linear-gradient(135deg,#25d366,#128c7e);">
+    <i class="fab fa-whatsapp text-white text-3xl"></i>
+  </a>
+</div>
+
+<!-- ════════════════════════════════════
+     NAVBAR
+═════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="max-w-7xl mx-auto px-5 flex items-center justify-between">
+
+    <!-- Logo -->
+<a href="#home" class="flex items-center gap-3">
+  <div class="w-10 h-10 rounded-xl flex items-center justify-center glow-sm shrink-0 overflow-hidden"
+       style="background:linear-gradient(135deg,#0369a1,#38bdf8);">
+    
+    <img src="https://i.ibb.co/NdnVXJqN/321b3903-c76f-47f6-abfa-93aa45a7e5d2.jpg"
+         alt="DivyaShakti Logo"
+         class="w-full h-full object-cover">
+         
+  </div>
+
+  <div class="leading-tight">
+    <div class="logo-name font-display font-bold text-white text-[15px] tracking-wide">
+      DivyaShakti
+    </div>
+    <div class="logo-sub text-white/55 text-[9px] tracking-widest uppercase font-semibold">
+      MultiServices Pvt. Ltd.
+    </div>
+  </div>
+</a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center gap-6">
+      <a href="#about"    class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">About</a>
+      <a href="#process"  class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Process</a>
+      <a href="#services" class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Services</a>
+      <a href="#brands"   class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Brands</a>
+      <a href="#luxury"   class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">LUXURY H₂O</a>
+      <a href="#contact"  class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Contact</a>
+      <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20connect."
+         target="_blank"
+         class="nav-cta flex items-center gap-2 text-white text-sm font-bold px-5 py-2.5 rounded-full border border-white/25 hover:bg-white/20 transition-all duration-300 glass">
+        <i class="fab fa-whatsapp text-green-400"></i> WhatsApp
+      </a>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="ham-btn" class="lg:hidden flex flex-col gap-1.5 p-2 focus:outline-none" aria-label="Menu">
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mob-menu" class="lg:hidden mx-4 mt-3 rounded-2xl overflow-hidden">
+    <div class="glass p-5 space-y-1" style="background:rgba(6,24,40,0.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">
+      <a href="#about"    class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">About Us</a>
+      <a href="#process"  class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Our Process</a>
+      <a href="#services" class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Services</a>
+      <a href="#brands"   class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Our Brands</a>
+      <a href="#luxury"   class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">LUXURY H₂O</a>
+      <a href="#contact"  class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Contact</a>
+      <div class="pt-2">
+        <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20connect."
+           target="_blank"
+           class="mob-lnk flex items-center justify-center gap-2 text-white font-bold py-3.5 rounded-2xl transition text-sm"
+           style="background:linear-gradient(135deg,#25d366,#128c7e);">
+          <i class="fab fa-whatsapp text-lg"></i> WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ════════════════════════════════════
+     HERO — SERVICES
+═════════════════════════════════════ -->
+<section class="relative overflow-hidden pt-20"
+         style="background:linear-gradient(160deg,#061828 0%,#0c4a6e 40%,#0369a1 80%,#0ea5e9 100%);min-height:60vh;display:flex;align-items:center;">
+
+  <div class="particle" style="width:12px;height:12px;left:8%;bottom:0;animation-duration:10s;animation-delay:0s;"></div>
+  <div class="particle" style="width:8px;height:8px;left:30%;bottom:0;animation-duration:8s;animation-delay:1.5s;"></div>
+  <div class="particle" style="width:14px;height:14px;left:60%;bottom:0;animation-duration:12s;animation-delay:3s;"></div>
+  <div class="particle" style="width:6px;height:6px;left:85%;bottom:0;animation-duration:9s;animation-delay:2s;"></div>
+
+  <div style="position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.06),transparent);top:-120px;right:-100px;pointer-events:none;"></div>
+  <div style="position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,0.1),transparent);bottom:-60px;left:-60px;pointer-events:none;"></div>
+
+  <div class="max-w-7xl mx-auto px-5 py-20 w-full relative z-10">
+    <div class="max-w-3xl">
+      <div class="badge badge-white mb-5"><i class="fas fa-briefcase text-xs"></i> Our Services</div>
+      <h1 class="font-display font-black text-white leading-tight mb-6"
+          style="font-size:clamp(2.6rem,6vw,4.5rem);">
+        What We<br/>
+        <span class="grad-text">Deliver.</span>
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed max-w-2xl mb-8">
+        DivyaShakti MultiServices Pvt. Ltd. operates across multiple business verticals — from advanced water purification and FMCG distribution to retail partnerships and future ventures. One company, multiple missions.
+      </p>
+      <div class="flex items-center gap-2 text-white/40 text-sm">
+        <a href="index.html" class="hover:text-white transition-colors">Home</a>
+        <i class="fas fa-chevron-right text-xs"></i>
+        <span class="text-white/70 font-medium">Services</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;bottom:0;left:0;right:0;">
+    <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;">
+      <path d="M0,35 C480,70 960,0 1440,40 L1440,70 L0,70 Z" fill="white"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SERVICES OVERVIEW CARDS
+═════════════════════════════════════ -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-14 reveal">
+      <div class="badge badge-blue mx-auto mb-4"><i class="fas fa-th-large text-xs"></i> All Services</div>
+      <h2 class="font-display font-black text-slate-800 mb-3"
+          style="font-size:clamp(2rem,4vw,3rem);">
+        Business <span class="grad-text-blue">Verticals</span>
+      </h2>
+      <p class="text-slate-500 text-base max-w-xl mx-auto">
+        Every service we offer reflects our core promise — quality, reliability, and community impact.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Service 1 -->
+      <div class="hover-card group rounded-3xl overflow-hidden shadow-lg border border-slate-100 reveal" style="transition-delay:.05s;">
+        <div class="h-2" style="background:linear-gradient(90deg,#0369a1,#0ea5e9);"></div>
+        <div class="p-8 bg-white">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+               style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <i class="fas fa-droplet"></i>
+          </div>
+          <div class="badge badge-blue mb-3 text-[10px]">Core Service</div>
+          <h3 class="font-display font-bold text-slate-800 text-xl mb-3">Packaged Drinking Water</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-5">
+            Production, packaging and distribution of <strong>LUXURY H₂O</strong> — Bihar's premium RO+UV+Ozone purified, mineral-enriched packaged drinking water. Available in 250ml, 500ml, 1L, 2L and 20L jar formats.
+          </p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> RO + UV + Ozone purified
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> 250ml to 20L available
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Mineral enriched for health
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Tamper-proof hygienic seal
+            </div>
+          </div>
+          <a href="https://wa.me/917783877709?text=Hello%2C%20I%20want%20to%20order%20LUXURY%20H2O%20water."
+             target="_blank"
+             class="flex items-center justify-center gap-2 w-full text-white font-bold py-3 rounded-2xl text-sm transition-all hover:scale-105"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <i class="fab fa-whatsapp"></i> Order Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="hover-card group rounded-3xl overflow-hidden shadow-lg border border-slate-100 reveal" style="transition-delay:.1s;">
+        <div class="h-2" style="background:linear-gradient(90deg,#0369a1,#0ea5e9);"></div>
+        <div class="p-8 bg-white">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+               style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <i class="fas fa-truck-fast"></i>
+          </div>
+          <div class="badge badge-blue mb-3 text-[10px]">Active Service</div>
+          <h3 class="font-display font-bold text-slate-800 text-xl mb-3">Supply & Distribution</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-5">
+            Reliable last-mile delivery network covering <strong>Padrauna, Gopalganj</strong> and surrounding districts. We supply to homes, offices, hospitals, hotels, events and retail shops — with same-day delivery available.
+          </p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Same-day delivery
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Home & office delivery
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Bulk order available
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Regular subscription plans
+            </div>
+          </div>
+          <a href="https://wa.me/917783877709?text=Hello%2C%20I%20want%20to%20know%20about%20delivery%20service."
+             target="_blank"
+             class="flex items-center justify-center gap-2 w-full text-white font-bold py-3 rounded-2xl text-sm transition-all hover:scale-105"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <i class="fab fa-whatsapp"></i> Enquire Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="hover-card group rounded-3xl overflow-hidden shadow-lg border border-slate-100 reveal" style="transition-delay:.15s;">
+        <div class="h-2" style="background:linear-gradient(90deg,#0369a1,#0ea5e9);"></div>
+        <div class="p-8 bg-white">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+               style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <i class="fas fa-industry"></i>
+          </div>
+          <div class="badge badge-blue mb-3 text-[10px]">In-House</div>
+          <h3 class="font-display font-bold text-slate-800 text-xl mb-3">Water Plant Manufacturing</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-5">
+            Our state-of-the-art in-house water purification plant in Padrauna ensures full quality control from source to bottle. No outsourcing — everything happens under our roof, under our standards.
+          </p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> RO + UV + Ozone technology
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Clean room packaging facility
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Batch quality testing
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Full in-house control
+            </div>
+          </div>
+          <a href="about.html"
+             class="flex items-center justify-center gap-2 w-full font-bold py-3 rounded-2xl text-sm transition-all hover:scale-105 border-2"
+             style="color:#0369a1;border-color:#0369a1;">
+            <i class="fas fa-arrow-right text-xs"></i> Learn More
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="hover-card group rounded-3xl overflow-hidden shadow-lg border border-slate-100 reveal" style="transition-delay:.05s;">
+        <div class="h-2" style="background:linear-gradient(90deg,#0369a1,#0ea5e9);"></div>
+        <div class="p-8 bg-white">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+               style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <i class="fas fa-store"></i>
+          </div>
+          <div class="badge badge-blue mb-3 text-[10px]">Partnership</div>
+          <h3 class="font-display font-bold text-slate-800 text-xl mb-3">Retail Partnerships</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-5">
+            We partner with kirana stores, supermarkets, restaurants, hotels, hospitals, schools and event organizers for regular and bulk supply of LUXURY H₂O — with attractive dealer margins and reliable restocking.
+          </p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Kirana & supermarket supply
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Hotels & restaurants
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Attractive dealer margins
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Reliable restocking schedule
+            </div>
+          </div>
+          <a href="https://wa.me/917783877709?text=Hello%2C%20I%20want%20to%20become%20a%20retail%20partner%20for%20LUXURY%20H2O."
+             target="_blank"
+             class="flex items-center justify-center gap-2 w-full text-white font-bold py-3 rounded-2xl text-sm transition-all hover:scale-105"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <i class="fab fa-whatsapp"></i> Become a Partner
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 5 -->
+      <div class="hover-card group rounded-3xl overflow-hidden shadow-lg border border-slate-100 reveal" style="transition-delay:.1s;">
+        <div class="h-2" style="background:linear-gradient(90deg,#0369a1,#0ea5e9);"></div>
+        <div class="p-8 bg-white">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+               style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <i class="fas fa-boxes-stacked"></i>
+          </div>
+          <div class="badge badge-blue mb-3 text-[10px]">Expanding</div>
+          <h3 class="font-display font-bold text-slate-800 text-xl mb-3">FMCG Products</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-5">
+            Beyond water, DivyaShakti MultiServices is expanding into fast-moving consumer goods — everyday essential products designed for Bihar's households and businesses. Affordable, hygienic, and accessible.
+          </p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Everyday essentials
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Bihar household focused
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> Affordable pricing
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs" style="color:#0ea5e9;"></i> New products launching soon
+            </div>
+          </div>
+          <span class="flex items-center justify-center gap-2 w-full font-bold py-3 rounded-2xl text-sm"
+                style="background:#f0f9ff;color:#0369a1;">
+            <i class="fas fa-clock text-xs"></i> Coming Soon
+          </span>
+        </div>
+      </div>
+
+      <!-- Service 6 -->
+      <div class="hover-card group rounded-3xl overflow-hidden shadow-lg border border-amber-100 reveal" style="transition-delay:.15s;">
+        <div class="h-2" style="background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div>
+        <div class="p-8" style="background:linear-gradient(180deg,#fffbeb,#ffffff);">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 text-white text-2xl"
+               style="background:linear-gradient(135deg,#d97706,#f59e0b);">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <div class="badge badge-gold mb-3 text-[10px]">Future</div>
+          <h3 class="font-display font-bold text-slate-800 text-xl mb-3">Future Ventures</h3>
+          <p class="text-slate-500 text-sm leading-relaxed mb-5">
+            DivyaShakti MultiServices is a growing parent company with a vision to expand into new sectors. New brands, new categories, new services — all designed to empower Bihar communities. Stay tuned.
+          </p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs text-amber-400"></i> New brand launches planned
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs text-amber-400"></i> Multiple categories
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs text-amber-400"></i> Community-focused products
+            </div>
+            <div class="flex items-center gap-2.5 text-slate-500 text-xs">
+              <i class="fas fa-check-circle text-xs text-amber-400"></i> Bihar expansion focus
+            </div>
+          </div>
+          <span class="flex items-center justify-center gap-2 w-full font-bold py-3 rounded-2xl text-sm"
+                style="background:rgba(245,158,11,0.1);color:#b45309;">
+            <i class="fas fa-star text-xs"></i> Watch This Space
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     WHO WE SERVE
+═════════════════════════════════════ -->
+<section class="py-24" style="background:linear-gradient(180deg,#f0f9ff,#ffffff);">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-14 reveal">
+      <div class="badge badge-blue mx-auto mb-4"><i class="fas fa-users text-xs"></i> Who We Serve</div>
+      <h2 class="font-display font-black text-slate-800 mb-3"
+          style="font-size:clamp(2rem,4vw,3rem);">
+        Our <span class="grad-text-blue">Customers</span>
+      </h2>
+      <p class="text-slate-500 text-base max-w-xl mx-auto">
+        From individual homes to large businesses — LUXURY H₂O and DivyaShakti services reach every segment.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+
+      <div class="hover-card text-center p-6 rounded-3xl border border-slate-100 bg-white shadow-sm reveal" style="transition-delay:.05s;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-white text-xl"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-house"></i>
+        </div>
+        <div class="font-bold text-slate-700 text-sm">Homes</div>
+        <div class="text-slate-400 text-xs mt-0.5">Families</div>
+      </div>
+
+      <div class="hover-card text-center p-6 rounded-3xl border border-slate-100 bg-white shadow-sm reveal" style="transition-delay:.1s;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-white text-xl"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-building"></i>
+        </div>
+        <div class="font-bold text-slate-700 text-sm">Offices</div>
+        <div class="text-slate-400 text-xs mt-0.5">Corporate</div>
+      </div>
+
+      <div class="hover-card text-center p-6 rounded-3xl border border-slate-100 bg-white shadow-sm reveal" style="transition-delay:.15s;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-white text-xl"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-utensils"></i>
+        </div>
+        <div class="font-bold text-slate-700 text-sm">Restaurants</div>
+        <div class="text-slate-400 text-xs mt-0.5">Hotels & Dhabas</div>
+      </div>
+
+      <div class="hover-card text-center p-6 rounded-3xl border border-slate-100 bg-white shadow-sm reveal" style="transition-delay:.2s;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-white text-xl"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-hospital"></i>
+        </div>
+        <div class="font-bold text-slate-700 text-sm">Hospitals</div>
+        <div class="text-slate-400 text-xs mt-0.5">Clinics & Labs</div>
+      </div>
+
+      <div class="hover-card text-center p-6 rounded-3xl border border-slate-100 bg-white shadow-sm reveal" style="transition-delay:.25s;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-white text-xl"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-school"></i>
+        </div>
+        <div class="font-bold text-slate-700 text-sm">Schools</div>
+        <div class="text-slate-400 text-xs mt-0.5">Colleges & Hostels</div>
+      </div>
+
+      <div class="hover-card text-center p-6 rounded-3xl border border-slate-100 bg-white shadow-sm reveal" style="transition-delay:.3s;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 text-white text-xl"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-calendar-star"></i>
+        </div>
+        <div class="font-bold text-slate-700 text-sm">Events</div>
+        <div class="text-slate-400 text-xs mt-0.5">Shaadi & Functions</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     PRODUCT FORMATS
+═════════════════════════════════════ -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-14 reveal">
+      <div class="badge badge-blue mx-auto mb-4"><i class="fas fa-bottle-water text-xs"></i> Available Formats</div>
+      <h2 class="font-display font-black text-slate-800 mb-3"
+          style="font-size:clamp(2rem,4vw,3rem);">
+        LUXURY H₂O <span class="grad-text-blue">Pack Sizes</span>
+      </h2>
+      <p class="text-slate-500 text-base max-w-xl mx-auto">Every size for every need — from a quick sip to full office supply.</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+
+      <div class="hover-card rounded-3xl overflow-hidden shadow-lg border border-slate-100 text-center reveal" style="transition-delay:.05s;">
+        <div class="py-6 px-4" style="background:linear-gradient(160deg,#061828,#0369a1);">
+          <svg viewBox="0 0 80 180" width="50" height="110" xmlns="http://www.w3.org/2000/svg" class="mx-auto">
+            <rect x="28" y="4" width="24" height="14" rx="5" fill="#0ea5e9" opacity=".8"/>
+            <path d="M26 18 L20 38 L60 38 L54 18 Z" fill="#0369a1"/>
+            <rect x="14" y="38" width="52" height="126" rx="12" fill="rgba(14,165,233,0.7)"/>
+            <rect x="14" y="120" width="52" height="48" rx="0" fill="rgba(3,105,161,0.5)" style="border-radius:0 0 12px 12px;"/>
+            <rect x="20" y="58" width="40" height="52" rx="8" fill="rgba(255,255,255,0.12)"/>
+            <text x="40" y="80" text-anchor="middle" font-size="8" font-weight="800" fill="white" font-family="Georgia">LUXURY</text>
+            <text x="40" y="96" text-anchor="middle" font-size="13" font-weight="900" fill="white" font-family="Georgia">H₂O</text>
+            <rect x="18" y="40" width="7" height="80" rx="3.5" fill="rgba(255,255,255,0.15)"/>
+          </svg>
+        </div>
+        <div class="p-4 bg-white">
+          <div class="font-display font-black text-slate-800 text-2xl">250ml</div>
+          <div class="text-slate-500 text-xs mt-0.5">Single Serve</div>
+          <div class="text-blue-600 text-xs font-semibold mt-2">Cup / Travel</div>
+        </div>
+      </div>
+
+      <div class="hover-card rounded-3xl overflow-hidden shadow-lg border border-slate-100 text-center reveal" style="transition-delay:.1s;">
+        <div class="py-6 px-4" style="background:linear-gradient(160deg,#061828,#0369a1);">
+          <svg viewBox="0 0 80 200" width="55" height="130" xmlns="http://www.w3.org/2000/svg" class="mx-auto">
+            <rect x="26" y="3" width="28" height="16" rx="6" fill="#0ea5e9" opacity=".8"/>
+            <path d="M24 19 L16 42 L64 42 L56 19 Z" fill="#0369a1"/>
+            <rect x="12" y="42" width="56" height="142" rx="13" fill="rgba(14,165,233,0.7)"/>
+            <rect x="12" y="140" width="56" height="48" rx="0" fill="rgba(3,105,161,0.5)"/>
+            <rect x="18" y="64" width="44" height="58" rx="9" fill="rgba(255,255,255,0.12)"/>
+            <text x="40" y="88" text-anchor="middle" font-size="8" font-weight="800" fill="white" font-family="Georgia">LUXURY</text>
+            <text x="40" y="106" text-anchor="middle" font-size="14" font-weight="900" fill="white" font-family="Georgia">H₂O</text>
+            <rect x="16" y="44" width="7" height="90" rx="3.5" fill="rgba(255,255,255,0.15)"/>
+          </svg>
+        </div>
+        <div class="p-4 bg-white">
+          <div class="font-display font-black text-slate-800 text-2xl">500ml</div>
+          <div class="text-slate-500 text-xs mt-0.5">Standard Bottle</div>
+          <div class="text-blue-600 text-xs font-semibold mt-2">Daily Carry</div>
+        </div>
+      </div>
+
+      <div class="hover-card rounded-3xl overflow-hidden shadow-lg border border-blue-200 text-center reveal" style="transition-delay:.15s;box-shadow:0 0 0 2px #0ea5e9;">
+        <div class="py-6 px-4 relative" style="background:linear-gradient(160deg,#061828,#0369a1);">
+          <div class="absolute top-2 right-2 bg-yellow-400 text-yellow-900 text-[9px] font-black px-2 py-0.5 rounded-full">POPULAR</div>
+          <svg viewBox="0 0 80 220" width="58" height="145" xmlns="http://www.w3.org/2000/svg" class="mx-auto">
+            <rect x="25" y="3" width="30" height="17" rx="6" fill="#0ea5e9" opacity=".8"/>
+            <path d="M23 20 L14 44 L66 44 L57 20 Z" fill="#0369a1"/>
+            <rect x="11" y="44" width="58" height="160" rx="14" fill="rgba(14,165,233,0.7)"/>
+            <rect x="11" y="158" width="58" height="50" rx="0" fill="rgba(3,105,161,0.5)"/>
+            <rect x="17" y="66" width="46" height="64" rx="9" fill="rgba(255,255,255,0.12)"/>
+            <text x="40" y="92" text-anchor="middle" font-size="8" font-weight="800" fill="white" font-family="Georgia">LUXURY</text>
+            <text x="40" y="112" text-anchor="middle" font-size="15" font-weight="900" fill="white" font-family="Georgia">H₂O</text>
+            <rect x="15" y="46" width="7" height="100" rx="3.5" fill="rgba(255,255,255,0.15)"/>
+          </svg>
+        </div>
+        <div class="p-4 bg-white">
+          <div class="font-display font-black text-slate-800 text-2xl">1 Litre</div>
+          <div class="text-slate-500 text-xs mt-0.5">Family Size</div>
+          <div class="text-blue-600 text-xs font-semibold mt-2">Most Popular</div>
+        </div>
+      </div>
+
+      <div class="hover-card rounded-3xl overflow-hidden shadow-lg border border-slate-100 text-center reveal" style="transition-delay:.2s;">
+        <div class="py-6 px-4" style="background:linear-gradient(160deg,#061828,#0369a1);">
+          <svg viewBox="0 0 90 230" width="62" height="155" xmlns="http://www.w3.org/2000/svg" class="mx-auto">
+            <rect x="28" y="3" width="34" height="18" rx="7" fill="#0ea5e9" opacity=".8"/>
+            <path d="M26 21 L16 46 L74 46 L64 21 Z" fill="#0369a1"/>
+            <rect x="13" y="46" width="64" height="168" rx="15" fill="rgba(14,165,233,0.7)"/>
+            <rect x="13" y="168" width="64" height="50" rx="0" fill="rgba(3,105,161,0.5)"/>
+            <rect x="19" y="68" width="52" height="70" rx="10" fill="rgba(255,255,255,0.12)"/>
+            <text x="45" y="96" text-anchor="middle" font-size="9" font-weight="800" fill="white" font-family="Georgia">LUXURY</text>
+            <text x="45" y="118" text-anchor="middle" font-size="16" font-weight="900" fill="white" font-family="Georgia">H₂O</text>
+            <rect x="17" y="48" width="8" height="110" rx="4" fill="rgba(255,255,255,0.15)"/>
+          </svg>
+        </div>
+        <div class="p-4 bg-white">
+          <div class="font-display font-black text-slate-800 text-2xl">2 Litre</div>
+          <div class="text-slate-500 text-xs mt-0.5">Large Bottle</div>
+          <div class="text-blue-600 text-xs font-semibold mt-2">Home / Office</div>
+        </div>
+      </div>
+
+      <div class="hover-card rounded-3xl overflow-hidden shadow-lg border border-slate-100 text-center reveal" style="transition-delay:.25s;">
+        <div class="py-6 px-4" style="background:linear-gradient(160deg,#061828,#0369a1);">
+          <!-- 20L Jar SVG -->
+          <svg viewBox="0 0 100 180" width="80" height="140" xmlns="http://www.w3.org/2000/svg" class="mx-auto">
+            <rect x="35" y="4" width="30" height="18" rx="6" fill="#0ea5e9" opacity=".9"/>
+            <rect x="30" y="22" width="40" height="12" rx="4" fill="#075985"/>
+            <rect x="10" y="34" width="80" height="134" rx="18" fill="rgba(14,165,233,0.7)"/>
+            <rect x="10" y="118" width="80" height="52" rx="0" fill="rgba(3,105,161,0.5)" style="border-radius:0 0 18px 18px;"/>
+            <rect x="16" y="54" width="68" height="68" rx="12" fill="rgba(255,255,255,0.12)"/>
+            <text x="50" y="80" text-anchor="middle" font-size="9" font-weight="800" fill="white" font-family="Georgia">LUXURY</text>
+            <text x="50" y="100" text-anchor="middle" font-size="18" font-weight="900" fill="white" font-family="Georgia">H₂O</text>
+            <rect x="14" y="36" width="10" height="100" rx="5" fill="rgba(255,255,255,0.15)"/>
+            <!-- Handle -->
+            <path d="M70 50 Q88 50 88 70 Q88 90 70 90" stroke="rgba(255,255,255,0.3)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="p-4 bg-white">
+          <div class="font-display font-black text-slate-800 text-2xl">20 Litre</div>
+          <div class="text-slate-500 text-xs mt-0.5">Bulk Jar</div>
+          <div class="text-blue-600 text-xs font-semibold mt-2">Office / Bulk</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-8 text-center reveal">
+      <a href="https://wa.me/917783877709?text=Hello%2C%20I%20want%20to%20order%20LUXURY%20H2O.%20Please%20share%20pricing."
+         target="_blank"
+         class="inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-2xl shadow-xl transition-all hover:scale-105 text-sm"
+         style="background:linear-gradient(135deg,#25d366,#128c7e);">
+        <i class="fab fa-whatsapp text-xl"></i> Get Pricing on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     DELIVERY AREAS
+═════════════════════════════════════ -->
+<section class="py-24" style="background:linear-gradient(180deg,#f0f9ff,#ffffff);">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-14 reveal">
+      <div class="badge badge-blue mx-auto mb-4"><i class="fas fa-map-marker-alt text-xs"></i> Coverage</div>
+      <h2 class="font-display font-black text-slate-800 mb-3"
+          style="font-size:clamp(2rem,4vw,3rem);">
+        Delivery <span class="grad-text-blue">Areas</span>
+      </h2>
+      <p class="text-slate-500 text-base max-w-xl mx-auto">
+        Currently serving Padrauna, Gopalganj and surrounding areas — with plans to expand across Bihar.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+
+      <div class="space-y-4 reveal-left">
+        <div class="hover-card bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white shrink-0"
+               style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <div class="font-bold text-slate-800">Padrauna</div>
+            <div class="text-slate-400 text-xs">Headquarters & Primary Delivery Zone</div>
+          </div>
+          <span class="ml-auto text-xs font-bold px-3 py-1 rounded-full" style="background:#dcfce7;color:#166534;">Active</span>
+        </div>
+
+        <div class="hover-card bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white shrink-0"
+               style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <div class="font-bold text-slate-800">Gopalganj</div>
+            <div class="text-slate-400 text-xs">District Coverage</div>
+          </div>
+          <span class="ml-auto text-xs font-bold px-3 py-1 rounded-full" style="background:#dcfce7;color:#166534;">Active</span>
+        </div>
+
+        <div class="hover-card bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white shrink-0"
+               style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <div class="font-bold text-slate-800">Bhore & Lamichour Bazar</div>
+            <div class="text-slate-400 text-xs">Local Coverage</div>
+          </div>
+          <span class="ml-auto text-xs font-bold px-3 py-1 rounded-full" style="background:#dcfce7;color:#166534;">Active</span>
+        </div>
+
+        <div class="hover-card bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+               style="background:#fef3c7;">
+            <i class="fas fa-map-marker-alt text-amber-500"></i>
+          </div>
+          <div>
+            <div class="font-bold text-slate-800">Surrounding Districts</div>
+            <div class="text-slate-400 text-xs">Siwan, Saran & more</div>
+          </div>
+          <span class="ml-auto text-xs font-bold px-3 py-1 rounded-full" style="background:#fef3c7;color:#92400e;">Expanding</span>
+        </div>
+
+        <div class="hover-card bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+               style="background:#f0f9ff;">
+            <i class="fas fa-flag text-blue-400"></i>
+          </div>
+          <div>
+            <div class="font-bold text-slate-800">All of Bihar</div>
+            <div class="text-slate-400 text-xs">Long-term vision</div>
+          </div>
+          <span class="ml-auto text-xs font-bold px-3 py-1 rounded-full" style="background:#e0f2fe;color:#0369a1;">Vision</span>
+        </div>
+      </div>
+
+      <!-- Info card -->
+      <div class="reveal-right">
+        <div class="rounded-3xl p-8 shadow-2xl"
+             style="background:linear-gradient(160deg,#061828,#0369a1);">
+          <h3 class="font-bold text-white text-xl mb-6">Order & Delivery Info</h3>
+          <div class="space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white shrink-0"
+                   style="background:rgba(255,255,255,0.12);">
+                <i class="fas fa-clock text-sm"></i>
+              </div>
+              <div>
+                <div class="font-bold text-white text-sm">Same-Day Delivery</div>
+                <div class="text-white/55 text-xs mt-0.5">Order before 2 PM for same-day delivery in Padrauna & Gopalganj area</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white shrink-0"
+                   style="background:rgba(255,255,255,0.12);">
+                <i class="fab fa-whatsapp text-sm"></i>
+              </div>
+              <div>
+                <div class="font-bold text-white text-sm">WhatsApp Order</div>
+                <div class="text-white/55 text-xs mt-0.5">Simply WhatsApp us your order — no app needed, no sign-up required</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white shrink-0"
+                   style="background:rgba(255,255,255,0.12);">
+                <i class="fas fa-boxes-stacked text-sm"></i>
+              </div>
+              <div>
+                <div class="font-bold text-white text-sm">Bulk Orders Welcome</div>
+                <div class="text-white/55 text-xs mt-0.5">Special pricing for bulk orders — events, offices, hospitals, hotels</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white shrink-0"
+                   style="background:rgba(255,255,255,0.12);">
+                <i class="fas fa-rotate text-sm"></i>
+              </div>
+              <div>
+                <div class="font-bold text-white text-sm">Regular Subscription</div>
+                <div class="text-white/55 text-xs mt-0.5">Set up weekly or monthly delivery — we'll keep your supply consistent</div>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20place%20an%20order."
+             target="_blank"
+             class="flex items-center justify-center gap-2 w-full text-white font-bold py-3.5 rounded-2xl mt-7 transition-all hover:scale-105 text-sm"
+             style="background:linear-gradient(135deg,#25d366,#128c7e);">
+            <i class="fab fa-whatsapp text-lg"></i> Place Order on WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     CTA
+═════════════════════════════════════ -->
+<section class="py-20 relative overflow-hidden"
+         style="background:linear-gradient(135deg,#061828 0%,#0369a1 50%,#0ea5e9 100%);">
+  <div class="particle" style="width:10px;height:10px;left:10%;bottom:0;animation-duration:9s;animation-delay:0s;"></div>
+  <div class="particle" style="width:14px;height:14px;left:70%;bottom:0;animation-duration:11s;animation-delay:2s;"></div>
+
+  <div class="max-w-3xl mx-auto px-5 text-center relative z-10 reveal">
+    <div class="badge badge-white mx-auto mb-6">
+      <i class="fas fa-bolt text-yellow-300 text-xs"></i> Quick Order
+    </div>
+    <h2 class="font-display font-black text-white mb-4"
+        style="font-size:clamp(1.8rem,4vw,3rem);line-height:1.1;">
+      Ready to Order<br/><span class="grad-text">LUXURY H₂O?</span>
+    </h2>
+    <p class="text-white/60 text-base mb-8 max-w-xl mx-auto">
+      WhatsApp us your order in 30 seconds — we'll confirm and deliver same day. Simple, fast, pure.
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20order%20LUXURY%20H2O."
+         target="_blank"
+         class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold text-base px-8 py-4 rounded-2xl shadow-2xl transition-all hover:scale-105">
+        <i class="fab fa-whatsapp text-2xl"></i> Order Now
+      </a>
+      <a href="tel:+917783877709"
+         class="inline-flex items-center gap-3 glass hover:bg-white/20 text-white font-bold text-base px-8 py-4 rounded-2xl transition-all hover:scale-105">
+        <i class="fas fa-phone"></i> Call Us
+      </a>
+    </div>
+    <div class="text-white/35 text-sm mt-5">
+      <i class="fas fa-map-marker-alt mr-1"></i>
+      Padrauna, Lamichour Bazar, Bhore, Gopalganj, Bihar – 841426
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     JS
+═════════════════════════════════════ -->
+<script>
+  const ro3 = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const d = parseFloat(e.target.style.transitionDelay || '0') * 1000;
+        setTimeout(() => e.target.classList.add('on'), d);
+        ro3.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => ro3.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+
+
+
+<!-- ════════════════════════════════════
+     FOOTER
+═════════════════════════════════════ -->
+<footer class="bg-slate-950 text-slate-400 pt-14 pb-8">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div class="lg:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,#0369a1,#38bdf8);">
+            <i class="fas fa-water text-white text-sm"></i>
+          </div>
+          <div>
+            <div class="font-display font-bold text-white text-base leading-none">DivyaShakti MultiServices</div>
+            <div class="text-slate-500 text-[10px] tracking-widest uppercase mt-0.5">Private Limited</div>
+          </div>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed max-w-sm">A registered Pvt. Ltd. company based in Bihar — building trusted brands and delivering quality products to communities across the region.</p>
+        <div class="text-sm text-slate-600 space-y-1">
+          <div><span class="text-slate-400">GST:</span> 10AAMCD1575G1ZW</div>
+          <div><span class="text-slate-400">Directors:</span> Ms. Anaras Devi & Mr. Adarsh Singh</div>
+          <div><span class="text-slate-400">HQ:</span> Padrauna, Lamichour Bazar, Bhore, Gopalganj, Bihar 841426</div>
+        </div>
+        <div class="flex gap-2.5 pt-1">
+          <a href="https://wa.me/917783877709" target="_blank" class="w-9 h-9 rounded-xl bg-green-700 hover:bg-green-600 flex items-center justify-center text-white transition-all hover:scale-110"><i class="fab fa-whatsapp text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-pink-600 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110"><i class="fab fa-instagram text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-blue-600 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110"><i class="fab fa-facebook-f text-sm"></i></a>
+          <a href="tel:+917783877709" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-blue-500 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110"><i class="fas fa-phone text-xs"></i></a>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="text-white font-bold text-xs uppercase tracking-widest mb-5">Company</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#about"    class="hover:text-blue-400 transition-colors">About Us</a></li>
+          <li><a href="#process"  class="hover:text-blue-400 transition-colors">Our Process</a></li>
+          <li><a href="#services" class="hover:text-blue-400 transition-colors">Services</a></li>
+          <li><a href="#brands"   class="hover:text-blue-400 transition-colors">Our Brands</a></li>
+          <li><a href="#reviews"  class="hover:text-blue-400 transition-colors">Reviews</a></li>
+          <li><a href="#contact"  class="hover:text-blue-400 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Brands & contact -->
+      <div>
+        <h4 class="text-white font-bold text-xs uppercase tracking-widest mb-5">Our Brands</h4>
+        <ul class="space-y-3 text-sm mb-6">
+          <li><a href="#luxury" class="hover:text-blue-400 transition-colors">LUXURY H₂O</a></li>
+          <li class="text-slate-600 italic text-xs">More coming soon...</li>
+        </ul>
+        <div class="p-4 rounded-2xl border border-slate-800 bg-slate-900 space-y-2">
+          <div class="text-xs text-slate-600 uppercase tracking-widest mb-2">Get in Touch</div>
+          <a href="tel:+917783877709" class="flex items-center gap-2 text-sm hover:text-white transition-colors">
+            <i class="fas fa-phone text-xs text-blue-400 w-3"></i> +91 77838 77709
+          </a>
+          <a href="https://wa.me/917783877709" target="_blank" class="flex items-center gap-2 text-sm hover:text-white transition-colors">
+            <i class="fab fa-whatsapp text-xs text-green-400 w-3"></i> WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
+      <div>© 2025 DivyaShakti MultiServices Private Limited. All rights reserved.</div>
+      <div class="flex items-center gap-1.5 text-slate-600">
+        <i class="fas fa-water text-blue-500 text-xs"></i>
+        Powering <span class="text-blue-400 font-semibold ml-1">LUXURY H₂O</span> <span class="ml-1">& beyond</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════
+     JAVASCRIPT
+═════════════════════════════════════ -->
+<script>
+  // ── Navbar scroll ──
+  const nav = document.getElementById('navbar');
+  let lastY = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 60);
+    lastY = y;
+  }, { passive: true });
+
+  // ── Hamburger ──
+  const hamBtn  = document.getElementById('ham-btn');
+  const mobMenu = document.getElementById('mob-menu');
+  hamBtn.addEventListener('click', () => {
+    hamBtn.classList.toggle('active');
+    mobMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mob-lnk').forEach(l => {
+    l.addEventListener('click', () => {
+      hamBtn.classList.remove('active');
+      mobMenu.classList.remove('open');
+    });
+  });
+
+  // ── Scroll reveal ──
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const delay = e.target.style.transitionDelay || '0s';
+        setTimeout(() => e.target.classList.add('on'), parseFloat(delay) * 1000);
+        ro.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => ro.observe(el));
+
+  // ── Counter animation ──
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 2000;
+    const start = performance.now();
+    const update = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + '+';
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateCounter(e.target); counterObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  
+
+  // ── Smooth scroll ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  // ── Navbar scrolled: fix ham-line color ──
+  const hamLines = document.querySelectorAll('.ham-line');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      hamLines.forEach(l => l.style.background = '#0369a1');
+    } else {
+      hamLines.forEach(l => l.style.background = 'white');
+    }
+  }, { passive: true });
+
+</script>
+</body>
+</html>
