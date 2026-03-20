@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DivyaShakti MultiServices Pvt. Ltd. | Pure Water, Pure Future</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','sans-serif'], display: ['Playfair Display','serif'] },
+          colors: {
+            water: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e',950:'#082f49' },
+            deep:  { 800:'#0a2540', 900:'#061828', 950:'#030e18' },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --blue-1: #0c4a6e;
+      --blue-2: #0369a1;
+      --blue-3: #0ea5e9;
+      --blue-4: #38bdf8;
+      --blue-5: #7dd3fc;
+      --gold:   #f59e0b;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1e293b; overflow-x: hidden; }
+
+    /* ── Custom scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f0f9ff; }
+    ::-webkit-scrollbar-thumb { background: var(--blue-3); border-radius: 10px; }
+
+    /* ── Glassmorphism ── */
+    .glass {
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .glass-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+    }
+    .glass-light {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.95);
+    }
+
+    /* ── Navbar ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 18px 0;
+      transition: all 0.4s cubic-bezier(.4,0,.2,1);
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.96) !important;
+      backdrop-filter: blur(28px);
+      box-shadow: 0 2px 40px rgba(3,105,161,0.10);
+      padding: 12px 0;
+    }
+    #navbar.scrolled .logo-name  { color: #0369a1 !important; }
+    #navbar.scrolled .logo-sub   { color: #64748b !important; }
+    #navbar.scrolled .nav-link   { color: #475569 !important; }
+    #navbar.scrolled .nav-link:hover { color: #0369a1 !important; }
+    #navbar.scrolled .nav-cta    { background: linear-gradient(135deg,#0369a1,#0ea5e9) !important; color: white !important; border-color: transparent !important; }
+    #navbar.scrolled .ham-line   { background: #0369a1 !important; }
+
+    /* ── Hero ── */
+    .hero-section {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #061828 0%, #0c4a6e 35%, #0369a1 65%, #0ea5e9 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Animated water waves */
+    .wave-container {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 160px;
+      overflow: hidden;
+    }
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: -100%;
+      width: 300%;
+      height: 100%;
+    }
+    .wave svg { width: 100%; height: 100%; }
+    .wave-1 { animation: waveMove 8s linear infinite; opacity: 0.4; }
+    .wave-2 { animation: waveMove 12s linear infinite reverse; opacity: 0.25; bottom: 8px; }
+    .wave-3 { animation: waveMove 6s linear infinite; opacity: 0.6; bottom: -4px; }
+    @keyframes waveMove {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(33.33%); }
+    }
+
+    /* Particles / bubbles */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(255,255,255,0.05));
+      animation: particleRise linear infinite;
+      pointer-events: none;
+    }
+    @keyframes particleRise {
+      0%   { transform: translateY(0) scale(1); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.4; }
+      100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+    }
+
+    /* Float */
+    @keyframes float {
+      0%,100% { transform: translateY(0px) rotate(0deg); }
+      33%      { transform: translateY(-12px) rotate(1deg); }
+      66%      { transform: translateY(-6px) rotate(-1deg); }
+    }
+    .float { animation: float 5s ease-in-out infinite; }
+
+    /* Gradient text */
+    .grad-text {
+      background: linear-gradient(135deg, #38bdf8, #7dd3fc, #bae6fd);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .grad-text-gold {
+      background: linear-gradient(135deg, #f59e0b, #fbbf24, #fde68a);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .grad-text-blue {
+      background: linear-gradient(135deg, #0369a1, #0ea5e9, #38bdf8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* Reveal animations */
+    .reveal        { opacity:0; transform:translateY(40px);  transition: opacity .7s ease, transform .7s ease; }
+    .reveal-left   { opacity:0; transform:translateX(-40px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal-right  { opacity:0; transform:translateX(40px);  transition: opacity .7s ease, transform .7s ease; }
+    .reveal-scale  { opacity:0; transform:scale(0.9);        transition: opacity .7s ease, transform .7s ease; }
+    .on { opacity:1 !important; transform:translate(0,0) scale(1) !important; }
+
+    /* Cards */
+    .hover-card {
+      transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s ease;
+    }
+    .hover-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 32px 64px rgba(3,105,161,0.18);
+    }
+
+    /* Section divider */
+    .section-divider { display: block; width: 100%; overflow: hidden; line-height: 0; }
+    .section-divider svg { display: block; }
+
+    /* Floating WA */
+    #wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+      animation: float 3.5s ease-in-out infinite;
+    }
+    #wa-float:hover #wa-tip { opacity:1; transform:translateX(0) translateY(-50%); pointer-events:auto; }
+    #wa-tip {
+      position: absolute; right: 68px; top: 50%;
+      transform: translateX(8px) translateY(-50%);
+      background: #075e54; color: #fff;
+      font-size: 12px; font-weight: 700;
+      padding: 6px 14px; border-radius: 10px;
+      white-space: nowrap; opacity: 0;
+      transition: all .3s ease; pointer-events: none;
+    }
+    #wa-tip::after {
+      content:''; position:absolute; right:-5px; top:50%;
+      transform:translateY(-50%);
+      border:5px solid transparent; border-right:none; border-left-color:#075e54;
+    }
+
+    /* Mobile menu */
+    #mob-menu {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+    }
+    #mob-menu.open { max-height: 600px; opacity: 1; }
+
+    /* Hamburger */
+    .ham-line {
+      display: block; width: 24px; height: 2px;
+      background: white; border-radius: 2px;
+      transition: all .3s ease;
+      transform-origin: center;
+    }
+    #ham-btn.active .ham-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    #ham-btn.active .ham-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    #ham-btn.active .ham-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Number counter */
+    .counter { font-variant-numeric: tabular-nums; }
+
+    /* Tag badge */
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 14px; border-radius: 999px;
+    }
+    .badge-blue { background: rgba(14,165,233,0.12); color: #0369a1; border: 1px solid rgba(14,165,233,0.25); }
+    .badge-white { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.2); }
+    .badge-gold  { background: rgba(245,158,11,0.12); color: #b45309; border: 1px solid rgba(245,158,11,0.25); }
+
+    /* Pipe/plant decorative */
+    .plant-line {
+      position: absolute; background: linear-gradient(180deg, rgba(56,189,248,0.3), transparent);
+      width: 2px; border-radius: 1px;
+    }
+
+    /* Timeline dot */
+    .timeline-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: linear-gradient(135deg, #0369a1, #38bdf8);
+      box-shadow: 0 0 0 4px rgba(14,165,233,0.2);
+      flex-shrink: 0; margin-top: 4px;
+    }
+
+    /* Glow effects */
+    .glow-blue { box-shadow: 0 0 40px rgba(14,165,233,0.4); }
+    .glow-sm   { box-shadow: 0 0 20px rgba(14,165,233,0.3); }
+
+    /* Water drop shape */
+    .water-drop {
+      position: absolute;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.3), rgba(14,165,233,0.1));
+      pointer-events: none;
+    }
+
+    /* Process step */
+    .process-line {
+      position: absolute; top: 28px; left: 50%; right: -50%;
+      height: 2px;
+      background: linear-gradient(90deg, #0ea5e9, rgba(14,165,233,0.1));
+    }
+    /* Mobile menu links always visible */
+#mob-menu .mob-lnk {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* Jab navbar scrolled ho tab mobile menu dark text */
+#navbar.scrolled #mob-menu .mob-lnk {
+  color: #1e293b !important;
+}
+#navbar.scrolled #mob-menu {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 16px;
+}
+#navbar.scrolled #mob-menu .glass {
+  background: rgba(248, 250, 252, 0.98) !important;
+  border: 1px solid rgba(3, 105, 161, 0.1) !important;
+}
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+}
+
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     FLOATING WHATSAPP
+═════════════════════════════════════ -->
+<div id="wa-float">
+  <div id="wa-tip">Order LUXURY H₂O</div>
+  <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20order%20LUXURY%20H2O%20water."
+     target="_blank" rel="noopener"
+     class="flex items-center justify-center w-14 h-14 rounded-full shadow-2xl glow-sm"
+     style="background:linear-gradient(135deg,#25d366,#128c7e);">
+    <i class="fab fa-whatsapp text-white text-3xl"></i>
+  </a>
+</div>
+
+<!-- ════════════════════════════════════
+     NAVBAR
+═════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="max-w-7xl mx-auto px-5 flex items-center justify-between">
+
+    <!-- Logo -->
+<a href="#home" class="flex items-center gap-3">
+  <div class="w-10 h-10 rounded-xl flex items-center justify-center glow-sm shrink-0 overflow-hidden"
+       style="background:linear-gradient(135deg,#0369a1,#38bdf8);">
+    
+    <img src="https://i.ibb.co/NdnVXJqN/321b3903-c76f-47f6-abfa-93aa45a7e5d2.jpg"
+         alt="DivyaShakti Logo"
+         class="w-full h-full object-cover">
+         
+  </div>
+
+  <div class="leading-tight">
+    <div class="logo-name font-display font-bold text-white text-[15px] tracking-wide">
+      DivyaShakti
+    </div>
+    <div class="logo-sub text-white/55 text-[9px] tracking-widest uppercase font-semibold">
+      MultiServices Pvt. Ltd.
+    </div>
+  </div>
+</a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center gap-6">
+      <a href="#about"    class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">About</a>
+      <a href="#process"  class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Process</a>
+      <a href="#services" class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Services</a>
+      <a href="#brands"   class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Brands</a>
+      <a href="#luxury"   class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">LUXURY H₂O</a>
+      <a href="#contact"  class="nav-link text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Contact</a>
+      <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20connect."
+         target="_blank"
+         class="nav-cta flex items-center gap-2 text-white text-sm font-bold px-5 py-2.5 rounded-full border border-white/25 hover:bg-white/20 transition-all duration-300 glass">
+        <i class="fab fa-whatsapp text-green-400"></i> WhatsApp
+      </a>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="ham-btn" class="lg:hidden flex flex-col gap-1.5 p-2 focus:outline-none" aria-label="Menu">
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mob-menu" class="lg:hidden mx-4 mt-3 rounded-2xl overflow-hidden">
+    <div class="glass p-5 space-y-1" style="background:rgba(6,24,40,0.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">
+      <a href="#about"    class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">About Us</a>
+      <a href="#process"  class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Our Process</a>
+      <a href="#services" class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Services</a>
+      <a href="#brands"   class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Our Brands</a>
+      <a href="#luxury"   class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">LUXURY H₂O</a>
+      <a href="#contact"  class="mob-lnk block text-white/90 font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition text-sm">Contact</a>
+      <div class="pt-2">
+        <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20connect."
+           target="_blank"
+           class="mob-lnk flex items-center justify-center gap-2 text-white font-bold py-3.5 rounded-2xl transition text-sm"
+           style="background:linear-gradient(135deg,#25d366,#128c7e);">
+          <i class="fab fa-whatsapp text-lg"></i> WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ════════════════════════════════════
+     HERO — CONTACT
+═════════════════════════════════════ -->
+<section class="relative overflow-hidden pt-20"
+         style="background:linear-gradient(160deg,#061828 0%,#0c4a6e 40%,#0369a1 80%,#0ea5e9 100%);min-height:55vh;display:flex;align-items:center;">
+
+  <div class="particle" style="width:12px;height:12px;left:8%;bottom:0;animation-duration:10s;animation-delay:0s;"></div>
+  <div class="particle" style="width:8px;height:8px;left:30%;bottom:0;animation-duration:8s;animation-delay:1.5s;"></div>
+  <div class="particle" style="width:14px;height:14px;left:62%;bottom:0;animation-duration:12s;animation-delay:3s;"></div>
+  <div class="particle" style="width:6px;height:6px;left:85%;bottom:0;animation-duration:9s;animation-delay:2s;"></div>
+
+  <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.06),transparent);top:-100px;right:-80px;pointer-events:none;"></div>
+  <div style="position:absolute;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,0.1),transparent);bottom:-50px;left:-50px;pointer-events:none;"></div>
+
+  <div class="max-w-7xl mx-auto px-5 py-20 w-full relative z-10">
+    <div class="max-w-3xl">
+      <div class="badge badge-white mb-5">
+        <i class="fas fa-envelope text-xs"></i> Get In Touch
+      </div>
+      <h1 class="font-display font-black text-white leading-tight mb-6"
+          style="font-size:clamp(2.6rem,6vw,4.5rem);">
+        We're Here<br/>
+        <span class="grad-text">to Help.</span>
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed max-w-2xl mb-8">
+        Whether you want to order LUXURY H₂O, become a retail partner, or just have a question — we're just one WhatsApp away. DivyaShakti MultiServices responds fast.
+      </p>
+      <div class="flex items-center gap-2 text-white/40 text-sm">
+        <a href="index.html" class="hover:text-white transition-colors">Home</a>
+        <i class="fas fa-chevron-right text-xs"></i>
+        <span class="text-white/70 font-medium">Contact Us</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute;bottom:0;left:0;right:0;">
+    <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;">
+      <path d="M0,35 C480,70 960,0 1440,40 L1440,70 L0,70 Z" fill="white"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     QUICK CONTACT CARDS
+═════════════════════════════════════ -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20connect."
+         target="_blank"
+         class="hover-card rounded-3xl p-6 text-center border border-slate-100 shadow-sm bg-white reveal group"
+         style="transition-delay:.05s;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl group-hover:scale-110 transition-transform"
+             style="background:linear-gradient(135deg,#25d366,#128c7e);">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="font-bold text-slate-800 text-sm mb-1">WhatsApp</div>
+        <div class="text-slate-500 text-xs">+91 77838 77709</div>
+        <div class="text-green-500 text-xs font-semibold mt-2 flex items-center justify-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block"></span>
+          Usually responds in minutes
+        </div>
+      </a>
+
+      <!-- Phone -->
+      <a href="tel:+917783877709"
+         class="hover-card rounded-3xl p-6 text-center border border-slate-100 shadow-sm bg-white reveal group"
+         style="transition-delay:.1s;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl group-hover:scale-110 transition-transform"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-phone"></i>
+        </div>
+        <div class="font-bold text-slate-800 text-sm mb-1">Call Us</div>
+        <div class="text-slate-500 text-xs">+91 77838 77709</div>
+        <div class="text-blue-500 text-xs font-semibold mt-2">Mon – Sat, 9am – 7pm</div>
+      </a>
+
+      <!-- Location -->
+      <a href="https://maps.google.com/?q=Padrauna,Lamichour+Bazar,Bhore,Gopalganj,Bihar+841426"
+         target="_blank"
+         class="hover-card rounded-3xl p-6 text-center border border-slate-100 shadow-sm bg-white reveal group"
+         style="transition-delay:.15s;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl group-hover:scale-110 transition-transform"
+             style="background:linear-gradient(135deg,#dc2626,#f87171);">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="font-bold text-slate-800 text-sm mb-1">Visit Us</div>
+        <div class="text-slate-500 text-xs leading-relaxed">Padrauna, Lamichour Bazar,<br/>Gopalganj, Bihar – 841426</div>
+      </a>
+
+      <!-- GST -->
+      <div class="hover-card rounded-3xl p-6 text-center border border-slate-100 shadow-sm bg-white reveal"
+           style="transition-delay:.2s;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl"
+             style="background:linear-gradient(135deg,#f59e0b,#fbbf24);">
+          <i class="fas fa-file-invoice"></i>
+        </div>
+        <div class="font-bold text-slate-800 text-sm mb-1">GST Number</div>
+        <div class="text-slate-500 text-xs font-mono">10AAMCD1575G1ZW</div>
+        <div class="text-amber-500 text-xs font-semibold mt-2">Registered Pvt. Ltd.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     CONTACT FORM + INFO
+═════════════════════════════════════ -->
+<section class="py-16" style="background:linear-gradient(180deg,#f0f9ff,#ffffff);">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+
+      <!-- Contact Form -->
+      <div class="reveal-left">
+        <div class="badge badge-blue mb-5"><i class="fas fa-paper-plane text-xs"></i> Send a Message</div>
+        <h2 class="font-display font-black text-slate-800 mb-2"
+            style="font-size:clamp(1.8rem,3vw,2.4rem);">
+          Drop Us a <span class="grad-text-blue">Message</span>
+        </h2>
+        <p class="text-slate-500 text-sm mb-7">Fill the form — we'll get back to you on WhatsApp or phone within hours.</p>
+
+        <form id="contactForm" class="space-y-4" onsubmit="handleFormSubmit(event)">
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-slate-700 text-sm font-semibold mb-1.5">Full Name *</label>
+              <input type="text" id="fname" required placeholder="Aapka naam"
+                     class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 text-slate-700 text-sm outline-none transition-all focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                     style="background:#f8fafc;">
+            </div>
+            <div>
+              <label class="block text-slate-700 text-sm font-semibold mb-1.5">Phone Number *</label>
+              <input type="tel" id="fphone" required placeholder="+91 XXXXX XXXXX"
+                     class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 text-slate-700 text-sm outline-none transition-all focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                     style="background:#f8fafc;">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-700 text-sm font-semibold mb-1.5">Subject *</label>
+            <select id="fsubject" required
+                    class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 text-slate-700 text-sm outline-none transition-all focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                    style="background:#f8fafc;">
+              <option value="">-- Select a subject --</option>
+              <option value="Order LUXURY H2O">Order LUXURY H₂O Water</option>
+              <option value="Bulk Order Enquiry">Bulk Order Enquiry</option>
+              <option value="Retail Partnership">Become a Retail Partner</option>
+              <option value="Delivery Enquiry">Delivery Area Enquiry</option>
+              <option value="Business Partnership">Business Partnership</option>
+              <option value="General Enquiry">General Enquiry</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-slate-700 text-sm font-semibold mb-1.5">Your Message *</label>
+            <textarea id="fmessage" required rows="5" placeholder="Apna message yahan likhein..."
+                      class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 text-slate-700 text-sm outline-none transition-all focus:border-blue-400 focus:ring-2 focus:ring-blue-100 resize-none"
+                      style="background:#f8fafc;"></textarea>
+          </div>
+
+          <div>
+            <label class="block text-slate-700 text-sm font-semibold mb-1.5">Location / Area</label>
+            <input type="text" id="flocation" placeholder="Aapka area / sheher"
+                   class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 text-slate-700 text-sm outline-none transition-all focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+                   style="background:#f8fafc;">
+          </div>
+
+          <!-- Send via WhatsApp -->
+          <button type="submit"
+                  class="w-full flex items-center justify-center gap-3 text-white font-bold py-4 rounded-2xl text-base transition-all hover:scale-105 hover:shadow-xl"
+                  style="background:linear-gradient(135deg,#25d366,#128c7e);">
+            <i class="fab fa-whatsapp text-xl"></i>
+            Send via WhatsApp
+          </button>
+
+          <p class="text-slate-400 text-xs text-center">
+            <i class="fas fa-lock mr-1"></i>
+            Your message will open in WhatsApp — no data stored on this website.
+          </p>
+        </form>
+      </div>
+
+      <!-- Company Info + Map -->
+      <div class="space-y-6 reveal-right">
+
+        <!-- Info Card -->
+        <div class="rounded-3xl overflow-hidden shadow-xl"
+             style="background:linear-gradient(160deg,#061828,#0369a1);">
+          <div class="p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-white"
+                   style="background:rgba(255,255,255,0.12);">
+                <i class="fas fa-building text-xl"></i>
+              </div>
+              <div>
+                <div class="font-display font-bold text-white text-lg">DivyaShakti MultiServices</div>
+                <div class="text-blue-300 text-xs">Private Limited Company</div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div class="glass-card p-4 flex items-start gap-3">
+                <i class="fas fa-map-marker-alt text-blue-300 mt-0.5 shrink-0 text-sm"></i>
+                <div class="text-white/80 text-sm leading-relaxed">
+                  Padrauna, Lamichour Bazar, Bhore,<br/>
+                  Gopalganj, Bihar – 841426, India
+                </div>
+              </div>
+              <div class="glass-card p-4 flex items-center gap-3">
+                <i class="fas fa-phone text-blue-300 shrink-0 text-sm"></i>
+                <a href="tel:+917783877709" class="text-white/80 text-sm hover:text-white transition-colors">
+                  +91 77838 77709
+                </a>
+              </div>
+              <div class="glass-card p-4 flex items-center gap-3">
+                <i class="fab fa-whatsapp text-green-400 shrink-0 text-sm"></i>
+                <a href="https://wa.me/917783877709" target="_blank" class="text-white/80 text-sm hover:text-white transition-colors">
+                  wa.me/917783877709
+                </a>
+              </div>
+              <div class="glass-card p-4 flex items-center gap-3">
+                <i class="fas fa-file-invoice text-blue-300 shrink-0 text-sm"></i>
+                <div class="text-white/80 text-sm font-mono">GST: 10AAMCD1575G1ZW</div>
+              </div>
+              <div class="glass-card p-4 flex items-center gap-3">
+                <i class="fas fa-clock text-blue-300 shrink-0 text-sm"></i>
+                <div>
+                  <div class="text-white/80 text-sm">Mon – Sat: 9:00 AM – 7:00 PM</div>
+                  <div class="text-white/40 text-xs mt-0.5">Sunday: 10:00 AM – 4:00 PM</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Directors -->
+            <div class="mt-6 pt-5" style="border-top:1px solid rgba(255,255,255,0.1);">
+              <div class="text-white/40 text-xs uppercase tracking-wider mb-3 font-semibold">Directors</div>
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-black shrink-0"
+                     style="background:rgba(255,255,255,0.15);">A</div>
+                <div>
+                  <div class="text-white text-sm font-semibold">Ms. Anaras Devi</div>
+                  <div class="text-white/40 text-xs">Director & Co-Founder</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-black shrink-0"
+                     style="background:rgba(255,255,255,0.15);">A</div>
+                <div>
+                  <div class="text-white text-sm font-semibold">Mr. Adarsh Singh</div>
+                  <div class="text-white/40 text-xs">Director & Co-Founder</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="rounded-3xl overflow-hidden shadow-xl border-4 border-white" style="height:280px;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114078.97!2d83.97!3d26.89!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3993e9b576d0df6f%3A0x5db8d8cc9a3ed5ea!2sPadrauna%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1234567890&q=Padrauna+Lamichour+Bazar+Bhore+Gopalganj+Bihar+841426"
+            width="100%" height="100%"
+            style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="DivyaShakti MultiServices Location">
+          </iframe>
+        </div>
+        <p class="text-slate-400 text-xs text-center">
+          <i class="fas fa-map-marker-alt mr-1 text-blue-400"></i>
+          Padrauna, Lamichour Bazar, Bhore, Gopalganj, Bihar – 841426
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     QUICK WHATSAPP TOPICS
+═════════════════════════════════════ -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-12 reveal">
+      <div class="badge badge-blue mx-auto mb-4">
+        <i class="fab fa-whatsapp text-xs text-green-500"></i> Quick WhatsApp
+      </div>
+      <h2 class="font-display font-black text-slate-800 mb-3"
+          style="font-size:clamp(1.8rem,3.5vw,2.8rem);">
+        What Do You <span class="grad-text-blue">Need?</span>
+      </h2>
+      <p class="text-slate-500 text-sm max-w-xl mx-auto">
+        Tap any button below — it opens WhatsApp with a pre-filled message. Just hit Send!
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+
+      <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20order%20LUXURY%20H2O%20water.%20Please%20share%20availability%20and%20pricing."
+         target="_blank"
+         class="hover-card flex items-center gap-4 p-5 rounded-2xl border border-slate-100 bg-white shadow-sm reveal group"
+         style="transition-delay:.05s;">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-droplet text-sm"></i>
+        </div>
+        <div>
+          <div class="font-bold text-slate-800 text-sm">Order Water</div>
+          <div class="text-slate-400 text-xs">LUXURY H₂O bottles & jars</div>
+        </div>
+        <i class="fas fa-arrow-right text-slate-300 text-xs ml-auto group-hover:text-blue-400 transition-colors"></i>
+      </a>
+
+      <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20place%20a%20bulk%20order%20for%20LUXURY%20H2O.%20Please%20share%20bulk%20pricing."
+         target="_blank"
+         class="hover-card flex items-center gap-4 p-5 rounded-2xl border border-slate-100 bg-white shadow-sm reveal group"
+         style="transition-delay:.1s;">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-boxes-stacked text-sm"></i>
+        </div>
+        <div>
+          <div class="font-bold text-slate-800 text-sm">Bulk Order</div>
+          <div class="text-slate-400 text-xs">Events, offices, hospitals</div>
+        </div>
+        <i class="fas fa-arrow-right text-slate-300 text-xs ml-auto group-hover:text-blue-400 transition-colors"></i>
+      </a>
+
+      <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20become%20a%20retail%20partner%20or%20dealer%20for%20LUXURY%20H2O."
+         target="_blank"
+         class="hover-card flex items-center gap-4 p-5 rounded-2xl border border-slate-100 bg-white shadow-sm reveal group"
+         style="transition-delay:.15s;">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-store text-sm"></i>
+        </div>
+        <div>
+          <div class="font-bold text-slate-800 text-sm">Retail Partner</div>
+          <div class="text-slate-400 text-xs">Dealer & distributor enquiry</div>
+        </div>
+        <i class="fas fa-arrow-right text-slate-300 text-xs ml-auto group-hover:text-blue-400 transition-colors"></i>
+      </a>
+
+      <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20check%20if%20you%20deliver%20in%20my%20area."
+         target="_blank"
+         class="hover-card flex items-center gap-4 p-5 rounded-2xl border border-slate-100 bg-white shadow-sm reveal group"
+         style="transition-delay:.05s;">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-truck-fast text-sm"></i>
+        </div>
+        <div>
+          <div class="font-bold text-slate-800 text-sm">Delivery Check</div>
+          <div class="text-slate-400 text-xs">Check delivery in your area</div>
+        </div>
+        <i class="fas fa-arrow-right text-slate-300 text-xs ml-auto group-hover:text-blue-400 transition-colors"></i>
+      </a>
+
+      <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20want%20to%20set%20up%20a%20regular%20water%20subscription."
+         target="_blank"
+         class="hover-card flex items-center gap-4 p-5 rounded-2xl border border-slate-100 bg-white shadow-sm reveal group"
+         style="transition-delay:.1s;">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform"
+             style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
+          <i class="fas fa-rotate text-sm"></i>
+        </div>
+        <div>
+          <div class="font-bold text-slate-800 text-sm">Subscription</div>
+          <div class="text-slate-400 text-xs">Weekly / monthly plan</div>
+        </div>
+        <i class="fas fa-arrow-right text-slate-300 text-xs ml-auto group-hover:text-blue-400 transition-colors"></i>
+      </a>
+
+      <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20have%20a%20business%20partnership%20proposal."
+         target="_blank"
+         class="hover-card flex items-center gap-4 p-5 rounded-2xl border border-amber-100 shadow-sm reveal group"
+         style="transition-delay:.15s;background:linear-gradient(135deg,#fffbeb,#ffffff);">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform"
+             style="background:linear-gradient(135deg,#d97706,#f59e0b);">
+          <i class="fas fa-handshake text-sm"></i>
+        </div>
+        <div>
+          <div class="font-bold text-slate-800 text-sm">Partnership</div>
+          <div class="text-slate-400 text-xs">Business collaboration</div>
+        </div>
+        <i class="fas fa-arrow-right text-slate-300 text-xs ml-auto group-hover:text-amber-400 transition-colors"></i>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     FAQ
+═════════════════════════════════════ -->
+<section class="py-24" style="background:linear-gradient(180deg,#f0f9ff,#ffffff);">
+  <div class="max-w-4xl mx-auto px-5">
+    <div class="text-center mb-12 reveal">
+      <div class="badge badge-blue mx-auto mb-4"><i class="fas fa-circle-question text-xs"></i> FAQ</div>
+      <h2 class="font-display font-black text-slate-800 mb-3"
+          style="font-size:clamp(1.8rem,3.5vw,2.8rem);">
+        Frequently Asked <span class="grad-text-blue">Questions</span>
+      </h2>
+    </div>
+
+    <div class="space-y-3" id="faqContainer">
+
+      <div class="faq-item bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden reveal" style="transition-delay:.05s;">
+        <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+          <span class="font-semibold text-slate-800 text-sm pr-4">LUXURY H₂O me konsi purification technology use hoti hai?</span>
+          <i class="fas fa-chevron-down text-blue-400 text-xs shrink-0 faq-icon transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer px-6 pb-5 hidden">
+          <p class="text-slate-500 text-sm leading-relaxed">LUXURY H₂O me triple purification technology use hoti hai — <strong>RO (Reverse Osmosis) + UV (Ultra-Violet) + Ozone (O₃)</strong>. Yeh 6-stage process groundwater collection se lekar clean room packaging tak jaata hai, jisme mineral enrichment bhi include hai.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden reveal" style="transition-delay:.1s;">
+        <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+          <span class="font-semibold text-slate-800 text-sm pr-4">Kaun kaun se areas me delivery hoti hai?</span>
+          <i class="fas fa-chevron-down text-blue-400 text-xs shrink-0 faq-icon transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer px-6 pb-5 hidden">
+          <p class="text-slate-500 text-sm leading-relaxed">Abhi hum <strong>Padrauna, Lamichour Bazar, Bhore aur Gopalganj</strong> surrounding areas me delivery karte hain. Hum apna network expand kar rahe hain — apna area check karne ke liye WhatsApp karo: +91 77838 77709.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden reveal" style="transition-delay:.15s;">
+        <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+          <span class="font-semibold text-slate-800 text-sm pr-4">Konse pack sizes available hain?</span>
+          <i class="fas fa-chevron-down text-blue-400 text-xs shrink-0 faq-icon transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer px-6 pb-5 hidden">
+          <p class="text-slate-500 text-sm leading-relaxed">LUXURY H₂O <strong>5 sizes</strong> me available hai: <strong>250ml</strong> (cup/travel), <strong>500ml</strong> (daily carry), <strong>1 Litre</strong> (most popular - family pack), <strong>2 Litre</strong> (home/office), aur <strong>20 Litre jar</strong> (bulk/office). Pricing ke liye WhatsApp karo.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden reveal" style="transition-delay:.2s;">
+        <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+          <span class="font-semibold text-slate-800 text-sm pr-4">Kya same-day delivery milti hai?</span>
+          <i class="fas fa-chevron-down text-blue-400 text-xs shrink-0 faq-icon transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer px-6 pb-5 hidden">
+          <p class="text-slate-500 text-sm leading-relaxed">Haan! <strong>Dopahar 2 baje se pehle</strong> order karo — same day delivery milegi Padrauna & Gopalganj area me. Bulk orders ke liye advance booking recommended hai.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden reveal" style="transition-delay:.25s;">
+        <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+          <span class="font-semibold text-slate-800 text-sm pr-4">Kya bulk orders ke liye special pricing milti hai?</span>
+          <i class="fas fa-chevron-down text-blue-400 text-xs shrink-0 faq-icon transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer px-6 pb-5 hidden">
+          <p class="text-slate-500 text-sm leading-relaxed">Bilkul! Hotels, restaurants, hospitals, schools, events aur offices ke liye <strong>special bulk pricing</strong> available hai. WhatsApp pe quantity batao — hum best rate denge.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden reveal" style="transition-delay:.3s;">
+        <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+          <span class="font-semibold text-slate-800 text-sm pr-4">DivyaShakti MultiServices ek registered company hai?</span>
+          <i class="fas fa-chevron-down text-blue-400 text-xs shrink-0 faq-icon transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer px-6 pb-5 hidden">
+          <p class="text-slate-500 text-sm leading-relaxed">Haan! <strong>DivyaShakti MultiServices Private Limited</strong> ek legally registered Pvt. Ltd. company hai jiska GST number <strong>10AAMCD1575G1ZW</strong> hai. Headquarters Padrauna, Gopalganj, Bihar me hai. Directors hain Ms. Anaras Devi aur Mr. Adarsh Singh.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden reveal" style="transition-delay:.35s;">
+        <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+          <span class="font-semibold text-slate-800 text-sm pr-4">Retail dealer ya distributor kaise bane?</span>
+          <i class="fas fa-chevron-down text-blue-400 text-xs shrink-0 faq-icon transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer px-6 pb-5 hidden">
+          <p class="text-slate-500 text-sm leading-relaxed">Hum kirana stores, supermarkets, restaurants aur distributors ke saath partnership karte hain. <strong>Attractive dealer margins</strong> aur reliable restocking ke saath. WhatsApp karo: +91 77838 77709 — hum details share karenge.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     CTA
+═════════════════════════════════════ -->
+<section class="py-20 relative overflow-hidden"
+         style="background:linear-gradient(135deg,#061828 0%,#0369a1 50%,#0ea5e9 100%);">
+  <div class="particle" style="width:10px;height:10px;left:10%;bottom:0;animation-duration:9s;animation-delay:0s;"></div>
+  <div class="particle" style="width:14px;height:14px;left:70%;bottom:0;animation-duration:11s;animation-delay:2s;"></div>
+
+  <div class="max-w-3xl mx-auto px-5 text-center relative z-10 reveal">
+    <h2 class="font-display font-black text-white mb-4"
+        style="font-size:clamp(1.8rem,4vw,3rem);line-height:1.1;">
+      Still Have a Question?<br/><span class="grad-text">Just WhatsApp Us.</span>
+    </h2>
+    <p class="text-white/60 text-base mb-8 max-w-xl mx-auto">
+      The fastest way to reach us — WhatsApp karo aur minutes mein jawab pao.
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="https://wa.me/917783877709?text=Hello%20DivyaShakti%20MultiServices%2C%20I%20have%20a%20question."
+         target="_blank"
+         class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold text-base px-8 py-4 rounded-2xl shadow-2xl transition-all hover:scale-105">
+        <i class="fab fa-whatsapp text-2xl"></i> WhatsApp Now
+      </a>
+      <a href="tel:+917783877709"
+         class="inline-flex items-center gap-3 glass hover:bg-white/20 text-white font-bold text-base px-8 py-4 rounded-2xl transition-all hover:scale-105">
+        <i class="fas fa-phone"></i> +91 77838 77709
+      </a>
+    </div>
+    <div class="text-white/35 text-sm mt-5">
+      <i class="fas fa-map-marker-alt mr-1"></i>
+      Padrauna, Lamichour Bazar, Bhore, Gopalganj, Bihar – 841426
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     JS
+═════════════════════════════════════ -->
+<script>
+  // Scroll Reveal
+  const roC = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const d = parseFloat(e.target.style.transitionDelay || '0') * 1000;
+        setTimeout(() => e.target.classList.add('on'), d);
+        roC.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => roC.observe(el));
+
+  // FAQ Toggle
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const icon   = btn.querySelector('.faq-icon');
+    const isOpen = !answer.classList.contains('hidden');
+
+    // Close all
+    document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+    document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+
+    // Open clicked if was closed
+    if (!isOpen) {
+      answer.classList.remove('hidden');
+      icon.style.transform = 'rotate(180deg)';
+    }
+  }
+
+  // Contact Form → WhatsApp
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const name     = document.getElementById('fname').value.trim();
+    const phone    = document.getElementById('fphone').value.trim();
+    const subject  = document.getElementById('fsubject').value;
+    const message  = document.getElementById('fmessage').value.trim();
+    const location = document.getElementById('flocation').value.trim();
+
+    if (!name || !phone || !subject || !message) {
+      alert('Please fill all required fields.');
+      return;
+    }
+
+    const text = `Hello DivyaShakti MultiServices!%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Subject:* ${encodeURIComponent(subject)}%0A*Location:* ${encodeURIComponent(location || 'Not specified')}%0A%0A*Message:*%0A${encodeURIComponent(message)}`;
+
+    window.open(`https://wa.me/917783877709?text=${text}`, '_blank');
+  }
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+
+
+
+<!-- ════════════════════════════════════
+     FOOTER
+═════════════════════════════════════ -->
+<footer class="bg-slate-950 text-slate-400 pt-14 pb-8">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div class="lg:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,#0369a1,#38bdf8);">
+            <i class="fas fa-water text-white text-sm"></i>
+          </div>
+          <div>
+            <div class="font-display font-bold text-white text-base leading-none">DivyaShakti MultiServices</div>
+            <div class="text-slate-500 text-[10px] tracking-widest uppercase mt-0.5">Private Limited</div>
+          </div>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed max-w-sm">A registered Pvt. Ltd. company based in Bihar — building trusted brands and delivering quality products to communities across the region.</p>
+        <div class="text-sm text-slate-600 space-y-1">
+          <div><span class="text-slate-400">GST:</span> 10AAMCD1575G1ZW</div>
+          <div><span class="text-slate-400">Directors:</span> Ms. Anaras Devi & Mr. Adarsh Singh</div>
+          <div><span class="text-slate-400">HQ:</span> Padrauna, Lamichour Bazar, Bhore, Gopalganj, Bihar 841426</div>
+        </div>
+        <div class="flex gap-2.5 pt-1">
+          <a href="https://wa.me/917783877709" target="_blank" class="w-9 h-9 rounded-xl bg-green-700 hover:bg-green-600 flex items-center justify-center text-white transition-all hover:scale-110"><i class="fab fa-whatsapp text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-pink-600 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110"><i class="fab fa-instagram text-sm"></i></a>
+          <a href="#" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-blue-600 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110"><i class="fab fa-facebook-f text-sm"></i></a>
+          <a href="tel:+917783877709" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-blue-500 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110"><i class="fas fa-phone text-xs"></i></a>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="text-white font-bold text-xs uppercase tracking-widest mb-5">Company</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="#about"    class="hover:text-blue-400 transition-colors">About Us</a></li>
+          <li><a href="#process"  class="hover:text-blue-400 transition-colors">Our Process</a></li>
+          <li><a href="#services" class="hover:text-blue-400 transition-colors">Services</a></li>
+          <li><a href="#brands"   class="hover:text-blue-400 transition-colors">Our Brands</a></li>
+          <li><a href="#reviews"  class="hover:text-blue-400 transition-colors">Reviews</a></li>
+          <li><a href="#contact"  class="hover:text-blue-400 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Brands & contact -->
+      <div>
+        <h4 class="text-white font-bold text-xs uppercase tracking-widest mb-5">Our Brands</h4>
+        <ul class="space-y-3 text-sm mb-6">
+          <li><a href="#luxury" class="hover:text-blue-400 transition-colors">LUXURY H₂O</a></li>
+          <li class="text-slate-600 italic text-xs">More coming soon...</li>
+        </ul>
+        <div class="p-4 rounded-2xl border border-slate-800 bg-slate-900 space-y-2">
+          <div class="text-xs text-slate-600 uppercase tracking-widest mb-2">Get in Touch</div>
+          <a href="tel:+917783877709" class="flex items-center gap-2 text-sm hover:text-white transition-colors">
+            <i class="fas fa-phone text-xs text-blue-400 w-3"></i> +91 77838 77709
+          </a>
+          <a href="https://wa.me/917783877709" target="_blank" class="flex items-center gap-2 text-sm hover:text-white transition-colors">
+            <i class="fab fa-whatsapp text-xs text-green-400 w-3"></i> WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
+      <div>© 2025 DivyaShakti MultiServices Private Limited. All rights reserved.</div>
+      <div class="flex items-center gap-1.5 text-slate-600">
+        <i class="fas fa-water text-blue-500 text-xs"></i>
+        Powering <span class="text-blue-400 font-semibold ml-1">LUXURY H₂O</span> <span class="ml-1">& beyond</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════
+     JAVASCRIPT
+═════════════════════════════════════ -->
+<script>
+  // ── Navbar scroll ──
+  const nav = document.getElementById('navbar');
+  let lastY = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 60);
+    lastY = y;
+  }, { passive: true });
+
+  // ── Hamburger ──
+  const hamBtn  = document.getElementById('ham-btn');
+  const mobMenu = document.getElementById('mob-menu');
+  hamBtn.addEventListener('click', () => {
+    hamBtn.classList.toggle('active');
+    mobMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mob-lnk').forEach(l => {
+    l.addEventListener('click', () => {
+      hamBtn.classList.remove('active');
+      mobMenu.classList.remove('open');
+    });
+  });
+
+  // ── Scroll reveal ──
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const delay = e.target.style.transitionDelay || '0s';
+        setTimeout(() => e.target.classList.add('on'), parseFloat(delay) * 1000);
+        ro.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => ro.observe(el));
+
+  // ── Counter animation ──
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 2000;
+    const start = performance.now();
+    const update = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + '+';
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+  const counterObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateCounter(e.target); counterObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  
+
+  // ── Smooth scroll ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  // ── Navbar scrolled: fix ham-line color ──
+  const hamLines = document.querySelectorAll('.ham-line');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      hamLines.forEach(l => l.style.background = '#0369a1');
+    } else {
+      hamLines.forEach(l => l.style.background = 'white');
+    }
+  }, { passive: true });
+
+</script>
+</body>
+</html>
