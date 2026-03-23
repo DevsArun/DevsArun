@@ -428,89 +428,81 @@ html, body {
         </div>
       </div>
 
-      <!-- Right: Animated Bottle Scene -->
+      <!-- ══════════════════════════════
+           Right: REAL BOTTLE IMAGE SCENE
+      ═══════════════════════════════ -->
       <div class="flex justify-center items-center reveal-right on">
-        <div class="relative" style="width:280px;height:380px;">
+        <div class="relative" style="width:320px;height:420px;">
 
-          <!-- Glow orb behind -->
-          <div class="absolute inset-0 rounded-full blur-3xl opacity-35"
-               style="background:radial-gradient(circle,#38bdf8,#0369a1);transform:scale(1.2);"></div>
+          <!-- Glow orb behind bottle -->
+          <div class="absolute inset-0 rounded-full blur-3xl opacity-40"
+               style="background:radial-gradient(circle,#38bdf8,#0369a1);transform:scale(1.15);"></div>
 
-          <!-- Rotating ring -->
+          <!-- Outer rotating dashed ring -->
           <div class="absolute inset-0 flex items-center justify-center">
-            <div style="width:300px;height:300px;border:2px dashed rgba(56,189,248,0.2);border-radius:50%;animation:float 8s linear infinite;"></div>
+            <div style="width:340px;height:340px;border:2px dashed rgba(56,189,248,0.2);border-radius:50%;animation:float 8s linear infinite;"></div>
           </div>
+
+          <!-- Inner rotating ring -->
           <div class="absolute inset-0 flex items-center justify-center">
-            <div style="width:240px;height:240px;border:1px solid rgba(56,189,248,0.12);border-radius:50%;animation:float 6s linear infinite reverse;"></div>
+            <div style="width:270px;height:270px;border:1px solid rgba(56,189,248,0.12);border-radius:50%;animation:float 6s linear infinite reverse;"></div>
           </div>
 
-          <!-- Main Bottle SVG -->
-          <div class="absolute inset-0 flex items-center justify-center float">
-            <svg viewBox="0 0 160 340" width="160" height="340" xmlns="http://www.w3.org/2000/svg"
-                 style="filter:drop-shadow(0 24px 48px rgba(3,105,161,0.55)) drop-shadow(0 4px 16px rgba(56,189,248,0.4));">
-              <defs>
-                <linearGradient id="cap" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#075985"/>
-                  <stop offset="100%" style="stop-color:#0369a1"/>
-                </linearGradient>
-                <linearGradient id="body" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:.9"/>
-                  <stop offset="40%" style="stop-color:#38bdf8;stop-opacity:.8"/>
-                  <stop offset="100%" style="stop-color:#0369a1;stop-opacity:.95"/>
-                </linearGradient>
-                <linearGradient id="water" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:.55"/>
-                  <stop offset="100%" style="stop-color:#0369a1;stop-opacity:.45"/>
-                </linearGradient>
-                <linearGradient id="base" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style="stop-color:#075985"/>
-                  <stop offset="100%" style="stop-color:#0369a1"/>
-                </linearGradient>
-                <clipPath id="bodyClip"><rect x="25" y="68" width="110" height="248" rx="22"/></clipPath>
-              </defs>
-              <!-- Cap -->
-              <rect x="55" y="8" width="50" height="28" rx="9" fill="url(#cap)"/>
-              <rect x="59" y="8" width="42" height="22" rx="7" fill="#0ea5e9" opacity=".6"/>
-              <!-- Neck -->
-              <path d="M58 36 L48 68 L112 68 L102 36 Z" fill="#0369a1"/>
-              <path d="M60 36 L52 64 L80 64 L80 36 Z" fill="rgba(255,255,255,0.08)"/>
-              <!-- Body -->
-              <rect x="25" y="68" width="110" height="248" rx="22" fill="url(#body)"/>
-              <!-- Water fill animation -->
-              <rect x="25" y="200" width="110" height="120" fill="url(#water)" clip-path="url(#bodyClip)"/>
-              <!-- Water wave line -->
-              <path d="M25 200 Q50 190 80 200 Q110 210 135 200" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
-              <!-- Label bg -->
-              <rect x="32" y="120" width="96" height="108" rx="14" fill="rgba(255,255,255,0.14)"/>
-              <!-- Label border -->
-              <rect x="33" y="121" width="94" height="106" rx="13" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
-              <!-- Brand text -->
-              <text x="80" y="152" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="white" opacity=".9">LUXURY</text>
-              <text x="80" y="178" text-anchor="middle" font-family="Georgia,serif" font-size="24" font-weight="900" fill="white">H₂O</text>
-              <line x1="46" y1="188" x2="114" y2="188" stroke="rgba(255,255,255,0.3)" stroke-width=".8"/>
-              <text x="80" y="202" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(255,255,255,0.6)">PURE DRINKING WATER</text>
-              <!-- Shine -->
-              <rect x="36" y="76" width="14" height="160" rx="7" fill="rgba(255,255,255,0.15)"/>
-              <rect x="54" y="80" width="6" height="70" rx="3" fill="rgba(255,255,255,0.08)"/>
-              <!-- Highlight dot -->
-              <circle cx="42" cy="86" r="4" fill="rgba(255,255,255,0.25)"/>
-              <!-- Base -->
-              <rect x="25" y="294" width="110" height="22" rx="11" fill="url(#base)"/>
-            </svg>
+          <!-- ══ REAL BOTTLE IMAGE ══ -->
+          <div class="absolute inset-0 flex items-end justify-center float"
+               style="padding-bottom:0px;">
+            <img src="https://i.ibb.co/gbXR8sRJ/image.png"
+                 alt="LUXURY H₂O Bottle"
+                 style="height:400px;
+                        width:auto;
+                        object-fit:contain;
+                        object-position:center bottom;
+                        filter:drop-shadow(0 28px 50px rgba(3,105,161,0.65))
+                               drop-shadow(0 6px 20px rgba(56,189,248,0.45));
+                        animation:float 4s ease-in-out infinite;">
           </div>
 
-          <!-- Floating droplets around bottle -->
-          <div class="absolute" style="top:20px;right:10px;animation:float 3s ease-in-out infinite .5s;">
-            <svg viewBox="0 0 30 38" width="24" height="30"><path d="M15 2 Q28 16 28 24 A13 13 0 0 1 2 24 Q2 16 15 2Z" fill="rgba(56,189,248,0.5)"/></svg>
+          <!-- Floating RO badge -->
+          <div class="absolute glass-card px-3 py-2 text-center"
+               style="top:30px;right:0px;animation:float 3s ease-in-out infinite .5s;">
+            <div class="text-white font-black text-base leading-none">RO</div>
+            <div class="text-white/50 text-[9px] mt-0.5">Purified</div>
           </div>
-          <div class="absolute" style="bottom:60px;left:5px;animation:float 4s ease-in-out infinite 1.5s;">
-            <svg viewBox="0 0 20 26" width="16" height="20"><path d="M10 1 Q19 11 19 17 A9 9 0 0 1 1 17 Q1 11 10 1Z" fill="rgba(125,211,252,0.4)"/></svg>
+
+          <!-- Floating UV badge -->
+          <div class="absolute glass-card px-3 py-2 text-center"
+               style="top:110px;left:-10px;animation:float 4s ease-in-out infinite 1.5s;">
+            <div class="text-white font-black text-base leading-none">UV</div>
+            <div class="text-white/50 text-[9px] mt-0.5">Sterilized</div>
           </div>
-          <div class="absolute" style="top:80px;left:-10px;animation:float 3.5s ease-in-out infinite 2s;">
-            <svg viewBox="0 0 16 20" width="12" height="16"><path d="M8 1 Q15 8 15 13 A7 7 0 0 1 1 13 Q1 8 8 1Z" fill="rgba(186,230,253,0.5)"/></svg>
+
+          <!-- Floating Ozone badge -->
+          <div class="absolute glass-card px-3 py-2 text-center"
+               style="top:200px;right:-5px;animation:float 3.5s ease-in-out infinite 1s;">
+            <div class="text-white font-black text-base leading-none">O₃</div>
+            <div class="text-white/50 text-[9px] mt-0.5">Ozone</div>
           </div>
+
+          <!-- Floating droplets -->
+          <div class="absolute" style="top:15px;left:30px;animation:float 3s ease-in-out infinite .8s;">
+            <svg viewBox="0 0 30 38" width="22" height="28"><path d="M15 2 Q28 16 28 24 A13 13 0 0 1 2 24 Q2 16 15 2Z" fill="rgba(56,189,248,0.55)"/></svg>
+          </div>
+          <div class="absolute" style="bottom:70px;left:0px;animation:float 4s ease-in-out infinite 2s;">
+            <svg viewBox="0 0 20 26" width="15" height="19"><path d="M10 1 Q19 11 19 17 A9 9 0 0 1 1 17 Q1 11 10 1Z" fill="rgba(125,211,252,0.45)"/></svg>
+          </div>
+          <div class="absolute" style="bottom:120px;right:5px;animation:float 3.5s ease-in-out infinite 1.2s;">
+            <svg viewBox="0 0 16 20" width="11" height="14"><path d="M8 1 Q15 8 15 13 A7 7 0 0 1 1 13 Q1 8 8 1Z" fill="rgba(186,230,253,0.5)"/></svg>
+          </div>
+
+          <!-- Pure badge bottom -->
+          <div class="absolute bottom-2 left-1/2 -translate-x-1/2 glass-card px-5 py-2 flex items-center gap-2 whitespace-nowrap">
+            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse inline-block"></span>
+            <span class="text-white text-xs font-bold">RO + UV + Ozone Purified</span>
+          </div>
+
         </div>
       </div>
+      <!-- ══ END Right ══ -->
 
     </div>
   </div>
@@ -582,18 +574,38 @@ html, body {
             </div>
 
             <div class="space-y-3">
+
+              <!-- ✅ UPDATED: Founder -->
               <div class="flex items-center gap-3 glass-card p-3">
                 <i class="fas fa-user-tie text-blue-300 w-5 text-center"></i>
-                <div class="text-sm text-white/80"><strong class="text-white">Director:</strong> Ms. Anaras Devi</div>
+                <div class="text-sm text-white/80">
+                  <strong class="text-white">Founder:</strong> Ms. Anaras Devi
+                </div>
               </div>
+
+              <!-- ✅ UPDATED: Co-Founder -->
               <div class="flex items-center gap-3 glass-card p-3">
                 <i class="fas fa-user-tie text-blue-300 w-5 text-center"></i>
-                <div class="text-sm text-white/80"><strong class="text-white">Director:</strong> Mr. Adarsh Singh</div>
+                <div class="text-sm text-white/80">
+                  <strong class="text-white">Co-Founder:</strong> Mr. Rajesh Kumar Singh
+                </div>
               </div>
+
+              <!-- ✅ UPDATED: Director & CEO -->
+              <div class="flex items-center gap-3 glass-card p-3">
+                <i class="fas fa-briefcase text-blue-300 w-5 text-center"></i>
+                <div class="text-sm text-white/80">
+                  <strong class="text-white">Director & CEO:</strong> Mr. Adarsh Singh
+                </div>
+              </div>
+
+              <!-- Address — same -->
               <div class="flex items-center gap-3 glass-card p-3">
                 <i class="fas fa-map-marker-alt text-blue-300 w-5 text-center"></i>
                 <div class="text-sm text-white/80">Padrauna, Lamichour Bazar, Bhore, Gopalganj, Bihar 841426</div>
               </div>
+
+              <!-- GST — same -->
               <div class="flex items-center gap-3 glass-card p-3">
                 <i class="fas fa-file-invoice text-blue-300 w-5 text-center"></i>
                 <div class="text-sm text-white/80"><strong class="text-white">GST:</strong> 10AAMCD1575G1ZW</div>
@@ -610,7 +622,7 @@ html, body {
         </div>
       </div>
 
-      <!-- Text -->
+      <!-- Text — same as before -->
       <div class="space-y-6 reveal-right">
         <div class="badge badge-blue"><i class="fas fa-building text-xs"></i> About the Company</div>
         <h2 class="font-display font-black text-slate-800 leading-tight" style="font-size:clamp(2rem,4vw,3rem);">
@@ -643,9 +655,11 @@ html, body {
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
+
 
 
   <!-- ════════════════════════════════════
@@ -657,7 +671,7 @@ html, body {
     <div class="text-center mb-14 reveal">
       <div class="badge badge-blue mx-auto mb-4"><i class="fas fa-quote-left text-xs"></i> Leadership</div>
       <h2 class="font-display font-black text-slate-800 mb-3" style="font-size:clamp(2rem,4vw,3rem);">
-        Message from Our <span class="grad-text-blue">Directors</span>
+        Message from Our <span class="grad-text-blue">Leaders</span>
       </h2>
       <p class="text-slate-500 text-base max-w-xl mx-auto">The vision and values behind DivyaShakti MultiServices — in their own words.</p>
     </div>
@@ -665,44 +679,87 @@ html, body {
     <div class="grid md:grid-cols-2 gap-8">
 
       <!-- ══════════════════════════════
-           Director 1 — Ms. Anaras Devi
-           CIRCLE IMAGE STYLE
+           LEFT COLUMN
+           Anaras Devi + Rajesh Kumar Singh
+           Both circles in one card
       ═══════════════════════════════ -->
       <div class="hover-card rounded-3xl overflow-hidden shadow-xl reveal"
            style="transition-delay:.1s;background:linear-gradient(160deg,#061828 0%,#0c4a6e 60%,#0369a1 100%);">
 
-        <!-- Circle image header -->
-        <div class="pt-10 pb-6 px-8 flex flex-col items-center text-center relative">
+        <!-- Two circles side by side -->
+        <div class="pt-10 pb-6 px-6 relative">
 
-          <!-- Decorative ring behind circle -->
-          <div class="absolute top-6 left-1/2 -translate-x-1/2 w-40 h-40 rounded-full"
-               style="background:radial-gradient(circle,rgba(56,189,248,0.18),transparent);border:1px dashed rgba(56,189,248,0.2);"></div>
-
-          <!-- Circle image -->
-          <div class="relative z-10 mb-4">
-            <div class="w-32 h-32 rounded-full overflow-hidden mx-auto"
-                 style="border:4px solid rgba(56,189,248,0.5);
-                        box-shadow:0 0 0 6px rgba(56,189,248,0.1),
-                                   0 16px 40px rgba(0,0,0,0.4);">
-              <img src="https://i.ibb.co/hJf7LvY2/a3b0f9a9-7bbe-49fe-8f9f-3bf0574bbce4.jpg"
-                   alt="Ms. Anaras Devi"
-                   class="w-full h-full object-cover object-top">
-            </div>
-            <!-- Online dot -->
-            <div class="absolute bottom-1 right-1 w-5 h-5 rounded-full border-2 border-slate-800 flex items-center justify-center"
-                 style="background:#22c55e;">
-              <span class="w-2 h-2 rounded-full bg-white animate-pulse inline-block"></span>
+          <!-- Section label -->
+          <div class="text-center mb-7">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
+                 style="background:rgba(255,255,255,0.07);border:1px solid rgba(56,189,248,0.2);">
+              <i class="fas fa-star text-yellow-400 text-xs"></i>
+              <span class="text-white/60 text-xs font-semibold uppercase tracking-widest">Founders</span>
+              <i class="fas fa-star text-yellow-400 text-xs"></i>
             </div>
           </div>
 
-          <!-- Name + title -->
-          <div class="font-display font-bold text-white text-xl">Ms. Anaras Devi</div>
-          <div class="flex items-center justify-center gap-2 mt-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 inline-block"></span>
-            <span class="text-blue-300 text-sm font-semibold">Founder</span>
-            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 inline-block"></span>
+          <!-- Both circles -->
+          <div class="flex items-start justify-center gap-6">
+
+            <!-- Anaras Devi circle -->
+            <div class="flex flex-col items-center text-center flex-1">
+              <!-- Deco ring -->
+              <div class="relative mb-3">
+                <div class="absolute -inset-3 rounded-full"
+                     style="background:radial-gradient(circle,rgba(56,189,248,0.15),transparent);border:1px dashed rgba(56,189,248,0.2);"></div>
+                <div class="relative w-28 h-28 rounded-full overflow-hidden mx-auto"
+                     style="border:4px solid rgba(56,189,248,0.5);
+                            box-shadow:0 0 0 5px rgba(56,189,248,0.1),0 12px 32px rgba(0,0,0,0.4);">
+                  <img src="https://i.ibb.co/hJf7LvY2/a3b0f9a9-7bbe-49fe-8f9f-3bf0574bbce4.jpg"
+                       alt="Ms. Anaras Devi"
+                       class="w-full h-full object-cover object-top">
+                </div>
+                <!-- Green dot -->
+                <div class="absolute bottom-0.5 right-0.5 w-5 h-5 rounded-full border-2 border-slate-800 flex items-center justify-center"
+                     style="background:#22c55e;">
+                  <span class="w-2 h-2 rounded-full bg-white animate-pulse inline-block"></span>
+                </div>
+              </div>
+              <div class="font-bold text-white text-sm leading-tight">Ms. Anaras Devi</div>
+              <div class="flex items-center justify-center gap-1.5 mt-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 inline-block"></span>
+                <span class="text-yellow-300 text-xs font-semibold">Founder</span>
+              </div>
+            </div>
+
+            <!-- Vertical divider -->
+            <div class="w-px self-stretch mt-4"
+                 style="background:linear-gradient(to bottom,transparent,rgba(56,189,248,0.3),transparent);min-height:120px;"></div>
+
+            <!-- Rajesh Kumar Singh circle -->
+            <div class="flex flex-col items-center text-center flex-1">
+              <div class="relative mb-3">
+                <div class="absolute -inset-3 rounded-full"
+                     style="background:radial-gradient(circle,rgba(56,189,248,0.15),transparent);border:1px dashed rgba(56,189,248,0.2);"></div>
+                <div class="relative w-28 h-28 rounded-full overflow-hidden mx-auto"
+                     style="border:4px solid rgba(56,189,248,0.5);
+                            box-shadow:0 0 0 5px rgba(56,189,248,0.1),0 12px 32px rgba(0,0,0,0.4);">
+                  <img src="https://i.ibb.co/BVkLCQXn/image.png"
+                       alt="Mr. Rajesh Kumar Singh"
+                       class="w-full h-full object-cover object-top">
+                </div>
+                <!-- Green dot -->
+                <div class="absolute bottom-0.5 right-0.5 w-5 h-5 rounded-full border-2 border-slate-800 flex items-center justify-center"
+                     style="background:#22c55e;">
+                  <span class="w-2 h-2 rounded-full bg-white animate-pulse inline-block"></span>
+                </div>
+              </div>
+              <div class="font-bold text-white text-sm leading-tight">Mr. Rajesh Kumar Singh</div>
+              <div class="flex items-center justify-center gap-1.5 mt-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-yellow-400 inline-block"></span>
+                <span class="text-yellow-300 text-xs font-semibold">Co-Founder</span>
+              </div>
+            </div>
+
           </div>
-          <div class="text-white/30 text-xs mt-1">DivyaShakti MultiServices Pvt. Ltd.</div>
+
+          <div class="text-white/30 text-xs text-center mt-4">DivyaShakti MultiServices Pvt. Ltd.</div>
         </div>
 
         <!-- Divider -->
@@ -720,8 +777,8 @@ html, body {
           <div class="flex items-center justify-between pt-5"
                style="border-top:1px solid rgba(255,255,255,0.1);">
             <div>
-              <div class="font-bold text-white text-sm">Ms. Anaras Devi</div>
-              <div class="text-white/40 text-xs">Director & Co-Founder</div>
+              <div class="font-bold text-white text-sm">Anaras Devi & Rajesh Kumar Singh</div>
+              <div class="text-white/40 text-xs">Founder & Co-Founder, DivyaShakti MultiServices Pvt. Ltd.</div>
             </div>
             <div class="w-10 h-10 rounded-full flex items-center justify-center"
                  style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.25);">
@@ -732,62 +789,65 @@ html, body {
       </div>
 
       <!-- ══════════════════════════════
-           Director 2 — Mr. Adarsh Singh
-           PRINCIPAL CARD STYLE (like image)
-           Large photo left + message right
+           RIGHT COLUMN
+           Mr. Adarsh Singh — Principal Style
       ═══════════════════════════════ -->
       <div class="hover-card rounded-3xl overflow-hidden shadow-xl reveal"
            style="transition-delay:.2s;background:linear-gradient(160deg,#061828 0%,#0c4a6e 60%,#0369a1 100%);">
 
-        <!-- Top: Photo + Name side by side (principal style) -->
-        <div class="grid grid-cols-[160px,1fr] items-stretch min-h-[200px]">
+        <!-- Photo + Name side by side (principal style) -->
+        <div class="grid grid-cols-[160px,1fr] items-stretch" style="min-height:220px;">
 
-          <!-- Photo — full height, no crop -->
+          <!-- Photo left — full height -->
           <div class="relative overflow-hidden"
                style="border-right:1px solid rgba(56,189,248,0.15);">
             <img src="https://i.ibb.co/sdSPzqrq/0a9444fa-9248-4fc0-bb89-6c12e1b73c48.jpg"
                  alt="Mr. Adarsh Singh"
                  class="w-full h-full object-cover object-top block"
-                 style="min-height:200px;">
-            <!-- subtle overlay -->
+                 style="min-height:220px;">
             <div class="absolute inset-0"
                  style="background:linear-gradient(to right,transparent 60%,rgba(12,74,110,0.3));"></div>
           </div>
 
-          <!-- Name + badge right side -->
+          <!-- Info right -->
           <div class="p-6 flex flex-col justify-center">
-            <!-- Principal message badge (like Vidya Niketan) -->
-            <div class="inline-flex items-center gap-3 mb-4 px-4 py-3 rounded-2xl w-fit"
+
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2.5 mb-4 px-3 py-2.5 rounded-2xl w-fit"
                  style="background:rgba(255,255,255,0.1);border:1px solid rgba(56,189,248,0.2);">
-              <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white text-sm shrink-0"
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center text-white shrink-0"
                    style="background:linear-gradient(135deg,#0369a1,#0ea5e9);">
-                <i class="fas fa-user-tie"></i>
+                <i class="fas fa-user-tie text-xs"></i>
               </div>
               <div>
-                <div class="font-bold text-white text-sm leading-tight">Director's Message</div>
-                <div class="text-blue-300 text-xs">Mr. Adarsh Singh</div>
+                <div class="font-bold text-white text-xs leading-tight">Director's Message</div>
+                <div class="text-blue-300 text-[10px]">Mr. Adarsh Singh</div>
               </div>
             </div>
 
             <div class="font-display font-bold text-white text-xl leading-tight mb-1">Mr. Adarsh Singh</div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 mb-1">
               <span class="w-1.5 h-1.5 rounded-full bg-blue-400 inline-block"></span>
               <span class="text-blue-300 text-sm font-semibold">Director & CEO</span>
             </div>
-            <div class="text-white/30 text-xs mt-1">DivyaShakti MultiServices Pvt. Ltd.</div>
+            <div class="text-white/30 text-xs mb-4">DivyaShakti MultiServices Pvt. Ltd.</div>
 
             <!-- Tags -->
-            <div class="flex flex-wrap gap-2 mt-4">
+            <div class="flex flex-wrap gap-2">
               <span class="text-[10px] px-2.5 py-1 rounded-full font-semibold"
-                    style="background:rgba(56,189,248,0.12);color:#7dd3fc;">Co-Educational</span>
+                    style="background:rgba(56,189,248,0.12);color:#7dd3fc;">
+                <i class="fas fa-droplet text-[9px] mr-1"></i>LUXURY H₂O
+              </span>
               <span class="text-[10px] px-2.5 py-1 rounded-full font-semibold"
-                    style="background:rgba(56,189,248,0.12);color:#7dd3fc;">Since 2024</span>
+                    style="background:rgba(245,158,11,0.12);color:#fcd34d;">
+                <i class="fas fa-map-marker-alt text-[9px] mr-1"></i>Bihar
+              </span>
             </div>
           </div>
         </div>
 
         <!-- Divider -->
-        <div class="mx-8 my-4" style="height:1px;background:linear-gradient(90deg,transparent,rgba(56,189,248,0.3),transparent);"></div>
+        <div class="mx-8 my-5" style="height:1px;background:linear-gradient(90deg,transparent,rgba(56,189,248,0.3),transparent);"></div>
 
         <!-- Message Body -->
         <div class="px-8 pb-8">
@@ -802,7 +862,7 @@ html, body {
                style="border-top:1px solid rgba(255,255,255,0.1);">
             <div>
               <div class="font-bold text-white text-sm">Mr. Adarsh Singh</div>
-              <div class="text-white/40 text-xs">Director & Co-Founder</div>
+              <div class="text-white/40 text-xs">Director & CEO, DivyaShakti MultiServices Pvt. Ltd.</div>
             </div>
             <div class="w-10 h-10 rounded-full flex items-center justify-center"
                  style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.25);">
@@ -815,6 +875,7 @@ html, body {
     </div>
   </div>
 </section>
+
 <!-- ════════════════════════════════════
      WATER PURIFICATION PROCESS
 ═════════════════════════════════════ -->
@@ -1028,7 +1089,7 @@ html, body {
 
     <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
-      <!-- LUXURY H2O -->
+     <!-- LUXURY H2O -->
       <div class="hover-card rounded-3xl overflow-hidden shadow-xl border border-slate-100 reveal" style="transition-delay:.1s;">
         <div class="h-56 flex items-center justify-center relative overflow-hidden"
              style="background:linear-gradient(160deg,#061828 0%,#0369a1 60%,#0ea5e9 100%);">
@@ -1036,24 +1097,18 @@ html, body {
           <div class="absolute top-3 left-3 flex items-center gap-1.5 bg-green-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">
             <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> Active Brand
           </div>
-          <!-- Small bottle -->
-          <div class="float">
-            <svg viewBox="0 0 120 240" width="90" height="180" xmlns="http://www.w3.org/2000/svg"
-                 style="filter:drop-shadow(0 12px 32px rgba(0,0,0,0.4));">
-              <rect x="40" y="6" width="40" height="22" rx="7" fill="#075985"/>
-              <path d="M42 28 L34 52 L86 52 Z" fill="#0369a1"/>
-              <rect x="18" y="52" width="84" height="168" rx="18" fill="url(#bb1)"/>
-              <clipPath id="bc2"><rect x="18" y="52" width="84" height="168" rx="18"/></clipPath>
-              <rect x="18" y="158" width="84" height="68" fill="rgba(56,189,248,.38)" clip-path="url(#bc2)"/>
-              <rect x="24" y="96" width="72" height="80" rx="10" fill="rgba(255,255,255,.17)"/>
-              <text x="60" y="122" text-anchor="middle" font-family="serif" font-size="9" font-weight="700" fill="white">LUXURY</text>
-              <text x="60" y="143" text-anchor="middle" font-family="serif" font-size="18" font-weight="900" fill="white">H₂O</text>
-              <text x="60" y="158" text-anchor="middle" font-family="sans-serif" font-size="6.5" fill="rgba(255,255,255,.6)">PURE WATER</text>
-              <rect x="26" y="58" width="10" height="118" rx="5" fill="rgba(255,255,255,.13)"/>
-              <rect x="18" y="200" width="84" height="14" rx="7" fill="#075985"/>
-              <defs><linearGradient id="bb1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:.88"/><stop offset="100%" style="stop-color:#0369a1"/></linearGradient></defs>
-            </svg>
+
+          <!-- ✅ REAL BOTTLE IMAGE (SVG replaced) -->
+          <div class="float relative z-10">
+            <img src="https://i.ibb.co/gbXR8sRJ/image.png"
+                 alt="LUXURY H₂O Bottle"
+                 style="height:200px;
+                        width:auto;
+                        object-fit:contain;
+                        filter:drop-shadow(0 12px 32px rgba(0,0,0,0.5))
+                               drop-shadow(0 4px 12px rgba(56,189,248,0.3));">
           </div>
+
         </div>
         <div class="p-7 bg-white">
           <div class="flex items-start justify-between mb-3">
@@ -1070,6 +1125,7 @@ html, body {
           </a>
         </div>
       </div>
+
 
       <!-- Coming Soon -->
       <div class="hover-card rounded-3xl overflow-hidden shadow-md border-2 border-dashed border-slate-200 reveal" style="transition-delay:.2s;">
@@ -1106,7 +1162,6 @@ html, body {
     </div>
   </div>
 </section>
-
 
 
 
@@ -1167,29 +1222,27 @@ html, body {
 
       <!-- 250ml -->
       <div class="hover-card bg-white rounded-3xl overflow-hidden shadow-xl reveal" style="transition-delay:.1s;">
-        <div class="h-44 flex items-center justify-center relative" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd);">
-          <span class="absolute top-3 right-3 text-xs font-bold text-white px-2.5 py-1 rounded-full" style="background:#0ea5e9;">Events</span>
+        <div class="h-44 flex items-center justify-center relative overflow-hidden"
+             style="background:linear-gradient(135deg,#e0f2fe,#bae6fd);">
+          <span class="absolute top-3 right-3 text-xs font-bold text-white px-2.5 py-1 rounded-full z-10"
+                style="background:#0ea5e9;">Events</span>
           <div class="float">
-            <svg viewBox="0 0 80 170" width="55" height="125" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 8px 20px rgba(3,105,161,0.4));">
-              <rect x="26" y="4" width="28" height="16" rx="5" fill="#0369a1"/>
-              <path d="M28 20 L22 36 L58 36 Z" fill="#0ea5e9"/>
-              <rect x="12" y="36" width="56" height="116" rx="13" fill="url(#p1)"/>
-              <clipPath id="c1"><rect x="12" y="36" width="56" height="116" rx="13"/></clipPath>
-              <rect x="12" y="112" width="56" height="45" fill="rgba(56,189,248,.35)" clip-path="url(#c1)"/>
-              <rect x="17" y="72" width="46" height="50" rx="7" fill="rgba(255,255,255,.2)"/>
-              <text x="40" y="90" text-anchor="middle" font-family="serif" font-size="6.5" font-weight="700" fill="white">LUXURY</text>
-              <text x="40" y="104" text-anchor="middle" font-family="serif" font-size="10" font-weight="900" fill="white">H₂O</text>
-              <text x="40" y="115" text-anchor="middle" font-family="sans-serif" font-size="5" fill="rgba(255,255,255,.6)">250 ml</text>
-              <rect x="12" y="132" width="56" height="10" rx="5" fill="#075985"/>
-              <rect x="19" y="40" width="7" height="82" rx="3.5" fill="rgba(255,255,255,.14)"/>
-              <defs><linearGradient id="p1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#38bdf8;stop-opacity:.9"/><stop offset="100%" style="stop-color:#0369a1"/></linearGradient></defs>
-            </svg>
+            <img src="https://i.ibb.co/gbXR8sRJ/image.png"
+                 alt="LUXURY H₂O 250ml"
+                 style="height:148px;
+                        width:auto;
+                        object-fit:contain;
+                        filter:drop-shadow(0 8px 20px rgba(3,105,161,0.45));">
           </div>
+          <!-- Size label bottom -->
+          <div class="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs font-black text-blue-700 px-3 py-1 rounded-full"
+               style="background:rgba(255,255,255,0.7);">250 ml</div>
         </div>
         <div class="p-5">
           <h4 class="font-bold text-slate-800">250ml Bottle</h4>
           <p class="text-slate-500 text-xs mt-1 mb-4 leading-relaxed">Perfect for events, travel & on-the-go.</p>
-          <a href="https://wa.me/917783877709?text=Hello%2C%20I%20want%20to%20order%20LUXURY%20H2O%20250ml%20bottles." target="_blank"
+          <a href="https://wa.me/917783877709?text=Hello%2C%20I%20want%20to%20order%20LUXURY%20H2O%20250ml%20bottles."
+             target="_blank"
              class="flex items-center justify-center gap-2 w-full text-white font-bold py-2.5 rounded-xl text-sm transition-all hover:scale-105"
              style="background:linear-gradient(135deg,#25d366,#128c7e);">
             <i class="fab fa-whatsapp"></i> Order
@@ -1199,29 +1252,26 @@ html, body {
 
       <!-- 500ml -->
       <div class="hover-card bg-white rounded-3xl overflow-hidden shadow-xl reveal" style="transition-delay:.15s;">
-        <div class="h-44 flex items-center justify-center relative" style="background:linear-gradient(135deg,#bae6fd,#7dd3fc);">
-          <span class="absolute top-3 right-3 text-xs font-bold text-white px-2.5 py-1 rounded-full" style="background:#f97316;">Popular</span>
+        <div class="h-44 flex items-center justify-center relative overflow-hidden"
+             style="background:linear-gradient(135deg,#bae6fd,#7dd3fc);">
+          <span class="absolute top-3 right-3 text-xs font-bold text-white px-2.5 py-1 rounded-full z-10"
+                style="background:#f97316;">Popular</span>
           <div class="float" style="animation-delay:.3s;">
-            <svg viewBox="0 0 80 170" width="55" height="125" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 8px 20px rgba(3,105,161,0.4));">
-              <rect x="26" y="4" width="28" height="16" rx="5" fill="#0369a1"/>
-              <path d="M28 20 L22 36 L58 36 Z" fill="#0ea5e9"/>
-              <rect x="12" y="36" width="56" height="116" rx="13" fill="url(#p2)"/>
-              <clipPath id="c2"><rect x="12" y="36" width="56" height="116" rx="13"/></clipPath>
-              <rect x="12" y="112" width="56" height="45" fill="rgba(56,189,248,.35)" clip-path="url(#c2)"/>
-              <rect x="17" y="72" width="46" height="50" rx="7" fill="rgba(255,255,255,.2)"/>
-              <text x="40" y="90" text-anchor="middle" font-family="serif" font-size="6.5" font-weight="700" fill="white">LUXURY</text>
-              <text x="40" y="104" text-anchor="middle" font-family="serif" font-size="10" font-weight="900" fill="white">H₂O</text>
-              <text x="40" y="115" text-anchor="middle" font-family="sans-serif" font-size="5" fill="rgba(255,255,255,.6)">500 ml</text>
-              <rect x="12" y="132" width="56" height="10" rx="5" fill="#075985"/>
-              <rect x="19" y="40" width="7" height="82" rx="3.5" fill="rgba(255,255,255,.14)"/>
-              <defs><linearGradient id="p2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#38bdf8"/><stop offset="100%" style="stop-color:#0369a1"/></linearGradient></defs>
-            </svg>
+            <img src="https://i.ibb.co/gbXR8sRJ/image.png"
+                 alt="LUXURY H₂O 500ml"
+                 style="height:148px;
+                        width:auto;
+                        object-fit:contain;
+                        filter:drop-shadow(0 8px 20px rgba(3,105,161,0.45));">
           </div>
+          <div class="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs font-black text-blue-700 px-3 py-1 rounded-full"
+               style="background:rgba(255,255,255,0.7);">500 ml</div>
         </div>
         <div class="p-5">
           <h4 class="font-bold text-slate-800">500ml Bottle</h4>
           <p class="text-slate-500 text-xs mt-1 mb-4 leading-relaxed">Daily personal use, offices & meetings.</p>
-          <a href="https://wa.me/917783877709?text=Hello%2C%20I%20want%20to%20order%20LUXURY%20H2O%20500ml%20bottles." target="_blank"
+          <a href="https://wa.me/917783877709?text=Hello%2C%20I%20want%20to%20order%20LUXURY%20H2O%20500ml%20bottles."
+             target="_blank"
              class="flex items-center justify-center gap-2 w-full text-white font-bold py-2.5 rounded-xl text-sm transition-all hover:scale-105"
              style="background:linear-gradient(135deg,#25d366,#128c7e);">
             <i class="fab fa-whatsapp"></i> Order
@@ -1231,29 +1281,26 @@ html, body {
 
       <!-- 1L -->
       <div class="hover-card bg-white rounded-3xl overflow-hidden shadow-xl reveal" style="transition-delay:.2s;">
-        <div class="h-44 flex items-center justify-center relative" style="background:linear-gradient(135deg,#7dd3fc,#38bdf8);">
-          <span class="absolute top-3 right-3 text-xs font-bold text-white px-2.5 py-1 rounded-full" style="background:#0369a1;">Family</span>
+        <div class="h-44 flex items-center justify-center relative overflow-hidden"
+             style="background:linear-gradient(135deg,#7dd3fc,#38bdf8);">
+          <span class="absolute top-3 right-3 text-xs font-bold text-white px-2.5 py-1 rounded-full z-10"
+                style="background:#0369a1;">Family</span>
           <div class="float" style="animation-delay:.6s;">
-            <svg viewBox="0 0 80 190" width="52" height="128" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 8px 20px rgba(3,105,161,0.4));">
-              <rect x="25" y="3" width="30" height="18" rx="6" fill="#075985"/>
-              <path d="M27 21 L20 40 L60 40 Z" fill="#0369a1"/>
-              <rect x="10" y="40" width="60" height="134" rx="15" fill="url(#p3)"/>
-              <clipPath id="c3"><rect x="10" y="40" width="60" height="134" rx="15"/></clipPath>
-              <rect x="10" y="130" width="60" height="54" fill="rgba(56,189,248,.35)" clip-path="url(#c3)"/>
-              <rect x="15" y="80" width="50" height="56" rx="8" fill="rgba(255,255,255,.2)"/>
-              <text x="40" y="100" text-anchor="middle" font-family="serif" font-size="6.5" font-weight="700" fill="white">LUXURY</text>
-              <text x="40" y="114" text-anchor="middle" font-family="serif" font-size="10" font-weight="900" fill="white">H₂O</text>
-              <text x="40" y="127" text-anchor="middle" font-family="sans-serif" font-size="5" fill="rgba(255,255,255,.6)">1 Litre</text>
-              <rect x="10" y="152" width="60" height="12" rx="6" fill="#075985"/>
-              <rect x="17" y="44" width="8" height="96" rx="4" fill="rgba(255,255,255,.13)"/>
-              <defs><linearGradient id="p3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0ea5e9"/><stop offset="100%" style="stop-color:#075985"/></linearGradient></defs>
-            </svg>
+            <img src="https://i.ibb.co/gbXR8sRJ/image.png"
+                 alt="LUXURY H₂O 1L"
+                 style="height:148px;
+                        width:auto;
+                        object-fit:contain;
+                        filter:drop-shadow(0 8px 20px rgba(3,105,161,0.45));">
           </div>
+          <div class="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs font-black text-blue-700 px-3 py-1 rounded-full"
+               style="background:rgba(255,255,255,0.7);">1 Litre</div>
         </div>
         <div class="p-5">
           <h4 class="font-bold text-slate-800">1 Litre Bottle</h4>
           <p class="text-slate-500 text-xs mt-1 mb-4 leading-relaxed">Home, restaurants & all-day hydration.</p>
-          <a href="https://wa.me/917783877709?text=Hello%2C%20I%20want%20to%20order%20LUXURY%20H2O%201L%20bottles." target="_blank"
+          <a href="https://wa.me/917783877709?text=Hello%2C%20I%20want%20to%20order%20LUXURY%20H2O%201L%20bottles."
+             target="_blank"
              class="flex items-center justify-center gap-2 w-full text-white font-bold py-2.5 rounded-xl text-sm transition-all hover:scale-105"
              style="background:linear-gradient(135deg,#25d366,#128c7e);">
             <i class="fab fa-whatsapp"></i> Order
@@ -1263,29 +1310,27 @@ html, body {
 
       <!-- 20L Jar -->
       <div class="hover-card bg-white rounded-3xl overflow-hidden shadow-xl reveal" style="transition-delay:.25s;">
-        <div class="h-44 flex items-center justify-center relative" style="background:linear-gradient(135deg,#0ea5e9,#0369a1);">
-          <span class="absolute top-3 right-3 text-xs font-bold text-slate-800 px-2.5 py-1 rounded-full" style="background:#fbbf24;">Best Value</span>
+        <div class="h-44 flex items-center justify-center relative overflow-hidden"
+             style="background:linear-gradient(135deg,#0ea5e9,#0369a1);">
+          <span class="absolute top-3 right-3 text-xs font-bold text-slate-800 px-2.5 py-1 rounded-full z-10"
+                style="background:#fbbf24;">Best Value</span>
           <div class="float" style="animation-delay:.9s;">
-            <svg viewBox="0 0 100 160" width="80" height="128" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 8px 20px rgba(0,0,0,0.3));">
-              <rect x="33" y="5" width="34" height="15" rx="5" fill="#0c4a6e"/>
-              <path d="M30 28 Q10 28 10 52 Q10 72 30 72" stroke="#075985" stroke-width="6" fill="none" stroke-linecap="round"/>
-              <path d="M70 28 Q90 28 90 52 Q90 72 70 72" stroke="#075985" stroke-width="6" fill="none" stroke-linecap="round"/>
-              <rect x="20" y="20" width="60" height="124" rx="16" fill="url(#p4)"/>
-              <clipPath id="c4"><rect x="20" y="20" width="60" height="124" rx="16"/></clipPath>
-              <rect x="20" y="96" width="60" height="58" fill="rgba(56,189,248,.38)" clip-path="url(#c4)"/>
-              <rect x="26" y="52" width="48" height="56" rx="8" fill="rgba(255,255,255,.17)"/>
-              <text x="50" y="72" text-anchor="middle" font-family="serif" font-size="7" font-weight="700" fill="white">LUXURY</text>
-              <text x="50" y="88" text-anchor="middle" font-family="serif" font-size="12" font-weight="900" fill="white">H₂O</text>
-              <text x="50" y="100" text-anchor="middle" font-family="sans-serif" font-size="5.5" fill="rgba(255,255,255,.6)">20 Litre</text>
-              <rect x="26" y="26" width="8" height="84" rx="4" fill="rgba(255,255,255,.12)"/>
-              <defs><linearGradient id="p4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#38bdf8;stop-opacity:.82"/><stop offset="100%" style="stop-color:#0c4a6e"/></linearGradient></defs>
-            </svg>
+            <img src="https://i.ibb.co/gbXR8sRJ/image.png"
+                 alt="LUXURY H₂O 20L"
+                 style="height:148px;
+                        width:auto;
+                        object-fit:contain;
+                        filter:drop-shadow(0 8px 20px rgba(0,0,0,0.4))
+                               brightness(1.1);">
           </div>
+          <div class="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs font-black text-white px-3 py-1 rounded-full"
+               style="background:rgba(3,105,161,0.7);">20 Litre Jar</div>
         </div>
         <div class="p-5">
           <h4 class="font-bold text-slate-800">20L Water Jar</h4>
           <p class="text-slate-500 text-xs mt-1 mb-4 leading-relaxed">Bulk supply for homes, offices & business.</p>
-          <a href="https://wa.me/917783877709?text=Hello%2C%20I%20want%20to%20order%20LUXURY%20H2O%2020L%20jars." target="_blank"
+          <a href="https://wa.me/917783877709?text=Hello%2C%20I%20want%20to%20order%20LUXURY%20H2O%2020L%20jars."
+             target="_blank"
              class="flex items-center justify-center gap-2 w-full text-white font-bold py-2.5 rounded-xl text-sm transition-all hover:scale-105"
              style="background:linear-gradient(135deg,#25d366,#128c7e);">
             <i class="fab fa-whatsapp"></i> Order
@@ -1295,6 +1340,7 @@ html, body {
 
     </div>
   </div>
+
 
   <!-- Bottom wave -->
   <div class="section-divider mt-16">
