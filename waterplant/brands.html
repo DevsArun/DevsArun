@@ -490,61 +490,41 @@ html, body {
          style="background:linear-gradient(160deg,#061828 0%,#0c4a6e 55%,#0369a1 100%);">
       <div class="grid lg:grid-cols-2 gap-0">
 
-        <!-- Left: Bottle visual -->
+        <!-- Left: Bottle IMAGE -->
         <div class="flex items-center justify-center p-12 relative overflow-hidden">
           <div style="position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,0.15),transparent);"></div>
           <div style="position:absolute;width:250px;height:250px;border:1px dashed rgba(56,189,248,0.2);border-radius:50%;animation:float 8s linear infinite;"></div>
 
-          <!-- Bottle SVG -->
+          <!-- ✅ REAL BOTTLE IMAGE -->
           <div class="float relative z-10">
-            <svg viewBox="0 0 160 340" width="160" height="340" xmlns="http://www.w3.org/2000/svg"
-                 style="filter:drop-shadow(0 24px 48px rgba(3,105,161,0.6)) drop-shadow(0 4px 16px rgba(56,189,248,0.4));">
-              <defs>
-                <linearGradient id="lh2o-body" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:.9"/>
-                  <stop offset="50%" style="stop-color:#38bdf8;stop-opacity:.8"/>
-                  <stop offset="100%" style="stop-color:#0369a1;stop-opacity:.95"/>
-                </linearGradient>
-                <linearGradient id="lh2o-water" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:.55"/>
-                  <stop offset="100%" style="stop-color:#0369a1;stop-opacity:.45"/>
-                </linearGradient>
-                <clipPath id="lh2o-clip"><rect x="25" y="68" width="110" height="248" rx="22"/></clipPath>
-              </defs>
-              <rect x="55" y="8" width="50" height="28" rx="9" fill="#075985"/>
-              <rect x="59" y="8" width="42" height="22" rx="7" fill="#0ea5e9" opacity=".6"/>
-              <path d="M58 36 L48 68 L112 68 L102 36 Z" fill="#0369a1"/>
-              <rect x="25" y="68" width="110" height="248" rx="22" fill="url(#lh2o-body)"/>
-              <rect x="25" y="200" width="110" height="120" fill="url(#lh2o-water)" clip-path="url(#lh2o-clip)"/>
-              <path d="M25 200 Q50 190 80 200 Q110 210 135 200" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
-              <rect x="32" y="120" width="96" height="108" rx="14" fill="rgba(255,255,255,0.14)"/>
-              <rect x="33" y="121" width="94" height="106" rx="13" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
-              <text x="80" y="152" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="700" fill="white" opacity=".9">LUXURY</text>
-              <text x="80" y="178" text-anchor="middle" font-family="Georgia,serif" font-size="24" font-weight="900" fill="white">H₂O</text>
-              <line x1="46" y1="188" x2="114" y2="188" stroke="rgba(255,255,255,0.3)" stroke-width=".8"/>
-              <text x="80" y="202" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(255,255,255,0.6)">PURE DRINKING WATER</text>
-              <rect x="36" y="76" width="14" height="160" rx="7" fill="rgba(255,255,255,0.15)"/>
-              <circle cx="42" cy="86" r="4" fill="rgba(255,255,255,0.25)"/>
-              <rect x="25" y="294" width="110" height="22" rx="11" fill="#075985"/>
-            </svg>
+            <img src="https://i.ibb.co/gbXR8sRJ/image.png"
+                 alt="LUXURY H₂O Bottle"
+                 style="height:320px;
+                        width:auto;
+                        object-fit:contain;
+                        filter:drop-shadow(0 24px 48px rgba(3,105,161,0.65))
+                               drop-shadow(0 4px 16px rgba(56,189,248,0.45));">
           </div>
 
-          <!-- Floating badges -->
-          <div class="absolute top-8 right-8 glass-card px-3 py-2 text-center" style="animation:float 3s ease-in-out infinite .5s;">
+          <!-- Floating badges — same as before -->
+          <div class="absolute top-8 right-8 glass-card px-3 py-2 text-center"
+               style="animation:float 3s ease-in-out infinite .5s;">
             <div class="text-white font-black text-lg">RO</div>
             <div class="text-white/50 text-[9px]">Purified</div>
           </div>
-          <div class="absolute bottom-16 left-8 glass-card px-3 py-2 text-center" style="animation:float 4s ease-in-out infinite 1.5s;">
+          <div class="absolute bottom-16 left-8 glass-card px-3 py-2 text-center"
+               style="animation:float 4s ease-in-out infinite 1.5s;">
             <div class="text-white font-black text-lg">UV</div>
             <div class="text-white/50 text-[9px]">Sterilized</div>
           </div>
-          <div class="absolute top-1/2 left-6 glass-card px-3 py-2 text-center" style="animation:float 3.5s ease-in-out infinite 1s;">
+          <div class="absolute top-1/2 left-6 glass-card px-3 py-2 text-center"
+               style="animation:float 3.5s ease-in-out infinite 1s;">
             <div class="text-white font-black text-base">O₃</div>
             <div class="text-white/50 text-[9px]">Ozone</div>
           </div>
         </div>
 
-        <!-- Right: Brand info -->
+        <!-- Right: Brand info — same as before -->
         <div class="p-10 flex flex-col justify-center">
           <div class="flex items-center gap-3 mb-6">
             <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-white text-xl"
@@ -600,7 +580,7 @@ html, body {
       </div>
     </div>
 
-    <!-- Brand features grid -->
+    <!-- Brand features grid — same as before -->
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
       <div class="hover-card bg-white rounded-3xl p-6 border border-slate-100 shadow-sm text-center reveal" style="transition-delay:.1s;">
@@ -642,6 +622,7 @@ html, body {
     </div>
   </div>
 </section>
+
 
 <!-- ════════════════════════════════════
      LUXURY H2O — PACK SIZES
