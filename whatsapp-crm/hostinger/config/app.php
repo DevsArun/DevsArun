@@ -33,6 +33,13 @@ define('GROQ_MAX_TOKENS', 800);
 define('GROQ_TEMPERATURE', 0.7);
 
 // ============================================================
+// HUGGING FACE TOKEN (Only needed if Space is PRIVATE)
+// Get from: https://huggingface.co/settings/tokens
+// Leave empty if Space is PUBLIC
+// ============================================================
+define('HF_TOKEN', ''); // e.g., 'hf_xxxxxxxxxxxxxxxxxxxxxxxx'
+
+// ============================================================
 // WEBHOOK SECURITY
 // ============================================================
 define('WEBHOOK_SECRET', 'your_webhook_hmac_secret_here'); // Must match Node .env

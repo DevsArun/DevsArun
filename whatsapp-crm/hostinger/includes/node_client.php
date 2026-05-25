@@ -84,6 +84,11 @@ function nodeAPIRequest(string $method, string $endpoint, ?array $payload = null
         'X-API-Key: ' . NODE_API_KEY
     ];
 
+    // If HF Space is private, add HF token for authentication
+    if (defined('HF_TOKEN') && HF_TOKEN) {
+        $headers[] = 'Authorization: Bearer ' . HF_TOKEN;
+    }
+
     curl_setopt_array($ch, [
         CURLOPT_URL => $url,
         CURLOPT_RETURNTRANSFER => true,
