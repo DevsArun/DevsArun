@@ -149,18 +149,18 @@ async function apiPost(endpoint, body = {}) {
 
 
 // ============================================================
-// LOAD STATS — show replies_today instead of total replied
+// LOAD STATS
 // ============================================================
 async function loadStats() {
     const res = await apiGet('get_stats.php');
     if (!res.success) return;
 
     state.stats = res.stats;
-    document.getElementById('kpiSentToday').textContent = res.stats.sent_today;
-    document.getElementById('kpiReplies').textContent = res.stats.replies_today;
-    document.getElementById('kpiReplyRate').textContent = res.stats.reply_rate + '%';
-    document.getElementById('kpiRemaining').textContent = res.stats.daily_remaining;
-    document.getElementById('navTotalBadge').textContent = res.stats.total_leads;
+    document.getElementById('kpiSentToday').textContent = res.stats.sent_today || 0;
+    document.getElementById('kpiReplies').textContent = res.stats.replied || 0;
+    document.getElementById('kpiReplyRate').textContent = (res.stats.reply_rate || 0) + '%';
+    document.getElementById('kpiRemaining').textContent = res.stats.pending || 0;
+    document.getElementById('navTotalBadge').textContent = res.stats.total_leads || 0;
 
     if (res.stats.unread > 0) {
         const badge = document.getElementById('navRepliedBadge');

@@ -224,6 +224,23 @@ function findLeadByPhone(string $phone): ?array {
     // Clean phone
     $clean = preg_replace('/[^0-9]/', '', $phone);
 
+    // If number is too long (LID format), try last 10 digits
+    if (strlen($clean) > 12) {
+        debugLog("Phone is LID format ({$clean}) — trying last 10 digits match");
+        $last10 = substr($clean, -10);
+        $lead = dbQueryOne("SELECT id, business_name, outreach_status FROM leads WHERE phone_clean LIKE :p", [':p' => '%' . $last10]);
+        if ($lead) return $lead;
+        
+        // If LID, try to match by most recent outbound conversation (any lead that was contacted today)
+        debugLog("LID last10 match failed — trying most recent contacted lead");
+        $lead = dbQueryOne("SELECT id, business_name, outreach_status FROM leads WHERE outreach_status = 'sent' AND last_contacted_at IS NOT NULL ORDER BY last_contacted_at DESC LIMIT 1");
+        if ($lead) {
+            debugLog("Matched to most recent sent lead: {$lead['business_name']}");
+            return $lead;
+        }
+        return null;
+    }
+
     // Try exact match
     $lead = dbQueryOne("SELECT id, business_name, outreach_status FROM leads WHERE phone_clean = :p", [':p' => $clean]);
     if ($lead) return $lead;
