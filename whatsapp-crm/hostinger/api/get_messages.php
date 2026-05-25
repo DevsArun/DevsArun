@@ -1,12 +1,7 @@
 <?php
 /**
- * API: Get Messages for a Lead
- * Returns full conversation thread
- * 
- * Params:
- *  - lead_id: required
- *  - page: int (default 1)
- *  - limit: int (default 50)
+ * API: Get Messages for a Lead — FINAL FIXED
+ * Returns conversation with IST timestamps
  */
 
 require_once __DIR__ . '/../config/app.php';
@@ -17,63 +12,44 @@ setCorsHeaders();
 
 try {
     $leadId = intval($_GET['lead_id'] ?? 0);
-
     if ($leadId <= 0) {
         jsonResponse(['success' => false, 'error' => 'lead_id is required'], 400);
     }
 
-    $page = max(1, intval($_GET['page'] ?? 1));
-    $limit = min(100, max(1, intval($_GET['limit'] ?? 50)));
-    $offset = ($page - 1) * $limit;
-
-    // Verify lead exists
-    $lead = dbQueryOne("SELECT id, business_name FROM leads WHERE id = :id", [':id' => $leadId]);
-    if (!$lead) {
-        jsonResponse(['success' => false, 'error' => 'Lead not found'], 404);
-    }
-
-    // Get total messages count
-    $total = dbQueryOne(
-        "SELECT COUNT(*) as cnt FROM messages WHERE lead_id = :lead_id",
-        [':lead_id' => $leadId]
-    )['cnt'];
-
-    // Get messages (oldest first for chat display)
+    // Get messages (oldest first for chat)
     $messages = dbQuery(
-        "SELECT id, lead_id, sender, direction, message_text, wa_message_id, 
+        "SELECT id, lead_id, sender, direction, message_text, wa_message_id,
                 message_type, is_read, is_first_outreach, created_at
-         FROM messages 
+         FROM messages
          WHERE lead_id = :lead_id
          ORDER BY created_at ASC
-         LIMIT {$limit} OFFSET {$offset}",
+         LIMIT 200",
         [':lead_id' => $leadId]
     );
 
-    // Format messages
+    // Format with IST time
     $formatted = array_map(function($msg) {
+        $ts = strtotime($msg['created_at']);
+        // Format in IST (server should already be IST from app.php timezone)
+        $timeDisplay = date('h:i A', $ts);
+
         return [
             'id'               => (int)$msg['id'],
             'sender'           => $msg['sender'],
             'direction'        => $msg['direction'],
             'message'          => $msg['message_text'],
-            'type'             => $msg['message_type'],
+            'type'             => $msg['message_type'] ?? 'text',
             'is_read'          => (bool)$msg['is_read'],
             'is_first_outreach'=> (bool)$msg['is_first_outreach'],
             'timestamp'        => $msg['created_at'],
-            'time_display'     => date('h:i A', strtotime($msg['created_at']))
+            'time_display'     => $timeDisplay
         ];
     }, $messages);
 
     jsonResponse([
         'success'  => true,
         'messages' => $formatted,
-        'lead'     => $lead,
-        'pagination' => [
-            'page'  => $page,
-            'limit' => $limit,
-            'total' => (int)$total,
-            'pages' => ceil($total / $limit)
-        ]
+        'total'    => count($formatted)
     ]);
 
 } catch (Exception $e) {

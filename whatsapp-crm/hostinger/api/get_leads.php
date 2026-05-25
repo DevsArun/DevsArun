@@ -70,14 +70,15 @@ try {
     $countSQL = "SELECT COUNT(*) as total FROM leads l WHERE {$whereClause}";
     $total = dbQueryOne($countSQL, $params)['total'];
 
-    // Get leads with last message preview
+    // Get leads — sort by most recent activity first
     $sql = "SELECT l.*, 
             (SELECT message_text FROM messages WHERE lead_id = l.id ORDER BY created_at DESC LIMIT 1) as last_message,
             (SELECT created_at FROM messages WHERE lead_id = l.id ORDER BY created_at DESC LIMIT 1) as last_message_at,
             (SELECT COUNT(*) FROM messages WHERE lead_id = l.id AND direction = 'inbound' AND is_read = 0) as unread_count
             FROM leads l 
             WHERE {$whereClause}
-            ORDER BY l.{$sort} {$order}
+            ORDER BY 
+                COALESCE((SELECT MAX(created_at) FROM messages WHERE lead_id = l.id), l.updated_at, l.created_at) DESC
             LIMIT {$limit} OFFSET {$offset}";
 
     $leads = dbQuery($sql, $params);

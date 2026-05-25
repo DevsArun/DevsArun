@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initUploadDrag();
     initTextareaAutosize();
 
-    // Refresh lead list + stats every 10 seconds for near-realtime
+    // Refresh lead list + stats every 5 seconds for realtime feel
     setInterval(() => {
         loadStats();
         loadLeads();
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (state.currentLeadId) {
             loadMessages(state.currentLeadId);
         }
-    }, 10000);
+    }, 5000);
 });
 
 

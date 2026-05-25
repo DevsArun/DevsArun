@@ -44,8 +44,11 @@ try {
     // Unread messages
     $unread = dbQueryOne("SELECT COUNT(*) as cnt FROM messages WHERE direction = 'inbound' AND is_read = 0")['cnt'];
 
-    // Reply rate
+    // Reply rate (based on sent leads that got reply)
     $replyRate = ($sent > 0) ? round(($replied / $sent) * 100, 1) : 0;
+
+    // Remaining = pending leads (not daily limit)
+    $remaining = (int)$pending;
 
     jsonResponse([
         'success' => true,
@@ -65,7 +68,7 @@ try {
             'unread'         => (int)$unread,
             'reply_rate'     => $replyRate,
             'daily_limit'    => CAMPAIGN_DAILY_LIMIT,
-            'daily_remaining'=> max(0, CAMPAIGN_DAILY_LIMIT - (int)$sentToday)
+            'daily_remaining'=> $remaining
         ]
     ]);
 
