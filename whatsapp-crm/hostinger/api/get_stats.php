@@ -11,15 +11,15 @@ require_once __DIR__ . '/../includes/helpers.php';
 setCorsHeaders();
 
 try {
-    // Total leads
-    $total = dbQueryOne("SELECT COUNT(*) as cnt FROM leads WHERE is_active = 1")['cnt'];
+    // Total leads (only with valid phone)
+    $total = dbQueryOne("SELECT COUNT(*) as cnt FROM leads WHERE is_active = 1 AND phone_clean IS NOT NULL AND phone_clean != ''")['cnt'];
 
     // By outreach status
-    $pending = dbQueryOne("SELECT COUNT(*) as cnt FROM leads WHERE outreach_status = 'pending' AND is_active = 1")['cnt'];
-    $sent = dbQueryOne("SELECT COUNT(*) as cnt FROM leads WHERE outreach_status = 'sent' AND is_active = 1")['cnt'];
-    $replied = dbQueryOne("SELECT COUNT(*) as cnt FROM leads WHERE outreach_status = 'replied' AND is_active = 1")['cnt'];
-    $failed = dbQueryOne("SELECT COUNT(*) as cnt FROM leads WHERE outreach_status = 'failed' AND is_active = 1")['cnt'];
-    $skipped = dbQueryOne("SELECT COUNT(*) as cnt FROM leads WHERE outreach_status = 'skipped' AND is_active = 1")['cnt'];
+    $pending = dbQueryOne("SELECT COUNT(*) as cnt FROM leads WHERE outreach_status = 'pending' AND is_active = 1 AND phone_clean IS NOT NULL AND phone_clean != ''")['cnt'];
+    $sent = dbQueryOne("SELECT COUNT(*) as cnt FROM leads WHERE outreach_status = 'sent' AND is_active = 1 AND phone_clean IS NOT NULL AND phone_clean != ''")['cnt'];
+    $replied = dbQueryOne("SELECT COUNT(*) as cnt FROM leads WHERE outreach_status = 'replied' AND is_active = 1 AND phone_clean IS NOT NULL AND phone_clean != ''")['cnt'];
+    $failed = dbQueryOne("SELECT COUNT(*) as cnt FROM leads WHERE outreach_status = 'failed' AND is_active = 1 AND phone_clean IS NOT NULL AND phone_clean != ''")['cnt'];
+    $skipped = dbQueryOne("SELECT COUNT(*) as cnt FROM leads WHERE outreach_status = 'skipped' AND is_active = 1 AND phone_clean IS NOT NULL AND phone_clean != ''")['cnt'];
 
     // WhatsApp status
     $waValid = dbQueryOne("SELECT COUNT(*) as cnt FROM leads WHERE whatsapp_status = 'valid'")['cnt'];

@@ -37,8 +37,8 @@ try {
         $sort = 'created_at';
     }
 
-    // Build query
-    $where = ["l.is_active = 1"];
+    // Build query — only show leads with valid phone numbers
+    $where = ["l.is_active = 1", "l.phone_clean IS NOT NULL", "l.phone_clean != ''"];
     $params = [];
 
     if (!empty($search)) {
