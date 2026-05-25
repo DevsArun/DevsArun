@@ -12,10 +12,24 @@
  * 5. No duplicate outbound insertion
  */
 
+// DEBUG LOG — writes to same directory (guaranteed writable based on webhook_test.php working)
+function debugLog(string $msg): void {
+    @file_put_contents(__DIR__ . '/webhook_debug.txt', '[' . date('H:i:s') . '] ' . $msg . "\n", FILE_APPEND);
+}
+
+debugLog("=== Webhook hit ===");
+
 require_once __DIR__ . '/config/app.php';
+debugLog("app.php loaded");
+
 require_once __DIR__ . '/config/db.php';
+debugLog("db.php loaded");
+
 require_once __DIR__ . '/includes/helpers.php';
+debugLog("helpers.php loaded");
+
 require_once __DIR__ . '/includes/auth.php';
+debugLog("auth.php loaded");
 
 // Only accept POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -25,29 +39,27 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Get raw payload
 $rawPayload = file_get_contents('php://input');
+debugLog("Raw payload length: " . strlen($rawPayload));
 
 if (empty($rawPayload)) {
-    logWebhook("Empty payload received", 'WARN');
+    debugLog("EMPTY payload — exiting");
     http_response_code(400);
     exit('Empty payload');
 }
 
-// Verify signature — LOG failure but STILL PROCESS (for now)
-$signatureValid = verifyWebhookSignature($rawPayload);
-if (!$signatureValid) {
-    logWebhook("⚠ Webhook signature MISMATCH from " . getClientIP() . " — processing anyway (debug mode)", 'WARN');
-    // In production, uncomment below to block:
-    // http_response_code(401); exit('Unauthorized');
-}
+// SKIP signature verification entirely for now
+debugLog("Skipping signature check (debug mode)");
 
 // Parse payload
 $data = json_decode($rawPayload, true);
 
 if (!$data || !isset($data['event'])) {
-    logWebhook("Invalid JSON payload: " . substr($rawPayload, 0, 200), 'ERROR');
+    debugLog("Invalid JSON: " . substr($rawPayload, 0, 200));
     http_response_code(400);
     exit('Invalid payload');
 }
+
+debugLog("JSON parsed OK — event: " . $data['event'] . " phone: " . ($data['phone'] ?? 'N/A'));
 
 $event = $data['event'];
 $phone = $data['phone'] ?? '';
@@ -61,7 +73,9 @@ logWebhook("Event: {$event} | Phone: {$phone} | Msg: " . substr($message, 0, 50)
 try {
     switch ($event) {
         case 'message_received':
+            debugLog("Calling handleInboundMessage for phone: {$phone}");
             handleInboundMessage($phone, $message, $waMessageId, $timestamp, $data);
+            debugLog("handleInboundMessage completed");
             break;
 
         case 'message_sent':
@@ -81,6 +95,7 @@ try {
     echo json_encode(['status' => 'ok']);
 
 } catch (Exception $e) {
+    debugLog("EXCEPTION: " . $e->getMessage());
     logWebhook("ERROR: " . $e->getMessage(), 'ERROR');
     http_response_code(500);
     echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
@@ -90,16 +105,19 @@ try {
 // INBOUND MESSAGE HANDLER
 // ============================================================
 function handleInboundMessage(string $phone, string $message, string $waMessageId, $timestamp, array $data): void {
+    debugLog("handleInbound START — phone:{$phone} msg:" . substr($message, 0, 30));
+    
     if (empty($phone) || empty($message)) {
-        logWebhook("Inbound missing phone or message", 'WARN');
+        debugLog("EMPTY phone or message — abort");
         return;
     }
 
     // Find lead by phone — try multiple formats
     $lead = findLeadByPhone($phone);
+    debugLog("findLeadByPhone result: " . ($lead ? "FOUND id={$lead['id']} name={$lead['business_name']}" : "NOT FOUND"));
 
     if (!$lead) {
-        logWebhook("Inbound from unknown number: {$phone} - no matching lead");
+        debugLog("No lead found for phone {$phone} — skipping");
         return;
     }
 
@@ -116,20 +134,24 @@ function handleInboundMessage(string $phone, string $message, string $waMessageI
 
     // Store the inbound message
     $createdAt = date('Y-m-d H:i:s'); // Use current server time (IST)
+    debugLog("Inserting message — lead_id:{$leadId} created_at:{$createdAt}");
 
     dbInsert(
         "INSERT INTO messages (lead_id, sender, direction, message_text, wa_message_id, message_type, is_read, is_first_outreach, created_at)
          VALUES (:lead_id, 'lead', 'inbound', :msg, :wa_id, 'text', 0, 0, :created_at)",
         [':lead_id' => $leadId, ':msg' => $message, ':wa_id' => $waMessageId, ':created_at' => $createdAt]
     );
+    debugLog("Message INSERT done");
 
     // Mark lead as replied
     dbExecute(
         "UPDATE leads SET outreach_status = 'replied', reply_received_at = NOW(), updated_at = NOW() WHERE id = :id",
         [':id' => $leadId]
     );
+    debugLog("Lead status updated to 'replied'");
 
     logWebhook("✓ REPLY STORED: lead #{$leadId} ({$lead['business_name']}) said: " . substr($message, 0, 60));
+    debugLog("handleInbound COMPLETE SUCCESS");
 }
 
 // ============================================================
