@@ -31,20 +31,26 @@ debugLog("helpers.php loaded");
 require_once __DIR__ . '/includes/auth.php';
 debugLog("auth.php loaded");
 
-// Only accept POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    exit('Method not allowed');
-}
+// Accept ANY method for debugging (HF Space may send differently)
+debugLog("REQUEST_METHOD: " . ($_SERVER['REQUEST_METHOD'] ?? 'UNKNOWN'));
+debugLog("CONTENT_TYPE: " . ($_SERVER['CONTENT_TYPE'] ?? $_SERVER['HTTP_CONTENT_TYPE'] ?? 'NONE'));
 
 // Get raw payload
 $rawPayload = file_get_contents('php://input');
 debugLog("Raw payload length: " . strlen($rawPayload));
+debugLog("Raw payload first 200: " . substr($rawPayload, 0, 200));
 
 if (empty($rawPayload)) {
-    debugLog("EMPTY payload — exiting");
-    http_response_code(400);
-    exit('Empty payload');
+    debugLog("EMPTY payload — trying $_POST");
+    // Some servers put data in $_POST instead
+    if (!empty($_POST)) {
+        $rawPayload = json_encode($_POST);
+        debugLog("Got data from \$_POST: " . $rawPayload);
+    } else {
+        debugLog("Truly empty — check HF WEBHOOK_URL secret");
+        http_response_code(400);
+        exit('Empty payload');
+    }
 }
 
 // SKIP signature verification entirely for now
