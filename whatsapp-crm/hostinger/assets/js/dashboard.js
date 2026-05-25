@@ -149,7 +149,7 @@ async function apiPost(endpoint, body = {}) {
 
 
 // ============================================================
-// LOAD STATS
+// LOAD STATS — show replies_today instead of total replied
 // ============================================================
 async function loadStats() {
     const res = await apiGet('get_stats.php');
@@ -157,7 +157,7 @@ async function loadStats() {
 
     state.stats = res.stats;
     document.getElementById('kpiSentToday').textContent = res.stats.sent_today;
-    document.getElementById('kpiReplies').textContent = res.stats.replied;
+    document.getElementById('kpiReplies').textContent = res.stats.replies_today;
     document.getElementById('kpiReplyRate').textContent = res.stats.reply_rate + '%';
     document.getElementById('kpiRemaining').textContent = res.stats.daily_remaining;
     document.getElementById('navTotalBadge').textContent = res.stats.total_leads;
@@ -372,21 +372,21 @@ function handleMsgKeydown(e) {
 function handleRealtimeInbound(data) {
     showToast(`New reply from ${data.from_name || data.phone}`, 'info');
     // Refresh everything from DB (single source of truth)
+    // Use async chain to ensure leads are loaded before checking
     loadStats();
-    loadLeads();
-    if (state.currentLeadId) {
-        const lead = state.leads.find(l => l.phone === data.phone);
-        if (lead && state.currentLeadId === lead.id) {
+    loadLeads().then(() => {
+        if (state.currentLeadId) {
             loadMessages(state.currentLeadId);
         }
-    }
+    });
 }
 
 function handleRealtimeOutbound(data) {
-    loadLeads();
-    if (state.currentLeadId) {
-        loadMessages(state.currentLeadId);
-    }
+    loadLeads().then(() => {
+        if (state.currentLeadId) {
+            loadMessages(state.currentLeadId);
+        }
+    });
 }
 
 // ============================================================

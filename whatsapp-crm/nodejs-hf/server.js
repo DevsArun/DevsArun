@@ -191,13 +191,19 @@ async function sendWebhook(data) {
     }
 
     try {
+        // CRITICAL FIX: Stringify ONCE and send that SAME string
+        // This ensures the signature matches what PHP receives
         const payload = JSON.stringify(data);
         const signature = crypto
             .createHmac('sha256', WEBHOOK_SECRET)
             .update(payload)
             .digest('hex');
 
-        await axios.post(WEBHOOK_URL, data, {
+        // Send the pre-stringified payload directly (not the object)
+        await axios({
+            method: 'post',
+            url: WEBHOOK_URL,
+            data: payload,  // Send the exact string we computed signature on
             headers: {
                 'Content-Type': 'application/json',
                 'X-Webhook-Signature': signature,
@@ -209,6 +215,9 @@ async function sendWebhook(data) {
         console.log(`[WEBHOOK] Sent: ${data.event} for ${data.phone}`);
     } catch (error) {
         console.error(`[WEBHOOK] Failed: ${error.message}`);
+        if (error.response) {
+            console.error(`[WEBHOOK] Status: ${error.response.status}, Body: ${JSON.stringify(error.response.data)}`);
+        }
     }
 }
 

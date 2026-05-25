@@ -220,13 +220,17 @@ function getPitchType(string $websiteStatus): string {
 function writeLog(string $logFile, string $message, string $level = 'INFO'): void {
     $logPath = defined('LOG_PATH') ? LOG_PATH : __DIR__ . '/../logs/';
 
+    // Ensure directory exists with proper permissions
     if (!is_dir($logPath)) {
-        mkdir($logPath, 0755, true);
+        @mkdir($logPath, 0777, true);
+        @chmod($logPath, 0777);
     }
 
     $timestamp = date('Y-m-d H:i:s');
     $entry = "[{$timestamp}] [{$level}] {$message}" . PHP_EOL;
-    file_put_contents($logPath . $logFile, $entry, FILE_APPEND | LOCK_EX);
+
+    // Try to write, suppress errors (shared hosting may block)
+    @file_put_contents($logPath . $logFile, $entry, FILE_APPEND | LOCK_EX);
 }
 
 /**
