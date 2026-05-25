@@ -1,8 +1,8 @@
-FROM node:18-bullseye
+FROM node:18-bullseye-slim
 
-# Install Chromium dependencies for Puppeteer/whatsapp-web.js
 RUN apt-get update && apt-get install -y \
     chromium \
+    chromium-sandbox \
     fonts-liberation \
     libappindicator3-1 \
     libasound2 \
@@ -20,6 +20,8 @@ RUN apt-get update && apt-get install -y \
     libxdamage1 \
     libxrandr2 \
     xdg-utils \
+    wget \
+    ca-certificates \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
@@ -27,12 +29,10 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 WORKDIR /app
-
-COPY package*.json ./
+COPY package.json ./
 RUN npm install --production
-
 COPY . .
+RUN mkdir -p /app/.wwebjs_auth
 
 EXPOSE 7860
-
 CMD ["node", "server.js"]
