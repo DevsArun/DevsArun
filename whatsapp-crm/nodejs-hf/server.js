@@ -144,7 +144,8 @@ function initWhatsApp() {
     waClient.on('message', async (msg) => {
         if (msg.from === 'status@broadcast') return;
 
-        const phone = msg.from.replace('@c.us', '');
+        // Handle both @c.us and @lid formats
+        const phone = msg.from.replace('@c.us', '').replace('@lid', '');
         const messageData = {
             event: 'message_received',
             phone: phone,
@@ -191,28 +192,26 @@ async function sendWebhook(data) {
     }
 
     try {
-        // CRITICAL FIX: Stringify ONCE and send that SAME string
-        // This ensures the signature matches what PHP receives
+        // Send data object directly — axios will stringify with correct Content-Type
         const payload = JSON.stringify(data);
         const signature = crypto
             .createHmac('sha256', WEBHOOK_SECRET)
             .update(payload)
             .digest('hex');
 
-        // Send the pre-stringified payload directly (not the object)
-        await axios({
-            method: 'post',
-            url: WEBHOOK_URL,
-            data: payload,  // Send the exact string we computed signature on
+        // Use axios.post with object (NOT pre-stringified string)
+        // This ensures proper Content-Type and body transmission
+        const response = await axios.post(WEBHOOK_URL, data, {
             headers: {
                 'Content-Type': 'application/json',
                 'X-Webhook-Signature': signature,
                 'X-Webhook-Source': 'wa-engine'
             },
-            timeout: 10000
+            timeout: 15000,
+            maxRedirects: 5
         });
 
-        console.log(`[WEBHOOK] Sent: ${data.event} for ${data.phone}`);
+        console.log(`[WEBHOOK] Sent: ${data.event} for ${data.phone} — Status: ${response.status}`);
     } catch (error) {
         console.error(`[WEBHOOK] Failed: ${error.message}`);
         if (error.response) {
