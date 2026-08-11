@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaLead — WhatsApp CRM Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        .sidebar-item { transition: all 0.15s; }
+        .sidebar-item:hover, .sidebar-item.active { background: #f0fdf4; border-left: 3px solid #22c55e; }
+        .lead-card { transition: all 0.15s; }
+        .lead-card:hover { background: #f9fafb; }
+        .lead-card.active { background: #f0fdf4; border-left: 3px solid #22c55e; }
+        .chat-bubble-out { background: #dcfce7; border-radius: 12px 12px 0 12px; }
+        .chat-bubble-in { background: #f3f4f6; border-radius: 12px 12px 12px 0; }
+        .stat-card { background: white; border: 1px solid #e5e7eb; }
+        .stat-card:hover { border-color: #22c55e; box-shadow: 0 4px 12px rgba(34,197,94,0.1); }
+        .modal-overlay { background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); }
+        .scrollbar-thin::-webkit-scrollbar { width: 4px; }
+        .scrollbar-thin::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        .pulse-dot { animation: pulseDot 2s infinite; }
+        @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+        .fade-in { animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    </style>
+</head>
+<body class="bg-gray-50 h-screen overflow-hidden">
+
+
+    <!-- MAIN LAYOUT: 3 Columns -->
+    <div class="flex h-screen">
+        
+        <!-- COLUMN 1: Sidebar -->
+        <div class="w-64 bg-white border-r border-gray-200 flex flex-col flex-shrink-0">
+            <!-- Logo -->
+            <div class="p-5 border-b border-gray-100">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold text-gray-800">WaLead</h1>
+                        <p class="text-xs text-gray-400">WhatsApp CRM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connection Status -->
+            <div class="px-4 py-3 border-b border-gray-100">
+                <div class="flex items-center gap-2">
+                    <div id="statusDot" class="w-2.5 h-2.5 rounded-full bg-red-400 pulse-dot"></div>
+                    <span id="statusText" class="text-xs text-gray-500">Disconnected</span>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 py-3 overflow-y-auto">
+                <div class="px-3 mb-2">
+                    <p class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider px-3">Menu</p>
+                </div>
+                <a href="#" onclick="showSection('dashboard')" class="sidebar-item active flex items-center gap-3 px-6 py-2.5 text-sm text-gray-700" data-section="dashboard">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                    Dashboard
+                </a>
+                <a href="#" onclick="showSection('leads')" class="sidebar-item flex items-center gap-3 px-6 py-2.5 text-sm text-gray-700" data-section="leads">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    Leads
+                </a>
+                <a href="#" onclick="showSection('campaign')" class="sidebar-item flex items-center gap-3 px-6 py-2.5 text-sm text-gray-700" data-section="campaign">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    Campaign
+                </a>
+                <a href="#" onclick="showSection('import')" class="sidebar-item flex items-center gap-3 px-6 py-2.5 text-sm text-gray-700" data-section="import">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                    Import CSV
+                </a>
+                <a href="#" onclick="showSection('settings')" class="sidebar-item flex items-center gap-3 px-6 py-2.5 text-sm text-gray-700" data-section="settings">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    Settings
+                </a>
+            </nav>
+
+            <!-- Stats Mini -->
+            <div class="p-4 border-t border-gray-100 bg-gray-50">
+                <div class="grid grid-cols-2 gap-2 text-center">
+                    <div><p id="miniSent" class="text-lg font-bold text-brand-600">0</p><p class="text-[10px] text-gray-400">Sent Today</p></div>
+                    <div><p id="miniReplies" class="text-lg font-bold text-blue-600">0</p><p class="text-[10px] text-gray-400">Replies</p></div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- COLUMN 2: Main Content Area -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+
+            <!-- Top Bar -->
+            <div class="h-14 bg-white border-b border-gray-200 flex items-center justify-between px-6 flex-shrink-0">
+                <div class="flex items-center gap-4">
+                    <h2 id="pageTitle" class="text-lg font-semibold text-gray-800">Dashboard</h2>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="Search leads..." 
+                               class="w-64 pl-9 pr-4 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-brand-400 focus:ring-1 focus:ring-brand-400"
+                               onkeyup="debounceSearch()">
+                        <svg class="w-4 h-4 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </div>
+                    <button onclick="refreshData()" class="p-2 hover:bg-gray-100 rounded-lg transition" title="Refresh">
+                        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="flex-1 overflow-hidden flex">
+                
+                <!-- Dashboard Section -->
+                <div id="section-dashboard" class="section flex-1 overflow-y-auto p-6">
+                    <!-- Stats Row -->
+                    <div class="grid grid-cols-4 gap-4 mb-6">
+                        <div class="stat-card rounded-xl p-4 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-medium text-gray-500">Sent Today</span>
+                                <div class="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                                </div>
+                            </div>
+                            <p id="statSentToday" class="text-2xl font-bold text-gray-800">0</p>
+                        </div>
+                        <div class="stat-card rounded-xl p-4 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-medium text-gray-500">Replies</span>
+                                <div class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg>
+                                </div>
+                            </div>
+                            <p id="statReplies" class="text-2xl font-bold text-gray-800">0</p>
+                        </div>
+                        <div class="stat-card rounded-xl p-4 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-medium text-gray-500">Reply Rate</span>
+                                <div class="w-8 h-8 bg-purple-50 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                                </div>
+                            </div>
+                            <p id="statReplyRate" class="text-2xl font-bold text-gray-800">0%</p>
+                        </div>
+                        <div class="stat-card rounded-xl p-4 transition">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-medium text-gray-500">Remaining</span>
+                                <div class="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                            </div>
+                            <p id="statRemaining" class="text-2xl font-bold text-gray-800">0</p>
+                        </div>
+                    </div>
+
+                    <!-- Filter Tabs -->
+                    <div class="flex items-center gap-2 mb-4">
+                        <button onclick="setFilter('all')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-brand-500 text-white" data-filter="all">All</button>
+                        <button onclick="setFilter('replied')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200" data-filter="replied">Replied</button>
+                        <button onclick="setFilter('sent')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200" data-filter="sent">Sent</button>
+                        <button onclick="setFilter('pending')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200" data-filter="pending">Pending</button>
+                        <button onclick="setFilter('has_website')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200" data-filter="has_website">Has Website</button>
+                        <button onclick="setFilter('no_website')" class="filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200" data-filter="no_website">No Website</button>
+                        <span id="leadCount" class="ml-auto text-xs text-gray-400">0 leads</span>
+                    </div>
+
+                    <!-- Leads Table -->
+                    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead class="bg-gray-50 border-b border-gray-200">
+                                    <tr>
+                                        <th class="text-left px-4 py-3 font-medium text-gray-500">Business</th>
+                                        <th class="text-left px-4 py-3 font-medium text-gray-500">Phone</th>
+                                        <th class="text-left px-4 py-3 font-medium text-gray-500">Status</th>
+                                        <th class="text-left px-4 py-3 font-medium text-gray-500">Rating</th>
+                                        <th class="text-left px-4 py-3 font-medium text-gray-500">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="leadsTableBody" class="divide-y divide-gray-100">
+                                    <tr><td colspan="5" class="px-4 py-8 text-center text-gray-400">Loading leads...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Pagination -->
+                        <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+                            <button onclick="prevPage()" id="prevBtn" class="px-3 py-1 text-xs border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50" disabled>Previous</button>
+                            <span id="pageInfo" class="text-xs text-gray-400">Page 1</span>
+                            <button onclick="nextPage()" id="nextBtn" class="px-3 py-1 text-xs border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50">Next</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Leads Section (same as dashboard but focused) -->
+                <div id="section-leads" class="section flex-1 overflow-y-auto p-6 hidden">
+                    <div class="text-center py-8 text-gray-400">
+                        <p>Select a lead from Dashboard to view details and chat</p>
+                    </div>
+                </div>
+
+                <!-- Campaign Section -->
+                <div id="section-campaign" class="section flex-1 overflow-y-auto p-6 hidden">
+                    <div class="max-w-2xl mx-auto">
+                        <div class="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Campaign Runner</h3>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Message Template</label>
+                                    <textarea id="campaignTemplate" rows="4" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-400 focus:ring-1 focus:ring-brand-400" placeholder="Hi {business_name}, I noticed your business in {address}. We can help you...&#10;&#10;Use {business_name}, {website}, {address} as placeholders"></textarea>
+                                </div>
+                                
+                                <div class="flex items-center gap-4">
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" id="useAI" class="w-4 h-4 text-brand-500 rounded border-gray-300 focus:ring-brand-400">
+                                        <span class="text-sm text-gray-700">Use Groq AI for personalization</span>
+                                    </label>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Target Filter</label>
+                                        <select id="campaignFilter" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-400">
+                                            <option value="pending">Pending Only</option>
+                                            <option value="has_website">Has Website</option>
+                                            <option value="no_website">No Website</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Limit</label>
+                                        <input type="number" id="campaignLimit" value="20" min="1" max="50" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-400">
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-3">
+                                    <button onclick="startCampaign()" id="startCampaignBtn" class="px-6 py-2.5 bg-brand-500 text-white rounded-lg text-sm font-medium hover:bg-brand-600 transition">
+                                        Start Campaign
+                                    </button>
+                                    <button onclick="stopCampaign()" id="stopCampaignBtn" class="px-6 py-2.5 bg-red-500 text-white rounded-lg text-sm font-medium hover:bg-red-600 transition hidden">
+                                        Stop Campaign
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campaign Status -->
+                        <div id="campaignStatus" class="bg-white rounded-xl border border-gray-200 p-6 hidden">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Campaign Progress</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-500">Status:</span>
+                                    <span id="campStatusText" class="font-medium text-brand-600">Running</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div id="campProgress" class="bg-brand-500 h-2 rounded-full transition-all" style="width: 0%"></div>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-500">Sent: <span id="campSent">0</span></span>
+                                    <span class="text-gray-500">Remaining: <span id="campRemaining">0</span></span>
+                                </div>
+                                <div id="campLog" class="mt-4 max-h-40 overflow-y-auto text-xs font-mono text-gray-500 space-y-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Import CSV Section -->
+                <div id="section-import" class="section flex-1 overflow-y-auto p-6 hidden">
+                    <div class="max-w-xl mx-auto">
+                        <div class="bg-white rounded-xl border border-gray-200 p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Import Leads from CSV</h3>
+                            <p class="text-sm text-gray-500 mb-6">Upload a CSV file with columns: Business Name, Address, Phone, Website, Rating, Reviews, Status</p>
+                            
+                            <div class="border-2 border-dashed border-gray-200 rounded-xl p-8 text-center hover:border-brand-400 transition cursor-pointer" onclick="document.getElementById('csvFile').click()">
+                                <svg class="w-10 h-10 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+                                <p class="text-sm text-gray-500 mb-1">Click to upload or drag and drop</p>
+                                <p class="text-xs text-gray-400">CSV files only</p>
+                                <input type="file" id="csvFile" accept=".csv" class="hidden" onchange="handleCSVSelect(this)">
+                            </div>
+
+                            <div id="csvInfo" class="hidden mt-4 p-3 bg-gray-50 rounded-lg">
+                                <p class="text-sm text-gray-700"><span id="csvFileName"></span></p>
+                            </div>
+
+                            <button onclick="uploadCSV()" id="uploadBtn" class="mt-4 w-full px-4 py-2.5 bg-brand-500 text-white rounded-lg text-sm font-medium hover:bg-brand-600 transition disabled:opacity-50" disabled>
+                                Upload & Import
+                            </button>
+
+                            <div id="importResult" class="hidden mt-4 p-4 rounded-lg"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Section -->
+                <div id="section-settings" class="section flex-1 overflow-y-auto p-6 hidden">
+                    <div class="max-w-2xl mx-auto">
+                        <div class="bg-white rounded-xl border border-gray-200 p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-6">Settings</h3>
+                            <div class="space-y-5">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Node.js Server URL</label>
+                                    <input type="text" id="setNodeUrl" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-400" placeholder="https://itschol0408-whatsapp-crm-engine.hf.space">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Webhook URL (for Node → PHP)</label>
+                                    <input type="text" id="setWebhookUrl" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-400" placeholder="https://yourdomain.com/app.php?action=webhook">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Groq API Key</label>
+                                    <input type="password" id="setGroqKey" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-400" placeholder="gsk_...">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Groq Model</label>
+                                    <input type="text" id="setGroqModel" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-400" value="llama-3.1-70b-versatile">
+                                </div>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Min Delay (sec)</label>
+                                        <input type="number" id="setMinDelay" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-400" value="120">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Max Delay (sec)</label>
+                                        <input type="number" id="setMaxDelay" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-400" value="300">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">Daily Limit</label>
+                                        <input type="number" id="setDailyLimit" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-400" value="50">
+                                    </div>
+                                </div>
+                                <button onclick="saveSettings()" class="px-6 py-2.5 bg-brand-500 text-white rounded-lg text-sm font-medium hover:bg-brand-600 transition">
+                                    Save Settings
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- COLUMN 3: Chat Panel (Right side) -->
+        <div id="chatPanel" class="w-96 bg-white border-l border-gray-200 flex flex-col flex-shrink-0">
+            <!-- Chat Header -->
+            <div id="chatHeader" class="h-14 border-b border-gray-100 flex items-center px-4 gap-3">
+                <div class="w-9 h-9 bg-brand-100 rounded-full flex items-center justify-center">
+                    <span id="chatAvatar" class="text-sm font-semibold text-brand-600">?</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p id="chatName" class="text-sm font-medium text-gray-800 truncate">Select a lead</p>
+                    <p id="chatPhone" class="text-xs text-gray-400">No conversation selected</p>
+                </div>
+                <button onclick="showLeadDetails()" id="detailsBtn" class="p-1.5 hover:bg-gray-100 rounded-lg transition hidden" title="Get Details">
+                    <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </button>
+            </div>
+
+            <!-- Chat Messages -->
+            <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3 scrollbar-thin bg-gray-50">
+                <div class="text-center py-16">
+                    <svg class="w-12 h-12 text-gray-200 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                    <p class="text-sm text-gray-400">Select a lead to start chatting</p>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div id="chatInput" class="border-t border-gray-100 p-3 hidden">
+                <div class="flex gap-2">
+                    <input type="text" id="messageInput" placeholder="Type a message..." 
+                           class="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-brand-400 focus:ring-1 focus:ring-brand-400"
+                           onkeypress="if(event.key==='Enter')sendChatMessage()">
+                    <button onclick="sendChatMessage()" class="px-4 py-2 bg-brand-500 text-white rounded-lg text-sm font-medium hover:bg-brand-600 transition">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Lead Details Modal -->
+    <div id="detailsModal" class="fixed inset-0 modal-overlay z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 fade-in">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">Lead Details</h3>
+                <button onclick="closeModal()" class="p-1 hover:bg-gray-100 rounded-lg">
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div id="detailsContent" class="space-y-3 text-sm">
+                <!-- Filled dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-gray-800 text-white px-4 py-2.5 rounded-lg text-sm shadow-lg transition-all transform translate-y-20 opacity-0 z-50">
+        <span id="toastMessage"></span>
+    </div>
+
+
+    <script>
+    // ============ CONFIGURATION ============
+    const API_URL = 'app.php';
+    const NODE_URL = 'https://itschol0408-whatsapp-crm-engine.hf.space';
+    
+    // ============ STATE ============
+    let currentFilter = 'all';
+    let currentPage = 1;
+    let totalPages = 1;
+    let currentLeadId = null;
+    let currentLeadPhone = null;
+    let leads = [];
+    let searchTimeout = null;
+    let campaignRunning = false;
+    let campaignTimer = null;
+    let socket = null;
+
+    // ============ INITIALIZATION ============
+    document.addEventListener('DOMContentLoaded', () => {
+        initSocket();
+        loadStats();
+        loadLeads();
+        // Poll for new messages every 5 seconds
+        setInterval(pollMessages, 5000);
+        setInterval(loadStats, 15000);
+        loadSettings();
+    });
+
+    // ============ SOCKET.IO ============
+    function initSocket() {
+        try {
+            socket = io(NODE_URL, { transports: ['websocket', 'polling'] });
+            
+            socket.on('connect', () => {
+                updateConnectionStatus(true);
+            });
+
+            socket.on('disconnect', () => {
+                updateConnectionStatus(false);
+            });
+
+            socket.on('status', (data) => {
+                updateConnectionStatus(data.ready);
+            });
+
+            socket.on('message_received', (data) => {
+                showToast('New reply from ' + (data.phone || 'unknown'));
+                // Reload if viewing this lead
+                if (data.phone && currentLeadPhone && data.phone.includes(currentLeadPhone.replace('91', ''))) {
+                    loadChat(currentLeadId);
+                }
+                loadStats();
+            });
+
+            socket.on('message_sent', (data) => {
+                if (data.phone && currentLeadPhone && data.phone.includes(currentLeadPhone.replace('91', ''))) {
+                    loadChat(currentLeadId);
+                }
+            });
+        } catch(e) {
+            console.log('Socket.io connection failed:', e);
+        }
+    }
+
+    function updateConnectionStatus(connected) {
+        const dot = document.getElementById('statusDot');
+        const text = document.getElementById('statusText');
+        if (connected) {
+            dot.className = 'w-2.5 h-2.5 rounded-full bg-green-400 pulse-dot';
+            text.textContent = 'Connected';
+            text.className = 'text-xs text-green-600';
+        } else {
+            dot.className = 'w-2.5 h-2.5 rounded-full bg-red-400 pulse-dot';
+            text.textContent = 'Disconnected';
+            text.className = 'text-xs text-gray-500';
+        }
+    }
+
+
+    // ============ NAVIGATION ============
+    function showSection(section) {
+        document.querySelectorAll('.section').forEach(el => el.classList.add('hidden'));
+        document.getElementById('section-' + section).classList.remove('hidden');
+        
+        document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
+        document.querySelector(`[data-section="${section}"]`)?.classList.add('active');
+        
+        const titles = { dashboard: 'Dashboard', leads: 'Leads', campaign: 'Campaign', import: 'Import CSV', settings: 'Settings' };
+        document.getElementById('pageTitle').textContent = titles[section] || 'Dashboard';
+    }
+
+    // ============ STATS ============
+    async function loadStats() {
+        try {
+            const res = await fetch(`${API_URL}?action=get_dashboard_stats`);
+            const data = await res.json();
+            if (data.success) {
+                document.getElementById('statSentToday').textContent = data.sent_today;
+                document.getElementById('statReplies').textContent = data.replies_today;
+                document.getElementById('statReplyRate').textContent = data.reply_rate + '%';
+                document.getElementById('statRemaining').textContent = data.remaining;
+                document.getElementById('miniSent').textContent = data.sent_today;
+                document.getElementById('miniReplies').textContent = data.replies_today;
+            }
+        } catch(e) { console.error('Stats error:', e); }
+    }
+
+    // ============ LEADS ============
+    async function loadLeads() {
+        const search = document.getElementById('searchInput').value;
+        try {
+            const res = await fetch(`${API_URL}?action=get_leads&filter=${currentFilter}&page=${currentPage}&search=${encodeURIComponent(search)}`);
+            const data = await res.json();
+            if (data.success) {
+                leads = data.leads;
+                totalPages = data.pages;
+                renderLeads();
+                document.getElementById('leadCount').textContent = data.total + ' leads';
+                document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages || 1}`;
+                document.getElementById('prevBtn').disabled = currentPage <= 1;
+                document.getElementById('nextBtn').disabled = currentPage >= totalPages;
+            }
+        } catch(e) { console.error('Leads error:', e); }
+    }
+
+    function renderLeads() {
+        const tbody = document.getElementById('leadsTableBody');
+        if (!leads.length) {
+            tbody.innerHTML = '<tr><td colspan="5" class="px-4 py-8 text-center text-gray-400">No leads found</td></tr>';
+            return;
+        }
+        
+        tbody.innerHTML = leads.map(lead => {
+            const statusColors = { pending: 'bg-gray-100 text-gray-600', sent: 'bg-blue-100 text-blue-700', replied: 'bg-green-100 text-green-700' };
+            const statusClass = statusColors[lead.status] || statusColors.pending;
+            return `
+                <tr class="lead-card cursor-pointer hover:bg-gray-50 ${currentLeadId == lead.id ? 'active' : ''}" onclick="selectLead(${lead.id})">
+                    <td class="px-4 py-3">
+                        <div class="font-medium text-gray-800 text-sm">${escapeHtml(lead.business_name || '-')}</div>
+                        <div class="text-xs text-gray-400 truncate max-w-[200px]">${escapeHtml(lead.address || '')}</div>
+                    </td>
+                    <td class="px-4 py-3 text-sm text-gray-600">${lead.phone || '-'}</td>
+                    <td class="px-4 py-3">
+                        <span class="px-2 py-0.5 rounded-full text-xs font-medium ${statusClass}">${lead.status || 'pending'}</span>
+                    </td>
+                    <td class="px-4 py-3 text-sm text-gray-600">${lead.rating ? '⭐ ' + lead.rating : '-'}</td>
+                    <td class="px-4 py-3">
+                        <button onclick="event.stopPropagation();selectLead(${lead.id})" class="text-xs text-brand-600 hover:underline">Chat</button>
+                    </td>
+                </tr>`;
+        }).join('');
+    }
+
+    function setFilter(filter) {
+        currentFilter = filter;
+        currentPage = 1;
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.className = btn.dataset.filter === filter 
+                ? 'filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-brand-500 text-white'
+                : 'filter-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200';
+        });
+        loadLeads();
+    }
+
+    function prevPage() { if (currentPage > 1) { currentPage--; loadLeads(); } }
+    function nextPage() { if (currentPage < totalPages) { currentPage++; loadLeads(); } }
+    
+    function debounceSearch() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => { currentPage = 1; loadLeads(); }, 300);
+    }
+
+
+    // ============ CHAT ============
+    async function selectLead(leadId) {
+        currentLeadId = leadId;
+        const lead = leads.find(l => l.id == leadId);
+        if (lead) {
+            currentLeadPhone = lead.phone;
+            document.getElementById('chatName').textContent = lead.business_name || 'Unknown';
+            document.getElementById('chatPhone').textContent = lead.phone || '';
+            document.getElementById('chatAvatar').textContent = (lead.business_name || '?')[0].toUpperCase();
+            document.getElementById('chatInput').classList.remove('hidden');
+            document.getElementById('detailsBtn').classList.remove('hidden');
+        }
+        loadChat(leadId);
+        // Highlight active lead
+        document.querySelectorAll('.lead-card').forEach(el => el.classList.remove('active'));
+    }
+
+    async function loadChat(leadId) {
+        if (!leadId) return;
+        try {
+            const res = await fetch(`${API_URL}?action=get_messages&lead_id=${leadId}`);
+            const data = await res.json();
+            if (data.success) {
+                renderChat(data.messages);
+            }
+        } catch(e) { console.error('Chat error:', e); }
+    }
+
+    function renderChat(messages) {
+        const container = document.getElementById('chatMessages');
+        if (!messages || !messages.length) {
+            container.innerHTML = `<div class="text-center py-8"><p class="text-sm text-gray-400">No messages yet. Send the first message!</p></div>`;
+            return;
+        }
+
+        container.innerHTML = messages.map(msg => {
+            const isOut = msg.direction === 'outbound';
+            const time = msg.created_at ? new Date(msg.created_at).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }) : '';
+            return `
+                <div class="flex ${isOut ? 'justify-end' : 'justify-start'} fade-in">
+                    <div class="${isOut ? 'chat-bubble-out' : 'chat-bubble-in'} px-3 py-2 max-w-[80%]">
+                        <p class="text-sm text-gray-800">${escapeHtml(msg.body || '')}</p>
+                        <p class="text-[10px] text-gray-400 mt-1 ${isOut ? 'text-right' : ''}">${time}</p>
+                    </div>
+                </div>`;
+        }).join('');
+        
+        container.scrollTop = container.scrollHeight;
+    }
+
+    async function sendChatMessage() {
+        const input = document.getElementById('messageInput');
+        const message = input.value.trim();
+        if (!message || !currentLeadId) return;
+
+        input.value = '';
+        input.disabled = true;
+
+        try {
+            const res = await fetch(`${API_URL}?action=send_message`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ lead_id: currentLeadId, phone: currentLeadPhone, message })
+            });
+            const data = await res.json();
+            if (data.success) {
+                showToast('Message sent!');
+                loadChat(currentLeadId);
+                loadStats();
+            } else {
+                showToast('Error: ' + (data.error || 'Failed to send'), true);
+            }
+        } catch(e) {
+            showToast('Send failed: ' + e.message, true);
+        }
+        input.disabled = false;
+        input.focus();
+    }
+
+    // Poll for new messages (5-sec interval)
+    async function pollMessages() {
+        if (currentLeadId) {
+            loadChat(currentLeadId);
+        }
+    }
+
+
+    // ============ LEAD DETAILS ============
+    async function showLeadDetails() {
+        if (!currentLeadId) return;
+        try {
+            const res = await fetch(`${API_URL}?action=get_lead&id=${currentLeadId}`);
+            const data = await res.json();
+            if (data.success && data.lead) {
+                const lead = data.lead;
+                document.getElementById('detailsContent').innerHTML = `
+                    <div class="grid grid-cols-2 gap-3">
+                        <div><p class="text-xs text-gray-400">Business Name</p><p class="font-medium">${escapeHtml(lead.business_name || '-')}</p></div>
+                        <div><p class="text-xs text-gray-400">Phone</p><p class="font-medium">${lead.phone || '-'}</p></div>
+                        <div><p class="text-xs text-gray-400">Address</p><p class="font-medium">${escapeHtml(lead.address || '-')}</p></div>
+                        <div><p class="text-xs text-gray-400">Website</p><p class="font-medium">${lead.website ? '<a href="'+escapeHtml(lead.website)+'" target="_blank" class="text-brand-600 hover:underline">'+escapeHtml(lead.website)+'</a>' : '-'}</p></div>
+                        <div><p class="text-xs text-gray-400">Rating</p><p class="font-medium">${lead.rating ? '⭐ ' + lead.rating : '-'}</p></div>
+                        <div><p class="text-xs text-gray-400">Reviews</p><p class="font-medium">${lead.reviews || '0'}</p></div>
+                        <div><p class="text-xs text-gray-400">Status</p><p class="font-medium capitalize">${lead.status || 'pending'}</p></div>
+                        <div><p class="text-xs text-gray-400">Last Contacted</p><p class="font-medium">${lead.last_contacted || 'Never'}</p></div>
+                    </div>
+                    <div class="pt-3 border-t border-gray-100">
+                        <p class="text-xs text-gray-400 mb-1">Notes</p>
+                        <p class="text-sm">${escapeHtml(lead.notes || 'No notes')}</p>
+                    </div>
+                    <div class="pt-3 border-t border-gray-100">
+                        <p class="text-xs text-gray-400">Messages: ${data.messages ? data.messages.length : 0}</p>
+                        <p class="text-xs text-gray-400">Created: ${lead.created_at || '-'}</p>
+                    </div>`;
+                document.getElementById('detailsModal').classList.remove('hidden');
+            }
+        } catch(e) { showToast('Error loading details', true); }
+    }
+
+    function closeModal() {
+        document.getElementById('detailsModal').classList.add('hidden');
+    }
+
+    // ============ CSV IMPORT ============
+    function handleCSVSelect(input) {
+        if (input.files.length) {
+            document.getElementById('csvInfo').classList.remove('hidden');
+            document.getElementById('csvFileName').textContent = input.files[0].name + ' (' + (input.files[0].size / 1024).toFixed(1) + ' KB)';
+            document.getElementById('uploadBtn').disabled = false;
+        }
+    }
+
+    async function uploadCSV() {
+        const file = document.getElementById('csvFile').files[0];
+        if (!file) return;
+
+        const btn = document.getElementById('uploadBtn');
+        btn.disabled = true;
+        btn.textContent = 'Importing...';
+
+        const formData = new FormData();
+        formData.append('csv_file', file);
+        formData.append('action', 'import_csv');
+
+        try {
+            const res = await fetch(API_URL, { method: 'POST', body: formData });
+            const data = await res.json();
+            const resultDiv = document.getElementById('importResult');
+            resultDiv.classList.remove('hidden');
+
+            if (data.success) {
+                resultDiv.className = 'mt-4 p-4 rounded-lg bg-green-50 border border-green-200';
+                resultDiv.innerHTML = `<p class="text-sm text-green-700 font-medium">Import Successful!</p><p class="text-xs text-green-600 mt-1">Imported: ${data.imported} | Skipped: ${data.skipped}</p>`;
+                loadLeads();
+                loadStats();
+                showToast(`Imported ${data.imported} leads!`);
+            } else {
+                resultDiv.className = 'mt-4 p-4 rounded-lg bg-red-50 border border-red-200';
+                resultDiv.innerHTML = `<p class="text-sm text-red-700">${data.error || 'Import failed'}</p>`;
+            }
+        } catch(e) {
+            showToast('Import failed: ' + e.message, true);
+        }
+        btn.disabled = false;
+        btn.textContent = 'Upload & Import';
+    }
+
+
+    // ============ CAMPAIGN ============
+    async function startCampaign() {
+        const template = document.getElementById('campaignTemplate').value.trim();
+        const useAI = document.getElementById('useAI').checked;
+        const filter = document.getElementById('campaignFilter').value;
+        const limit = document.getElementById('campaignLimit').value;
+
+        if (!template && !useAI) {
+            showToast('Please enter a message template or enable AI', true);
+            return;
+        }
+
+        try {
+            const res = await fetch(`${API_URL}?action=start_campaign`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ template, use_ai: useAI, filter, limit })
+            });
+            const data = await res.json();
+            
+            if (data.success) {
+                campaignRunning = true;
+                document.getElementById('startCampaignBtn').classList.add('hidden');
+                document.getElementById('stopCampaignBtn').classList.remove('hidden');
+                document.getElementById('campaignStatus').classList.remove('hidden');
+                document.getElementById('campStatusText').textContent = 'Running';
+                document.getElementById('campRemaining').textContent = data.total_leads;
+                showToast('Campaign started with ' + data.total_leads + ' leads');
+                processCampaignNext(0, data.total_leads);
+            } else {
+                showToast(data.error || 'Failed to start campaign', true);
+            }
+        } catch(e) { showToast('Campaign error: ' + e.message, true); }
+    }
+
+    function processCampaignNext(sent, total) {
+        if (!campaignRunning) return;
+
+        fetch(`${API_URL}?action=process_campaign`, { method: 'POST' })
+            .then(r => r.json())
+            .then(data => {
+                if (data.success) {
+                    if (data.status === 'campaign_completed') {
+                        campaignRunning = false;
+                        document.getElementById('campStatusText').textContent = 'Completed';
+                        document.getElementById('startCampaignBtn').classList.remove('hidden');
+                        document.getElementById('stopCampaignBtn').classList.add('hidden');
+                        showToast('Campaign completed!');
+                        loadStats();
+                        return;
+                    }
+                    if (data.status === 'message_sent') {
+                        sent++;
+                        document.getElementById('campSent').textContent = sent;
+                        document.getElementById('campRemaining').textContent = total - sent;
+                        const pct = Math.round((sent / total) * 100);
+                        document.getElementById('campProgress').style.width = pct + '%';
+
+                        const log = document.getElementById('campLog');
+                        log.innerHTML = `<div class="text-green-600">✓ Sent to ${data.lead} (${data.phone})</div>` + log.innerHTML;
+
+                        // Anti-ban delay (120-300 sec)
+                        const delay = (data.next_delay || (120 + Math.random() * 180)) * 1000;
+                        document.getElementById('campStatusText').textContent = `Running - Next in ${Math.round(delay/1000)}s`;
+                        campaignTimer = setTimeout(() => processCampaignNext(sent, total), delay);
+                    }
+                } else {
+                    const log = document.getElementById('campLog');
+                    log.innerHTML = `<div class="text-red-600">✗ Error: ${data.error || 'Unknown'}</div>` + log.innerHTML;
+                    // Continue despite errors
+                    const delay = 30000;
+                    campaignTimer = setTimeout(() => processCampaignNext(sent, total), delay);
+                }
+            })
+            .catch(e => {
+                const log = document.getElementById('campLog');
+                log.innerHTML = `<div class="text-red-600">✗ Network error</div>` + log.innerHTML;
+                campaignTimer = setTimeout(() => processCampaignNext(sent, total), 30000);
+            });
+    }
+
+    async function stopCampaign() {
+        campaignRunning = false;
+        if (campaignTimer) clearTimeout(campaignTimer);
+
+        try {
+            await fetch(`${API_URL}?action=stop_campaign`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({})
+            });
+        } catch(e) {}
+
+        document.getElementById('campStatusText').textContent = 'Stopped';
+        document.getElementById('startCampaignBtn').classList.remove('hidden');
+        document.getElementById('stopCampaignBtn').classList.add('hidden');
+        showToast('Campaign stopped');
+    }
+
+
+    // ============ SETTINGS ============
+    async function loadSettings() {
+        try {
+            const res = await fetch(`${API_URL}?action=get_settings`);
+            const data = await res.json();
+            if (data.success && data.settings) {
+                const s = data.settings;
+                document.getElementById('setNodeUrl').value = s.node_server_url || '';
+                document.getElementById('setWebhookUrl').value = s.webhook_url || '';
+                document.getElementById('setGroqKey').value = s.groq_api_key === '***configured***' ? '' : (s.groq_api_key || '');
+                document.getElementById('setGroqModel').value = s.groq_model || 'llama-3.1-70b-versatile';
+                document.getElementById('setMinDelay').value = s.min_delay || 120;
+                document.getElementById('setMaxDelay').value = s.max_delay || 300;
+                document.getElementById('setDailyLimit').value = s.daily_limit || 50;
+            }
+        } catch(e) { console.error('Settings load error:', e); }
+    }
+
+    async function saveSettings() {
+        const settings = {
+            node_server_url: document.getElementById('setNodeUrl').value,
+            webhook_url: document.getElementById('setWebhookUrl').value,
+            groq_api_key: document.getElementById('setGroqKey').value,
+            groq_model: document.getElementById('setGroqModel').value,
+            min_delay: document.getElementById('setMinDelay').value,
+            max_delay: document.getElementById('setMaxDelay').value,
+            daily_limit: document.getElementById('setDailyLimit').value
+        };
+
+        // Remove empty groq key (don't overwrite with empty)
+        if (!settings.groq_api_key) delete settings.groq_api_key;
+
+        try {
+            const res = await fetch(`${API_URL}?action=save_settings`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(settings)
+            });
+            const data = await res.json();
+            if (data.success) {
+                showToast('Settings saved!');
+                // Also update webhook on Node server
+                if (settings.webhook_url) {
+                    fetch(`${API_URL}?action=set_webhook_url`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ url: settings.webhook_url })
+                    });
+                }
+            } else {
+                showToast('Failed to save settings', true);
+            }
+        } catch(e) { showToast('Error: ' + e.message, true); }
+    }
+
+    // ============ UTILITY ============
+    function refreshData() {
+        loadStats();
+        loadLeads();
+        if (currentLeadId) loadChat(currentLeadId);
+        showToast('Refreshed!');
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function showToast(message, isError = false) {
+        const toast = document.getElementById('toast');
+        const msgEl = document.getElementById('toastMessage');
+        msgEl.textContent = message;
+        toast.className = `fixed bottom-6 right-6 ${isError ? 'bg-red-600' : 'bg-gray-800'} text-white px-4 py-2.5 rounded-lg text-sm shadow-lg transition-all transform translate-y-0 opacity-100 z-50`;
+        setTimeout(() => {
+            toast.className = 'fixed bottom-6 right-6 bg-gray-800 text-white px-4 py-2.5 rounded-lg text-sm shadow-lg transition-all transform translate-y-20 opacity-0 z-50';
+        }, 3000);
+    }
+    </script>
+</body>
+</html>
