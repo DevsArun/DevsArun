@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Math Memory Planet</title>
+  <meta name="description" content="Privacy Policy for Math Memory Planet, a kids memory and math game. 100% offline. No ads. No data collection." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#2B1B4E',          // app textDark
+            sun: '#FFD233',          // sunYellow
+            coral: '#FF6B6B',
+            mint: '#4ECDC4',
+            sky: '#45B7FF',
+            candy: '#FF8ED4',        // pink
+            lav: '#B9A7F9',          // lavender
+            cream: '#FDF6EC',
+            face: '#FFF9F0',         // cardFace
+          },
+          fontFamily: {
+            display: ['"Baloo 2"', 'cursive'],
+            body: ['Nunito', 'sans-serif'],
+          },
+          boxShadow: {
+            chunky: '0 6px 0 rgba(43,27,78,0.12), 0 14px 30px rgba(43,27,78,0.10)',
+            pill: '0 4px 0 rgba(43,27,78,0.10)',
+          },
+          borderRadius: { blob: '28px' },
+        },
+      },
+    }
+  </script>
+  <style>
+    body { background: linear-gradient(180deg, #FDF6EC 0%, #EFE9FF 55%, #DCEFFF 100%); }
+    /* Twinkling stars — like the app's Starfield */
+    .star { position: absolute; border-radius: 9999px; animation: twinkle 3.2s ease-in-out infinite; }
+    @keyframes twinkle { 0%,100% { opacity:.25; transform:scale(.8);} 50% { opacity:.9; transform:scale(1.15);} }
+    /* Drifting planets — like the app's BgDrifters */
+    .drift { position: absolute; animation: drift 12s ease-in-out infinite; }
+    @keyframes drift { 0%,100% { transform: translate(0,0);} 50% { transform: translate(18px,-22px);} }
+    .drift2 { animation-duration: 16s; animation-delay: -6s; }
+    .drift3 { animation-duration: 20s; animation-delay: -11s; }
+    /* Floating mascot bounce */
+    .float { animation: float 4s ease-in-out infinite; }
+    @keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-12px);} }
+    /* Sparkle (4-point star) */
+    .sparkle { position:absolute; width:18px; height:18px; animation: twinkle 4s ease-in-out infinite; }
+  </style>
+</head>
+<body class="font-body text-ink min-h-screen overflow-x-hidden relative">
+
+  <!-- ===== Background decor (starfield + drifting planets) ===== -->
+  <div class="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
+    <span class="star w-2 h-2 bg-sky" style="top:8%; left:12%; animation-delay:0s"></span>
+    <span class="star w-1.5 h-1.5 bg-candy" style="top:16%; left:78%; animation-delay:.7s"></span>
+    <span class="star w-2 h-2 bg-sun" style="top:32%; left:6%; animation-delay:1.4s"></span>
+    <span class="star w-1.5 h-1.5 bg-mint" style="top:44%; left:90%; animation-delay:.3s"></span>
+    <span class="star w-2 h-2 bg-lav" style="top:58%; left:16%; animation-delay:2s"></span>
+    <span class="star w-1.5 h-1.5 bg-coral" style="top:70%; left:84%; animation-delay:1s"></span>
+    <span class="star w-2 h-2 bg-sky" style="top:82%; left:8%; animation-delay:.5s"></span>
+    <span class="star w-1.5 h-1.5 bg-sun" style="top:90%; left:70%; animation-delay:1.8s"></span>
+    <span class="star w-1.5 h-1.5 bg-candy" style="top:50%; left:50%; animation-delay:2.4s"></span>
+    <svg class="sparkle text-lav" style="top:12%; left:40%" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+    <svg class="sparkle text-coral" style="top:64%; left:64%; animation-delay:1.2s" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+    <svg class="sparkle text-mint" style="top:36%; left:88%; animation-delay:2.2s" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+    <!-- planets -->
+    <div class="drift" style="top:10%; right:-30px">
+      <div class="w-24 h-24 rounded-full bg-gradient-to-br from-candy to-lav opacity-40 shadow-inner"></div>
+    </div>
+    <div class="drift drift2" style="top:55%; left:-40px">
+      <div class="w-32 h-32 rounded-full bg-gradient-to-br from-sky to-mint opacity-30"></div>
+    </div>
+    <div class="drift drift3" style="bottom:6%; right:10%">
+      <div class="w-16 h-16 rounded-full bg-gradient-to-br from-sun to-coral opacity-35"></div>
+    </div>
+  </div>
+
+  <!-- ===== Hero ===== -->
+  <header class="max-w-3xl mx-auto px-6 pt-16 pb-10 text-center">
+    <div class="float inline-flex items-center justify-center w-28 h-28 rounded-full bg-gradient-to-br from-lav to-sky shadow-chunky text-6xl mb-6">🪐</div>
+    <h1 class="font-display font-extrabold text-5xl md:text-6xl leading-tight bg-gradient-to-r from-coral via-candy to-sky bg-clip-text text-transparent">Math Memory Planet</h1>
+    <div class="mt-4 inline-block bg-white/80 backdrop-blur rounded-full px-6 py-2 shadow-pill">
+      <p class="font-display font-bold text-xl text-ink">Privacy Policy</p>
+    </div>
+    <p class="mt-3 text-sm font-bold text-ink/50">Last updated: August 18, 2026</p>
+  </header>
+
+  <!-- ===== TL;DR hero card ===== -->
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="rounded-blob bg-gradient-to-r from-mint to-sky p-[3px] shadow-chunky">
+      <div class="rounded-[25px] bg-face px-8 py-7 text-center">
+        <p class="font-display font-extrabold text-2xl">🛡️ The short version</p>
+        <p class="mt-2 text-lg font-bold text-ink/80">This app collects <span class="bg-sun/60 rounded-lg px-2 py-0.5 font-extrabold">zero data</span>. No accounts, no ads, no tracking, no internet. Everything stays on your device.</p>
+        <div class="mt-5 flex flex-wrap justify-center gap-2">
+          <span class="bg-mint/20 text-ink font-extrabold text-sm rounded-full px-4 py-1.5 shadow-pill">📵 100% Offline</span>
+          <span class="bg-coral/20 text-ink font-extrabold text-sm rounded-full px-4 py-1.5 shadow-pill">🚫 No Ads</span>
+          <span class="bg-sky/20 text-ink font-extrabold text-sm rounded-full px-4 py-1.5 shadow-pill">🔒 No Tracking</span>
+          <span class="bg-lav/25 text-ink font-extrabold text-sm rounded-full px-4 py-1.5 shadow-pill">👶 COPPA Safe</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Sections ===== -->
+  <main class="max-w-3xl mx-auto px-6 py-12 space-y-7">
+
+    <section class="bg-face rounded-blob p-7 shadow-chunky">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-lav to-candy flex items-center justify-center text-3xl shadow-pill">👋</div>
+        <h2 class="font-display font-extrabold text-2xl">1. Who we are</h2>
+      </div>
+      <p class="mt-4 leading-relaxed font-semibold text-ink/80">Math Memory Planet (“the App”) is a memory and math game for children ages 3–12, published by ITS School (“we”, “us”). This policy explains what information the App handles — which is, happily, almost nothing.</p>
+    </section>
+
+    <section class="bg-face rounded-blob p-7 shadow-chunky">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-mint to-sky flex items-center justify-center text-3xl shadow-pill">🔍</div>
+        <h2 class="font-display font-extrabold text-2xl">2. Information we collect</h2>
+      </div>
+      <p class="mt-4 font-display font-extrabold text-xl text-mint">None. Zero. Nothing. 🎉</p>
+      <ul class="mt-4 grid sm:grid-cols-2 gap-2.5 font-semibold text-ink/80">
+        <li class="bg-white rounded-2xl px-4 py-2.5 shadow-pill">❌ No personal information</li>
+        <li class="bg-white rounded-2xl px-4 py-2.5 shadow-pill">❌ No location data</li>
+        <li class="bg-white rounded-2xl px-4 py-2.5 shadow-pill">❌ No camera / mic / contacts</li>
+        <li class="bg-white rounded-2xl px-4 py-2.5 shadow-pill">❌ No advertising identifiers</li>
+        <li class="bg-white rounded-2xl px-4 py-2.5 shadow-pill">❌ No analytics or tracking</li>
+        <li class="bg-white rounded-2xl px-4 py-2.5 shadow-pill">❌ No cookies</li>
+      </ul>
+      <p class="mt-4 leading-relaxed font-semibold text-ink/80">The App requests <span class="bg-sun/60 rounded-lg px-2 py-0.5 font-extrabold">zero Android permissions</span> and works completely offline. It never connects to the internet.</p>
+    </section>
+
+    <section class="bg-face rounded-blob p-7 shadow-chunky">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-sun to-coral flex items-center justify-center text-3xl shadow-pill">📱</div>
+        <h2 class="font-display font-extrabold text-2xl">3. Data stored on your device only</h2>
+      </div>
+      <p class="mt-4 leading-relaxed font-semibold text-ink/80">To make the game work, the App saves a small amount of progress data <span class="font-extrabold">locally on your device only</span>:</p>
+      <ul class="mt-3 space-y-2 font-semibold text-ink/80">
+        <li class="flex gap-2"><span>⭐</span> Level progress, stars, streaks, and trophies</li>
+        <li class="flex gap-2"><span>🏷️</span> The child’s chosen display name (shown on screen only, never transmitted)</li>
+        <li class="flex gap-2"><span>🎨</span> Language, sound, and theme preferences</li>
+      </ul>
+      <p class="mt-4 leading-relaxed font-semibold text-ink/80">This data never leaves the device. Deleting the App, or using <span class="font-extrabold">Settings → Reset progress</span>, removes it permanently.</p>
+    </section>
+
+    <section class="bg-face rounded-blob p-7 shadow-chunky">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-candy to-lav flex items-center justify-center text-3xl shadow-pill">👶</div>
+        <h2 class="font-display font-extrabold text-2xl">4. Children’s privacy (COPPA &amp; GDPR-K)</h2>
+      </div>
+      <p class="mt-4 leading-relaxed font-semibold text-ink/80">The App is designed for children and built to comply with the Children’s Online Privacy Protection Act (COPPA) and the GDPR rules for children. Because the App collects and transmits no data at all, no parental consent for data collection is required — there is simply nothing to consent to.</p>
+      <p class="mt-3 leading-relaxed font-semibold text-ink/80">Parent-only areas (settings and progress statistics) are protected by a parental gate. 🔐</p>
+    </section>
+
+    <section class="bg-face rounded-blob p-7 shadow-chunky">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-coral to-candy flex items-center justify-center text-3xl shadow-pill">🚫</div>
+        <h2 class="font-display font-extrabold text-2xl">5. Ads and purchases</h2>
+      </div>
+      <ul class="mt-4 space-y-2 font-semibold text-ink/80">
+        <li>❌ No advertisements of any kind</li>
+        <li>❌ No in-app purchases</li>
+        <li>❌ No links out to websites or social media from the child experience</li>
+      </ul>
+      <p class="mt-3 leading-relaxed font-semibold text-ink/80">You pay once when you buy the App. Everything inside is included. 🎁</p>
+    </section>
+
+    <section class="bg-face rounded-blob p-7 shadow-chunky">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-sky to-mint flex items-center justify-center text-3xl shadow-pill">🤝</div>
+        <h2 class="font-display font-extrabold text-2xl">6. Third parties</h2>
+      </div>
+      <p class="mt-4 leading-relaxed font-semibold text-ink/80">The App contains no third-party SDKs, no analytics services, and no ad networks. Your app store (e.g., Amazon Appstore) handles the purchase itself under its own privacy policy.</p>
+    </section>
+
+    <section class="bg-face rounded-blob p-7 shadow-chunky">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-lav to-sky flex items-center justify-center text-3xl shadow-pill">🔄</div>
+        <h2 class="font-display font-extrabold text-2xl">7. Changes to this policy</h2>
+      </div>
+      <p class="mt-4 leading-relaxed font-semibold text-ink/80">If we ever change how the App handles data, we will update this page and the “Last updated” date above before the change takes effect.</p>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="rounded-blob bg-gradient-to-r from-lav via-candy to-coral p-[3px] shadow-chunky">
+      <div class="rounded-[25px] bg-face px-8 py-8 text-center">
+        <div class="text-4xl">📧</div>
+        <h2 class="mt-2 font-display font-extrabold text-2xl">8. Questions? Say hello!</h2>
+        <p class="mt-2 font-semibold text-ink/70">We’re happy to answer any privacy question.</p>
+        <a href="mailto:itsdevsarun@gmail.com" class="mt-5 inline-block bg-gradient-to-r from-mint to-sky text-ink font-display font-extrabold text-lg rounded-full px-8 py-3.5 shadow-chunky hover:translate-y-0.5 hover:shadow-pill transition-all">itsdevsarun@gmail.com</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="max-w-3xl mx-auto px-6 pb-14 text-center">
+    <div class="flex justify-center gap-3 text-2xl mb-3" aria-hidden="true">🪐 ⭐ 🚀 🌟 🪐</div>
+    <p class="text-sm font-bold text-ink/40">© 2026 ITS School · Math Memory Planet · Made with 💜 for curious kids</p>
+  </footer>
+
+</body>
+</html>
